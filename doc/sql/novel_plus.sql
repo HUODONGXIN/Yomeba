@@ -469,7 +469,7 @@ CREATE TABLE `friend_link`
 -- Records of friend_link
 -- ----------------------------
 INSERT INTO `friend_link`
-VALUES ('5', '小説ハウス', 'https://novel.xxyopen.com', '11', '1', null, null, null, null);
+VALUES ('5', 'Yomeba', 'https://novel.xxyopen.com', '11', '1', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for news
@@ -2931,8 +2931,8 @@ CREATE TABLE `website_info`
 
 INSERT INTO website_info (id, name, domain, keyword, description, qq, logo, logo_dark, create_time, create_user_id,
                           update_time, update_user_id)
-VALUES (1, '小説ハウス', 'www.xxyopen.com', '小説ハウス,小説,小説CMS,オリジナル文学システム,オープンソース小説システム,無料小説サイト構築プログラム',
-        '小説ハウスはマルチデバイス（PC、WAP）対応の読書・機能充実のオリジナル文学CMSシステムです。フロントポータルシステム、作家バックオフィス管理システム、プラットフォームバックオフィス管理システム、クローラー管理システムなどの複数サブシステムで構成され、会員チャージ、購読モード、ニュース配信、リアルタイム統計レポートなどの機能をサポートします。新作は自動で登録され、既存作品は自動で更新されます。',
+VALUES (1, 'Yomeba', 'www.xxyopen.com', 'Yomeba,小説,小説CMS,オリジナル文学システム,オープンソース小説システム,無料小説サイト構築プログラム',
+        'Yomebaはマルチデバイス（PC、WAP）対応の読書・機能充実のオリジナル文学CMSシステムです。フロントポータルシステム、作家バックオフィス管理システム、プラットフォームバックオフィス管理システム、クローラー管理システムなどの複数サブシステムで構成され、会員チャージ、購読モード、ニュース配信、リアルタイム統計レポートなどの機能をサポートします。新作は自動で登録され、既存作品は自動で更新されます。',
         '1179705413', 'https://youdoc.gitee.io/resource/images/logo/logo.png',
         'https://youdoc.gitee.io/resource/images/logo/logo_white.png', null, null, null, null);
 
