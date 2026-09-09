@@ -154,19 +154,19 @@ CREATE TABLE `book_category`
 -- Records of book_category
 -- ----------------------------
 INSERT INTO `book_category`
-VALUES ('1', '0', '玄幻奇幻', '10', null, null, null, null);
+VALUES ('1', '0', 'ファンタジー', '10', null, null, null, null);
 INSERT INTO `book_category`
 VALUES ('2', '0', '武侠仙侠', '11', null, null, null, null);
 INSERT INTO `book_category`
-VALUES ('3', '0', '都市言情', '12', null, null, null, null);
+VALUES ('3', '0', '都市恋愛', '12', null, null, null, null);
 INSERT INTO `book_category`
-VALUES ('4', '0', '历史军事', '13', null, null, null, null);
+VALUES ('4', '0', '歴史・軍事', '13', null, null, null, null);
 INSERT INTO `book_category`
-VALUES ('5', '0', '科幻灵异', '14', null, null, null, null);
+VALUES ('5', '0', 'SF・オカルト', '14', null, null, null, null);
 INSERT INTO `book_category`
-VALUES ('6', '0', '网游竞技', '15', null, null, null, null);
+VALUES ('6', '0', 'ゲーム・スポーツ', '15', null, null, null, null);
 INSERT INTO `book_category`
-VALUES ('7', '1', '女生频道', '16', null, null, null, null);
+VALUES ('7', '1', '女性向けチャンネル', '16', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for book_comment
@@ -469,7 +469,7 @@ CREATE TABLE `friend_link`
 -- Records of friend_link
 -- ----------------------------
 INSERT INTO `friend_link`
-VALUES ('5', '小说精品屋', 'https://novel.xxyopen.com', '11', '1', null, null, null, null);
+VALUES ('5', '小説ハウス', 'https://novel.xxyopen.com', '11', '1', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for news
@@ -496,11 +496,11 @@ CREATE TABLE `news`
 -- Records of news
 -- ----------------------------
 INSERT INTO `news`
-VALUES ('1', '1', '行业', '未知', '阅文推“单本可选新合同”：授权分级、免费或付费自选',
-        '阅文推“单本可选新合同”：授权分级、免费或付费自选', '2020-04-27 15:42:21', null,
+VALUES ('1', '1', '業界', '未知', '閲文が「単本選択型新契約」を発表：ライセンスを段階分け、無料・有料を自由に選択',
+        '閲文が「単本選択型新契約」を発表：ライセンスを段階分け、無料・有料を自由に選択', '2020-04-27 15:42:21', null,
         '2020-04-27 15:42:26', null);
 INSERT INTO `news`
-VALUES ('2', '3', '资讯', '全媒派公众号', 'AI小说悄然流行：人类特有的创作力，已经被AI复制？', 'AI小说悄然流行：人类特有的创作力，已经被AI复制？', '2020-04-28 15:44:07',
+VALUES ('2', '3', 'ニュース', '全媒派公众号', 'AI小説が静かに流行：人間固有の創造力は、すでにAIが再現できるのか？', 'AI小説が静かに流行：人間固有の創造力は、すでにAIが再現できるのか？', '2020-04-28 15:44:07',
         null, '2020-04-28 15:44:12',
         null);
 
@@ -526,9 +526,9 @@ CREATE TABLE `news_category`
 -- Records of news_category
 -- ----------------------------
 INSERT INTO `news_category`
-VALUES ('1', '行业', '10', null, null, null, null);
+VALUES ('1', '業界', '10', null, null, null, null);
 INSERT INTO `news_category`
-VALUES ('3', '资讯', '11', null, null, null, null);
+VALUES ('3', 'ニュース', '11', null, null, null, null);
 
 -- ----------------------------
 -- Table structure for order_pay
@@ -2931,8 +2931,8 @@ CREATE TABLE `website_info`
 
 INSERT INTO website_info (id, name, domain, keyword, description, qq, logo, logo_dark, create_time, create_user_id,
                           update_time, update_user_id)
-VALUES (1, '小说精品屋', 'www.xxyopen.com', '小说精品屋,小说,小说CMS,原创文学系统,开源小说系统,免费小说建站程序',
-        '小说精品屋是一个多端（PC、WAP）阅读、功能完善的原创文学CMS系统，由前台门户系统、作家后台管理系统、平台后台管理系统、爬虫管理系统等多个子系统构成，支持会员充值、订阅模式、新闻发布和实时统计报表等功能，新书自动入库，老书自动更新。',
+VALUES (1, '小説ハウス', 'www.xxyopen.com', '小説ハウス,小説,小説CMS,オリジナル文学システム,オープンソース小説システム,無料小説サイト構築プログラム',
+        '小説ハウスはマルチデバイス（PC、WAP）対応の読書・機能充実のオリジナル文学CMSシステムです。フロントポータルシステム、作家バックオフィス管理システム、プラットフォームバックオフィス管理システム、クローラー管理システムなどの複数サブシステムで構成され、会員チャージ、購読モード、ニュース配信、リアルタイム統計レポートなどの機能をサポートします。新作は自動で登録され、既存作品は自動で更新されます。',
         '1179705413', 'https://youdoc.gitee.io/resource/images/logo/logo.png',
         'https://youdoc.gitee.io/resource/images/logo/logo_white.png', null, null, null, null);
 
