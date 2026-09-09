@@ -2,10 +2,10 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head th:replace="common/header :: common_head(~{::title},~{::meta},~{::link},~{})">
-    <title th:text="'全部作品_'+${application.website.name}"></title>
-    <meta name="keywords" th:content="${application.website.name}+',小说,小说网,言情小说,都市小说,玄幻小说,穿越小说,青春小说,总裁豪门小说,网络小说,免费小说,全本小说,原创网络文学'"/>
+    <title th:text="'すべての作品_'+${application.website.name}"></title>
+    <meta name="keywords" th:content="${application.website.name}+',小説,小説サイト,恋愛小説,都市小説,ファンタジー小説,タイムスリップ小説,青春小説,ネット小説,無料小説,全本小説,オリジナルネット文学'"/>
     <meta name="description"
-          th:content="${application.website.name}+'每日更新小说连载,小说排行榜,提供言情小说,都市小说,玄幻小说,穿越小说,青春小说,总裁豪门小说,网络小说,免费小说,全本小说,首发小说,最新章节免费小说阅读,精彩尽在'+${application.website.name}+'。'"/>
+          th:content="${application.website.name}+'は毎日更新の小説連載、小説ランキングを提供。恋愛小説、都市小説、ファンタジー小説、タイムスリップ小説、青春小説、ネット小説、無料小説、全本小説、最新話無料小説の読書は'+${application.website.name}+'へ。'"/>
     <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
     <link href="/favicon.ico" type="image/x-icon" rel="Bookmark"/>
     <link rel="stylesheet" href="/css/main.css"/>
@@ -20,51 +20,51 @@
         <div class="so_tag">
             <ul class="list">
                 <li class="so_pd" id="workDirection">
-                    <span class="tit">作品频道：</span>
-                    <a filter-value="0" href="javascript:listBookCategory();search(1,20)" class="on">男频</a>
-                    <a filter-value="1" href="javascript:listBookCategory();search(1,20)">女频</a>
+                    <span class="tit">作品チャンネル：</span>
+                    <a filter-value="0" href="javascript:listBookCategory();search(1,20)" class="on">男性向け</a>
+                    <a filter-value="1" href="javascript:listBookCategory();search(1,20)">女性向け</a>
                 </li>
                 <li id="idGirl" class="so_class">
-                    <span class="tit">作品分类：</span>
+                    <span class="tit">作品ジャンル：</span>
                     <span class="so_girl" id="girlCategoryList" style="display: none;">
                         </span>
                     <span class="so_boy" id="boyCategoryList">
                         </span>
                 </li>
                <!-- <li class="so_free">
-                    <span class="tit">是否免费：</span>
-                    <a href="?b=0&s=0&wb=0&wd=0&up=0&fr=0&so=0&ms=2" class="on">不限</a>
-                    <a href="?b=0&s=0&wb=0&wd=0&up=0&fr=1&so=0&ms=2" class="">免费作品</a>
-                    <a href="?b=0&s=0&wb=0&wd=0&up=0&fr=2&so=0&ms=2" class="">收费作品</a>
+                    <span class="tit">無料/有料：</span>
+                    <a href="?b=0&s=0&wb=0&wd=0&up=0&fr=0&so=0&ms=2" class="on">指定なし</a>
+                    <a href="?b=0&s=0&wb=0&wd=0&up=0&fr=1&so=0&ms=2" class="">無料作品</a>
+                    <a href="?b=0&s=0&wb=0&wd=0&up=0&fr=2&so=0&ms=2" class="">有料作品</a>
                 </li>-->
                 <li class="so_progress">
-                    <span class="tit">是否完结：</span>
-                    <a  href="javascript:search(1,20)" class="on">不限</a>
-                    <a filter-value="0" href="javascript:search(1,20)" class="">连载中</a>
-                    <a filter-value="1" href="javascript:search(1,20)" class="">已完结</a>
+                    <span class="tit">完結状態：</span>
+                    <a  href="javascript:search(1,20)" class="on">指定なし</a>
+                    <a filter-value="0" href="javascript:search(1,20)" class="">連載中</a>
+                    <a filter-value="1" href="javascript:search(1,20)" class="">完結済み</a>
                 </li>
                 <li class="so_words">
-                    <span class="tit">作品字数：</span>
-                    <a href="javascript:search(1,20)" class="on">不限</a>
+                    <span class="tit">作品文字数：</span>
+                    <a href="javascript:search(1,20)" class="on">指定なし</a>
                     <a filter-value-max="300000" href="javascript:search(1,20)" class="">30万字以下</a>
-                    <a filter-value-min="300000" filter-value-max="500000" href="javascript:search(1,20)" class="">30-50万字</a>
-                    <a filter-value-min="500000" filter-value-max="1000000" href="javascript:search(1,20)" class="">50-100万字</a>
+                    <a filter-value-min="300000" filter-value-max="500000" href="javascript:search(1,20)" class="">30〜50万字</a>
+                    <a filter-value-min="500000" filter-value-max="1000000" href="javascript:search(1,20)" class="">50〜100万字</a>
                     <a filter-value-min="1000000" href="javascript:search(1,20)" class="">100万字以上</a>
                 </li>
                 <li class="so_update">
-                    <span class="tit">更新时间：</span>
-                    <a href="javascript:search(1,20)" class="on">不限</a>
-                    <a filter-value="3" href="javascript:search(1,20)" class="">三日内</a>
-                    <a filter-value="7" href="javascript:search(1,20)" class="">七日内</a>
-                    <a filter-value="15" href="javascript:search(1,20)" class="">半月内</a>
-                    <a filter-value="30" href="javascript:search(1,20)" class="">一月内</a>
+                    <span class="tit">更新時間：</span>
+                    <a href="javascript:search(1,20)" class="on">指定なし</a>
+                    <a filter-value="3" href="javascript:search(1,20)" class="">3日以内</a>
+                    <a filter-value="7" href="javascript:search(1,20)" class="">7日以内</a>
+                    <a filter-value="15" href="javascript:search(1,20)" class="">15日以内</a>
+                    <a filter-value="30" href="javascript:search(1,20)" class="">1ヶ月以内</a>
                 </li>
                 <li class="so_sort">
-                    <span class="tit">排序方式：</span>
-                    <a href="javascript:search(1,20)" class="on">不限</a>
-                    <a filter-value="last_index_update_time" href="javascript:search(1,20)" class="">更新时间</a>
-                    <a filter-value="word_count" href="javascript:search(1,20)" class="">总字数</a>
-                    <a filter-value="visit_count" href="javascript:search(1,20)" class="">点击量</a>
+                    <span class="tit">並び順：</span>
+                    <a href="javascript:search(1,20)" class="on">指定なし</a>
+                    <a filter-value="last_index_update_time" href="javascript:search(1,20)" class="">更新時間</a>
+                    <a filter-value="word_count" href="javascript:search(1,20)" class="">総文字数</a>
+                    <a filter-value="visit_count" href="javascript:search(1,20)" class="">クリック数</a>
                 </li>
             </ul>
         </div>
@@ -77,12 +77,12 @@
             <table cellpadding="0" cellspacing="0">
                 <thead>
                 <tr>
-                    <th class="rank">序号</th>
-                    <th class="style">类别</th>
-                    <th class="name">书名</th>
-                    <th class="chapter">最新章节</th>
-                    <th class="author">作者</th>
-                    <th class="word">字数</th>
+                    <th class="rank">番号</th>
+                    <th class="style">ジャンル</th>
+                    <th class="name">書名</th>
+                    <th class="chapter">最新話</th>
+                    <th class="author">著者</th>
+                    <th class="word">文字数</th>
                 </tr>
                 </thead>
                 <tbody id="bookList">
@@ -218,7 +218,7 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
 
@@ -235,9 +235,9 @@
                 if (data.code == 200) {
                     var categoryList = data.data;
                     var boyCategoryListHtml = "";
-                    boyCategoryListHtml += " <a href=\"javascript:search(1,20)\" class=\"on\">不限</a>";
+                    boyCategoryListHtml += " <a href=\"javascript:search(1,20)\" class=\"on\">指定なし</a>";
                     var girlCategoryListHtml = "";
-                    girlCategoryListHtml += " <a href=\"javascript:search(1,20)\" class=\"on\">不限</a>";
+                    girlCategoryListHtml += " <a href=\"javascript:search(1,20)\" class=\"on\">指定なし</a>";
                     for (var i = 0; i < categoryList.length; i++) {
                         var category = categoryList[i];
                         if (category.workDirection == 1) {
@@ -284,7 +284,7 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
 

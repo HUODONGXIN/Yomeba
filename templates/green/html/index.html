@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head th:replace="common/header :: common_head(~{::title},~{::meta},~{::link},~{})">
-    <title th:text="${application.website.name}+'_原创小说网站'"></title>
+    <title th:text="${application.website.name}+'_オリジナル小説サイト'"></title>
     <meta name="keywords" th:content="${application.website.keyword}"/>
     <meta name="description"
           th:content="${application.website.description}"/>
@@ -53,7 +53,7 @@
         </div>
         <div class="rightBox">
             <div class="title cf" id="weekcommend">
-                <h3>本周强推</h3>
+                <h3>今週のおすすめ</h3>
             </div>
             <div class="rightList">
                 <ul id="currentWeek" th:if="${bookMap['2']}">
@@ -73,7 +73,7 @@
     <div class="channelWrap channelPic cf">
         <div class="leftBox">
             <div class="title">
-                <h2 class="on">热门推荐</h2>
+                <h2 class="on">人気のおすすめ</h2>
             </div>
             <div class="picRecommend cf" id="hotRecBooks" th:if="${bookMap['3']}">
                 <div class="itemsList" th:each="book : ${bookMap['3']}">
@@ -82,7 +82,7 @@
                     </a>
                     <div class="items_txt">
                         <h4><a th:href="'/book/'+${book.bookId}+'.html'" th:text="${book.bookName}"></a></h4>
-                        <p class="author"><a href="javascript:void(0)" th:text="'作者：'+${book.authorName}"></a></p>
+                        <p class="author"><a href="javascript:void(0)" th:text="'著者：'+${book.authorName}"></a></p>
                         <p class="intro"><a th:href="'/book/'+${book.bookId}+'.html'" th:utext="${book.bookDesc}"></a>
                         </p>
                     </div>
@@ -93,14 +93,14 @@
         <div id="bookrank1_ShowBookRank">
             <div class="rightBox ">
                 <div class="title cf">
-                    <h3 class="on">点击榜单</h3>
+                    <h3 class="on">クリックランキング</h3>
                 </div>
                 <div class="rightList">
                     <ul id="clickRankBooks">
 
 
                     </ul>
-                    <div class="more"><a href="/book/book_ranking.html">查看更多&gt;</a></div>
+                    <div class="more"><a href="/book/book_ranking.html">もっと見る&gt;</a></div>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
     <div class="channelWrap channelPic cf">
         <div class="leftBox">
             <div class="title">
-                <h2>精品推荐</h2>
+                <h2>おすすめ作品</h2>
             </div>
             <div class="picRecommend cf" id="classicBooks" th:if="${bookMap['4']}">
                 <div class="itemsList" th:each="book : ${bookMap['4']}">
@@ -117,7 +117,7 @@
                     </a>
                     <div class="items_txt">
                         <h4><a th:href="'/book/'+${book.bookId}+'.html'" th:text="${book.bookName}"></a></h4>
-                        <p class="author"><a href="javascript:void(0)" th:text="'作者：'+${book.authorName}"></a></p>
+                        <p class="author"><a href="javascript:void(0)" th:text="'著者：'+${book.authorName}"></a></p>
                         <p class="intro"><a th:href="'/book/'+${book.bookId}+'.html'" th:utext="${book.bookDesc}"></a>
                         </p>
                     </div>
@@ -128,14 +128,14 @@
         <div id="bookrank2_ShowBookRank">
             <div class="rightBox ">
                 <div class="title cf">
-                    <h3 class="on">新书榜单</h3>
+                    <h3 class="on">新作ランキング</h3>
                 </div>
                 <div class="rightList">
                     <ul id="newRankBooks">
 
 
                     </ul>
-                    <div class="more"><a href="/book/book_ranking.html?type=1">查看更多&gt;</a></div>
+                    <div class="more"><a href="/book/book_ranking.html?type=1">もっと見る&gt;</a></div>
                 </div>
             </div>
         </div>
@@ -149,11 +149,11 @@
                 <table cellpadding="0" cellspacing="0">
                     <thead>
                     <tr>
-                        <th class="style">类别</th>
-                        <th class="name">书名</th>
-                        <th class="chapter">最新章节</th>
-                        <th class="author">作者</th>
-                        <th class="time">更新时间</th>
+                        <th class="style">ジャンル</th>
+                        <th class="name">書名</th>
+                        <th class="chapter">最新話</th>
+                        <th class="author">著者</th>
+                        <th class="time">更新時間</th>
                     </tr>
                     </thead>
                     <tbody id="newRankBooks2">
@@ -166,14 +166,14 @@
         <div id="bookrank5_ShowBookRank">
             <div class="rightBox mb20">
                 <div class="title cf">
-                    <h3 class="on">更新榜单</h3>
+                    <h3 class="on">更新ランキング</h3>
                 </div>
                 <div class="rightList">
                     <ul id="updateRankBooks">
 
 
                     </ul>
-                    <div class="more"><a href="/book/book_ranking.html?type=2">查看更多&gt;</a></div>
+                    <div class="more"><a href="/book/book_ranking.html?type=2">もっと見る&gt;</a></div>
                 </div>
             </div>
         </div>
@@ -182,7 +182,7 @@
 </div>
 <div class="friend_link">
     <div class="box_center cf" id="friendLink">
-        <span>友情链接：</span>
+        <span>リンク：</span>
     </div>
 </div>
 
@@ -194,8 +194,8 @@
 <div th:replace="common/js :: js"></div>
 <script src="/javascript/lazyload.js" type="text/javascript"></script>
 <script language="javascript" type="text/javascript">
-    var $div = $('.scBigImg dl');//放置大图容器
-    var $nav = $('.scSmallImg li');//放置缩略图容器
+    var $div = $('.scBigImg dl');//メイン画像のコンテナ
+    var $nav = $('.scSmallImg li');//サムネイルのコンテナ
     var num = -1;
     var open;
 
@@ -233,7 +233,7 @@
     lazyload();
     $(function () {
 
-        //点击榜单数据查询
+        //クリックランキングのデータ取得
         $.ajax({
             type: "get",
             url: "/book/listClickRank",
@@ -274,10 +274,10 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
-        //新书榜单查询
+        //新作ランキングのデータ取得
         $.ajax({
             type: "get",
             url: "/book/listNewRank",
@@ -318,10 +318,10 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
-        //更新榜单查询
+        //更新ランキングのデータ取得
         $.ajax({
             type: "get",
             url: "/book/listUpdateRank",
@@ -376,10 +376,10 @@
             }
             ,
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
-        //友情链接查询
+        //リンクのデータ取得
         $.ajax({
             type: "get",
             url: "/friendLink/listIndexLink",
@@ -400,7 +400,7 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
         $("#weekcommend h3").mouseover(function () {
