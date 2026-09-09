@@ -26,42 +26,42 @@
         rStr += '		<li vals="100">';
         rStr += '			<a class="propWrap" href="javascript:void(0);">';
         rStr += '				<i class="icon_check"></i>';
-        rStr += '				<span class="propsBox">100コイン</span>';
+        rStr += '				<span class="propsBox">100yomiコイン</span>';
         rStr += '			</a>';
         rStr += '		</li>';
         rStr += '		<li class="on"  vals="500">';
         rStr += '			<a class="propWrap" href="javascript:void(0);">';
         rStr += '				<i class="icon_check"></i>';
-        rStr += '				<span class="propsBox">500コイン</span>';
+        rStr += '				<span class="propsBox">500yomiコイン</span>';
         rStr += '			</a>';
         rStr += '		</li>';
         rStr += '		<li vals="2000">';
         rStr += '			<a class="propWrap" href="javascript:void(0);">';
         rStr += '				<i class="icon_check"></i>';
-        rStr += '				<span class="propsBox">2000コイン</span>';
+        rStr += '				<span class="propsBox">2000yomiコイン</span>';
         rStr += '			</a>';
         rStr += '		</li>';
         rStr += '		<li vals="5000">';
         rStr += '			<a class="propWrap" href="javascript:void(0);">';
         rStr += '				<i class="icon_check"></i>';
-        rStr += '				<span class="propsBox">5000コイン</span>';
+        rStr += '				<span class="propsBox">5000yomiコイン</span>';
         rStr += '			</a>';
         rStr += '		</li>';
         rStr += '		<li vals="10000">';
         rStr += '			<a class="propWrap" href="javascript:void(0);">';
         rStr += '				<i class="icon_check"></i>';
-        rStr += '				<span class="propsBox">10000コイン</span>';
+        rStr += '				<span class="propsBox">10000yomiコイン</span>';
         rStr += '			</a>';
         rStr += '		</li>';
         rStr += '		<li vals="100000">';
         rStr += '			<a class="propWrap" href="javascript:void(0);">';
         rStr += '				<i class="icon_check"></i>';
-        rStr += '				<span class="propsBox">100000コイン</span>';
+        rStr += '				<span class="propsBox">100000yomiコイン</span>';
         rStr += '			</a>';
         rStr += '		</li>';
         rStr += '	</ul>';
         rStr += '</div>';
-        rStr += '<p class="have_num">残高<span class="red">' + spmymoney + '</span>コイン&nbsp;&nbsp;今回の応援<span class="red" id="pcTotal">500</span>コイン<a class="red" href="../pay/" >[チャージ]</a></p>';
+        rStr += '<p class="have_num">残高<span class="red">' + spmymoney + '</span>yomiコイン&nbsp;&nbsp;今回の応援<span class="red" id="pcTotal">500</span>yomiコイン<a class="red" href="../pay/" >[チャージ]</a></p>';
         rStr += '<p><textarea class="popup_text" id="sendSupportNote"   placeholder="応援ありがとうございます！作者への応援メッセージをどうぞ！"></textarea></p>';
         rStr += '<p class="tc"><a class="btn_red btn_send_pc" href="javascript:void(0);" onclick="javascript:uFans.SendSupport();">応援する</a></p>';
         $("#showPC").html(rStr);
@@ -105,7 +105,7 @@
             }
             else {
                 layer.open({
-                    content: 'コイン残高が不足しています',
+                    content: 'yomiコイン残高が不足しています',
                     style: BookDetail.msgStyle,
                     time: 2
                 });
