@@ -30,7 +30,7 @@ var YT = {
         LoadShow: function () {
             if ($C("LayerShowPic") == null) {
                 var sp = document.createElement("div");
-                sp.innerHTML = "<div id=\"LayerShowPic\" style=\"position:absolute;width:180px;height:70px;z-index:100;background-color: #fdfce9;border: 1px solid #666666;font-size:12px;\"><div align=\"center\" style=\"z-index:91;\"><br><img src=\"" + YT.BaseData.WaitImg + "\" align=\"absmiddle\" /> 请稍后…</div></div><iframe id=\"LayerCover\" style=\"position:absolute;width:100%;height:100%;z-index:10;left: 0px;top: 0px;background-color:#eeeeee;FILTER: alpha(opacity=1);opacity: 0.3 !important; \"></iframe>";
+                sp.innerHTML = "<div id=\"LayerShowPic\" style=\"position:absolute;width:180px;height:70px;z-index:100;background-color: #fdfce9;border: 1px solid #666666;font-size:12px;\"><div align=\"center\" style=\"z-index:91;\"><br><img src=\"" + YT.BaseData.WaitImg + "\" align=\"absmiddle\" /> 少々お待ちください…</div></div><iframe id=\"LayerCover\" style=\"position:absolute;width:100%;height:100%;z-index:10;left: 0px;top: 0px;background-color:#eeeeee;FILTER: alpha(opacity=1);opacity: 0.3 !important; \"></iframe>";
                 document.body.appendChild(sp);
             }
             $C("LayerShowPic").style.display = '';
@@ -143,7 +143,7 @@ var YT = {
             }
             else { $('#' + id).panel('close'); }
         },
-        /*格式化时间字符串*/
+        /*時刻文字列のフォーマット*/
         formatDate: function (now, types) {
             if (now != null && now != "") {
                 var dateN = new Date(+/\d+/.exec(now)[0]);
@@ -167,7 +167,7 @@ var YT = {
                 return "";
             }
         },
-        /** 获取当前时间月份*/
+        /** 現在時刻の月を取得*/
         formatMonth: function (now) {
             if (now != null && now != "") {
                 var dateN = new Date(+/\d+/.exec(now)[0]);
@@ -178,7 +178,7 @@ var YT = {
                 return "";
             }
         },
-        /** 获取当前时间具体的某一天*/
+        /** 現在時刻の日付を取得*/
         formatDay: function (now) {
             if (now != null && now != "") {
                 var dateN = new Date(+/\d+/.exec(now)[0]);
@@ -190,23 +190,23 @@ var YT = {
                 return "";
             }
         },
-        /** 获取所属时间的季度*/
+        /** 所属する四半期を取得*/
         formatSeasonal: function (now) {
             if (now != null && now != "") {
                 var dateN = new Date(+/\d+/.exec(now)[0]);
                 var year = dateN.getFullYear();
                 var month = dateN.getMonth() + 1;
                 if (month == 1) {
-                    return year + "年第1季度";
+                    return year + "年第1四半期";
                 }
                 else if (month == 4) {
-                    return year + "年第2季度";
+                    return year + "年第2四半期";
                 }
                 else if (month == 7) {
-                    return year + "年第三季度";
+                    return year + "年第3四半期";
                 }
                 else {
-                    return year + "年第四季度";
+                    return year + "年第4四半期";
                 }
             }
             else {
@@ -216,10 +216,10 @@ var YT = {
 
         formatStatus: function (id) {
             if (id == 0) {
-                return "无效";
+                return "無効";
             }
             else {
-                return "有效";
+                return "有効";
             }
         },
         ShowPanel: function (obj, divName, xlong, ylong) {
@@ -265,7 +265,7 @@ var YT = {
         }
     },
     Dirt: {
-        /*绑定到列表*/
+        /*リストにバインド*/
         BindList: function (listId, dirtName, needBlock) {
             var obj = $C(listId);
             if (obj != undefined) {
@@ -277,12 +277,12 @@ var YT = {
                     }
                 }
                 if (needBlock) {
-                    obj.options.add(new Option("请选择", "0"));
+                    obj.options.add(new Option("選択してください", "0"));
                     obj.value = "";
                 }
             }
         },
-        /*获取值表示的意义*/
+        /*値の意味を取得*/
         GetName: function (dirtName, dValue) {
             var obj = eval("DirtInfo." + dirtName);
             if (obj != undefined && obj != null) {
@@ -334,9 +334,9 @@ var YT = {
     }
 }
 
-/*重新定义录入框校验规则*/
+/*入力欄のバリデーションルールを再定義*/
 $.extend($.fn.validatebox.defaults.rules, {
-    chinaMobile: {/*手机号码*/
+    chinaMobile: {/*電話番号*/
         validator: function (value, param) {
             var reg = /^(13|14|15|17|18)\d{9}$/;
             var reglt = /^(\d{3}|\d{4})-\d{8}$/;
@@ -347,26 +347,26 @@ $.extend($.fn.validatebox.defaults.rules, {
             else {
                 return reg.test(value);
             }
-        }, message: '手机号码有误'
+        }, message: '電話番号が正しくありません'
     },
-    chinaName: {/*中文名称*/
+    chinaName: {/*名前*/
         validator: function (value, param) {
             //            var reg = /^[\u4e00-\u9fa5a-zA-Z0-9]{2,6}$/;
             var reg = /^[a-zA-Z\u4e00-\u9fa5][a-zA-Z0-9\u4e00-\u9fa5]{1,5}$/;
             //            var reg = /^[\u4e00-\u9fa5,a-zA-Z0-9]{2,5}$/;
             return reg.test(value);
-        }, message: '在笔名中数字不能开头,且昵称的长度应在2-6之间'
+        }, message: 'ペンネームは数字で始められません。2〜6文字で入力してください'
     },
-    realName: {/*真实姓名*/
+    realName: {/*本名*/
         validator: function (value, param) {
             //            var reg = /^[a-zA-Z\u4e00-\u9fa5][a-zA-Z0-9\u4e00-\u9fa5]{1,5}$/;
             var reg = /^[\u4e00-\u9fa5,a-zA-Z0-9]{2,5}$/;
             return reg.test(value);
-        }, message: '真实姓名的长度为2-5位中文字符'
+        }, message: '本名は2〜5文字で入力してください'
     },
     maxLength: {
         validator: function (value, param) {
-            $.fn.validatebox.defaults.rules.maxLength.message = '只能少于' + param + '字符串';
+            $.fn.validatebox.defaults.rules.maxLength.message = param + '文字以内で入力してください';
             return value.length < param;
         }
     },
@@ -374,19 +374,19 @@ $.extend($.fn.validatebox.defaults.rules, {
         validator: function (value, param) {
             var reg = /^(-|[0-9])(|\d{1,9})$/;
             return reg.test(value);
-        }, message: '必须是数字'
+        }, message: '数字で入力してください'
     },
     isBankNumber: {
         validator: function (value, param) {
             var reg = /^([0-9]{16}|[0-9]{19})$/;
             return reg.test(value);
-        }, message: '银行卡号错误'
+        }, message: 'カード番号が正しくありません'
     },
     isEmail: {
         validator: function (value, param) {
             var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
             return reg.test(value);
-        }, message: '邮箱格式错误'
+        }, message: 'メールアドレスの形式が正しくありません'
     },
 
     isPosInt: {
@@ -398,7 +398,7 @@ $.extend($.fn.validatebox.defaults.rules, {
             else {
                 return false;
             }
-        }, message: '必须是大于0的正整数'
+        }, message: '0より大きい整数で入力してください'
     },
     isPosIntTen: {
         validator: function (value, param) {
@@ -409,7 +409,7 @@ $.extend($.fn.validatebox.defaults.rules, {
             else {
                 return false;
             }
-        }, message: '必须是大于10的正整数'
+        }, message: '10より大きい整数で入力してください'
     },
     isDate: {
         validator: function (value, param) {
@@ -421,69 +421,69 @@ $.extend($.fn.validatebox.defaults.rules, {
         validator: function (value, param) {
             var reg = /^(^\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/;
             return isCardID(value);
-        }, message: '身份证号码错误'
+        }, message: 'ID番号が正しくありません'
     },
     isFloat: {
         validator: function (value, param) {
             var reg = /^(^\+?[1-9][0-9]*$)$|^(\d{1,9}\.\d{1,9})$/;
             return reg.test(value);
-        }, message: '必须是大于零的数字'
+        }, message: '0より大きい数字で入力してください'
     },
     isFloatMin0:
         {
             validator: function (value, param) {
                 var reg = /^(^\d{1,9})$|^(\d{1,9}\.\d{1,9})$/;
                 return reg.test(value);
-            }, message: '必须是大于零的数字'
+            }, message: '0より大きい数字で入力してください'
         },
     isPassWord: {
         validator: function (value, param) {
             var reg = /^[a-zA-Z0-9_]{5,15}$/;
             return reg.test(value);
-        }, message: '密码格式错误'
+        }, message: 'パスワードの形式が正しくありません'
     },
     isConfirmPassword: {
         validator: function (value, param) {
             return $(param[0]).val() == value;
-        }, message: '两次录入的密码不同'
+        }, message: '入力したパスワードが一致しません'
     },
     phoneCheck: {
         validator: function (value, param) {
             var reg = /^(((\()?\d{2,4}(\))?[-(\s)*]){0,2})?(\d{8})$/;
             return reg.test(value);
-        }, message: '输入的电话不正确'
+        }, message: '電話番号が正しくありません'
     },
     isUserName: {
         validator: function (value, param) {
             var reg = /^[a-zA-Z0-9_]{3,15}$/;
             return reg.test(value);
-        }, message: '用户名格式错误'
+        }, message: 'ユーザー名の形式が正しくありません'
     },
     equalTo: {
         validator: function (value, param) {
             return $(param[0]).val() == value;
         },
-        message: '字段不匹配'
+        message: 'フィールドが一致しません'
     }
 });
 
-/*空函数*/
+/*空関数*/
 function CreateGrid() { }
 function CreateGridReload() { }
 
-/*身份证校验正确性*/
+/*ID番号チェック*/
 var NumbCardCity = { 11: "北京", 12: "天津", 13: "河北", 14: "山西", 15: "内蒙古", 21: "辽宁", 22: "吉林", 23: "黑龙江", 31: "上海", 32: "江苏", 33: "浙江", 34: "安徽", 35: "福建", 36: "江西", 37: "山东", 41: "河南", 42: "湖北", 43: "湖南", 44: "广东", 45: "广西", 46: "海南", 50: "重庆", 51: "四川", 52: "贵州", 53: "云南", 54: "西藏", 61: "陕西", 62: "甘肃", 63: "青海", 64: "宁夏", 65: "新疆", 71: "台湾", 81: "香港", 82: "澳门", 91: "国外" };
 function isCardID(sId) {
     var iSum = 0;
     var info = "";
-    if (!/^\d{17}(\d|x)$/i.test(sId)) return false; /* "你输入的身份证长度或格式错误";  */
+    if (!/^\d{17}(\d|x)$/i.test(sId)) return false; /* 「ID番号の長さまたは形式エラー」;  */
     sId = sId.replace(/x$/i, "a");
-    if (NumbCardCity[parseInt(sId.substr(0, 2))] == null) return false; /*"你的身份证地区非法";*/
+    if (NumbCardCity[parseInt(sId.substr(0, 2))] == null) return false; /*「ID番号の地域が不正」;*/
     sBirthday = sId.substr(6, 4) + "-" + Number(sId.substr(10, 2)) + "-" + Number(sId.substr(12, 2));
     var d = new Date(sBirthday.replace(/-/g, "/"));
-    if (sBirthday != (d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate())) return false; /* "身份证上的出生日期非法";*/
+    if (sBirthday != (d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate())) return false; /* 「ID番号の生年月日が不正」;*/
     for (var i = 17; i >= 0; i--) iSum += (Math.pow(2, i) % 11) * parseInt(sId.charAt(17 - i), 11);
-    if (iSum % 11 != 1) return false; /*"你输入的身份证号非法";*/
+    if (iSum % 11 != 1) return false; /*「入力されたID番号が不正」;*/
     return true;
 }
 
@@ -495,7 +495,7 @@ function getSex(val) {
 }
 function showBirthday(val) {
     var mm;
-    if (18 == val.length) {/*18位身份证号码*/
+    if (18 == val.length) {/*18桁ID番号*/
         mm = val.charAt(6) + val.charAt(7) + val.charAt(8) + val.charAt(9) + '-' + val.charAt(10) + val.charAt(11) + '-' + val.charAt(12) + val.charAt(13);
 
     }
@@ -508,7 +508,7 @@ var DirtInfo = {
     EnumUserCommendStatus: [[0, "新"], [1, "已处理"], [2, "已查看"]],
     AvailablesStatus: [[0, "禁用"], [1, "可用"]],
     SettleClass: [[0, "现金"], [1, "预付扣款"]],
-    EnumSexClass: [[0, "不限"], [1, "男"], [2, "女"]],
+    EnumSexClass: [[0, "指定なし"], [1, "男性"], [2, "女性"]],
     EnumUserType: [[1, "手机端app"], [2, "手机wap端"]],
     EnumPayClass: [[1, "支付宝"], [2, "微信"], [3, "微信扫码"], [100, "绑定手机奖励"]],
     EnumPayStatus: [[0, "新申请"], [2, "充值失败"], [3, "成功"]],
@@ -590,7 +590,7 @@ $(function () {
     initSubmitButton(3);
 });
 
-//停留时间
+//待機時間
 function initSubmitButton(wait) {
     $("input[type='submit']").each(function () {
         $(this).click(function () {
@@ -598,7 +598,7 @@ function initSubmitButton(wait) {
                 return false;
             }
             var oldVal = $(this).val();
-            $(this).val("正在处理，请稍等(" + wait + ")");
+            $(this).val("処理中です。お待ちください(" + wait + ")");
             $(this).attr("submited", "1");
             setTimeout('ButtonLimit("' + $(this).attr("id") + '",' + wait + ',"' + oldVal + '")', 1000);
         });
@@ -607,7 +607,7 @@ function initSubmitButton(wait) {
 function ButtonLimit(objId, wait, oldVal) {
     wait--;
     if (wait > 0) {
-        $("#" + objId).val("正在处理，请稍等(" + wait + ")");
+        $("#" + objId).val("処理中です。お待ちください(" + wait + ")");
         setTimeout('ButtonLimit("' + objId + '",' + wait + ',"' + oldVal + '");', 1000);
     }
     else {

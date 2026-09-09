@@ -10,7 +10,7 @@
         }
         else {
             layer.open({
-                content: '请先登录',
+                content: 'ログインしてください',
                 style: BookDetail.msgStyle,
                 time: 2
             });
@@ -19,51 +19,51 @@
     startSupport: function () {
         var rStr = '<a class="closePopup" href="javascript:void(0);" onclick="javascript:uFans.closeBox();"></a>';
         rStr += '<div class="popupTit">';
-        rStr += '	<h3>我要捧场作品</h3>';
+        rStr += '	<h3>作品を応援する</h3>';
         rStr += '</div>';
         rStr += '<div class="propsList cf">';
         rStr += '	<ul>';
         rStr += '		<li vals="100">';
         rStr += '			<a class="propWrap" href="javascript:void(0);">';
         rStr += '				<i class="icon_check"></i>';
-        rStr += '				<span class="propsBox">100屋币</span>';
+        rStr += '				<span class="propsBox">100コイン</span>';
         rStr += '			</a>';
         rStr += '		</li>';
         rStr += '		<li class="on"  vals="500">';
         rStr += '			<a class="propWrap" href="javascript:void(0);">';
         rStr += '				<i class="icon_check"></i>';
-        rStr += '				<span class="propsBox">500屋币</span>';
+        rStr += '				<span class="propsBox">500コイン</span>';
         rStr += '			</a>';
         rStr += '		</li>';
         rStr += '		<li vals="2000">';
         rStr += '			<a class="propWrap" href="javascript:void(0);">';
         rStr += '				<i class="icon_check"></i>';
-        rStr += '				<span class="propsBox">2000屋币</span>';
+        rStr += '				<span class="propsBox">2000コイン</span>';
         rStr += '			</a>';
         rStr += '		</li>';
         rStr += '		<li vals="5000">';
         rStr += '			<a class="propWrap" href="javascript:void(0);">';
         rStr += '				<i class="icon_check"></i>';
-        rStr += '				<span class="propsBox">5000屋币</span>';
+        rStr += '				<span class="propsBox">5000コイン</span>';
         rStr += '			</a>';
         rStr += '		</li>';
         rStr += '		<li vals="10000">';
         rStr += '			<a class="propWrap" href="javascript:void(0);">';
         rStr += '				<i class="icon_check"></i>';
-        rStr += '				<span class="propsBox">10000屋币</span>';
+        rStr += '				<span class="propsBox">10000コイン</span>';
         rStr += '			</a>';
         rStr += '		</li>';
         rStr += '		<li vals="100000">';
         rStr += '			<a class="propWrap" href="javascript:void(0);">';
         rStr += '				<i class="icon_check"></i>';
-        rStr += '				<span class="propsBox">100000屋币</span>';
+        rStr += '				<span class="propsBox">100000コイン</span>';
         rStr += '			</a>';
         rStr += '		</li>';
         rStr += '	</ul>';
         rStr += '</div>';
-        rStr += '<p class="have_num">当前剩余<span class="red">' + spmymoney + '</span>屋币&nbsp;&nbsp;本次捧场<span class="red" id="pcTotal">500</span>屋币<a class="red" href="../pay/" >[充值]</a></p>';
-        rStr += '<p><textarea class="popup_text" id="sendSupportNote"   placeholder="感谢您的捧场，留句话鼓励作者吧！"></textarea></p>';
-        rStr += '<p class="tc"><a class="btn_red btn_send_pc" href="javascript:void(0);" onclick="javascript:uFans.SendSupport();">立即捧场</a></p>';
+        rStr += '<p class="have_num">残高<span class="red">' + spmymoney + '</span>コイン&nbsp;&nbsp;今回の応援<span class="red" id="pcTotal">500</span>コイン<a class="red" href="../pay/" >[チャージ]</a></p>';
+        rStr += '<p><textarea class="popup_text" id="sendSupportNote"   placeholder="応援ありがとうございます！作者への応援メッセージをどうぞ！"></textarea></p>';
+        rStr += '<p class="tc"><a class="btn_red btn_send_pc" href="javascript:void(0);" onclick="javascript:uFans.SendSupport();">応援する</a></p>';
         $("#showPC").html(rStr);
         $("#showPC").show();
         $(".maskBox").show();
@@ -85,7 +85,7 @@
             var clearSendNote = sendNote.replace(/[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?]/g, "");
             if (sendNote == "") {
                 layer.open({
-                    content: '感谢您的捧场，留句话鼓励作者吧！',
+                    content: '応援ありがとうございます！作者への応援メッセージをどうぞ！',
                     style: BookDetail.msgStyle,
                     time: 2
                 });
@@ -94,7 +94,7 @@
             if (clearSendNote.length<5)
             {
                 layer.open({
-                    content: '评论最少5个字符！',
+                    content: 'コメントは5文字以上必要です！',
                     style: BookDetail.msgStyle,
                     time: 2
                 });
@@ -105,7 +105,7 @@
             }
             else {
                 layer.open({
-                    content: '屋币余额不足',
+                    content: 'コイン残高が不足しています',
                     style: BookDetail.msgStyle,
                     time: 2
                 });
@@ -113,7 +113,7 @@
         }
         else {
             layer.open({
-                content: '请先登录',
+                content: 'ログインしてください',
                 style: BookDetail.msgStyle,
                 time: 2
             });
@@ -128,16 +128,16 @@
         $(".maskBox").show();
         var rStr = '<a class="closePopup" href="javascript:void(0);" onclick="javascript:uFans.closeBox();"></a>';
         rStr += '<div class="popupTit">';
-        rStr += '	<h3>消息提示</h3>';
+        rStr += '	<h3>お知らせ</h3>';
         rStr += '</div>';
         if (noteClass == 'pc') {
-            rStr += '<div class="tipWrap suc_txt_pc">捧场作品成功！</div>';
+            rStr += '<div class="tipWrap suc_txt_pc">作品への応援が完了しました！</div>';
         }
         else {
-            rStr += '<div class="tipWrap suc_txt_flw">点赞作品成功！</div>';
+            rStr += '<div class="tipWrap suc_txt_flw">作品にいいねしました！</div>';
         }
         rStr += '<div class="tc">';
-        rStr += '	<a href="javascript:void(0);" class="btn_red btn_sure"  onclick="javascript:uFans.closeBox();">确定</a>';
+        rStr += '	<a href="javascript:void(0);" class="btn_red btn_sure"  onclick="javascript:uFans.closeBox();">OK</a>';
         rStr += '</div>';
         $("#showNote").html(rStr);
         $("#showNote").show();
