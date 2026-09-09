@@ -55,9 +55,9 @@
 
         .container {
             display: flex;
-            overflow-x: auto; /* 允许内容水平滚动 */
-            white-space: nowrap; /* 禁止换行 */
-            scroll-snap-type: x mandatory; /* 在滚动时强制对齐 snap-points */
+            overflow-x: auto; /* コンテンツの水平スクロールを許可 */
+            white-space: nowrap; /* 改行を禁止 */
+            scroll-snap-type: x mandatory; /* スクロール時にsnap-pointsへ強制整列 */
             -ms-overflow-style: none; /* Internet Explorer 10+ */
             scrollbar-width: none; /* Firefox */
         }
@@ -74,7 +74,7 @@
 
 
         .item {
-            flex: 0 0 calc(100% / 10); /* 每个元素宽度为容器的十分之一 */
+            flex: 0 0 calc(100% / 10); /* 各要素の幅はコンテナの10分の1 */
             scroll-snap-align: start;
             box-sizing: border-box;
             text-align: center;
@@ -98,7 +98,7 @@
 <body>
 
 
-<!-- 你的HTML代码 -->
+<!-- あなたのHTMLコード -->
 <a name="top"></a>
 <div style="height: 40px;">
     <div style="line-height: 50px;width: 120px;float:left;padding-left: 10px"><img style="width: 150px;"
@@ -128,12 +128,12 @@
     <div class="layui-row">
 
         <div class="layui-col-xs10 layui-col-sm10 layui-col-md11 layui-col-lg11">
-            <input id="title" type="text" name="title" required lay-verify="required" placeholder="请输入书名·作者"
+            <input id="title" type="text" name="title" required lay-verify="required" placeholder="書名・著者を入力してください"
                    autocomplete="off"
                    class="layui-input">
         </div>
         <div class="layui-col-xs1" style="padding: 0 1% 1%">
-            <button onclick="searchBooks()" class="layui-btn" lay-submit lay-filter="formDemo">搜索</button>
+            <button onclick="searchBooks()" class="layui-btn" lay-submit lay-filter="formDemo">検索</button>
         </div>
     </div>
 
@@ -142,7 +142,7 @@
 <div class="layui-collapse layui-col-lg10">
     <div class="layui-colla-item">
         <blockquote class="layui-elem-quote" style="text-align: left;font-size: 16px">
-            精品推荐
+            今週のおすすめ
         </blockquote>
 
         <div class="container" style="padding-bottom: 10px">
@@ -166,7 +166,7 @@
 <div style="clear: both"></div>
 <div class="layui-colla-item">
     <blockquote class="layui-elem-quote" style="text-align: left;font-size: 16px">
-        热门推荐
+        人気のおすすめ
     </blockquote>
 
     <div class="layui-container">
@@ -182,7 +182,7 @@
                         <ul>
                             <li style="padding-bottom: 5px" class="line-limit-length"
                                 th:text="${book.bookName}"></li>
-                            <li style="padding-bottom: 5px;color: #a6a6a6" th:text="'作者：'+${book.authorName}"></li>
+                            <li style="padding-bottom: 5px;color: #a6a6a6" th:text="'著者：'+${book.authorName}"></li>
                             <li class='book_desc' style="color: #a6a6a6;padding-right:10px;"
                                 th:utext="${book.bookDesc}"></li>
                         </ul>
@@ -205,7 +205,7 @@
         href="javascript:moreNewBooks()">
     <blockquote class="layui-elem-quote" style="text-align: left;color: #000;font-size: 16px">最新更新
         <div style="float: right; margin-right: 20px"><i style="font-size: 14px;color:#666"
-                                                         class="layui-icon">更多&#xe65b;</i>
+                                                         class="layui-icon">すべて見る&#xe65b;</i>
         </div>
     </blockquote>
 </a>
@@ -233,7 +233,7 @@
 <script>
 
 
-    //更新榜单查询
+    //更新ランキングのデータ取得
     $.ajax({
         type: "get",
         url: "/book/listUpdateRank",
@@ -261,7 +261,7 @@
                         "\n" +
                         "                        <div style=\"clear: both\"></div>\n" +
                         "                        <div style=\"color: #a6a6a6;padding-left: 5px;padding-top: 5px\"\n" +
-                        "                             class=\"layui-elip layui-col-md11 layui-col-sm11 layui-col-lg11\">简介：" + updateRankBook.bookDesc + "" +
+                        "                             class=\"layui-elip layui-col-md11 layui-col-sm11 layui-col-lg11\">あらすじ：" + updateRankBook.bookDesc + "" +
                         "                    </div></a>\n" +
                         "                </div>");
 
@@ -275,7 +275,7 @@
         }
         ,
         error: function () {
-            layer.alert('网络异常');
+            layer.alert('ネットワークエラー');
         }
     })
 

@@ -77,20 +77,20 @@
 
 <ul class="layui-nav"  lay-filter="" style="padding:0 20px;text-align: center" >
     <li id="menunew" class="layui-nav-item"><a href="/book/searchSoftBook.html?catId=9">最新</a></li>
-    <li id="menu21" class="layui-nav-item"><a href="/book/searchSoftBook.html?catId=9&softCat=3262">少年漫</a></li>
-    <li id="menu22" class="layui-nav-item"><a href="/book/searchSoftBook.html?catId=9&softCat=3263">少女漫</a></li>
-    <li id="menucomplete" class="layui-nav-item"><a >完本</a>
-        <dl class="layui-nav-child"> <!-- 二级菜单 -->
-            <dd><a href="/book/searchSoftBook.html?catId=9&bookStatus=已完成">全部</a></dd>
-            <dd><a href="/book/searchSoftBook.html?catId=9&bookStatus=已完成&softCat=3262">少年漫</a></dd>
-            <dd><a href="/book/searchSoftBook.html?catId=9&bookStatus=已完成&softCat=3263">少女漫</a></dd>
+    <li id="menu21" class="layui-nav-item"><a href="/book/searchSoftBook.html?catId=9&softCat=3262">少年マンガ</a></li>
+    <li id="menu22" class="layui-nav-item"><a href="/book/searchSoftBook.html?catId=9&softCat=3263">少女マンガ</a></li>
+    <li id="menucomplete" class="layui-nav-item"><a >完結</a>
+        <dl class="layui-nav-child"> <!-- サブメニュー -->
+            <dd><a href="/book/searchSoftBook.html?catId=9&bookStatus=已完成">すべて</a></dd>
+            <dd><a href="/book/searchSoftBook.html?catId=9&bookStatus=已完成&softCat=3262">少年マンガ</a></dd>
+            <dd><a href="/book/searchSoftBook.html?catId=9&bookStatus=已完成&softCat=3263">少女マンガ</a></dd>
         </dl>
     </li>
-    <li id="menuhot" class="layui-nav-item"><a >排行</a>
-        <dl class="layui-nav-child"> <!-- 二级菜单 -->
-            <dd><a href="/book/searchSoftBook.html?catId=9&sortBy=score">全部</a></dd>
-            <dd><a href="/book/searchSoftBook.html?catId=9&sortBy=score&softCat=3262">少年漫</a></dd>
-            <dd><a href="/book/searchSoftBook.html?catId=9&bookStatus=已完成&softCat=3263">少女漫</a></dd>
+    <li id="menuhot" class="layui-nav-item"><a >ランキング</a>
+        <dl class="layui-nav-child"> <!-- サブメニュー -->
+            <dd><a href="/book/searchSoftBook.html?catId=9&sortBy=score">すべて</a></dd>
+            <dd><a href="/book/searchSoftBook.html?catId=9&sortBy=score&softCat=3262">少年マンガ</a></dd>
+            <dd><a href="/book/searchSoftBook.html?catId=9&bookStatus=已完成&softCat=3263">少女マンガ</a></dd>
         </dl>
     </li>
 
@@ -101,12 +101,12 @@
     <div class="layui-row">
 
         <div class="layui-col-xs10 layui-col-sm10 layui-col-md11 layui-col-lg11" style="padding-top:1%">
-            <input id="title" type="text" name="title" required lay-verify="required" placeholder="请输入书名·作者"
+            <input id="title" type="text" name="title" required lay-verify="required" placeholder="書名・著者を入力してください"
                    autocomplete="off"
                    class="layui-input" th:value="${keyword}">
         </div>
         <div class="layui-col-xs1" style="padding: 1%">
-            <button onclick="searchBooks()" class="layui-btn" lay-submit lay-filter="formDemo">搜索</button>
+            <button onclick="searchBooks()" class="layui-btn" lay-submit lay-filter="formDemo">検索</button>
         </div>
     </div>
 
@@ -127,17 +127,17 @@
             <div class="line-limit-length" style=";color: #4c6978;font-weight: bold;font-size: 15px"
                  th:text="${book.bookName}"></div>
         </a>
-        <div style=";color: #4c6978;float: right;"><i style="color: red" th:text="${book.score} + '分'"></i></div>
+        <div style=";color: #4c6978;float: right;"><i style="color: red" th:text="${book.score} + '点'"></i></div>
         <a th:href="'/book/searchSoftBook.html?catId=9&keyword='+ ${book.author}">
-            <div style=";color: #4c6978;" class="line-limit-length" th:text="'作者：'+ ${book.author}"></div>
+            <div style=";color: #4c6978;" class="line-limit-length" th:text="'著者：'+ ${book.author}"></div>
         </a>
-        <div style="margin-top: 5px;color: #4c6978;" th:text="'类别：'+ ${book.cateName}"></div>
-        <div style="margin-top: 5px;color: #4c6978;" th:text="'状态：'+ ${book.bookStatus}"></div>
+        <div style="margin-top: 5px;color: #4c6978;" th:text="'ジャンル：'+ ${book.cateName}"></div>
+        <div style="margin-top: 5px;color: #4c6978;" th:text="'ステータス：'+ ${book.bookStatus}"></div>
         <div style="margin-top: 5px;color: #4c6978;">更新：<i th:text="${#dates.format(book.updateTime, 'yy-MM-dd')}"></i>
         </div>
         <div class="layui-collapse" style="margin-top: 5px;">
             <div class="layui-colla-item">
-                <h2 style="color: #4c6978;" class="layui-colla-title">简介：</h2>
+                <h2 style="color: #4c6978;" class="layui-colla-title">あらすじ：</h2>
                 <div style="color: #4c6978;" class="layui-colla-content" th:utext="${book.bookDesc}">
 
                 </div>
@@ -167,21 +167,21 @@
     layui.use('laypage', function () {
         var laypage = layui.laypage;
 
-        //执行一个laypage实例
+        //laypageインスタンスを実行
         laypage.render({
-            elem: 'books' //注意，这里的 test1 是 ID，不用加 # 号
-            , count: $("#total").val() //数据总数，从服务端得到,
+            elem: 'books' //注意：ここは ID。# は付けない
+            , count: $("#total").val() //データ総数。サーバーから取得,
             , curr: $("#curr").val()
             , limit: $("#limit").val()
             , jump: function (obj, first) {
 
 
-                //obj包含了当前分页的所有参数，比如：
-                console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-                console.log(obj.limit); //得到每页显示的条数
+                //objには現在のページの全パラメータが含まれる。例：
+                console.log(obj.curr); //現在のページを取得し、サーバーに該当ページのデータを要求。
+                console.log(obj.limit); //1ページあたりの表示件数を取得
 
 
-                //首次不执行
+                //初回は実行しない
                 if (!first) {
                     searchByAllCondition(obj.curr,obj.limit);
                 } else {

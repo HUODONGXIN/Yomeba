@@ -9,7 +9,7 @@
     <meta name="keywords" th:content="${book.bookName}+','+${bookIndex.indexName}">
 
     <meta name="description"
-          th:content="${book.bookName}+'最新更新章节免费在线阅读TXT下载'">
+          th:content="${book.bookName}+'最新更新話を無料でオンライン読書、TXTダウンロード'">
 
 
     <div th:include="mobile/common/css :: css"></div>
@@ -200,9 +200,9 @@
 
 
     <p class="Readpage" style="background:#FFFFFF;padding:2px;">
-        <a id="lightdiv" class="button lightoff" onclick="nr_setbg('light')">关灯</a>
-        <a id="huyandiv" class="button huyanon" onclick="nr_setbg('huyan')">护眼</a>&nbsp;&nbsp;&nbsp;&nbsp;
-        字体：<a id="fontbig" class="sizebg" onclick="nr_setbg('big')">大</a> <a id="fontmiddle" class="button sizebgon"
+        <a id="lightdiv" class="button lightoff" onclick="nr_setbg('light')">消灯</a>
+        <a id="huyandiv" class="button huyanon" onclick="nr_setbg('huyan')">アイケア</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        文字サイズ：<a id="fontbig" class="sizebg" onclick="nr_setbg('big')">大</a> <a id="fontmiddle" class="button sizebgon"
                                                                              onclick="nr_setbg('middle')">中</a> <a
             id="fontsmall" class="sizebg" onclick="nr_setbg('small')">小</a>
         <a href="javascript:speakChapter()" style="margin-left: 10px">
@@ -228,25 +228,25 @@
     </p>
     <div class="indexDiv" style="height: 42px;line-height: 42px;text-align:center;background: #f2f2f2">
 
-        <a style="color: #333" th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'">上一章</a>
-        <a style="color: #333" th:href="'/book/indexList-'+${book.id}+'.html'">目录</a>
+        <a style="color: #333" th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'">前の話</a>
+        <a style="color: #333" th:href="'/book/indexList-'+${book.id}+'.html'">目次</a>
         <a style="color: #333"
-           th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'">下一章</a>
+           th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'">次の話</a>
     </div>
     <!--<div id="screenInput" class="screen_toolbar" style="display: none">
         <div style="height: 5px" class="layui-col-xs2 layui-col-sm3 layui-col-md3 layui-col-lg3"></div>
         <div class="layui-col-xs6 layui-col-sm4 layui-col-md4 layui-col-lg4">
-            <input type="text" id="screenBulletText" required lay-verify="required" placeholder="请输入弹幕内容,右下角开关可控制弹幕是否开启" autocomplete="off"
+            <input type="text" id="screenBulletText" required lay-verify="required" placeholder="弾幕コメントを入力してください。右下のスイッチで弾幕のON/OFFを制御できます" autocomplete="off"
                    class="layui-input">
 
         </div>
         <div class="layui-col-xs2 layui-col-sm1 layui-col-md1 layui-col-lg1">
-            <button class="layui-btn send">发送</button>
+            <button class="layui-btn send">送信</button>
         </div>
     </div>
     <form id="screenSwitch" class="layui-form">
-        <div class="layui-form-item" style="position: fixed;right: 0px;bottom: 100px" title="弹幕开关">
-            &lt;!&ndash; <label  class="layui-form-label" style="opacity:0.5;font-weight: bold;color: red;">弹幕</label>&ndash;&gt;
+        <div class="layui-form-item" style="position: fixed;right: 0px;bottom: 100px" title="弾幕スイッチ">
+            &lt;!&ndash; <label  class="layui-form-label" style="opacity:0.5;font-weight: bold;color: red;">弾幕</label>&ndash;&gt;
             <div class="layui-input-block">
                 <input class="clear" type="checkbox" name="switch" lay-skin="switch">
             </div>
@@ -262,17 +262,17 @@
     </div>
     <div class="Readarea ReadAjax_content screen_container"
          style="color: rgb(0, 0, 0); font-size: 20px;background-color: #fff" th:if="${needBuy}">
-        <h5>此章为VIP章节，需要订阅后才能继续阅读</h5>
-        价格：<span style="color: red" th:text="${bookIndex.bookPrice}+'屋币(1元=100屋币)'"></span><br/>
-        <a href="javascript:buyBookIndex()" type="button" class="layui-btn layui-btn-sm layui-btn-radius">购买</a>
+        <h5>この話はVIP話です。購読後に読み続けることができます</h5>
+        価格：<span style="color: red" th:text="${bookIndex.bookPrice}+'コイン(1元=100コイン)'"></span><br/>
+        <a href="javascript:buyBookIndex()" type="button" class="layui-btn layui-btn-sm layui-btn-radius">購入</a>
 
     </div>
     <div class="indexDiv" style="height: 42px;line-height: 42px;text-align:center;background: #f2f2f2">
 
-        <a style="color: #333" th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'">上一章</a>
-        <a style="color: #333" th:href="'/book/indexList-'+${book.id}+'.html'">目录</a>
+        <a style="color: #333" th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'">前の話</a>
+        <a style="color: #333" th:href="'/book/indexList-'+${book.id}+'.html'">目次</a>
         <a style="color: #333"
-           th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'">下一章</a>
+           th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'">次の話</a>
 
     </div>
 
@@ -302,7 +302,7 @@
 <script>
     (function () {
 
-        //添加阅读记录
+        //読書履歴の追加
         $.ajax({
             type: "POST",
             url: "/user/addReadHistory",
@@ -364,7 +364,7 @@
 
 
                 } else if (data.code == 1001) {
-                    //未登录
+                    //未ログイン
                     location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
 
 
@@ -374,7 +374,7 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
 
@@ -425,31 +425,31 @@
             'text': $('#chaptercontent').text(),
             'speechRate': 0.5,
             'pitch': 1,
-            'lang': 'zh-CN'
+            'lang': 'ja-JP'
         }, function () {
-            console.log('语音播放结束');
+            console.log('音声再生終了');
         }, function () {
-            console.log('语音开始播放');
+            console.log('音声再生開始');
         });
 
 
     }
 
     /**
-     * @description 文字转语音方法
+     * @description テキスト読み上げメソッド
      * @public
      * @param { text, rate, lang, volume, pitch } object
-     * @param  text 要合成的文字内容，字符串
-     * @param  speechRate 读取文字的语速 0.1~10  正常1
-     * @param  lang 读取文字时的语言
-     * @param  volume  读取时声音的音量 0~1  正常1
-     * @param  voice  读取文字的语音服务
-     * @param  pitch  读取时声音的音高 0~2  正常1
+     * @param  text 合成するテキスト内容、文字列
+     * @param  speechRate 読み上げ速度 0.1〜10 通常1
+     * @param  lang 読み上げ言語
+     * @param  volume  読み上げ音量 0〜1 通常1
+     * @param  voice  読み上げ音声サービス
+     * @param  pitch  読み上げピッチ 0〜2 通常1
      * @returns SpeechSynthesisUtterance
      */
     function speak({text, speechRate, lang, volume, pitch, voice}, endEvent, startEvent) {
         if (!window.SpeechSynthesisUtterance) {
-            console.warn('当前浏览器不支持文字转语音服务')
+            console.warn('このブラウザはテキスト読み上げサービスに対応していません')
             return;
         }
 
@@ -460,7 +460,7 @@
         const speechUtterance = new SpeechSynthesisUtterance();
         speechUtterance.text = text;
         speechUtterance.rate = speechRate || 1;
-        speechUtterance.lang = lang || 'zh-CN';
+        speechUtterance.lang = lang || 'ja-JP';
         speechUtterance.volume = volume || 1;
         speechUtterance.pitch = pitch || 1;
         speechUtterance.voice = voice || null;
