@@ -237,7 +237,7 @@ public class AuthorController extends BaseController {
      */
     @PostMapping("ai/expand")
     public RestResult<String> expandText(@RequestParam("text") String text, @RequestParam("ratio") Double ratio) {
-        String prompt = "请将以下文本扩写为原长度的" + ratio / 100 + "倍：" + text;
+        String prompt = "以下のテキストを元の長さの" + ratio / 100 + "倍に拡張してください：" + text;
         return RestResult.ok(chatClient.prompt()
             .user(prompt)
             .call()
@@ -249,7 +249,7 @@ public class AuthorController extends BaseController {
      */
     @PostMapping("ai/condense")
     public RestResult<String> condenseText(@RequestParam("text") String text, @RequestParam("ratio") Integer ratio) {
-        String prompt = "请将以下文本缩写为原长度的" + 100 / ratio + "分之一：" + text;
+        String prompt = "以下のテキストを元の長さの" + 100 / ratio + "分の1に要約してください：" + text;
         return RestResult.ok(chatClient.prompt()
             .user(prompt)
             .call()
@@ -261,7 +261,7 @@ public class AuthorController extends BaseController {
      */
     @PostMapping("ai/continue")
     public RestResult<String> continueText(@RequestParam("text") String text, @RequestParam("length") Integer length) {
-        String prompt = "请续写以下文本，续写长度约为" + length + "字：" + text;
+        String prompt = "以下のテキストを続けて書いてください。続きの長さは約" + length + "文字です：" + text;
         return RestResult.ok(chatClient.prompt()
             .user(prompt)
             .call()
@@ -273,7 +273,7 @@ public class AuthorController extends BaseController {
      */
     @PostMapping("ai/polish")
     public RestResult<String> polishText(@RequestParam("text") String text) {
-        String prompt = "请润色优化以下文本，保持原意：" + text;
+        String prompt = "以下のテキストを潤色・最適化し、元の意味を保ってください：" + text;
         return RestResult.ok(chatClient.prompt()
             .user(prompt)
             .call()
@@ -285,7 +285,7 @@ public class AuthorController extends BaseController {
      */
     @GetMapping(value = "ai/stream/expand", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> streamExpandText(@RequestParam("text") String text, @RequestParam("ratio") Double ratio) {
-        String prompt = "请将以下文本扩写为原长度的" + ratio / 100 + "倍：" + text;
+        String prompt = "以下のテキストを元の長さの" + ratio / 100 + "倍に拡張してください：" + text;
         return chatClient.prompt()
             .user(prompt)
             .stream()
@@ -297,7 +297,7 @@ public class AuthorController extends BaseController {
      */
     @GetMapping(value = "ai/stream/condense", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> streamCondenseText(@RequestParam("text") String text, @RequestParam("ratio") Integer ratio) {
-        String prompt = "请将以下文本缩写为原长度的" + 100 / ratio + "分之一：" + text;
+        String prompt = "以下のテキストを元の長さの" + 100 / ratio + "分の1に要約してください：" + text;
         return chatClient.prompt()
             .user(prompt)
             .stream()
@@ -309,7 +309,7 @@ public class AuthorController extends BaseController {
      */
     @GetMapping(value = "ai/stream/continue", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> streamContinueText(@RequestParam("text") String text, @RequestParam("length") Integer length) {
-        String prompt = "请续写以下文本，续写长度约为" + length + "字：" + text;
+        String prompt = "以下のテキストを続けて書いてください。続きの長さは約" + length + "文字です：" + text;
         return chatClient.prompt()
             .user(prompt)
             .stream()
@@ -321,7 +321,7 @@ public class AuthorController extends BaseController {
      */
     @GetMapping(value = "/ai/stream/polish", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> streamPolishText(@RequestParam("text") String text) {
-        String prompt = "请润色优化以下文本，保持原意：" + text;
+        String prompt = "以下のテキストを潤色・最適化し、元の意味を保ってください：" + text;
         return chatClient.prompt()
             .user(prompt)
             .stream()
