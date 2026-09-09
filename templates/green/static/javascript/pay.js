@@ -1,6 +1,6 @@
 var UserPay = {
-    czData: [[30, "3000屋币"], [50, "5000屋币"], [100, "10000屋币"], [200, "20000屋币"], [500, "50000屋币"], [365, "全站包年阅读"] ],
-    czPayPalData: [[20, "10000屋币"], [50, "25000屋币"], [100, "50000屋币"], [80, "全站包年阅读"]],
+    czData: [[30, "3000コイン"], [50, "5000コイン"], [100, "10000コイン"], [200, "20000コイン"], [500, "50000コイン"], [365, "サイト全体年間読書パック"] ],
+    czPayPalData: [[20, "10000コイン"], [50, "25000コイン"], [100, "50000コイン"], [80, "サイト全体年間読書パック"]],
     sendPay: function () {
         $("#payform").submit();
     }
@@ -10,7 +10,7 @@ $(function () {
     $("#ulPayType li").click(function () {
 
         if($(this).attr("valp")==2){
-            layer.alert("微信支付暂未开通，敬请期待");
+            layer.alert("WeChat決済は現在準備中です。ご期待ください");
         }
 
         return ;
@@ -57,7 +57,7 @@ $(function () {
         $(this).addClass("on");
         if ($(this).attr("vals") > 0) {
             $("#pValue").val($(this).attr("vals"));
-            $("#showPayPalTotal").html($(this).attr("vals") + '美元');
+            $("#showPayPalTotal").html($(this).attr("vals") + 'ドル');
             for (var i = 0; i < UserPay.czData.length; i++) {
                 if (UserPay.czPayPalData[i][0] == $(this).attr("vals")) {
                     $("#showPayPalRemark").html(UserPay.czPayPalData[i][1]);
