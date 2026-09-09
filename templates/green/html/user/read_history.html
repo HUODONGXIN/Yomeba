@@ -2,7 +2,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head th:replace="common/header :: common_head(~{::title},~{},~{::link},~{})">
-    <title th:text="'最近阅读_'+${application.website.name}"></title>
+    <title th:text="'最近読んだ本_'+${application.website.name}"></title>
     <link rel="stylesheet" href="/css/user.css"/>
 </head>
 <body class="">
@@ -14,28 +14,28 @@
         <div class="viewhistoryBox">
             <div class="my_bookshelf">
                 <div class="title cf">
-                    <h2 class="fl ml10"><a href="javascript:void(0);" class="red">最近阅读</a></h2><i
+                    <h2 class="fl ml10"><a href="javascript:void(0);" class="red">最近読んだ本</a></h2><i
                         class="fl ml20 mr20 font16">|</i>
-                    <h2 class="fl"><a href="/user/favorites.html">我的书架</a></h2>
+                    <h2 class="fl"><a href="/user/favorites.html">マイ本棚</a></h2>
                 </div>
                 <div id="divData" class="updateTable">
                     <table cellpadding="0" cellspacing="0">
                         <thead>
                         <tr>
                             <th class="style">
-                                类别
+                                ジャンル
                             </th>
                             <th class="name">
-                                书名
+                                書名
                             </th>
                             <th class="chapter">
-                                最新章节
+                                最新話
                             </th>
                             <th class="time">
-                                更新时间
+                                更新時間
                             </th>
                             <th class="goread">
-                                书签
+                                しおり
                             </th>
                         </tr>
                         </thead>
@@ -96,7 +96,7 @@
                                 "                                " + book.lastIndexUpdateTime + "\n" +
                                 "                            </td>\n" +
                                 "                            <td class=\"goread\">\n" +
-                                "<a href='/book/" + book.bookId + "/" + book.preContentId + ".html'>继续阅读</a>" +
+                                "<a href='/book/" + book.bookId + "/" + book.preContentId + ".html'>続きを読む</a>" +
                                 "                            </td>\n" +
                                 "                        </tr>");
                         }
@@ -105,21 +105,21 @@
                         layui.use('laypage', function () {
                             var laypage = layui.laypage;
 
-                            //执行一个laypage实例
+                            //laypageインスタンスを実行
                             laypage.render({
-                                elem: 'historyPage' //注意，这里的 test1 是 ID，不用加 # 号
-                                , count: data.data.total //数据总数，从服务端得到,
+                                elem: 'historyPage' //注意：ここは ID。# は付けない # 号
+                                , count: data.data.total //データ総数。サーバーから取得,
                                 , curr: data.data.pageNum
                                 , limit: data.data.pageSize
                                 , jump: function (obj, first) {
 
 
-                                    //obj包含了当前分页的所有参数，比如：
-                                    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-                                    console.log(obj.limit); //得到每页显示的条数
+                                    //objには現在のページの全パラメータが含まれる。例：
+                                    console.log(obj.curr); //現在のページを取得し、サーバーに該当ページのデータを要求。
+                                    console.log(obj.limit); //1ページあたりの表示件数を取得
 
 
-                                    //首次不执行
+                                    //初回は実行しない
                                     if (!first) {
                                         search(obj.curr, obj.limit);
                                     } else {
@@ -133,7 +133,7 @@
 
 
                 } else if (data.code == 1001) {
-                    //未登录
+                    //未ログイン
                     location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
 
                 } else {
@@ -142,7 +142,7 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
 
