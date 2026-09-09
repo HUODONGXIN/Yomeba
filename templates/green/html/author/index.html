@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>作家管理系统-小说精品屋</title>
+        <title>著者管理システム-小説ハウス</title>
         <link rel="stylesheet" href="/css/base.css?v=1"/>
         <link rel="stylesheet" href="/css/user.css"/>
         <style type="text/css">
@@ -31,7 +31,7 @@
         <div class="box_center cf"
              style="text-align: center;height: 44px;line-height: 48px;color: #fff;font-size: 16px;">
 
-            小说精品屋作家管理
+            小説ハウス著者管理
 
         </div>
     </div>
@@ -42,22 +42,22 @@
         <div class="my_l">
 
             <ul class="log_list">
-                <li><a class="link_4 on" href="/author/index.html">小说管理</a></li>
-                <li><a class="link_2 " href="/author/author_income_detail.html">稿费收入</a></li>
-                <!-- <li><a class="link_1 " href="/user/userinfo.html">批量小说爬取</a></li>
-                 <li><a class="link_4 " href="/user/favorites.html">单本小说爬取</a></li>-->
+                <li><a class="link_4 on" href="/author/index.html">小説管理</a></li>
+                <li><a class="link_2 " href="/author/author_income_detail.html">収入</a></li>
+                <!-- <li><a class="link_1 " href="/user/userinfo.html">批量小説クロール</a></li>
+                 <li><a class="link_4 " href="/user/favorites.html">単本小説クロール</a></li>-->
             </ul>
 
         </div>
         <div class="my_r">
             <div id="noContentDiv">
-                <div class="tc" style="margin-top: 200px"><a href="/author/book_add.html" class="btn_red">创建作品</a></div>
+                <div class="tc" style="margin-top: 200px"><a href="/author/book_add.html" class="btn_red">作品を作成</a></div>
 
             </div>
             <div class="my_bookshelf" id="hasContentDiv" style="display: none">
                 <div class="title cf">
-                    <h2 class="fl">小说列表</h2>
-                    <div class="fr"><a href="/author/book_add.html" class="btn_red">发布小说</a></div>
+                    <h2 class="fl">小説リスト</h2>
+                    <div class="fr"><a href="/author/book_add.html" class="btn_red">小説を公開</a></div>
                 </div>
 
                 <div id="divData" class="updateTable">
@@ -65,22 +65,22 @@
                         <thead>
                         <tr>
                             <th class="goread">
-                                书名
+                                書名
                             </th>
                             <th class="goread">
-                                分类
+                                ジャンル
                             </th>
                             <th class="goread">
-                                点击量
+                                クリック数
                             </th>
                             <th class="goread">
-                                昨日订阅数
+                                昨日の購読数
                             </th>
                             <th class="goread">
-                                更新时间
+                                更新時間
                             </th>
                             <th class="goread">
-                                总字数
+                                総文字数
                             </th>
                             <th class="goread">
                                 操作
@@ -101,19 +101,19 @@
                         <tr>
 
                             <th class="name">
-                                爬虫源（已开启的爬虫源）
+                                クロール元（有効なクロール元）
                             </th>
                             <th class="chapter">
-                                成功爬取数量（websocket实现）
+                                クロール成功数（websocket実装）
                             </th>
                             <th class="time">
-                            目标爬取数量
+                            目標クロール数
                             </th>
                             <th class="goread">
-                                状态（正在运行，已停止）（一次只能运行一个爬虫源）
+                                ステータス（実行中・停止中）（同時に実行できるクロール元は1つのみ）
                             </th>
                             <th class="goread">
-                                操作（启动，停止）
+                                操作（開始・停止）
                             </th>
                         </tr>
                         </thead>
@@ -189,7 +189,7 @@
                                 "                            <td style=\"position: relative\" class=\"goread\">\n" +
                                 "<input class=\"opacity\" onchange=\"picChange('" + book.id + "')\"\n" +
                                 "                                           type=\"file\" id=\"file" + book.id + "\" name=\"file\"\n" +
-                                "                                           title=\"点击上传图片\"\n" +
+                                "                                           title=\"画像をクリックしてアップロード\"\n" +
                                 "                                           style=\"z-index: 100;cursor: pointer;left: 30px; top: 0px; width: 60px; height: 80px; opacity: 0; position: absolute;  \"\n" +
                                 "                                    />" +
                                 "<img id=\"cover" + book.id + "\" width='50' height='70' src='" + book.picUrl + "'/><br/>" +                                "                                " + book.bookName + "</td>\n" +
@@ -210,9 +210,9 @@
                                 + book.wordCount + "</td>\n" +
 
                                 " <td class=\"goread\" id='opt" + book.id + "'>" +
-                                "<a target='_blank' class='redBtn' href='/author/index_list.html?bookId=" + book.id + "'>章节管理  </a><br/>" +
-                                "<a target='_blank' href='/author/author_income_detail.html?bookId=" + book.id + "'>薪酬查询  </a><br/>" +
-                                "<a target='_blank' href='/book/" + book.id + ".html'>作品信息</a>" +
+                                "<a target='_blank' class='redBtn' href='/author/index_list.html?bookId=" + book.id + "'>章管理  </a><br/>" +
+                                "<a target='_blank' href='/author/author_income_detail.html?bookId=" + book.id + "'>報酬照会  </a><br/>" +
+                                "<a target='_blank' href='/book/" + book.id + ".html'>作品情報</a>" +
                                 "</td>                     </tr>");
                         }
                         $("#bookList").html(bookListHtml);
@@ -220,21 +220,21 @@
                         layui.use('laypage', function () {
                             var laypage = layui.laypage;
 
-                            //执行一个laypage实例
+                            //laypageインスタンスを実行
                             laypage.render({
-                                elem: 'shellPage' //注意，这里的 test1 是 ID，不用加 # 号
-                                , count: data.data.total //数据总数，从服务端得到,
+                                elem: 'shellPage' //注意：ここは ID。# は付けない # 号
+                                , count: data.data.total //データ総数。サーバーから取得,
                                 , curr: data.data.pageNum
                                 , limit: data.data.pageSize
                                 , jump: function (obj, first) {
 
 
-                                    //obj包含了当前分页的所有参数，比如：
-                                    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-                                    console.log(obj.limit); //得到每页显示的条数
+                                    //objには現在のページの全パラメータが含まれる。例：
+                                    console.log(obj.curr); //現在のページを取得し、サーバーに該当ページのデータを要求。
+                                    console.log(obj.limit); //1ページあたりの表示件数を取得
 
 
-                                    //首次不执行
+                                    //初回は実行しない
                                     if (!first) {
                                         search(obj.curr, obj.limit);
                                     } else {
@@ -248,7 +248,7 @@
 
 
                 } else if (data.code == 1001) {
-                    //未登录
+                    //未ログイン
                     location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
 
                 } else {
@@ -257,7 +257,7 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
 
@@ -278,7 +278,7 @@
 
 
                 } else if (data.code == 1001) {
-                    //未登录
+                    //未ログイン
                     location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
 
                 } else {
@@ -287,7 +287,7 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
 
@@ -296,17 +296,17 @@
 
 
    function picChange(bookId) {
-        var file = $("#file" + bookId).val(); //文件名称
+        var file = $("#file" + bookId).val(); //ファイル名
         if (file != "") {
             if (checkPicUpload($("#file" + bookId)[0])) {
 
                 $.ajaxFileUpload({
-                    url: "/file/picUpload", //用于文件上传的服务器端请求地址
-                    secureuri: false, //是否需要安全协议，一般设置为false
-                    fileElementId: "file" + bookId, //文件上传域的ID
-                    dataType: "json", //返回值类型 一般设置为json
+                    url: "/file/picUpload", //ファイルアップロード用サーバーリクエストURL
+                    secureuri: false, //セキュリティプロトコルが必要かどうか。通常はfalse
+                    fileElementId: "file" + bookId, //ファイルアップロードフィールドのID
+                    dataType: "json", //戻り値の型。通常はjson
                     type: "post",
-                    success: function (data) { //服务器成功响应处理函数
+                    success: function (data) { //サーバー成功応答処理関数
                         if (data.code == 200) {
                             let picUrl = data.data;
                             $.ajax({
@@ -323,7 +323,7 @@
 
                                 },
                                 error: function () {
-                                    layer.alert('网络异常');
+                                    layer.alert('ネットワークエラー');
                                 }
                             })
 
@@ -336,7 +336,7 @@
                 });
             }
         } else {
-            alert("请选择上传文件！");
+            alert("アップロードするファイルを選択してください！");
         }
 
 

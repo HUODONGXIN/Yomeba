@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>
-    申请作者
+    著者申請
 </title><link rel="stylesheet" type="text/css" href="/css/easyui.css" />
     <link href="/css/public.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/javascript/jquery-1.8.0.min.js"></script>
@@ -38,77 +38,77 @@
                 <tr>
                     <td colspan="3" style="text-align: left;">
                         <div style="padding-left: 15px; height: 40px; line-height: 40px;">
-                            我是网络小说写手，我要注册为小说精品屋签约作者：</div>
+                            私はネット小説作家です。小説ハウスの契約作家として登録します：</div>
                     </td>
                 </tr>
-                <tr><td align="right">邀请码：</td><td><input name="inviteCode" th:value="${author.inviteCode}" type="text" maxlength="12" id="TxtGetCode" class="easyui-validatebox inpMain" data-options="required:true" /></td>
+                <tr><td align="right">招待コード：</td><td><input name="inviteCode" th:value="${author.inviteCode}" type="text" maxlength="12" id="TxtGetCode" class="easyui-validatebox inpMain" data-options="required:true" /></td>
                     <td>
-                        <span class="notes"> *</span> 小说精品屋分配给作者的邀请码
+                        <span class="notes"> *</span> 小説ハウスから著者に発行された招待コード
                     </td>
                 </tr>
                 <tr>
                     <td align="right">
-                        作者笔名：
+                        著者ペンネーム：
                     </td>
                     <td>
                         <input name="penName" th:value="${author.penName}" type="text" maxlength="8" id="TxtNiceName" class="easyui-validatebox inpMain" data-options="required:true" validType="checkPenName" />
 
                     </td>
                     <td>
-                        <span class="notes"> *</span> 长度为2到8位的中英文
+                        <span class="notes"> *</span> 2〜8文字の漢字・英字
                     </td>
                 </tr>
                 <tr>
                     <td align="right">
-                        手机号码：
+                        携帯番号：
                     </td>
                     <td>
                         <input name="telPhone" th:value="${author.telPhone}" type="text" id="TxtMobile" class="easyui-validatebox inpMain" data-options="required:true" validType="chinaMobile" />
                     </td>
                     <td>
-                        <span class="notes"> *</span> 小说精品屋的编辑会通过这个号码与您联系
+                        <span class="notes"> *</span> 小説ハウスの編集者がこの番号でご連絡します
                     </td>
                 </tr>
                 <tr>
                     <td align="right">
-                        QQ或微信：
+                        QQまたはWeChat：
                     </td>
                     <td>
                         <input name="chatAccount" th:value="${author.chatAccount}" type="text" id="TxtQQ" class="easyui-validatebox inpMain" data-options="required:true" />
                     </td>
                     <td>
-                        <span class="notes"> *</span> 小说精品屋的编辑会通过这个号码与您联系
+                        <span class="notes"> *</span> 小説ハウスの編集者がこの番号でご連絡します
                     </td>
                 </tr>
                 <tr>
                     <td align="right">
-                        电子邮箱：
+                        メールアドレス：
                     </td>
                     <td>
                         <input name="email" th:value="${author.email}" type="text" id="TxtEmail" class="easyui-validatebox inpMain w300" data-options="required:true" validType="email" />
                     </td>
                     <td>
-                        <span class="notes"> *</span> 长度为2到15位的中英文，数字
+                        <span class="notes"> *</span> 2〜15文字の漢字・英字・数字
                     </td>
                 </tr>
                 <tr>
                     <td align="right">
-                        男女主角：
+                        主人公の性別：
                     </td>
                     <td>
                         <div>
                             <ul class="ipage">
                                 <input type="hidden" name="workDirection" id="HidSexclass" /><!-- th:attr="class=${author.workDirection} == '0'? 'ahover':''"-->
-                                <a href="javascript:void(0);" val="0">男性主角选男频</a>
+                                <a href="javascript:void(0);" val="0">男性主人公は男性向けへ</a>
                                 <a href="javascript:void(0);" val="1">
-                                女性主角选女频</a>
+                                女性主人公は女性向けへ</a>
                                 <div class="clear">
                                 </div>
                             </ul>
                         </div>
                     </td>
                     <td>
-                        <span class="notes"> *</span> 请选择作品方向
+                        <span class="notes"> *</span> 作品の方向性を選択してください
                     </td>
                 </tr>
             </table>
@@ -118,7 +118,7 @@
                 <td>
                     <div style="padding-left: 110px; margin-top: 10px; margin-bottom: 5px;">
 
-                        <input type="submit" name="btnSubmit" value="立即开始您的作者生涯" id="btnSubmit" class="btnGray" />
+                        <input type="submit" name="btnSubmit" value="著者として今すぐ始める" id="btnSubmit" class="btnGray" />
                     </div>
                 </td>
             </tr>

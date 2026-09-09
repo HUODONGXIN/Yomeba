@@ -1,46 +1,46 @@
 if ($.fn.pagination){
     $.fn.pagination.defaults.beforePageText = '第';
-    $.fn.pagination.defaults.afterPageText = '共{pages}页';
-    $.fn.pagination.defaults.displayMsg = '显示{from}到{to},共{total}记录';
+    $.fn.pagination.defaults.afterPageText = '全{pages}ページ';
+    $.fn.pagination.defaults.displayMsg = '{from}〜{to}を表示、全{total}件';
 }
 if ($.fn.datagrid){
-    $.fn.datagrid.defaults.loadMsg = '请稍后…';
+    $.fn.datagrid.defaults.loadMsg = '読み込み中…';
 }
 if ($.fn.treegrid && $.fn.datagrid){
     $.fn.treegrid.defaults.loadMsg = $.fn.datagrid.defaults.loadMsg;
 }
 if ($.messager){
-    $.messager.defaults.ok = '确定';
-    $.messager.defaults.cancel = '取消';
+    $.messager.defaults.ok = 'OK';
+    $.messager.defaults.cancel = 'キャンセル';
 }
 if ($.fn.validatebox){
-    $.fn.validatebox.defaults.missingMessage = '该输入项为必输项';
-    $.fn.validatebox.defaults.rules.email.message = '请输入有效的电子邮件地址';
-    $.fn.validatebox.defaults.rules.url.message = '请输入有效的URL地址';
-    $.fn.validatebox.defaults.rules.length.message = '输入内容长度必须介于{0}和{1}之间';
-    $.fn.validatebox.defaults.rules.remote.message = '请修正该字段';
+    $.fn.validatebox.defaults.missingMessage = '入力必須項目です';
+    $.fn.validatebox.defaults.rules.email.message = '有効なメールアドレスを入力してください';
+    $.fn.validatebox.defaults.rules.url.message = '有効なURLを入力してください';
+    $.fn.validatebox.defaults.rules.length.message = '入力内容は{0}〜{1}文字以内で入力してください';
+    $.fn.validatebox.defaults.rules.remote.message = 'このフィールドを修正してください';
 }
 if ($.fn.numberbox){
-    $.fn.numberbox.defaults.missingMessage = '该输入项为必输项';
+    $.fn.numberbox.defaults.missingMessage = '入力必須項目です';
 }
 if ($.fn.combobox){
-    $.fn.combobox.defaults.missingMessage = '该输入项为必输项';
+    $.fn.combobox.defaults.missingMessage = '入力必須項目です';
 }
 if ($.fn.combotree){
-    $.fn.combotree.defaults.missingMessage = '该输入项为必输项';
+    $.fn.combotree.defaults.missingMessage = '入力必須項目です';
 }
 if ($.fn.combogrid){
-    $.fn.combogrid.defaults.missingMessage = '该输入项为必输项';
+    $.fn.combogrid.defaults.missingMessage = '入力必須項目です';
 }
 if ($.fn.calendar){
-    $.fn.calendar.defaults.weeks = ['日','一','二','三','四','五','六'];
-    $.fn.calendar.defaults.months = ['一月','二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月'];
+    $.fn.calendar.defaults.weeks = ['日','月','火','水','木','金','土'];
+    $.fn.calendar.defaults.months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
 }
 if ($.fn.datebox){
-    $.fn.datebox.defaults.currentText = '今天';
-    $.fn.datebox.defaults.closeText = '关闭';
-    $.fn.datebox.defaults.okText = '确定';
-    $.fn.datebox.defaults.missingMessage = '该输入项为必输项';
+    $.fn.datebox.defaults.currentText = '今日';
+    $.fn.datebox.defaults.closeText = '閉じる';
+    $.fn.datebox.defaults.okText = 'OK';
+    $.fn.datebox.defaults.missingMessage = '入力必須項目です';
     $.fn.datebox.defaults.formatter = function(date){
         var y = date.getFullYear();
         var m = date.getMonth()+1;

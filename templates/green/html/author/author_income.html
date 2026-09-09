@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title>作家管理系统-小说精品屋</title>
+        <title>著者管理システム-小説ハウス</title>
         <link rel="stylesheet" href="/css/base.css?v=1"/>
         <link rel="stylesheet" href="/css/user.css"/>
     </head>
@@ -17,7 +17,7 @@
         <div class="box_center cf"
              style="text-align: center;height: 44px;line-height: 48px;color: #fff;font-size: 16px;">
 
-            小说精品屋作家管理
+            小説ハウス著者管理
 
         </div>
     </div>
@@ -28,19 +28,19 @@
         <div class="my_l">
 
             <ul class="log_list">
-                <li><a class="link_4" href="/author/index.html">小说管理</a></li>
-                <li><a class="link_2 on" href="/author/author_income_detail.html">稿费收入</a></li>
-                <!-- <li><a class="link_1 " href="/user/userinfo.html">批量小说爬取</a></li>
-                 <li><a class="link_4 " href="/user/favorites.html">单本小说爬取</a></li>-->
+                <li><a class="link_4" href="/author/index.html">小説管理</a></li>
+                <li><a class="link_2 on" href="/author/author_income_detail.html">収入</a></li>
+                <!-- <li><a class="link_1 " href="/user/userinfo.html">批量小説クロール</a></li>
+                 <li><a class="link_4 " href="/user/favorites.html">単本小説クロール</a></li>-->
             </ul>
 
         </div>
         <div class="my_r">
             <div class="my_bookshelf">
                 <div class="title cf">
-                    <h2 class="fl ml10"><a href="/author/author_income_detail.html">订阅明细</a></h2><i
+                    <h2 class="fl ml10"><a href="/author/author_income_detail.html">購読明細</a></h2><i
                         class="fl ml20 mr20 font16">|</i>
-                    <h2 class="fl"><a href="/author/author_income.html" class="red">稿费汇总</a></h2>
+                    <h2 class="fl"><a href="/author/author_income.html" class="red">収入集計</a></h2>
                 </div>
 
                 <div id="divData" class="updateTable">
@@ -48,16 +48,16 @@
                         <thead>
                         <tr>
                             <th class="goread">
-                                月份
+                                月
                             </th>
                             <th class="goread">
-                                税前收入
+                                税込前の収入
                             </th>
                             <th class="goread">
-                                税后收入
+                                税込後の収入
                             </th>
                             <th class="goread">
-                                支付状态
+                                支払状況
                             </th>
                         </tr>
 
@@ -76,19 +76,19 @@
                         <tr>
 
                             <th class="name">
-                                爬虫源（已开启的爬虫源）
+                                クロール元（有効なクロール元）
                             </th>
                             <th class="chapter">
-                                成功爬取数量（websocket实现）
+                                クロール成功数（websocket実装）
                             </th>
                             <th class="time">
-                            目标爬取数量
+                            目標クロール数
                             </th>
                             <th class="goread">
-                                状态（正在运行，已停止）（一次只能运行一个爬虫源）
+                                ステータス（実行中・停止中）（同時に実行できるクロール元は1つのみ）
                             </th>
                             <th class="goread">
-                                操作（启动，停止）
+                                操作（開始・停止）
                             </th>
                         </tr>
                         </thead>
@@ -139,7 +139,7 @@
                                 "                            <td class=\"goread\">\n" +
                                 "                                " + book.afterTaxIncome / 100 + "\n" +
                                 "                            </td>\n" +
-                                "                            <td class=\"goread\">" + (book.payStatus == 1 ? '已支付' : '待支付') +
+                                "                            <td class=\"goread\">" + (book.payStatus == 1 ? '支払済み' : '未払い') +
                                 "                            </td>\n" +
 
                                 " </tr>");
@@ -149,21 +149,21 @@
                         layui.use('laypage', function () {
                             var laypage = layui.laypage;
 
-                            //执行一个laypage实例
+                            //laypageインスタンスを実行
                             laypage.render({
-                                elem: 'shellPage' //注意，这里的 test1 是 ID，不用加 # 号
-                                , count: data.data.total //数据总数，从服务端得到,
+                                elem: 'shellPage' //注意：ここは ID。# は付けない # 号
+                                , count: data.data.total //データ総数。サーバーから取得,
                                 , curr: data.data.pageNum
                                 , limit: data.data.pageSize
                                 , jump: function (obj, first) {
 
 
-                                    //obj包含了当前分页的所有参数，比如：
-                                    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-                                    console.log(obj.limit); //得到每页显示的条数
+                                    //objには現在のページの全パラメータが含まれる。例：
+                                    console.log(obj.curr); //現在のページを取得し、サーバーに該当ページのデータを要求。
+                                    console.log(obj.limit); //1ページあたりの表示件数を取得
 
 
-                                    //首次不执行
+                                    //初回は実行しない
                                     if (!first) {
                                         search(obj.curr, obj.limit);
                                     } else {
@@ -177,7 +177,7 @@
 
 
                 } else if (data.code == 1001) {
-                    //未登录
+                    //未ログイン
                     location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
 
                 } else {
@@ -186,7 +186,7 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
 
@@ -207,7 +207,7 @@
 
 
                 } else if (data.code == 1001) {
-                    //未登录
+                    //未ログイン
                     location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
 
                 } else {
@@ -216,7 +216,7 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
 
