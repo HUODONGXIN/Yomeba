@@ -35,6 +35,8 @@ public interface BookDao {
 
     List<Map<Object, Object>> tableSta(Date minDate);
 
+    List<Map<String, Object>> listCategories();
+
     List<BookDO> batchGet(List<Long> ids);
 
 }

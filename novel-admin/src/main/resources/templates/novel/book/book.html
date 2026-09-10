@@ -26,6 +26,26 @@
                     </div>
 
                     <form id="searchForm">
+                        <div class="columns pull-right col-md-1">
+                            <select id="workDirection" name="workDirection" class="form-control">
+                                <option value="">作品方向</option>
+                                <option value="0">男频</option>
+                                <option value="1">女频</option>
+                            </select>
+                        </div>
+                        <div class="columns pull-right col-md-2">
+                            <select id="catId" name="catId" class="form-control">
+                                <option value="">作品分类</option>
+                            </select>
+                        </div>
+                        <div class="columns pull-right col-md-2">
+                            <input id="minCreateTime" name="minCreateTime" type="date" class="form-control"
+                                   placeholder="入库开始">
+                        </div>
+                        <div class="columns pull-right col-md-2">
+                            <input id="maxCreateTime" name="maxCreateTime" type="date" class="form-control"
+                                   placeholder="入库结束">
+                        </div>
                         <div class="columns pull-right col-md-2">
                             <input id="bookName" name="bookName" type="text" class="form-control"
                                    placeholder="小说名">
@@ -68,5 +88,18 @@
 </div>
 <div th:include="include :: footer"></div>
 <script type="text/javascript" src="/js/appjs/novel/book/book.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $.get("/novel/book/listCategories", function (r) {
+            if (r.code == 0 && r.data) {
+                var opts = '<option value="">作品分类</option>';
+                $.each(r.data, function (i, c) {
+                    opts += '<option value="' + c.id + '">' + c.name + '</option>';
+                });
+                $('#catId').html(opts);
+            }
+        });
+    });
+</script>
 </body>
 </html>

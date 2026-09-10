@@ -30,4 +30,6 @@ public interface BookService {
 	int batchRemove(Long[] ids);
 
     Map<Object, Object> tableSta(Date minDate);
+
+    List<Map<String, Object>> listCategories();
 }
