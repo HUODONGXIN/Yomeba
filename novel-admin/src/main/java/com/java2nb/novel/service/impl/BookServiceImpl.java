@@ -63,9 +63,15 @@ public class BookServiceImpl implements BookService {
         return bookDao.remove(id);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public int batchRemove(Long[] ids) {
-        return bookDao.batchRemove(ids);
+        if (ids != null) {
+            for (Long id : ids) {
+                remove(id);
+            }
+        }
+        return ids == null ? 0 : ids.length;
     }
 
     @Override
