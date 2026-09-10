@@ -172,6 +172,16 @@ public class BookController {
     }
 
     /**
+     * 已有小说的分类列表（筛选下拉用）
+     */
+    @ApiOperation(value = "已有小说的分类列表", notes = "已有小说的分类列表")
+    @GetMapping("/listCategories")
+    @ResponseBody
+    public R listCategories() {
+        return R.ok().put("data", bookService.listCategories());
+    }
+
+    /**
      * 小说下载
      */
     @RequestMapping(value = "/download")

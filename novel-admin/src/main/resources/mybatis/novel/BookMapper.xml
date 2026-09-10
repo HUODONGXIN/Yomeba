@@ -298,4 +298,12 @@
         </foreach>
     </select>
 
+    <select id="listCategories" resultType="map">
+        select cat_id as id, cat_name as name
+        from book
+        where cat_id is not null and cat_name is not null
+        group by cat_id, cat_name
+        order by cat_id
+    </select>
+
 </mapper>

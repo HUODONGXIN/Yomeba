@@ -90,10 +90,10 @@
 <script type="text/javascript" src="/js/appjs/novel/book/book.js"></script>
 <script type="text/javascript">
     $(function () {
-        $.get("/novel/category/list", {offset: 0, limit: 200}, function (r) {
-            if (r.code == 0 && r.data && r.data.rows) {
+        $.get("/novel/book/listCategories", function (r) {
+            if (r.code == 0 && r.data) {
                 var opts = '<option value="">作品分类</option>';
-                $.each(r.data.rows, function (i, c) {
+                $.each(r.data, function (i, c) {
                     opts += '<option value="' + c.id + '">' + c.name + '</option>';
                 });
                 $('#catId').html(opts);

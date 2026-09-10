@@ -82,4 +82,9 @@ public class BookServiceImpl implements BookService {
 
     }
 
+    @Override
+    public List<Map<String, Object>> listCategories() {
+        return bookDao.listCategories();
+    }
+
 }
