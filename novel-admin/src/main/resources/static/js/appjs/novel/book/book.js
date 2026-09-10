@@ -49,6 +49,10 @@ function load() {
                         return {total: 0, rows: []};
                     }
                 },
+                onCheck: function () { toggleBatchDeleteBtn(); },
+                onUncheck: function () { toggleBatchDeleteBtn(); },
+                onCheckAll: function () { toggleBatchDeleteBtn(); },
+                onUncheckAll: function () { toggleBatchDeleteBtn(); },
                 columns: [
                     {
                         checkbox: true
@@ -222,6 +226,11 @@ function remove(id) {
 }
 
 function resetPwd(id) {
+}
+
+function toggleBatchDeleteBtn() {
+    var rows = $('#exampleTable').bootstrapTable('getSelections');
+    $('#batchDelBtn').toggle(rows.length > 0);
 }
 
 function batchRemove() {
