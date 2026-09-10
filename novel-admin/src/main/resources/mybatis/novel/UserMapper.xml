@@ -63,7 +63,7 @@
         </where>
     </select>
 
-    <insert id="save" parameterType="com.java2nb.novel.domain.UserDO">
+    <insert id="save" parameterType="com.java2nb.novel.domain.UserDO" useGeneratedKeys="true" keyProperty="id">
         insert into user
         (`id`,
          `username`,

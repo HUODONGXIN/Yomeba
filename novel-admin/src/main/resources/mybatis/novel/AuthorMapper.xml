@@ -8,25 +8,28 @@
 	</select>
 
 	<select id="list" resultType="com.java2nb.novel.domain.AuthorDO">
-		select `id`,`user_id`,`invite_code`,`pen_name`,`tel_phone`,`chat_account`,`email`,`work_direction`,`create_time`,`status` from author
+		select a.`id`,a.`user_id`,a.`invite_code`,a.`pen_name`,a.`tel_phone`,a.`chat_account`,a.`email`,a.`work_direction`,a.`create_time`,a.`status`,
+		u.`username`,u.`password`
+		from author a
+		left join user u on a.user_id = u.id
         <where>  
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
-		  		  <if test="inviteCode != null and inviteCode != ''"> and invite_code = #{inviteCode} </if>
-		  		  <if test="penName != null and penName != ''"> and pen_name = #{penName} </if>
-		  		  <if test="telPhone != null and telPhone != ''"> and tel_phone = #{telPhone} </if>
-		  		  <if test="chatAccount != null and chatAccount != ''"> and chat_account = #{chatAccount} </if>
-		  		  <if test="email != null and email != ''"> and email = #{email} </if>
-		  		  <if test="workDirection != null and workDirection != ''"> and work_direction = #{workDirection} </if>
-		  		  <if test="createTime != null and createTime != ''"> and create_time = #{createTime} </if>
-		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		  <if test="id != null and id != ''"> and a.id = #{id} </if>
+		  		  <if test="userId != null and userId != ''"> and a.user_id = #{userId} </if>
+		  		  <if test="inviteCode != null and inviteCode != ''"> and a.invite_code = #{inviteCode} </if>
+		  		  <if test="penName != null and penName != ''"> and a.pen_name = #{penName} </if>
+		  		  <if test="telPhone != null and telPhone != ''"> and a.tel_phone = #{telPhone} </if>
+		  		  <if test="chatAccount != null and chatAccount != ''"> and a.chat_account = #{chatAccount} </if>
+		  		  <if test="email != null and email != ''"> and a.email = #{email} </if>
+		  		  <if test="workDirection != null and workDirection != ''"> and a.work_direction = #{workDirection} </if>
+		  		  <if test="createTime != null and createTime != ''"> and a.create_time = #{createTime} </if>
+		  		  <if test="status != null and status != ''"> and a.status = #{status} </if>
 		  		</where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}
             </when>
 			<otherwise>
-                order by id desc
+                order by a.id desc
 			</otherwise>
         </choose>
 		<if test="offset != null and limit != null">

@@ -35,6 +35,10 @@ public class AuthorDO implements Serializable {
 	//所以通过序列化成字符串来解决
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long userId;
+	//登录账号（关联 user 表）
+			private String username;
+	//登录密码（MD5 加密存储）
+			private String password;
 	//邀请码
 			private String inviteCode;
 	//笔名
@@ -76,6 +80,30 @@ public class AuthorDO implements Serializable {
 	 */
 	public Long getUserId() {
 		return userId;
+	}
+	/**
+	 * 设置：登录账号
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	/**
+	 * 获取：登录账号
+	 */
+	public String getUsername() {
+		return username;
+	}
+	/**
+	 * 设置：登录密码
+	 */
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	/**
+	 * 获取：登录密码
+	 */
+	public String getPassword() {
+		return password;
 	}
 	/**
 	 * 设置：邀请码
