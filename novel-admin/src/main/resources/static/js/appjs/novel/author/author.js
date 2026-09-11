@@ -74,14 +74,23 @@ function load() {
 
 
                     {
-                        field: 'telPhone',
-                        title: '手机号码'
+                        field: 'username',
+                        title: '登录账号'
                     },
 
 
                     {
-                        field: 'chatAccount',
-                        title: 'QQ或微信账号'
+                        field: 'password',
+                        title: '登录密码',
+                        formatter: function (value, row, index) {
+                            return value ? value : '-';
+                        }
+                    },
+
+
+                    {
+                        field: 'telPhone',
+                        title: '手机号码'
                     },
 
 
@@ -128,7 +137,10 @@ function load() {
                                     + row.id
                                     + '\',1)"><i >封禁</i></a> ';
                             }
-                            return  e ;
+                            var d = '<a class="btn btn-danger btn-sm ' + s_remove_h + '" href="#" mce_href="#" title="删除" onclick="remove(\''
+                                + row.id
+                                + '\')"><i >删除</i></a> ';
+                            return  e + d;
                         }
                     }]
             });

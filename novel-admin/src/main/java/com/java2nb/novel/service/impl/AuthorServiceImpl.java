@@ -8,8 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import java.security.MessageDigest;
+import java.nio.charset.StandardCharsets;
+
 import com.java2nb.novel.dao.AuthorDao;
+import com.java2nb.novel.dao.UserDao;
 import com.java2nb.novel.domain.AuthorDO;
+import com.java2nb.novel.domain.UserDO;
 import com.java2nb.novel.service.AuthorService;
 
 
@@ -18,6 +23,9 @@ import com.java2nb.novel.service.AuthorService;
 public class AuthorServiceImpl implements AuthorService {
 	@Autowired
 	private AuthorDao authorDao;
+
+	@Autowired
+	private UserDao userDao;
 	
 	@Override
 	public AuthorDO get(Long id){
@@ -36,6 +44,18 @@ public class AuthorServiceImpl implements AuthorService {
 	
 	@Override
 	public int save(AuthorDO author){
+		//创建作者登录账号（前台作家专区登录使用 user 表，密码为纯 MD5，与 user 表现有账号一致）
+		if (author.getUsername() != null && !author.getUsername().trim().isEmpty()
+				&& author.getPassword() != null && !author.getPassword().trim().isEmpty()) {
+			UserDO user = new UserDO();
+			user.setUsername(author.getUsername().trim());
+			user.setPassword(md5(author.getPassword().trim()));
+			user.setNickName(author.getPenName());
+			user.setStatus(0);
+			user.setCreateTime(new Date());
+			userDao.save(user);
+			author.setUserId(user.getId());
+		}
 		return authorDao.save(author);
 	}
 	
@@ -46,7 +66,30 @@ public class AuthorServiceImpl implements AuthorService {
 	
 	@Override
 	public int remove(Long id){
-		return authorDao.remove(id);
+		AuthorDO author = authorDao.get(id);
+		int result = authorDao.remove(id);
+		//连带删除作者登录账号
+		if (author != null && author.getUserId() != null) {
+			userDao.remove(author.getUserId());
+		}
+		return result;
+	}
+
+	/**
+	 * 标准 MD5 小写十六进制（与前台 user 表登录密码加密方式一致）
+	 */
+	private String md5(String text) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] digest = md.digest(text.getBytes(StandardCharsets.UTF_8));
+			StringBuilder sb = new StringBuilder();
+			for (byte b : digest) {
+				sb.append(String.format("%02x", b));
+			}
+			return sb.toString();
+		} catch (Exception e) {
+			throw new RuntimeException("MD5 加密失败", e);
+		}
 	}
 	
 	@Override
