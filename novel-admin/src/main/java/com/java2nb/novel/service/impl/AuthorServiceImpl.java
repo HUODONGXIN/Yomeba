@@ -43,6 +43,7 @@ public class AuthorServiceImpl implements AuthorService {
 	}
 	
 	@Override
+	@org.springframework.transaction.annotation.Transactional(rollbackFor = Exception.class)
 	public int save(AuthorDO author){
 		//创建作者登录账号（前台作家专区登录使用 user 表，密码为纯 MD5，与 user 表现有账号一致）
 		if (author.getUsername() != null && !author.getUsername().trim().isEmpty()
@@ -51,8 +52,10 @@ public class AuthorServiceImpl implements AuthorService {
 			user.setUsername(author.getUsername().trim());
 			user.setPassword(md5(author.getPassword().trim()));
 			user.setNickName(author.getPenName());
+			user.setAccountBalance(0L);
 			user.setStatus(0);
 			user.setCreateTime(new Date());
+			user.setUpdateTime(new Date());
 			userDao.save(user);
 			author.setUserId(user.getId());
 		}
@@ -65,6 +68,7 @@ public class AuthorServiceImpl implements AuthorService {
 	}
 	
 	@Override
+	@org.springframework.transaction.annotation.Transactional(rollbackFor = Exception.class)
 	public int remove(Long id){
 		AuthorDO author = authorDao.get(id);
 		int result = authorDao.remove(id);
