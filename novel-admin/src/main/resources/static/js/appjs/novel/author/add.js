@@ -97,11 +97,31 @@ function save() {
 }
 function validateRule() {
     var icon = "<i class='fa fa-times-circle'></i> ";
-        $("#signupForm").validate({
-            ignore: "",
-            rules: {
-                                                                                                                                },
-    messages: {
-                                                                                                                                                                                                                    }
-})
+    //自定义手机号格式校验（11 位，1 开头，第二位 3~9）
+    $.validator.addMethod("isMobile", function (value, element) {
+        return this.optional(element) || /^1[3-9]\d{9}$/.test(value);
+    }, "请输入正确的手机号格式");
+    $("#signupForm").validate({
+        ignore: "",
+        rules: {
+            username: {required: true},
+            password: {required: true, minlength: 6},
+            penName: {required: true},
+            telPhone: {required: true, isMobile: true},
+            email: {email: true},
+            workDirection: {required: true},
+            createTime: {required: true},
+            status: {required: true}
+        },
+        messages: {
+            username: {required: icon + "请输入登录账号"},
+            password: {required: icon + "请输入登录密码", minlength: icon + "登录密码至少6位"},
+            penName: {required: icon + "请输入笔名"},
+            telPhone: {required: icon + "请输入手机号码", isMobile: icon + "请输入正确的手机号格式（11位，1开头）"},
+            email: {email: icon + "请输入正确的邮箱格式"},
+            workDirection: {required: icon + "请选择作品方向"},
+            createTime: {required: icon + "请选择入驻时间"},
+            status: {required: icon + "请输入状态（0正常，1封禁）"}
+        }
+    })
 }
