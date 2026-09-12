@@ -97,9 +97,9 @@ function save() {
 }
 function validateRule() {
     var icon = "<i class='fa fa-times-circle'></i> ";
-    //自定义手机号格式校验（11 位，1 开头，第二位 3~9）
+    //自定义手机号格式校验（日本手机号：070/080/090 开头，共 11 位）
     $.validator.addMethod("isMobile", function (value, element) {
-        return this.optional(element) || /^1[3-9]\d{9}$/.test(value);
+        return this.optional(element) || /^0[789]0\d{8}$/.test(value);
     }, "请输入正确的手机号格式");
     $("#signupForm").validate({
         ignore: "",
@@ -117,7 +117,7 @@ function validateRule() {
             username: {required: icon + "请输入登录账号"},
             password: {required: icon + "请输入登录密码", minlength: icon + "登录密码至少6位"},
             penName: {required: icon + "请输入笔名"},
-            telPhone: {required: icon + "请输入手机号码", isMobile: icon + "请输入正确的手机号格式（11位，1开头）"},
+            telPhone: {required: icon + "请输入手机号码", isMobile: icon + "请输入正确的日本手机号格式（070/080/090 开头共11位）"},
             email: {email: icon + "请输入正确的邮箱格式"},
             workDirection: {required: icon + "请选择作品方向"},
             createTime: {required: icon + "请选择入驻时间"},
