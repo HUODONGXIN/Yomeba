@@ -80,15 +80,6 @@ function load() {
 
 
                     {
-                        field: 'passwordPlain',
-                        title: '登录密码',
-                        formatter: function (value, row, index) {
-                            return value ? value : '-';
-                        }
-                    },
-
-
-                    {
                         field: 'telPhone',
                         title: '手机号码'
                     },

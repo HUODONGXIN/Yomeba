@@ -9,7 +9,7 @@
 
 	<select id="list" resultType="com.java2nb.novel.domain.AuthorDO">
 		select a.`id`,a.`user_id`,a.`invite_code`,a.`pen_name`,a.`tel_phone`,a.`chat_account`,a.`email`,a.`work_direction`,a.`create_time`,a.`status`,
-		u.`username`,u.`password`,u.`password_plain`
+		u.`username`
 		from author a
 		left join user u on a.user_id = u.id
         <where>  
