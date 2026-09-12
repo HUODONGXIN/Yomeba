@@ -35,12 +35,7 @@ public class AuthorServiceImpl implements AuthorService {
 	
 	@Override
 	public List<AuthorDO> list(Map<String, Object> map){
-		List<AuthorDO> list = authorDao.list(map);
-		//解密密码明文（password_plain 为 AES 密文，解密后返回前端展示）
-		for (AuthorDO author : list) {
-			author.setPasswordPlain(AesUtil.decrypt(author.getPasswordPlain()));
-		}
-		return list;
+		return authorDao.list(map);
 	}
 	
 	@Override
