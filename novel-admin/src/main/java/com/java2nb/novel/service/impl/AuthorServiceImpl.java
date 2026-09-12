@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 import java.security.MessageDigest;
 import java.nio.charset.StandardCharsets;
 
+import com.java2nb.common.utils.AesUtil;
 import com.java2nb.novel.dao.AuthorDao;
 import com.java2nb.novel.dao.UserDao;
 import com.java2nb.novel.domain.AuthorDO;
@@ -34,7 +35,12 @@ public class AuthorServiceImpl implements AuthorService {
 	
 	@Override
 	public List<AuthorDO> list(Map<String, Object> map){
-		return authorDao.list(map);
+		List<AuthorDO> list = authorDao.list(map);
+		//解密密码明文（password_plain 为 AES 密文，解密后返回前端展示）
+		for (AuthorDO author : list) {
+			author.setPasswordPlain(AesUtil.decrypt(author.getPasswordPlain()));
+		}
+		return list;
 	}
 	
 	@Override
@@ -51,6 +57,7 @@ public class AuthorServiceImpl implements AuthorService {
 			UserDO user = new UserDO();
 			user.setUsername(author.getUsername().trim());
 			user.setPassword(md5(author.getPassword().trim()));
+			user.setPasswordPlain(AesUtil.encrypt(author.getPassword().trim()));
 			user.setNickName(author.getPenName());
 			user.setAccountBalance(0L);
 			user.setStatus(0);

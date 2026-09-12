@@ -80,7 +80,7 @@ function load() {
 
 
                     {
-                        field: 'password',
+                        field: 'passwordPlain',
                         title: '登录密码',
                         formatter: function (value, row, index) {
                             return value ? value : '-';
