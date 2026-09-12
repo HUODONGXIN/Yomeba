@@ -137,10 +137,13 @@ function load() {
                                     + row.id
                                     + '\',1)"><i >封禁</i></a> ';
                             }
+                            var editInfo = '<a class="btn btn-warning btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="编辑" onclick="editInfo(\''
+                                + row.id
+                                + '\')"><i >编辑</i></a> ';
                             var d = '<a class="btn btn-danger btn-sm ' + s_remove_h + '" href="#" mce_href="#" title="删除" onclick="remove(\''
                                 + row.id
                                 + '\')"><i >删除</i></a> ';
-                            return  e + d;
+                            return  editInfo + e + d;
                         }
                     }]
             });
@@ -158,6 +161,17 @@ function add() {
         shadeClose: false, // 点击遮罩关闭层
         area: ['800px', '520px'],
         content: prefix + '/add' // iframe的url
+    });
+}
+
+function editInfo(id) {
+    layer.open({
+        type: 2,
+        title: '编辑',
+        maxmin: true,
+        shadeClose: false, // 点击遮罩关闭层
+        area: ['800px', '520px'],
+        content: prefix + '/edit/' + id // iframe的url
     });
 }
 
