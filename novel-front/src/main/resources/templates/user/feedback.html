@@ -2,7 +2,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head th:replace="common/header :: common_head(~{::title},~{},~{::link},~{})">
-    <title th:text="'反馈留言_'+${application.website.name}"></title>
+    <title th:text="'フィードバック_'+${application.website.name}"></title>
     <link rel="stylesheet" href="/css/user.css"/>
 </head>
 <body class="">
@@ -17,7 +17,7 @@
                 <div class="my_bookshelf">
                     <div class="title cf">
                         <h2 class="fl ml10">
-                            <a href="javascript:void(0);">反馈留言</a></h2>
+                            <a href="javascript:void(0);">フィードバック</a></h2>
                     </div>
                     <div class="feedbackBox">
 
@@ -26,10 +26,10 @@
                             <ul class="reg_list">
                                 <li>
                                     <textarea name="txtDescription" rows="2" cols="20" id="txtDescription"
-                                              class="textarea" placeholder="请说明情况，并留下联系方式，你可以在个人中心【我的反馈】里查看回复~">
+                                              class="textarea" placeholder="状況をご説明の上、ご連絡先をご記入ください。返信はマイページ【マイフィードバック】で確認できます~">
 </textarea></li>
                                 <li class="mb20">
-                                    <input type="submit" name="btnSave" value="提交" id="btnSave"
+                                    <input type="submit" name="btnSave" value="送信" id="btnSave"
                                            class="btn_red btn_big"/></li>
                                 <li>
                                     <span id="LabErr"></span></li>
@@ -55,9 +55,9 @@
         des = $.trim(des);
         var errStr = '';
         if (des == "") {
-            errStr = '反馈内容必须填写';
+            errStr = 'フィードバック内容を入力してください';
         } else if (des.length < 5) {
-            errStr = '反馈内容不能少于5个字';
+            errStr = 'フィードバック内容は5文字以上で入力してください';
         }
         if (errStr != '') {
             layer.alert(errStr);
@@ -73,7 +73,7 @@
                     location.href = '/user/feedback_list.html'
 
                 } else if (data.code == 1001) {
-                    //未登录
+                    //未ログイン
                     location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
 
                 } else {
@@ -82,7 +82,7 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
         return false;

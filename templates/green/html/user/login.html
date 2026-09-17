@@ -20,7 +20,7 @@
                 <h3 th:text="'ログイン'+${application.website.name}"></h3>
                 <ul class="log_list">
                     <li><span id="LabErr"></span></li>
-                    <li><input name="txtUName" type="text" id="txtUName" placeholder="携帯番号" class="s_input icon_name" /></li>
+                    <li><input name="txtUName" type="text" id="txtUName" placeholder="携帯番号 / ログインアカウント" class="s_input icon_name" /></li>
                     <li><input name="txtPassword" type="password" id="txtPassword" placeholder="パスワード" class="s_input icon_key" /></li>
                     <li class="autologin cf"><label class="fl"><input id="autoLogin" type="checkbox"  /><em>次回から自動ログイン</em></label></li>
                     <li><input type="button" name="btnLogin" value="ログイン" id="btnLogin" class="btn_red" /></li>
@@ -60,11 +60,7 @@
     $("#btnLogin").click(function () {
         var username = $("#txtUName").val();
         if(username.isBlank()){
-            $("#LabErr").html("携帯番号を入力してください！");
-            return;
-        }
-        if(!username.isPhone()){
-            $("#LabErr").html("携帯番号の形式が正しくありません！");
+            $("#LabErr").html("携帯番号またはログインアカウントを入力してください！");
             return;
         }
         var password = $("#txtPassword").val();

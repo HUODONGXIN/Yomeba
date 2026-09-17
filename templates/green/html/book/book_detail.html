@@ -268,7 +268,7 @@
     }
 </script>
 <script language="javascript" type="text/javascript">
-    //查询是否在书架
+    //本棚にあるかどうかを確認
     $.ajax({
         type: "get",
         url: "/user/queryIsInShelf",
@@ -282,7 +282,7 @@
 
 
             } else if (data.code == 1001) {
-                //未登录
+                //未ログイン
 
             } else {
                 layer.alert(data.msg);
@@ -390,7 +390,7 @@
                 if (data.code == 200) {
                     $("#likeCount"+commentId).text("("+data.data+")")
                 } else if (data.code == 1001) {
-                    //未登录
+                    //未ログイン
                     location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
 
                 }  else {
@@ -415,7 +415,7 @@
                 if (data.code == 200) {
                     $("#unLikeCount"+commentId).text("("+data.data+")")
                 } else if (data.code == 1001) {
-                    //未登录
+                    //未ログイン
                     location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
 
                 }  else {

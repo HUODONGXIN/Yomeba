@@ -4,9 +4,9 @@
 <head th:replace="common/header :: common_head(~{::title},~{::meta},~{::link},~{})">
     <title th:utext="${book.bookName}+'_'+${bookIndex.indexName}+'_'+${application.website.name}"></title>
     <meta name="keywords"
-          th:content="${book.bookName}+'官方首发,'+${book.bookName}+'小说,'+${book.bookName}+'最新章节,'+${book.bookName}+'txt下载,'+${book.bookName}+'无弹窗,'+${book.bookName}+'吧,'+${book.bookName}+'离线完本'"/>
+          th:content="${book.bookName}+'公式初掲載,'+${book.bookName}+'小説,'+${book.bookName}+'最新話,'+${book.bookName}+'txtダウンロード,'+${book.bookName}+'ポップアップなし,'+${book.bookName}+'完本オフライン'"/>
     <meta name="description"
-          th:content="${book.bookName}+','+${book.bookName}+'小说阅读,'+${application.website.name}+'提供'+${book.bookName}+'首发最新章节及txt下载,'+${book.bookName}+'最新更新章节,精彩尽在'+${application.website.name}+'。'"/>
+          th:content="${book.bookName}+','+${book.bookName}+'小説読書,'+${application.website.name}+'は'+${book.bookName}+'の初掲載最新話およびtxtダウンロードを提供,'+${book.bookName}+'最新更新話は'+${application.website.name}+'へ。'"/>
     <link rel="stylesheet" href="/css/read.css"/>
     <link href="/css/book.css" rel="stylesheet"/>
 
@@ -57,34 +57,34 @@
             <div class="read_menu">
                 <div class="menu_left" style="">
                     <ul>
-                        <li><a class="ico_catalog" th:href="'/book/indexList-'+${book.id}+'.html'" title="目录">
-                            <b>目录</b></a></li>
-                        <li><a class="ico_page" th:href="'/book/'+${book.id}+'.html'" title="返回书页"><b>书页</b></a></li>
-                        <li class="li_shelf" id="cFavs"><a class="ico_shelf" href="javascript:void(0);" title="加入书架"
-                                                           onclick="javascript:BookDetail.AddFavorites(37,1959973,1);"><b>加书架</b></a>
+                        <li><a class="ico_catalog" th:href="'/book/indexList-'+${book.id}+'.html'" title="目次">
+                            <b>目次</b></a></li>
+                        <li><a class="ico_page" th:href="'/book/'+${book.id}+'.html'" title="書籍ページへ"><b>書籍ページ</b></a></li>
+                        <li class="li_shelf" id="cFavs"><a class="ico_shelf" href="javascript:void(0);" title="本棚に追加"
+                                                           onclick="javascript:BookDetail.AddFavorites(37,1959973,1);"><b>本棚に追加</b></a>
                         </li>
                         <li class="li_shelfed" style="display: none;"><a class="ico_shelfed" href="javascript:void(0);"
-                                                                         title="已收藏"><b>已收藏</b></a></li>
+                                                                         title="お気に入り登録済み"><b>お気に入り登録済み</b></a></li>
 
-                        <li><a class="ico_comment" th:href="'/book/comment-'+${book.id}+'.html'" title="评论">
-                            <b>评论</b></a></li>
-                        <li><a class="ico_setup" href="javascript:void(0);" title="设置"><b>设置</b></a></li>
+                        <li><a class="ico_comment" th:href="'/book/comment-'+${book.id}+'.html'" title="レビュー">
+                            <b>レビュー</b></a></li>
+                        <li><a class="ico_setup" href="javascript:void(0);" title="設定"><b>設定</b></a></li>
                     </ul>
                 </div>
                 <div class="menu_right" style="position: fixed; bottom: 0">
                     <ul>
                         <li><a class="ico_pagePrev"
                                th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'"
-                               title="上一章"><i>上一章</i></a></li>
+                               title="前の話"><i>前の話</i></a></li>
                         <li><a class="ico_pageNext"
                                th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'"
-                               title="下一章"><i>下一章</i></a></li>
+                               title="次の話"><i>次の話</i></a></li>
                     </ul>
                 </div>
             </div>
             <div class="readWrap">
                 <div class="bookNav">
-                    <a href="/">首页 </a>&gt; <a th:href="'/book/bookclass.html?c='+${book.catId}"
+                    <a href="/">ホーム </a>&gt; <a th:href="'/book/bookclass.html?c='+${book.catId}"
                                                th:text="${book.catName}">
                 </a>&gt; <a th:href="'/book/'+${book.id}+'.html'" th:utext="${book.bookName}">
 
@@ -97,11 +97,11 @@
                             <h1 th:utext="${bookIndex.indexName}">
                             </h1>
                             <div class="textinfo">
-                                类别：<a th:href="'/book/bookclass.html?c='+${book.catId}" th:text="${book.catName}"></a>
-                                作者：<a th:href="'javascript:searchByK(\''+${book.authorName}+'\')'"
+                                ジャンル：<a th:href="'/book/bookclass.html?c='+${book.catId}" th:text="${book.catName}"></a>
+                                著者：<a th:href="'javascript:searchByK(\''+${book.authorName}+'\')'"
                                       th:utext="${book.authorName}"></a><span
-                                    th:text="'字数：'+${bookIndex.wordCount}"></span><span
-                                    th:text="'更新时间：'+${#dates.format(bookIndex.updateTime, 'yy/MM/dd HH:mm:ss')}"></span>
+                                    th:text="'文字数：'+${bookIndex.wordCount}"></span><span
+                                    th:text="'更新時間：'+${#dates.format(bookIndex.updateTime, 'yy/MM/dd HH:mm:ss')}"></span>
                             </div>
                         </div>
                         <div class="txtwrap" th:if="${needBuy}">
@@ -113,18 +113,18 @@
                                 <div class="pc_bar" style="display: none;">
                                     <a href="javascript:void(0);" class="icon_pc"
                                        onclick="javascript:uFans.startSupportRead();">
-                                        <span><i class="icon_yb"></i><em>捧场</em></span>
+                                        <span><i class="icon_yb"></i><em>応援</em></span>
                                     </a>
                                 </div>
                             </div>
                             <div id="showBooking" class="orderBox">
-                                <h3>此章为VIP章节，需要订阅后才能继续阅读</h3>
+                                <h3>この話はVIP話です。購読後に続きを読めます</h3>
                                 <form method="post" action="./2052117.html?bid=302&amp;cid=2052117" id="Form1">
                                     <ul class="order_list">
-                                        <li>价格：<span class="red" th:text="${bookIndex.bookPrice}+'屋币(1元=100屋币)'"></span>
+                                        <li>価格：<span class="red" th:text="${bookIndex.bookPrice}+'yomiコイン(1元=100yomiコイン)'"></span>
                                         </li>
                                         <li id="panelPay" class="btns"><a class="btn_red"
-                                                                          href="javascript:buyBookIndex()">购买</a></li>
+                                                                          href="javascript:buyBookIndex()">購入</a></li>
 
                                     </ul>
                                     <input type="hidden" name="HidCId" id="HidCId" value="2052117">
@@ -141,7 +141,7 @@
                                 <div class="pc_bar" style="display: none;">
                                     <a href="javascript:void(0);" class="icon_pc"
                                        onclick="javascript:uFans.startSupportRead();">
-                                        <span><i class="icon_yb"></i><em>捧场</em></span>
+                                        <span><i class="icon_yb"></i><em>応援</em></span>
                                     </a>
                                 </div>
                             </div>
@@ -152,10 +152,10 @@
                 </div>
                 <div class="nextPageBox">
                     <a class="prev"
-                       th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'">上一章</a>
+                       th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'">前の話</a>
                     <a class="dir" th:href="'/book/indexList-'+${book.id}+'.html'"
-                    >目录</a> <a class="next"
-                               th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'">下一章</a>
+                    >目次</a> <a class="next"
+                               th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'">次の話</a>
                 </div>
             </div>
         </div>
@@ -163,7 +163,7 @@
     <div class="readPopup qrBox" style="display: none">
         <a class="closePopup" href="javascript:void(0);" onclick="javascript:$('.maskBox,.qrBox').hide();"></a>
         <div class="popupTit">
-            <h3>手机阅读</h3>
+            <h3>スマホで読む</h3>
         </div>
         <div class="qrList">
             <ul>
@@ -173,33 +173,33 @@
     <div class="readPopup setupBox" style="display: none;">
         <a class="closePopup" href="javascript:void(0);" onclick="javascript:$('.maskBox,.setupBox').hide();"></a>
         <div class="popupTit">
-            <h3>设置</h3>
+            <h3>設定</h3>
         </div>
         <div class="setupList">
             <ul>
                 <li class="readTheme">
-                    <em class="tit">阅读主题：</em>
+                    <em class="tit">読書テーマ：</em>
                     <a id="setup_color_white" class="white current"
-                       href="javascript:void(0);" title="白色" onclick="javascript:BookDetail.SetBackUpColor(1);"></a><a
-                        id="setup_color_green" class="green" href="javascript:void(0);" title="绿色"
+                       href="javascript:void(0);" title="白" onclick="javascript:BookDetail.SetBackUpColor(1);"></a><a
+                        id="setup_color_green" class="green" href="javascript:void(0);" title="緑"
                         onclick="javascript:BookDetail.SetBackUpColor(2);"></a><a id="setup_color_pink" class="pink"
-                                                                                  href="javascript:void(0);" title="粉色"
+                                                                                  href="javascript:void(0);" title="ピンク"
                                                                                   onclick="javascript:BookDetail.SetBackUpColor(3);"></a><a
-                        id="setup_color_yellow" class="yellow" href="javascript:void(0);" title="黄色"
+                        id="setup_color_yellow" class="yellow" href="javascript:void(0);" title="黄"
                         onclick="javascript:BookDetail.SetBackUpColor(4);"></a><a id="setup_color_gray" class="gray"
-                                                                                  href="javascript:void(0);" title="灰色"
+                                                                                  href="javascript:void(0);" title="グレー"
                                                                                   onclick="javascript:BookDetail.SetBackUpColor(5);"></a><a
-                        id="setup_color_night" class="night" href="javascript:void(0);" title="夜间"
+                        id="setup_color_night" class="night" href="javascript:void(0);" title="夜間"
                         onclick="javascript:BookDetail.SetBackUpColor(6);"></a></li>
-                <li class="setFont setBtn"><em class="tit">正文字体：</em> <a id="setup_font_yahei" class="setYahei current"
+                <li class="setFont setBtn"><em class="tit">本文フォント：</em> <a id="setup_font_yahei" class="setYahei current"
                                                                          href="javascript:void(0);"
-                                                                         onclick="javascript:BookDetail.SetReadFontFamily(0);">雅黑</a>
+                                                                         onclick="javascript:BookDetail.SetReadFontFamily(0);">ゴシック</a>
                     <a id="setup_font_simsun" class="setSimsun" href="javascript:void(0);"
-                       onclick="javascript:BookDetail.SetReadFontFamily(1);">宋体</a> <a id="setup_font_ks" class="setKs"
+                       onclick="javascript:BookDetail.SetReadFontFamily(1);">明朝</a> <a id="setup_font_ks" class="setKs"
                                                                                        href="javascript:void(0);"
-                                                                                       onclick="javascript:BookDetail.SetReadFontFamily(2);">楷书</a>
+                                                                                       onclick="javascript:BookDetail.SetReadFontFamily(2);">楷書</a>
                 </li>
-                <li class="fontSize setBtn"><em class="tit">字体大小：</em> <a class="small" href="javascript:void(0);"
+                <li class="fontSize setBtn"><em class="tit">文字サイズ：</em> <a class="small" href="javascript:void(0);"
                                                                           onclick="javascript:BookDetail.SetReadFont(-2);">A-</a><span
                         class="current_font"
                         id="cFonts">
@@ -224,17 +224,17 @@
 <div id="screenInput" class="screen_toolbar" >
     <div style="height: 5px" class="layui-col-xs2 layui-col-sm3 layui-col-md4 layui-col-lg4"></div>
     <div class="layui-col-xs6 layui-col-sm4 layui-col-md4 layui-col-lg4">
-        <input type="text" id="screenBulletText" required lay-verify="required" placeholder="请输入弹幕内容,右下角开关可控制弹幕是否开启" autocomplete="off"
+        <input type="text" id="screenBulletText" required lay-verify="required" placeholder="弹幕コメントを入力してください。右下のスイッチで弹幕のON/OFFを制御できます" autocomplete="off"
                class="layui-input">
 
     </div>
     <div class="layui-col-xs2 layui-col-sm1 layui-col-md1 layui-col-lg1">
-        <button class="layui-btn  layui-btn-danger send">发送</button>
+        <button class="layui-btn  layui-btn-danger send">送信</button>
     </div>
 </div>
 <form id="screenSwitch" class="layui-form">
-    <div class="layui-form-item" style="position: fixed;right: 0px;bottom: 100px" title="弹幕开关">
-        &lt;!&ndash; <label  class="layui-form-label" style="opacity:0.5;font-weight: bold;color: red;">弹幕</label>&ndash;&gt;
+    <div class="layui-form-item" style="position: fixed;right: 0px;bottom: 100px" title="弹幕ON/OFF">
+        &lt;!&ndash; <label  class="layui-form-label" style="opacity:0.5;font-weight: bold;color: red;">弾幕</label>&ndash;&gt;
         <div class="layui-input-block">
             <input class="clear" type="checkbox" name="switch" lay-skin="switch">
         </div>
@@ -259,7 +259,7 @@
             $(".logo img").attr("src", logoDark);
         }
     }
-    //查询是否在书架
+    //本棚にあるかどうかを確認
     $.ajax({
         type: "get",
         url: "/user/queryIsInShelf",
@@ -268,9 +268,9 @@
         success: function (data) {
             if (data.code == 200) {
                 if (data.data) {
-                    $("#cFavs").html("<a class=\"ico_shelf\" href=\"javascript:void(0);\"><b>已收藏</b></a>");
+                    $("#cFavs").html("<a class=\"ico_shelf\" href=\"javascript:void(0);\"><b>お気に入り登録済み</b></a>");
                 }
-                //添加阅读记录
+                //読書履歴を追加
                 $.ajax({
                     type: "POST",
                     url: "/user/addReadHistory",
@@ -285,7 +285,7 @@
 
 
             } else if (data.code == 1001) {
-                //未登录
+                //未ログイン
 
             } else {
                 layer.alert(data.msg);
@@ -293,7 +293,7 @@
 
         },
         error: function () {
-            layer.alert('网络异常');
+            layer.alert('ネットワークエラー');
         }
     })
 
@@ -379,7 +379,7 @@
 
 
                 } else if (data.code == 1001) {
-                    //未登录
+                    //未ログイン
                     location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
 
                 } else {
@@ -388,7 +388,7 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
 
