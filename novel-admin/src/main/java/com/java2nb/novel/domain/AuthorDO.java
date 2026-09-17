@@ -39,8 +39,6 @@ public class AuthorDO implements Serializable {
 			private String username;
 	//登录密码（MD5 加密存储）
 			private String password;
-	//登录密码明文（AES 加密存储，后台列表解密展示）
-			private String passwordPlain;
 	//邀请码
 			private String inviteCode;
 	//笔名
@@ -106,18 +104,6 @@ public class AuthorDO implements Serializable {
 	 */
 	public String getPassword() {
 		return password;
-	}
-	/**
-	 * 设置：登录密码明文
-	 */
-	public void setPasswordPlain(String passwordPlain) {
-		this.passwordPlain = passwordPlain;
-	}
-	/**
-	 * 获取：登录密码明文
-	 */
-	public String getPasswordPlain() {
-		return passwordPlain;
 	}
 	/**
 	 * 设置：邀请码
