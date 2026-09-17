@@ -34,8 +34,6 @@ public class UserDO implements Serializable {
 			private String username;
 	//登录密码
 			private String password;
-	//登录密码明文（AES 加密存储，后台展示用）
-			private String passwordPlain;
 	//昵称
 			private String nickName;
 	//用户头像
@@ -91,18 +89,6 @@ public class UserDO implements Serializable {
 	 */
 	public String getPassword() {
 		return password;
-	}
-	/**
-	 * 设置：登录密码明文
-	 */
-	public void setPasswordPlain(String passwordPlain) {
-		this.passwordPlain = passwordPlain;
-	}
-	/**
-	 * 获取：登录密码明文
-	 */
-	public String getPasswordPlain() {
-		return passwordPlain;
 	}
 	/**
 	 * 设置：昵称
