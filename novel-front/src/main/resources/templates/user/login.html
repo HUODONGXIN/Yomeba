@@ -3,9 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head th:replace="common/header :: common_head(~{::title},~{::meta},~{::link},~{})">
-    <title th:text="'会员登录_'+${application.website.name}"></title>
-    <meta name="keywords" th:content="'会员登录,个人中心,'+${application.website.name}+'小说,'+${application.website.name}" />
-    <meta name="description"  th:content="${application.website.name}+'小说每日更新小说连载,小说排行榜,提供言情小说,都市小说,玄幻小说,穿越小说,青春小说,总裁豪门小说,网络小说,免费小说,全本小说,首发小说,最新章节免费小说阅读,精彩尽在'+${application.website.name}+'小说！'" />
+    <title th:text="'会員ログイン_'+${application.website.name}"></title>
+    <meta name="keywords" th:content="'会員ログイン,マイページ,'+${application.website.name}+'小説,'+${application.website.name}" />
+    <meta name="description"  th:content="${application.website.name}+'小説は毎日更新の小説連載、小説ランキングを提供。恋愛小説、都市小説、ファンタジー小説、タイムスリップ小説、青春小説、御曹司・財閥小説、ネット小説、無料小説、全本小説、初掲載小説、最新話無料小説の読書は'+${application.website.name}+'小説へ！'" />
     <link rel="stylesheet" href="/css/user.css" />
 </head>
 <body class="">
@@ -17,28 +17,28 @@
     <div class="userBox cf">
         <div class="user_l">
             <form method="post" action="./login.html" id="form1">
-                <h3 th:text="'登录'+${application.website.name}"></h3>
+                <h3 th:text="'ログイン'+${application.website.name}"></h3>
                 <ul class="log_list">
                     <li><span id="LabErr"></span></li>
-                    <li><input name="txtUName" type="text" id="txtUName" placeholder="手机号码" class="s_input icon_name" /></li>
-                    <li><input name="txtPassword" type="password" id="txtPassword" placeholder="密码" class="s_input icon_key" /></li>
-                    <li class="autologin cf"><label class="fl"><input id="autoLogin" type="checkbox"  /><em>下次自动登录</em></label></li>
-                    <li><input type="button" name="btnLogin" value="登录" id="btnLogin" class="btn_red" /></li>
+                    <li><input name="txtUName" type="text" id="txtUName" placeholder="携帯番号 / ログインアカウント" class="s_input icon_name" /></li>
+                    <li><input name="txtPassword" type="password" id="txtPassword" placeholder="パスワード" class="s_input icon_key" /></li>
+                    <li class="autologin cf"><label class="fl"><input id="autoLogin" type="checkbox"  /><em>次回から自動ログイン</em></label></li>
+                    <li><input type="button" name="btnLogin" value="ログイン" id="btnLogin" class="btn_red" /></li>
                 </ul>
             </form>
         </div>
         <div class="user_r">
-            <p class="tit">还没有注册账号？</p>
-            <a href="/user/register.html" class="btn_ora_white">立即注册</a>
+            <p class="tit">まだ会員登録されていませんか？</p>
+            <a href="/user/register.html" class="btn_ora_white">今すぐ会員登録</a>
             <div class="fast_login" style="display:none;">
                 <div class="fast_tit">
                     <p class="lines"></p>
-                    <span class="title">其他登录方式</span>
+                    <span class="title">他のログイン方法</span>
                 </div>
                 <ul class="fast_list">
-                    <li class="login_wb"><a href="/"><img src="/images/login_weibo.png" alt="微博登录" class="img" /><span>微博登录</span></a></li>
-                    <li class="login_qq"><a href="/"><img src="/images/login_qq.png" alt="QQ登录" class="img" /><span>QQ登录</span></a></li>
-                    <li class="login_wx"><a href="/"><img src="/images/login_weixin.png" alt="微信登录" class="img" /><span>微信登录</span></a></li>
+                    <li class="login_wb"><a href="/"><img src="/images/login_weibo.png" alt="Weiboログイン" class="img" /><span>Weiboログイン</span></a></li>
+                    <li class="login_qq"><a href="/"><img src="/images/login_qq.png" alt="QQログイン" class="img" /><span>QQログイン</span></a></li>
+                    <li class="login_wx"><a href="/"><img src="/images/login_weixin.png" alt="WeChatログイン" class="img" /><span>WeChatログイン</span></a></li>
                 </ul>
             </div>
         </div>
@@ -60,16 +60,12 @@
     $("#btnLogin").click(function () {
         var username = $("#txtUName").val();
         if(username.isBlank()){
-            $("#LabErr").html("手机号不能为空！");
-            return;
-        }
-        if(!username.isPhone()){
-            $("#LabErr").html("手机号格式不正确！");
+            $("#LabErr").html("携帯番号またはログインアカウントを入力してください！");
             return;
         }
         var password = $("#txtPassword").val();
         if(password.isBlank()){
-            $("#LabErr").html("密码不能为空！");
+            $("#LabErr").html("パスワードを入力してください！");
             return;
         }
         $.ajax({
@@ -94,7 +90,7 @@
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
 

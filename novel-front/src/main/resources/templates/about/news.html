@@ -2,10 +2,10 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head th:replace="common/header :: common_head(~{::title},~{::meta},~{::link},~{})">
-    <title th:text="'新闻公共_'+${application.website.name}"></title>
-    <meta name="keywords" content="新闻公告,小说,小说网,言情小说,都市小说,玄幻小说,穿越小说,青春小说,总裁豪门小说,网络小说,免费小说,全本小说,原创网络文学"/>
+    <title th:text="'お知らせ_'+${application.website.name}"></title>
+    <meta name="keywords" content="お知らせ,小説,小説サイト,現代恋愛小説,都市恋愛小説,ファンタジー小説,タイムスリップ小説,青春学園小説,社長ロマンス小説,ネット小説,無料小説,完本小説,オリジナルネット文学"/>
     <meta name="description"
-          th:content="${application.website.name}+'小说每日更新小说连载,小说排行榜,提供言情小说,都市小说,玄幻小说,穿越小说,青春小说,总裁豪门小说,网络小说,免费小说,全本小说,首发小说,最新章节免费小说阅读,精彩尽在'+${application.website.name}+'小说！'"/>
+          th:content="${application.website.name}+'小説を毎日更新中。小説ランキング、現代恋愛小説、都市恋愛小説、ファンタジー小説、タイムスリップ小説、青春学園小説、社長ロマンス小説、ネット小説、無料小説、完本小説、最新話を無料で読めます。'+${application.website.name}+'小説でお楽しみください！'"/>
     <link rel="stylesheet" href="/css/about.css"/>
 </head>
 <body class="body">
@@ -66,21 +66,21 @@ v
                         layui.use('laypage', function () {
                             var laypage = layui.laypage;
 
-                            //执行一个laypage实例
+                            //laypageインスタンスを実行
                             laypage.render({
-                                elem: 'newsPage' //注意，这里的 test1 是 ID，不用加 # 号
-                                , count: data.data.total //数据总数，从服务端得到,
+                                elem: 'newsPage' //注意：ここは ID。# は付けない # 号
+                                , count: data.data.total //データ総数。サーバーから取得,
                                 , curr: data.data.pageNum
                                 , limit: data.data.pageSize
                                 , jump: function (obj, first) {
 
 
-                                    //obj包含了当前分页的所有参数，比如：
-                                    console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-                                    console.log(obj.limit); //得到每页显示的条数
+                                    //objには現在のページの全パラメータが含まれる。例：
+                                    console.log(obj.curr); //現在のページを取得し、サーバーに該当ページのデータを要求。
+                                    console.log(obj.limit); //1ページあたりの表示件数を取得
 
 
-                                    //首次不执行
+                                    //初回は実行しない
                                     if (!first) {
                                         search(obj.curr, obj.limit);
                                     } else {
@@ -99,7 +99,7 @@ v
 
             },
             error: function () {
-                layer.alert('网络异常');
+                layer.alert('ネットワークエラー');
             }
         })
 
