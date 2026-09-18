@@ -30,7 +30,7 @@ function AddToFavorites(isTip)
             window.external.AddFavorite(url, title);
         else {
             if(isTip){
-                alert("该浏览器不支持自动收藏，请点击Ctrl+D手动收藏！");
+                alert("このブラウザは自動ブックマークに対応していません。Ctrl+Dで手動登録してください！");
             }
         }
     }

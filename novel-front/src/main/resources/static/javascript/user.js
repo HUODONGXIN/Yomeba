@@ -40,7 +40,7 @@ var UserUtil = {
         }
         else {
             layer.open({
-                content: '手机号码和验证码必须填写',
+                content: '携帯番号と認証コードを入力してください',
                 style: UserUtil.msgStyle,
                 time: 2
             });
@@ -55,7 +55,7 @@ var UserUtil = {
         }
         else {
             layer.open({
-                content: '手机号码和验证码必须填写',
+                content: '携帯番号と認証コードを入力してください',
                 style: UserUtil.msgStyle,
                 time: 2
             });
@@ -63,13 +63,13 @@ var UserUtil = {
     },
     RegSmsWait: function () {
         if (secondStep > 0) {
-            $("#btnSendSms").val("重新发送(" + secondStep + ")");
+            $("#btnSendSms").val("再送信(" + secondStep + ")");
             secondStep--;
             setTimeout("UserUtil.RegSmsWait()", 1000);
         }
         else {
             secondStep = 180;
-            $("#btnSendSms").val("重新获取验证码");
+            $("#btnSendSms").val("認証コードを再取得");
             $("#btnSendSms").removeAttr("disabled");
             $("#txtUName").removeAttr("readonly");
         }
