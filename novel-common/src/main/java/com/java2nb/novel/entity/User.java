@@ -14,20 +14,20 @@ public class User {
     private Long id;
 
 
-    @NotBlank(groups = {AddGroup.class}, message = "手机号不能为空！")
-    @Pattern(groups = {AddGroup.class}, regexp = "^1[3|4|5|6|7|8|9][0-9]{9}$", message = "手机号格式不正确！")
+    @NotBlank(groups = {AddGroup.class}, message = "携帯番号を入力してください！")
+    @Pattern(groups = {AddGroup.class}, regexp = "^0[789]0[0-9]{8}$", message = "携帯番号の形式が正しくありません！")
     @Null(groups = {UpdateGroup.class})
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     private String username;
 
-    @NotBlank(groups = {AddGroup.class}, message = "密码不能为空！")
+    @NotBlank(groups = {AddGroup.class}, message = "パスワードを入力してください！")
     @Null(groups = {UpdateGroup.class})
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     private String password;
 
     @Null(groups = {AddGroup.class})
     @Pattern(groups = {
-        UpdateGroup.class}, regexp = "[\u4E00-\u9FA5A-Za-z0-9_]{1,11}", message = "昵称格式不正确！")
+        UpdateGroup.class}, regexp = "[\u4E00-\u9FA5A-Za-z0-9_]{1,11}", message = "ニックネームの形式が正しくありません！")
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     private String nickName;
 
