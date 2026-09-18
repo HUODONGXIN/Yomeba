@@ -98,7 +98,8 @@
             dataType: "json",
             success: function (data) {
                 if (data.code == 200) {
-                    window.location.href = "/user/login.html";
+                    $.cookie('Authorization', data.data.token, {path: '/'});
+                    window.location.href = "/";
                 } else {
                     layer.alert(data.msg);
                 }
