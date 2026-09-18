@@ -177,7 +177,7 @@ function getQueryVariable(variable) {
 }
 
 String.prototype.isPhone = function () {
-    var strTemp = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
+    var strTemp = /^0[789]0[0-9]{8}$/;
     if (strTemp.test(this)) {
         return true;
     }
