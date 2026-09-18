@@ -26,7 +26,14 @@ public class CommonExceptionHandler {
     @ExceptionHandler({BindException.class})
     public RestResult<Void> handlerBindException(BindException e) {
         log.error(e.getMessage(), e);
-        return RestResult.fail(SysResultCode.PARAM_ERROR);
+        String msg = e.getBindingResult().getFieldErrors().stream()
+                .map(fe -> fe.getDefaultMessage())
+                .filter(m -> m != null && !m.isEmpty())
+                .findFirst().orElse(SysResultCode.PARAM_ERROR.getMsg());
+        RestResult<Void> result = new RestResult<>();
+        result.setCode(SysResultCode.PARAM_ERROR.getCode());
+        result.setMsg(msg);
+        return result;
     }
 
     @ExceptionHandler({BusinessException.class})
