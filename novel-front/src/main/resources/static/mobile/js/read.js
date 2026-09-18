@@ -1,13 +1,13 @@
 var checkbg = "#A7A7A7";
-var nr_body = document.getElementById("read");//页面body
-var huyandiv = document.getElementById("huyandiv");//护眼div
-var lightdiv = document.getElementById("lightdiv");//灯光div
-var fontfont = document.getElementById("fontfont");//字体div
-var fontbig = document.getElementById("fontbig");//大字体div
-var fontmiddle = document.getElementById("fontmiddle");//中字体div
-var fontsmall = document.getElementById("fontsmall");//小字体div
-var nr1 =  document.getElementById("chaptercontent");//内容div
-//内容页用户设置
+var nr_body = document.getElementById("read");//ページのbody
+var huyandiv = document.getElementById("huyandiv");//アイケアdiv
+var lightdiv = document.getElementById("lightdiv");//ライトdiv
+var fontfont = document.getElementById("fontfont");//フォントdiv
+var fontbig = document.getElementById("fontbig");//大きい文字div
+var fontmiddle = document.getElementById("fontmiddle");//中文字div
+var fontsmall = document.getElementById("fontsmall");//小さい文字div
+var nr1 =  document.getElementById("chaptercontent");//コンテンツdiv
+//コンテンツページのユーザー設定
 function nr_setbg(intype){
     var huyandiv = document.getElementById("huyandiv");
     var light = document.getElementById("lightdiv");
@@ -22,7 +22,7 @@ function nr_setbg(intype){
         }
     }
     if(intype == "light"){
-        if(light.innerHTML == "关灯"){
+        if(light.innerHTML == "消灯"){
             document.cookie="light=yes;path=/";
             set("light","yes");
         }
@@ -45,7 +45,7 @@ function nr_setbg(intype){
     }
 }
 
-//内容页读取设置
+//コンテンツページの設定読み込み
 function getset(){
     var strCookie=document.cookie;
     var arrCookie=strCookie.split("; ");
@@ -73,7 +73,7 @@ function getset(){
 }
 
 
-//内容页读取设置
+//コンテンツページの設定読み込み
 function getset1(){
     var strCookie=document.cookie;
     var arrCookie=strCookie.split("; ");
@@ -103,12 +103,12 @@ function getset1(){
     }
 }
 
-//内容页应用设置
+//コンテンツページの設定適用
 function set(intype,p){
 
-    //var nr_title =  document.getElementById("top1");//文章标题
-    //var nr_title =  document.getElementById("nr_title");//文章标题
-    //var shuqian_2 = document.getElementById("shuqian_2");//书签链接
+    //var nr_title =  document.getElementById("top1");//記事タイトル
+    //var nr_title =  document.getElementById("nr_title");//記事タイトル
+    //var shuqian_2 = document.getElementById("shuqian_2");//しおりリンク
 
     //var pt_prev =  document.getElementById("pt_prev1");
     //var pt_mulu =  document.getElementById("pt_mulu1");
@@ -118,17 +118,17 @@ function set(intype,p){
     //var pb_next =  document.getElementById("pb_next1");
 
 
-    //灯光
+    //ライト
     if(intype == "light"){
         if(p == "yes"){
-            //关灯
-            lightdiv.innerHTML = "开灯";
+            //消灯
+            lightdiv.innerHTML = "点灯";
             lightdiv.className="button lighton";
             nr_body.style.backgroundColor = "#000";
             //nr_title.style.color = "#ccc";
             nr1.style.color = "#999";
 
-            huyandiv.innerHTML = "护眼";
+            huyandiv.innerHTML = "アイケア";
             huyandiv.className="button huyanon";
             //pt_prev.style.cssText = "background-color:#222;color:#0065B5;";
             //pt_mulu.style.cssText = "background-color:#222;color:#0065B5;";
@@ -139,8 +139,8 @@ function set(intype,p){
             //shuqian_2.style.color = "#999";
         }
         else if(p == "no"){
-            //开灯
-            lightdiv.innerHTML = "关灯";
+            //点灯
+            lightdiv.innerHTML = "消灯";
             lightdiv.className="button lightoff";
             nr_body.style.backgroundColor = "#fff";
             nr1.style.color = "#000";
@@ -153,12 +153,12 @@ function set(intype,p){
             //pb_next.style.cssText = "";
             //shuqian_2.style.color = "#000";
 
-            huyandiv.innerHTML = "护眼";
+            huyandiv.innerHTML = "アイケア";
             huyandiv.className="button huyanon";
         }
         else if(p == "huyan"){
-            //护眼
-            lightdiv.innerHTML = "关灯";
+            //アイケア
+            lightdiv.innerHTML = "消灯";
             lightdiv.className="button lightoff";
             huyandiv.className="button huyanoff";
             nr_body.style.backgroundColor = "#005716";
@@ -172,7 +172,7 @@ function set(intype,p){
             shuqian_2.style.color = "#000";
         }
     }
-    //字体
+    //フォント
     if(intype == "font"){
         fontsmall.className="sizebg";
         if(p == "big"){
