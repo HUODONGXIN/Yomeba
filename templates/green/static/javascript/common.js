@@ -6,11 +6,11 @@ var needLoginPath = ['/user/favorites.html', '/user/comment.html', '/user/feedba
 var isLogin = false;
 var url = window.location.search;
 
-//key(検索するキー)
+//key(需要检索的键）
 function getSearchString(key) {
     var str = url;
-    str = str.substring(1, str.length); // URLの?以降の文字を取得（先頭の?を除去）
-    // &で文字列を分割し、name=xiaoliのような要素配列を取得
+    str = str.substring(1, str.length); // 获取URL中?之后的字符（去掉第一位的问号）
+    // 以&分隔字符串，获得类似name=xiaoli这样的元素数组
     var arr = str.split("&");
 
     for (var i = 0; i < arr.length; i++) {
@@ -40,7 +40,7 @@ function searchByK(k) {
 $("#searchKey").keypress(function (even) {
     if (even.which == 13) {
         even.stopPropagation();
-        //Enterキー押下
+        //enter键按下
         searchByK();
     }
 });
@@ -58,7 +58,7 @@ if (!token) {
         location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
     }
 
-    $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">ログイン</a><a href=\"/user/register.html\" >会員登録</a>");
+    $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">登录</a><a href=\"/user/register.html\" >注册</a>");
 } else {
     $.ajax({
         type: "POST",
@@ -69,7 +69,7 @@ if (!token) {
             if (data.code == 200) {
                 $(".user_link").html("<i class=\"line mr20\">|</i>" +
                     "<a href=\"/user/userinfo.html\"  class=\"mr15\">" + data.data.nickName + "</a>" +
-                    "<a href=\"javascript:logout()\" >ログアウト</a>");
+                    "<a href=\"javascript:logout()\" >退出</a>");
                 ;
                 if ("/user/login.html" == window.location.pathname) {
                     var orginUrl = getSearchString("originUrl");
@@ -86,11 +86,11 @@ if (!token) {
                 if (needLoginPath.indexOf(window.location.pathname) != -1) {
                     location.href = '/user/login.html';
                 }
-                $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">ログイン</a><a href=\"/user/register.html\" >会員登録</a>");
+                $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">登录</a><a href=\"/user/register.html\" >注册</a>");
             }
         },
         error: function () {
-            layer.alert('ネットワークエラー');
+            layer.alert('网络异常');
         }
 
     });
@@ -98,7 +98,7 @@ if (!token) {
 
 
 String.prototype.isPhone = function () {
-    var strTemp = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
+    var strTemp = /^0[789]0[0-9]{8}$/;
     if (strTemp.test(this)) {
         return true;
     }
@@ -131,11 +131,11 @@ function isImg(str) {
 }
 
 
-//画像アップロードの検証
+//校验图片上传
 function checkPicUpload(file) {
 
     if (!isImg(file.value.substr(file.value.lastIndexOf(".")))) {
-        layer.alert('画像ファイルのみアップロードできます！');
+        layer.alert('只能上传图片格式的文件！');
         return false;
     }
     var fileSize = 0;
@@ -148,9 +148,9 @@ function checkPicUpload(file) {
     } else {
         fileSize = file.files[0].size;
     }
-    fileSize = Math.round(fileSize / 1024 * 100) / 100; //単位はKB
+    fileSize = Math.round(fileSize / 1024 * 100) / 100; //单位为KB
     if (fileSize >= 1024) {
-        layer.alert('アップロードできる画像サイズは1MB以下です！');
+        layer.alert('上传的图片大小不能超过1M！');
         return false;
     }
     return true;

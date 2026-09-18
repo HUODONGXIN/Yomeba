@@ -6,11 +6,11 @@ var needLoginPath = ['/user/favorites.html', '/user/comment.html', '/user/feedba
 var isLogin = false;
 var url = window.location.search;
 
-//key(検索するキー)
+//key(需要检索的键）
 function getSearchString(key) {
     var str = url;
-    str = str.substring(1, str.length); // URLの?以降の文字を取得（先頭の?を除去）
-    // &で文字列を分割し、name=xiaoliのような要素配列を取得
+    str = str.substring(1, str.length); // 获取URL中?之后的字符（去掉第一位的问号）
+    // 以&分隔字符串，获得类似name=xiaoli这样的元素数组
     var arr = str.split("&");
 
     for (var i = 0; i < arr.length; i++) {
@@ -40,7 +40,7 @@ function searchByK(k) {
 $("#searchKey").keypress(function (even) {
     if (even.which == 13) {
         even.stopPropagation();
-        //Enterキー押下
+        //enter键按下
         searchByK();
     }
 });
@@ -109,7 +109,7 @@ if (!token) {
         location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
     }
 
-    // $(".user_link").html("<a href=\"/user/login.html\">ログイン</a>｜<a href=\"/user/register.html\">会員登録</a>");
+    // $(".user_link").html("<a href=\"/user/login.html\">登录</a>｜<a href=\"/user/register.html\">注册</a>");
 } else {
     $.ajax({
         type: "POST",
@@ -137,11 +137,11 @@ if (!token) {
                 if (needLoginPath.indexOf(window.location.pathname) != -1) {
                     location.href = '/user/login.html';
                 }
-                // $(".user_link").html("<a href=\"/user/login.html\">ログイン</a>｜<a href=\"/user/register.html\">会員登録</a>");
+                // $(".user_link").html("<a href=\"/user/login.html\">登录</a>｜<a href=\"/user/register.html\">注册</a>");
             }
         },
         error: function () {
-            layer.alert('ネットワークエラー');
+            layer.alert('网络异常');
         }
 
     });
@@ -177,7 +177,7 @@ function getQueryVariable(variable) {
 }
 
 String.prototype.isPhone = function () {
-    var strTemp = /^1[3|4|5|6|7|8|9][0-9]{9}$/;
+    var strTemp = /^0[789]0[0-9]{8}$/;
     if (strTemp.test(this)) {
         return true;
     }
