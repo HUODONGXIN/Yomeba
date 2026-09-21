@@ -185,7 +185,7 @@
                                 "<span class='tag " + (book.bookStatus == 1 ? 'tag-done' : 'tag-serial') + "'>" + (book.bookStatus == 1 ? '完結' : '連載中') + "</span>" +
                                 "</div>" +
                                 "<div class='card-cat'>" + book.catName + "</div>" +
-                                "<div class='card-meta'>"累計クリック数" + book.visitCount + " | 昨日閲覧数" + book.yesterdayBuy + " | 作品文字数" + book.wordCount + " | " + new Date(Date.parse(book.lastIndexUpdateTime ? book.lastIndexUpdateTime : book.updateTime)).Format("yyyy-MM-dd hh:mm") + "更新</div>" +
+                                "<div class='card-meta'>累計クリック数" + book.visitCount + " | 昨日閲覧数" + book.yesterdayBuy + " | 作品文字数" + book.wordCount + " | " + new Date(Date.parse(book.lastIndexUpdateTime ? book.lastIndexUpdateTime : book.updateTime)).Format("yyyy-MM-dd hh:mm") + "更新</div>" +
                                 "</div>" +
                                 "<div class='card-opt' id='opt" + book.id + "'>" +
                                 "<a class='redBtn' href='/author/book_edit.html?bookId=" + book.id + "'>編集</a>" +
