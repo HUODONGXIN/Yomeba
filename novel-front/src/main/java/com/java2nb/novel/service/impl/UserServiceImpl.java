@@ -82,7 +82,26 @@ public class UserServiceImpl implements UserService {
         entity.setCreateTime(currentDate);
         entity.setUpdateTime(currentDate);
         entity.setPassword(MD5Util.MD5Encode(entity.getPassword(), Charsets.UTF_8.name()));
-        userMapper.insertSelective(entity);
+        // アカウントコード自動採番（重複時リトライ）
+        java.util.Random rnd = new java.util.Random();
+        String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        boolean inserted = false;
+        for (int retry = 0; retry < 10 && !inserted; retry++) {
+            StringBuilder sb = new StringBuilder(12);
+            sb.append(chars.charAt(rnd.nextInt(26)));
+            sb.append(chars.charAt(rnd.nextInt(26)));
+            for (int j = 0; j < 10; j++) sb.append(rnd.nextInt(10));
+            entity.setAccount(sb.toString());
+            try {
+                userMapper.insertSelective(entity);
+                inserted = true;
+            } catch (org.springframework.dao.DuplicateKeyException dup) {
+                // アカウント重複、リトライ
+            }
+        }
+        if (!inserted) {
+            throw new RuntimeException("アカウント採番に失敗");
+        }
         //生成UserDetail对象并返回
         UserDetails userDetails = new UserDetails();
         userDetails.setId(id);

@@ -20,6 +20,10 @@ public class User {
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     private String username;
 
+    /** アカウントコード（2大文字+10数字、自動採番） */
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    private String account;
+
     @NotBlank(groups = {AddGroup.class}, message = "パスワードを入力してください！")
     @Null(groups = {UpdateGroup.class})
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
@@ -77,6 +81,14 @@ public class User {
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
