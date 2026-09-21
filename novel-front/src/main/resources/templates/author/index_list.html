@@ -179,7 +179,7 @@
                                 " <td class=\"goread\" id='opt" + book.id + "'>" +
                                 "<a  class='redBtn' href='javascript:updateIndex(\"" + book.id + "\"," + book.isVip + ")'>変更  </a><br/>" +
                                 "<a  href='javascript:deleteIndex(\"" + book.id + "\")'>削除  </a><br/>" +
-                                (book.status == 1 ? "<a href='javascript:updateIndexStatus(\"" + book.id + "\",0)'>下架</a>" : "<a href='javascript:updateIndexStatus(\"" + book.id + "\",1)'>公開</a>") +
+                                (book.status == 1 ? "<a href='javascript:updateIndexStatus(\"" + book.id + "\",0)'>非公開</a>" : "<a href='javascript:updateIndexStatus(\"" + book.id + "\",1)'>公開</a>") +
                                 "</td>                     </tr>");
                         }
                         $("#bookList").html(bookListHtml);
@@ -231,7 +231,7 @@
     }
 
     function updateIndexStatus(indexId, status) {
-        layer.confirm(status == 1 ? 'この章を公開しますか？' : 'この章を下架しますか？', function () {
+        layer.confirm(status == 1 ? 'この章を公開しますか？' : 'この章を非公開にしますか？', function () {
             $.ajax({
                 type: "post",
                 url: "/author/updateIndexStatus",

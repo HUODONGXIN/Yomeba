@@ -61,17 +61,14 @@
                             <option value="1">女性向け</option>
                         </select>
                     </div>
-                    <div class="form-item"><b>ジャンル：</b>
-                        <select class="s_input" id="catId">
-                            <option value="1">ファンタジー</option>
-                            <option value="2">武侠仙侠</option>
-                            <option value="3">都市恋愛</option>
-                            <option value="4">歴史・軍事</option>
-                            <option value="5">SF・オカルト</option>
-                            <option value="6">ゲーム・スポーツ</option>
-                            <option value="7">女性向けチャンネル</option>
-                        </select>
-                        <input type="hidden" id="catName"/>
+                    <div class="form-item"><b>ジャンル（最大3つまで）：</b>
+                        <label style="margin-right:12px;"><input type="checkbox" class="catCb" value="1" data-name="ファンタジー" onclick="catCheck(this)">ファンタジー</label>
+                        <label style="margin-right:12px;"><input type="checkbox" class="catCb" value="2" data-name="武侠仙侠" onclick="catCheck(this)">武侠仙侠</label>
+                        <label style="margin-right:12px;"><input type="checkbox" class="catCb" value="3" data-name="都市恋愛" onclick="catCheck(this)">都市恋愛</label>
+                        <label style="margin-right:12px;"><input type="checkbox" class="catCb" value="4" data-name="歴史・軍事" onclick="catCheck(this)">歴史・軍事</label>
+                        <label style="margin-right:12px;"><input type="checkbox" class="catCb" value="5" data-name="SF・オカルト" onclick="catCheck(this)">SF・オカルト</label>
+                        <label style="margin-right:12px;"><input type="checkbox" class="catCb" value="6" data-name="ゲーム・スポーツ" onclick="catCheck(this)">ゲーム・スポーツ</label>
+                        <label><input type="checkbox" class="catCb" value="7" data-name="女性向けチャンネル" onclick="catCheck(this)">女性向けチャンネル</label>
                     </div>
                     <div class="form-item"><b>小説名：</b>
                         <input type="text" id="bookName" class="s_input"/>
@@ -88,7 +85,11 @@
                 <!-- 章节管理 -->
                 <div class="title cf">
                     <h2 class="fl">章リスト</h2>
-                    <div class="fr"><a href="javascript:addContent()" class="btn_red">新しい章を作成</a></div>
+                    <div class="fr">
+                        <a href="javascript:batchDelete()" class="btn_red" style="margin-right:8px;">一括削除</a>
+                        <a href="javascript:batchOffline()" class="btn_red" style="margin-right:8px;">一括非公開</a>
+                        <a href="javascript:addContent()" class="btn_red">新しい章を作成</a>
+                    </div>
                 </div>
 
                 <div id="noContentDiv">
@@ -102,7 +103,7 @@
                                 <th class="name">章名</th>
                                 <th class="goread">更新時間</th>
                                 <th class="goread">有料かどうか</th>
-                                <th class="goread">操作</th>
+                                <th class="goread"><input type="checkbox" id="checkAll" onclick="toggleAll(this)"> 操作</th>
                             </tr>
                             </thead>
                             <tbody id="bookList"></tbody>
@@ -138,10 +139,12 @@
                 var b = res.data;
                 bookStatus = b.status;
                 $("#workDirection").val(b.workDirection);
-                $("#catId").val(b.catId);
-                $("#catName").val(b.catName);
                 $("#bookName").val(b.bookName);
                 $("#bookDesc").val(b.bookDesc);
+                var catIds = (b.catId || "").split(",");
+                $(".catCb").each(function(){
+                    $(this).prop("checked", $.inArray($(this).val(), catIds) >= 0);
+                });
                 renderBookStatusBtn();
             }
         }
@@ -150,7 +153,7 @@
 
     function renderBookStatusBtn() {
         if (bookStatus == 1) {
-            $("#bookStatusBtn").html("<a href='javascript:toggleBookStatus(0)'>下架</a>");
+            $("#bookStatusBtn").html("<a href='javascript:toggleBookStatus(0)'>非公開</a>");
         } else {
             $("#bookStatusBtn").html("<a href='javascript:toggleBookStatus(1)'>公開</a>");
         }
@@ -164,8 +167,8 @@
                 'id': bookId,
                 'bookName': $("#bookName").val(),
                 'workDirection': $("#workDirection").val(),
-                'catId': $("#catId").val(),
-                'catName': $("#catId option:selected").text(),
+                'catId': getCheckedCats().join(","),
+                'catName': getCheckedCatNames().join(","),
                 'bookDesc': $("#bookDesc").val()
             },
             dataType: "json",
@@ -183,7 +186,7 @@
     }
 
     function toggleBookStatus(status) {
-        layer.confirm(status == 1 ? 'この作品を公開しますか？' : 'この作品を下架しますか？', function () {
+        layer.confirm(status == 1 ? 'この作品を公開しますか？' : 'この作品を非公開にしますか？', function () {
             $.ajax({
                 type: "post",
                 url: "/author/updateBookStatus",
@@ -205,6 +208,55 @@
         });
     }
 
+    var CAT_MAX = 3;
+    function catCheck(el) {
+        if ($(".catCb:checked").length > CAT_MAX) {
+            el.checked = false;
+            layer.msg("ジャンルは最大" + CAT_MAX + "つまでです");
+        }
+    }
+    function getCheckedCats() {
+        var arr = [];
+        $(".catCb:checked").each(function(){ arr.push($(this).val()); });
+        return arr;
+    }
+    function getCheckedCatNames() {
+        var arr = [];
+        $(".catCb:checked").each(function(){ arr.push($(this).data("name")); });
+        return arr;
+    }
+    function toggleAll(el) {
+        $(".idxCb").prop("checked", el.checked);
+    }
+    function getCheckedIndexIds() {
+        var arr = [];
+        $(".idxCb:checked").each(function(){ arr.push($(this).val()); });
+        return arr;
+    }
+    function batchDelete() {
+        var ids = getCheckedIndexIds();
+        if (ids.length == 0) { layer.msg("章を選択してください"); return; }
+        layer.confirm(ids.length + "件の章を削除しますか？", function () {
+            var done = 0;
+            ids.forEach(function (id) {
+                $.ajax({ type: "delete", url: "/author/deleteIndex/" + id, dataType: "json",
+                    complete: function () { done++; if (done == ids.length) { layer.msg('削除しました'); search(1, 5); } } });
+            });
+        });
+    }
+    function batchOffline() {
+        var ids = getCheckedIndexIds();
+        if (ids.length == 0) { layer.msg("章を選択してください"); return; }
+        layer.confirm(ids.length + "件の章を非公開にしますか？", function () {
+            var done = 0;
+            ids.forEach(function (id) {
+                $.ajax({ type: "post", url: "/author/updateIndexStatus",
+                    data: {'indexId': id, 'status': 0}, dataType: "json",
+                    complete: function () { done++; if (done == ids.length) { layer.msg('操作完了'); search(1, 5); } } });
+            });
+        });
+    }
+
     function search(curr, limit) {
         $.ajax({
             type: "get",
@@ -222,13 +274,14 @@
                         for (var i = 0; i < bookList.length; i++) {
                             var book = bookList[i];
                             bookListHtml += (" <tr class=\"book_list\">" +
+                                "<td><input type='checkbox' class='idxCb' value='" + book.id + "'></td>" +
                                 "<td id='name" + book.id + "' class=\"name\">" + book.indexName + "</td>" +
                                 "<td class=\"goread\">" + new Date(Date.parse(book.updateTime)).Format("yyyy-MM-dd hh:mm") + "<br/>更新</td>" +
                                 "<td class=\"goread\">" + (book.isVip == 1 ? '有料' : '無料') + "</td>" +
                                 "<td class=\"goread\" id='opt" + book.id + "'>" +
                                 "<a class='redBtn' href='javascript:updateIndex(\"" + book.id + "\"," + book.isVip + ")'>変更</a><br/>" +
                                 "<a href='javascript:deleteIndex(\"" + book.id + "\")'>削除</a><br/>" +
-                                (book.status == 1 ? "<a href='javascript:updateIndexStatus(\"" + book.id + "\",0)'>下架</a>" : "<a href='javascript:updateIndexStatus(\"" + book.id + "\",1)'>公開</a>") +
+                                (book.status == 1 ? "<a href='javascript:updateIndexStatus(\"" + book.id + "\",0)'>非公開</a>" : "<a href='javascript:updateIndexStatus(\"" + book.id + "\",1)'>公開</a>") +
                                 "</td></tr>");
                         }
                         $("#bookList").html(bookListHtml);
@@ -263,7 +316,7 @@
     }
 
     function updateIndexStatus(indexId, status) {
-        layer.confirm(status == 1 ? 'この章を公開しますか？' : 'この章を下架しますか？', function () {
+        layer.confirm(status == 1 ? 'この章を公開しますか？' : 'この章を非公開にしますか？', function () {
             $.ajax({
                 type: "post",
                 url: "/author/updateIndexStatus",

@@ -378,7 +378,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> listRecBookByCatId(Integer catId) {
+    public List<Book> listRecBookByCatId(String catId) {
         return bookMapper.listRecBookByCatId(catId);
     }
 

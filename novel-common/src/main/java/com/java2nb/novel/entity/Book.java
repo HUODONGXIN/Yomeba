@@ -12,7 +12,7 @@ public class Book implements Serializable{
     private Byte workDirection;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
-    private Integer catId;
+    private String catId;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     private String catName;
@@ -104,12 +104,12 @@ public class Book implements Serializable{
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
-    public Integer getCatId() {
+    public String getCatId() {
         return catId;
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
-    public void setCatId(Integer catId) {
+    public void setCatId(String catId) {
         this.catId = catId;
     }
 
