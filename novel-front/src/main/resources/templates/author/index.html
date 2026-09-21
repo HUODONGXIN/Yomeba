@@ -187,8 +187,9 @@
                                 "<div class='card-cat'>" + book.catName + "</div>" +
                                 "<div class='card-meta'>累計クリック数" + book.visitCount + " | 昨日閲覧数" + book.yesterdayBuy + " | 作品文字数" + book.wordCount + " | " + new Date(Date.parse(book.lastIndexUpdateTime ? book.lastIndexUpdateTime : book.updateTime)).Format("yyyy-MM-dd hh:mm") + "更新</div>" +
                                 "</div>" +
-                                "<div class='card-opt' id='opt" + book.id + "'>" +
-                                "<a class='redBtn' href='/author/book_edit.html?bookId=" + book.id + "'>編集</a>" +
+                                "<div class='card-opt' id='opt" + book.id + "' style='display:flex;flex-direction:column;gap:8px;'>" +
+                                "<a class='redBtn' href='/author/book_edit.html?bookId=" + book.id + "'>作品情報</a>" +
+                                "<a class='redBtn' href='/author/book_index.html?bookId=" + book.id + "' style='background:#fff;color:#3eaf7c;'>章節管理</a>" +
                                 "</div></div>");
                         }
                         $("#bookList").html(bookListHtml);
