@@ -148,7 +148,7 @@
         $.ajax({
             type: "get",
             url: "/book/queryIndexList",
-            data: {'bookId': bookId, 'curr': curr, 'limit': limit, 'orderBy': 'index_num desc'},
+            data: {'bookId': bookId, 'curr': curr, 'limit': limit, 'orderBy': 'index_num desc', 'showAll': true},
             dataType: "json",
             success: function (data) {
                 if (data.code == 200) {
@@ -179,6 +179,7 @@
                                 " <td class=\"goread\" id='opt" + book.id + "'>" +
                                 "<a  class='redBtn' href='javascript:updateIndex(\"" + book.id + "\"," + book.isVip + ")'>変更  </a><br/>" +
                                 "<a  href='javascript:deleteIndex(\"" + book.id + "\")'>削除  </a><br/>" +
+                                (book.status == 1 ? "<a href='javascript:updateIndexStatus(\"" + book.id + "\",0)'>下架</a>" : "<a href='javascript:updateIndexStatus(\"" + book.id + "\",1)'>公開</a>") +
                                 "</td>                     </tr>");
                         }
                         $("#bookList").html(bookListHtml);
@@ -227,6 +228,28 @@
             }
         })
 
+    }
+
+    function updateIndexStatus(indexId, status) {
+        layer.confirm(status == 1 ? 'この章を公開しますか？' : 'この章を下架しますか？', function () {
+            $.ajax({
+                type: "post",
+                url: "/author/updateIndexStatus",
+                data: {'indexId': indexId, 'status': status},
+                dataType: "json",
+                success: function (data) {
+                    if (data.code == 200) {
+                        layer.msg('操作完了');
+                        search(1, 5);
+                    } else {
+                        layer.alert(data.msg);
+                    }
+                },
+                error: function () {
+                    layer.alert('ネットワークエラー');
+                }
+            });
+        });
     }
 
     function addContent() {

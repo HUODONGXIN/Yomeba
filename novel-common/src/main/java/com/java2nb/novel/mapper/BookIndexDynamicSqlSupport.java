@@ -29,6 +29,9 @@ public final class BookIndexDynamicSqlSupport {
     public static final SqlColumn<Byte> isVip = bookIndex.isVip;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public static final SqlColumn<Byte> status = bookIndex.status;
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
     public static final SqlColumn<Integer> bookPrice = bookIndex.bookPrice;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
@@ -53,6 +56,8 @@ public final class BookIndexDynamicSqlSupport {
         public final SqlColumn<Integer> wordCount = column("word_count", JDBCType.INTEGER);
 
         public final SqlColumn<Byte> isVip = column("is_vip", JDBCType.TINYINT);
+
+        public final SqlColumn<Byte> status = column("status", JDBCType.TINYINT);
 
         public final SqlColumn<Integer> bookPrice = column("book_price", JDBCType.INTEGER);
 

@@ -70,6 +70,11 @@ public interface BookService {
      * */
     List<BookIndex> queryIndexList(Long bookId, String orderBy, Integer page, Integer pageSize);
 
+    /**
+     * 查询章节列表（showAll=true 含下架章节，供作者后台使用；默认仅公开章节）
+     */
+    List<BookIndex> queryIndexList(Long bookId, String orderBy, Integer page, Integer pageSize, boolean showAll);
+
 
     /**
      * 查询目录
@@ -223,6 +228,11 @@ public interface BookService {
      * @param authorId 作者ID
      * */
     void updateBookStatus(Long bookId, Byte status, Long authorId);
+
+    /**
+     * 更新章节状态（公开/下架）
+     */
+    void updateIndexStatus(Long indexId, Byte status, Long authorId);
 
     /**
      * 发布章节内容

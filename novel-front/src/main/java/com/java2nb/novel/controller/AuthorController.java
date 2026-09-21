@@ -97,6 +97,17 @@ public class AuthorController extends BaseController {
 
 
     /**
+     * 更新章节状态（公开/下架）
+     */
+    @PostMapping("updateIndexStatus")
+    public RestResult<Void> updateIndexStatus(Long indexId, Byte status, HttpServletRequest request) {
+        Author author = checkAuthor(request);
+        bookService.updateIndexStatus(indexId, status, author.getId());
+        return RestResult.ok();
+    }
+
+
+    /**
      * 删除章节
      */
     @DeleteMapping("deleteIndex/{indexId}")

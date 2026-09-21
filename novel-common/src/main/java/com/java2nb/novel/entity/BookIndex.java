@@ -21,6 +21,10 @@ public class BookIndex {
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     private Byte isVip;
+    /**
+     * 章节状态:0下架 1公开
+     */
+    private Byte status;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     private Integer bookPrice;
@@ -92,6 +96,14 @@ public class BookIndex {
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     public void setIsVip(Byte isVip) {
         this.isVip = isVip;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
