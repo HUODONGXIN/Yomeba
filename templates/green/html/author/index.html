@@ -212,9 +212,9 @@
                                 + book.wordCount + "</td>\n" +
 
                                 " <td class=\"goread\" id='opt" + book.id + "'>" +
-                                "<a target='_blank' class='redBtn' href='/author/index_list.html?bookId=" + book.id + "'>章管理  </a><br/>" +
-                                "<a target='_blank' href='/author/author_income_detail.html?bookId=" + book.id + "'>報酬照会  </a><br/>" +
-                                "<a target='_blank' href='/book/" + book.id + ".html'>作品情報</a>" +
+                                "<a class='redBtn' href='/author/index_list.html?bookId=" + book.id + "'>章管理  </a><br/>" +
+                                "<a href='/author/author_income_detail.html?bookId=" + book.id + "'>報酬照会  </a><br/>" +
+                                "<a href='/book/" + book.id + ".html'>作品情報</a>" +
                                 "</td>                     </tr>");
                         }
                         $("#bookList").html(bookListHtml);
