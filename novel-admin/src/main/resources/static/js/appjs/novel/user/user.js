@@ -58,8 +58,12 @@ function load() {
                     },
 
                     {
+                        field: 'account',
+                        title: 'アカウント'
+                    },
+                    {
                         field: 'username',
-                        title: '手机号'
+                        title: 'メールアドレス'
                     },
                     {
                         field: 'nickName',

@@ -32,6 +32,8 @@ public class UserDO implements Serializable {
 			private Long id;
 	//登录名
 			private String username;
+	//アカウントコード
+			private String account;
 	//登录密码
 			private String password;
 	//昵称
@@ -72,6 +74,8 @@ public class UserDO implements Serializable {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	public String getAccount() { return account; }
+	public void setAccount(String account) { this.account = account; }
 	/**
 	 * 获取：登录名
 	 */
