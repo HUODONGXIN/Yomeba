@@ -165,14 +165,14 @@ public class PageController extends BaseController {
         CompletableFuture<Book> bookCompletableFuture = CompletableFuture.supplyAsync(() -> {
             //查询书籍
             Book book = bookService.queryBookDetail(bookId);
-            log.debug("加载小说基本信息线程结束");
+            log.debug("小説基本情報の読み込み完了");
             return book;
         }, threadPoolExecutor);
         //加载小说评论列表线程
         CompletableFuture<PageBean<BookCommentVO>> bookCommentPageBeanCompletableFuture = CompletableFuture.supplyAsync(
             () -> {
                 PageBean<BookCommentVO> bookCommentVOPageBean = bookService.listCommentByPage(null, bookId, 1, 5);
-                log.debug("加载小说评论列表线程结束");
+                log.debug("小説コメント一覧の読み込み完了");
                 return bookCommentVOPageBean;
             }, threadPoolExecutor);
         //加载小说首章信息线程，该线程在加载小说基本信息线程执行完毕后才执行
@@ -180,7 +180,7 @@ public class PageController extends BaseController {
             if (book.getLastIndexId() != null) {
                 //查询首章目录ID
                 Long firstBookIndexId = bookService.queryFirstBookIndexId(bookId);
-                log.debug("加载小说基本信息线程结束");
+                log.debug("小説基本情報の読み込み完了");
                 return firstBookIndexId;
             }
             return null;
@@ -188,7 +188,7 @@ public class PageController extends BaseController {
         //加载随机推荐小说线程，该线程在加载小说基本信息线程执行完毕后才执行
         CompletableFuture<List<Book>> recBookCompletableFuture = bookCompletableFuture.thenApplyAsync((book) -> {
             List<Book> books = bookService.listRecBookByCatId(book.getCatId() == null ? null : book.getCatId().split(",")[0]);
-            log.debug("加载随机推荐小说线程结束");
+            log.debug("ランダムおすすめ小説の読み込み完了");
             return books;
         }, threadPoolExecutor);
 
@@ -225,7 +225,7 @@ public class PageController extends BaseController {
         CompletableFuture<Book> bookCompletableFuture = CompletableFuture.supplyAsync(() -> {
             //查询书籍
             Book book = bookService.queryBookDetail(bookId);
-            log.debug("加载小说基本信息线程结束");
+            log.debug("小説基本情報の読み込み完了");
             return book;
         }, threadPoolExecutor);
 
@@ -233,7 +233,7 @@ public class PageController extends BaseController {
         CompletableFuture<BookIndex> bookIndexCompletableFuture = CompletableFuture.supplyAsync(() -> {
             //查询目录
             BookIndex bookIndex = bookService.queryBookIndex(bookIndexId);
-            log.debug("加载小说章节信息线程结束");
+            log.debug("小説話情報の読み込み完了");
             return bookIndex;
         }, threadPoolExecutor);
 
@@ -242,7 +242,7 @@ public class PageController extends BaseController {
             (bookIndex) -> {
                 //查询上一章节目录ID
                 Long preBookIndexId = bookService.queryPreBookIndexId(bookId, bookIndex.getIndexNum());
-                log.debug("加载小说上一章节信息线程结束");
+                log.debug("前話情報の読み込み完了");
                 return preBookIndexId;
             }, threadPoolExecutor);
 
@@ -251,7 +251,7 @@ public class PageController extends BaseController {
             (bookIndex) -> {
                 //查询下一章目录ID
                 Long nextBookIndexId = bookService.queryNextBookIndexId(bookId, bookIndex.getIndexNum());
-                log.debug("加载小说下一章节信息线程结束");
+                log.debug("次話情報の読み込み完了");
                 return nextBookIndexId;
             }, threadPoolExecutor);
 
@@ -261,7 +261,7 @@ public class PageController extends BaseController {
                 //查询内容
                 BookContent bookContent = bookContentServiceMap.get(bookIndex.getStorageType())
                     .queryBookContent(bookId, bookIndexId);
-                log.debug("加载小说内容信息线程结束");
+                log.debug("小説本文の読み込み完了");
                 return bookContent;
             }, threadPoolExecutor);
 
@@ -283,7 +283,7 @@ public class PageController extends BaseController {
                 }
             }
 
-            log.debug("判断用户是否需要购买线程结束");
+            log.debug("購入判定処理完了");
             return false;
 
         }, threadPoolExecutor);

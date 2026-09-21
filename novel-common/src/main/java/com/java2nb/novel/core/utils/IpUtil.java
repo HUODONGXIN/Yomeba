@@ -60,7 +60,7 @@ public class IpUtil {
                 return new ObjectMapper().readTree(response.body()).get("origin").asText();
             }
         } catch (Exception e) {
-            log.error("获取本机公网IP异常", e);
+            log.error("パブリックIPの取得に失敗しました", e);
         }
         return null;
     }

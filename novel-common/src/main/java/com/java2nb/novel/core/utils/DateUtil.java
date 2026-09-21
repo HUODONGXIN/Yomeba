@@ -132,15 +132,15 @@ public class DateUtil {
         long years = months / 12;
 
         if (seconds < 60) {
-            return "刚刚";
+            return "たった今";
         } else if (minutes < 60) {
-            return minutes + "分钟前";
+            return minutes + "分前";
         } else if (hours < 24) {
-            return hours + "小时前";
+            return hours + "時間前";
         } else if (days < 30) {
-            return days + "天前";
+            return days + "日前";
         } else if (months < 12) {
-            return months + "个月前";
+            return months + "ヶ月前";
         } else {
             return years + "年前";
         }

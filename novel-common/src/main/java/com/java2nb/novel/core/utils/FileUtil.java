@@ -123,7 +123,7 @@ public class FileUtil {
 
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            throw new RuntimeException("文件写入失败");
+            throw new RuntimeException("ファイルの書き込みに失敗しました");
         } finally {
             closeStream(null, out);
         }
