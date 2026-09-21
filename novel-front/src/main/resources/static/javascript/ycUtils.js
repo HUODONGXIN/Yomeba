@@ -16,7 +16,7 @@ $.extend($.fn.validatebox.defaults.rules, {
                 cache: false,
                 success: function (result) {
                     if (result.data) {
-                        $.fn.validatebox.defaults.rules.checkPenName.message = '笔名已存在,请重新输入';
+                        $.fn.validatebox.defaults.rules.checkPenName.message = 'ペンネームは既に存在します。再入力してください';
                         bool = false;
                     } else {
                         $.fn.validatebox.defaults.rules.checkPenName.message = '';

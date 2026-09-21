@@ -62,7 +62,7 @@
         <div class="wrap_left fl">
             <div class="wrap_bg">
 
-                <!--章节目录 start-->
+                <!--章目次 start-->
                 <div class="pad20_nobt">
                     <div class="bookChapter">
                         <div class="book_tit">
@@ -79,13 +79,13 @@
                                       th:text="'更新時間：'+${#dates.format(book.lastIndexUpdateTime, 'yy/MM/dd HH:mm:ss')}"></span>
                             </li>
                             <li class="zj_yl" id="lastBookContent"> 　</li>
-                            <!--此处是该章节预览，截取最前面的42个字-->
+                            <!--ここは該当章のプレビューです。先頭42文字を抜粋-->
                         </ul>
                     </div>
                 </div>
-                <!--章节目录 end-->
+                <!--章目次 end-->
 
-                <!--作品评论区 start-->
+                <!--作品コメント欄 start-->
                 <div class="pad20">
                     <div class="bookComment">
                         <div class="book_tit">
@@ -127,7 +127,7 @@
 
                         </div>
 
-                        <!--无评论时此处隐藏-->
+                        <!--コメントがない場合ここは非表示-->
                         <div class="more_bar" id="moreCommentPanel"
                              th:style="${bookCommentPageBean.total == 0}? 'display:none'">
                             <a th:href="'/book/comment-'+${book.id}+'.html'">すべてのレビューを見る&gt;</a>
@@ -153,7 +153,7 @@
 
                     </div>
                 </div>
-                <!--作品评论区 end-->
+                <!--作品コメント欄 end-->
 
             </div>
         </div>
@@ -164,7 +164,7 @@
 
 
             <script src="/javascript/authorinfo.js?uid=8" type="text/javascript"></script>
-            <!--作者专栏s-->
+            <!--作者コーナーs-->
             <div class="wrap_inner author_info mb20">
 
                 <div class="author_head cf">
@@ -186,7 +186,7 @@
 
 
             </div>
-            <!--作者专栏e-->
+            <!--作者コーナーe-->
             <script type="text/javascript">
                 var authorUId = 8;
                 if (authorUId == 0) {
@@ -239,7 +239,7 @@
 <script type="text/javascript">
     var pathname = window.location.pathname;
     var bookId = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.lastIndexOf("."))
-    //查询章节信息
+    //章情報を取得
     var lastBookIndexId = $("#lastBookIndexId").val();
     if (lastBookIndexId) {
         $.ajax({
