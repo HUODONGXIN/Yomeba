@@ -9,7 +9,25 @@
         <link rel="stylesheet" href="/css/base.css?v=1"/>
         <link rel="stylesheet" href="/css/user.css"/>
         <style type="text/css">
-            .opacity{-khtml-opacity:0.0;-moz-opacity:0.0;filter:alpha(opacity=0);filter:"alpha(opacity=0)";opacity:0.0; filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);/*ie8以下と互換*/}
+            .opacity{-khtml-opacity:0.0;-moz-opacity:0.0;filter:alpha(opacity=0);filter:"alpha(opacity=0)";opacity:0.0; filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);}
+            .card { background:#fff; border-radius:10px; padding:24px; margin-bottom:18px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+            .card-title { font-size:16px; font-weight:bold; margin-bottom:18px; color:#222; }
+            .edit-layout { display:flex; gap:24px; }
+            .edit-cover { position:relative; flex-shrink:0; width:108px; }
+            .edit-cover img { width:108px; height:150px; border-radius:6px; object-fit:cover; display:block; }
+            .edit-cover .cover-tip { font-size:12px; color:#aaa; text-align:center; margin-top:8px; }
+            .edit-cover input { position:absolute; top:0; left:0; width:108px; height:150px; opacity:0; cursor:pointer; z-index:10; }
+            .edit-form { flex:1; min-width:0; }
+            .form-row { display:flex; gap:20px; }
+            .form-col { flex:1; }
+            .form-item { margin-bottom:16px; }
+            .form-item b { display:block; margin-bottom:6px; color:#333; font-size:13px; }
+            .s_input { width:100%; box-sizing:border-box; padding:8px 10px; border:1px solid #e0e0e0; border-radius:6px; }
+            textarea.textarea { width:100%; box-sizing:border-box; padding:8px 10px; border:1px solid #e0e0e0; border-radius:6px; }
+            .catCb-label { display:inline-block; margin:0 14px 6px 0; font-size:13px; }
+            #LabErr { color:#e74c3c; font-size:13px; }
+            .bottom-bar { position:fixed; bottom:0; left:0; right:0; background:#fff; border-top:1px solid #eee; padding:12px 0; text-align:center; box-shadow:0 -2px 8px rgba(0,0,0,.05); z-index:100; }
+            .bottom-bar .btn-main { background:#3eaf7c; color:#fff; border:none; padding:10px 48px; border-radius:24px; font-size:15px; cursor:pointer; }
         </style>
     </head>
 </head>
@@ -43,56 +61,67 @@
         <div class="my_r">
             <div class="my_bookshelf">
 
-                <div class="userBox cf">
+                <div class="card">
+                    <div class="card-title">小説基本情報の入力</div>
                     <form method="post" action="./register.html" id="form2">
-                        <div class="user_l">
-                            <div></div>
-                            <h3>小説基本情報の入力</h3>
-                            <ul class="log_list">
-                                <li><span id="LabErr"></span></li>
-                                <b>作品の方向性：</b>
-                                <li><select class="s_input" id="workDirection" name="workDirection">
-                                    <option value="0">男性向け</option>
-                                    <option value="1">女性向け</option>
-                                </select>
-                                </li>
-                                <b>ジャンル（最大3つまで）：</b>
-                                <li>
-                                    <label style="margin-right:14px;"><input type="checkbox" class="catCb" value="1" data-name="ファンタジー" onchange="catCheck(this)"> ファンタジー</label>
-                                    <label style="margin-right:14px;"><input type="checkbox" class="catCb" value="2" data-name="武侠仙侠" onchange="catCheck(this)"> 武侠仙侠</label>
-                                    <label style="margin-right:14px;"><input type="checkbox" class="catCb" value="3" data-name="都市恋愛" onchange="catCheck(this)"> 都市恋愛</label>
-                                    <label style="margin-right:14px;"><input type="checkbox" class="catCb" value="4" data-name="歴史・軍事" onchange="catCheck(this)"> 歴史・軍事</label>
-                                    <label style="margin-right:14px;"><input type="checkbox" class="catCb" value="5" data-name="SF・オカルト" onchange="catCheck(this)"> SF・オカルト</label>
-                                    <label style="margin-right:14px;"><input type="checkbox" class="catCb" value="6" data-name="ゲーム・スポーツ" onchange="catCheck(this)"> ゲーム・スポーツ</label>
-                                    <label><input type="checkbox" class="catCb" value="7" data-name="女性向けチャンネル" onchange="catCheck(this)"> 女性向けチャンネル</label>
-                                </li>
-                                <b>小説名：</b>
-                                <li><input type="text" id="bookName" name="bookName" class="s_input" ></li>
-                                <b>連載状態：</b>
-                                <li><select class="s_input" id="bookStatus" name="bookStatus">
-                                    <option value="0">連載中</option>
-                                    <option value="1">完結</option>
-                                </select></li>
-                                <b>小説カバー：</b>
-                                <li style="position: relative">
-                                    <input class="opacity" onchange="picChange()"
-                                           type="file" id="file0" name="file"
-                                           title="画像をクリックして変更"
-                                           style="z-index: 100;cursor: pointer;left: 0px; top: 0px; width: 100px; height: 130px; opacity: 0; position: absolute;  "
-                                    />
-                                    <img style="width:100px;height: 130px" id="picImage" src="/images/pic_upload.png" alt="">
-                                    <input type="hidden" id="picUrl" name="picUrl" class="s_input" value="/images/default.gif"></li>
-                                <b>小説紹介：</b>
-
-                                <li><textarea name="bookDesc" rows="5" cols="53" id="bookDesc"
-                                              class="textarea"></textarea></li>
-
-                                <li><input type="button" onclick="addBook()" name="btnRegister" value="送信"
-                                           id="btnRegister" class="btn_red"></li>
-                            </ul>
+                        <div class="edit-layout">
+                            <div class="edit-cover">
+                                <input class="opacity" onchange="picChange()" type="file" id="file0" name="file" title="クリックしてカバーをアップロード"/>
+                                <img id="picImage" src="/images/pic_upload.png" alt=""/>
+                                <div class="cover-tip">クリックでアップロード</div>
+                                <input type="hidden" id="picUrl" name="picUrl" value="/images/default.gif"/>
+                            </div>
+                            <div class="edit-form">
+                                <div class="form-row">
+                                    <div class="form-col">
+                                        <div class="form-item"><b>作品の方向性：</b>
+                                            <select class="s_input" id="workDirection" name="workDirection">
+                                                <option value="0">男性向け</option>
+                                                <option value="1">女性向け</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-col">
+                                        <div class="form-item"><b>連載状態：</b>
+                                            <select class="s_input" id="bookStatus" name="bookStatus">
+                                                <option value="0">連載中</option>
+                                                <option value="1">完結</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-item"><b>ジャンル（最大3つまで）：</b>
+                                    <span id="LabErr"></span>
+                                    <div>
+                                        <label class="catCb-label"><input type="checkbox" class="catCb" value="1" data-name="ファンタジー" onchange="catCheck(this)"> ファンタジー</label>
+                                        <label class="catCb-label"><input type="checkbox" class="catCb" value="2" data-name="武侠仙侠" onchange="catCheck(this)"> 武侠仙侠</label>
+                                        <label class="catCb-label"><input type="checkbox" class="catCb" value="3" data-name="都市恋愛" onchange="catCheck(this)"> 都市恋愛</label>
+                                        <label class="catCb-label"><input type="checkbox" class="catCb" value="4" data-name="歴史・軍事" onchange="catCheck(this)"> 歴史・軍事</label>
+                                        <label class="catCb-label"><input type="checkbox" class="catCb" value="5" data-name="SF・オカルト" onchange="catCheck(this)"> SF・オカルト</label>
+                                        <label class="catCb-label"><input type="checkbox" class="catCb" value="6" data-name="ゲーム・スポーツ" onchange="catCheck(this)"> ゲーム・スポーツ</label>
+                                        <label class="catCb-label"><input type="checkbox" class="catCb" value="7" data-name="女性向けチャンネル" onchange="catCheck(this)"> 女性向けチャンネル</label>
+                                    </div>
+                                </div>
+                                <div class="form-item"><b>小説名：</b>
+                                    <input type="text" id="bookName" name="bookName" class="s_input"/>
+                                </div>
+                                <div class="form-item"><b>小説紹介：</b>
+                                    <textarea name="bookDesc" rows="5" id="bookDesc" class="textarea"></textarea>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bottom-bar">
+    <button type="button" class="btn-main" onclick="addBook()" id="btnRegister">送信</button>
+</div>
+
+</body>
                 <!--<div id="divData" class="updateTable">
                     <table cellpadding="0" cellspacing="0">
                         <thead>
