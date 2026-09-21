@@ -85,7 +85,7 @@
             $("#LabErr").html("メールアドレスを入力してください！");
             return;
         }
-        if (!username.isPhone()) {
+        if (!/^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(username)) {
             $("#LabErr").html("メールアドレスの形式が正しくありません！");
             return;
         }
