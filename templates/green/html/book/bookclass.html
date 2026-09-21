@@ -191,16 +191,16 @@
 
                         //执行一个laypage实例
                         laypage.render({
-                            elem: 'books' //注意，这里的 test1 是 ID，不用加 # 号
+                            elem: 'books' //注意：ここでの test1 は ID で、# を付ける必要はありません
                             , count: data.data.total //数据总数，从服务端得到,
                             , curr: data.data.pageNum
                             , limit: data.data.pageSize
                             , jump: function (obj, first) {
 
 
-                                //obj包含了当前分页的所有参数，比如：
-                                console.log(obj.curr); //得到当前页，以便向服务端请求对应页的数据。
-                                console.log(obj.limit); //得到每页显示的条数
+                                //objは現在のページングの全パラメータを含みます：
+                                console.log(obj.curr); //現在のページを取得し、サーバーに該当ページのデータを要求。
+                                console.log(obj.limit); //1ページあたりの表示件数を取得
 
 
                                 //首次不执行

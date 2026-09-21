@@ -5,11 +5,11 @@ var needLoginPath = ['/user/favorites.html', '/user/comment.html', '/user/feedba
 var isLogin = false;
 var url = window.location.search;
 
-//key(需要检索的键）
+//key（検索するキー）
 function getSearchString(key) {
     var str = url;
-    str = str.substring(1, str.length); // 获取URL中?之后的字符（去掉第一位的问号）
-    // 以&分隔字符串，获得类似name=xiaoli这样的元素数组
+    str = str.substring(1, str.length); // URLの?以降の文字を取得（先頭の?を除く）
+    // &で文字列を分割し、name=xiaoliのような要素配列を取得
     var arr = str.split("&");
 
     for (var i = 0; i < arr.length; i++) {
@@ -57,7 +57,7 @@ if (!token) {
         location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
     }
 
-    $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">登录</a><a href=\"/user/register.html\" >注册</a>");
+    $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">ログイン</a><a href=\"/user/register.html\" >会員登録</a>");
 } else {
     $.ajax({
         type: "POST",
@@ -85,7 +85,7 @@ if (!token) {
                 if (needLoginPath.indexOf(window.location.pathname) != -1) {
                     location.href = '/user/login.html';
                 }
-                $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">登录</a><a href=\"/user/register.html\" >注册</a>");
+                $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">ログイン</a><a href=\"/user/register.html\" >会員登録</a>");
             }
         },
         error: function () {
@@ -134,7 +134,7 @@ function isImg(str) {
 function checkPicUpload(file) {
 
     if (!isImg(file.value.substr(file.value.lastIndexOf(".")))) {
-        layer.alert('只能上传图片格式的文件！');
+        layer.alert('画像ファイルのみアップロードできます！');
         return false;
     }
     var fileSize = 0;
@@ -149,7 +149,7 @@ function checkPicUpload(file) {
     }
     fileSize = Math.round(fileSize / 1024 * 100) / 100; //单位为KB
     if (fileSize >= 1024) {
-        layer.alert('上传的图片大小不能超过1M！');
+        layer.alert('アップロードする画像のサイズは1Mを超えることはできません！');
         return false;
     }
     return true;

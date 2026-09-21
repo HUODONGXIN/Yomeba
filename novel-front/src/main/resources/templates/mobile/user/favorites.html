@@ -268,7 +268,7 @@
         // タッチ位置に基づいてポップアップ層の位置を設定
         $('#tipLayer')
             .css({
-                top: touchEvent.pageY - 100, // 调整这个值以改变弹出层相对于触摸点的位置
+                top: touchEvent.pageY - 100, // この値を調整してポップアップのタッチポイントに対する位置を変更
                 left: touchEvent.pageX - ($('#tipLayer').outerWidth() / 2)
             })
             .data('target', element) // 後続操作のためターゲット要素を保存
