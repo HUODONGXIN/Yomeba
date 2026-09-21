@@ -64,7 +64,7 @@
                     </div>
                 </div>
 
-                <!-- 作品信息卡片 -->
+                <!-- 作品情報卡片 -->
                 <div class="card">
                     <div class="card-title">作品基本情報</div>
                     <div class="edit-layout">
@@ -78,8 +78,8 @@
                                 <div class="form-col">
                                     <div class="form-item"><b>作品の方向性：</b>
                                         <select class="s_input" id="workDirection">
-                                            <option value="0">男性向け</option>
-                                            <option value="1">女性向け</option>
+                                            <option value="0">男性性向け</option>
+                                            <option value="1">女性性向け</option>
                                         </select>
                                     </div>
                                 </div>
@@ -108,7 +108,7 @@
                                     <label class="catCb-label"><input type="checkbox" class="catCb" value="4" data-name="歴史・軍事" onclick="catCheck(this)">歴史・軍事</label>
                                     <label class="catCb-label"><input type="checkbox" class="catCb" value="5" data-name="SF・オカルト" onclick="catCheck(this)">SF・オカルト</label>
                                     <label class="catCb-label"><input type="checkbox" class="catCb" value="6" data-name="ゲーム・スポーツ" onclick="catCheck(this)">ゲーム・スポーツ</label>
-                                    <label class="catCb-label"><input type="checkbox" class="catCb" value="7" data-name="女性向けチャンネル" onclick="catCheck(this)">女性向けチャンネル</label>
+                                    <label class="catCb-label"><input type="checkbox" class="catCb" value="7" data-name="女性性向けチャンネル" onclick="catCheck(this)">女性性向けチャンネル</label>
                                 </div>
                                 <span id="LabErr"></span>
                             </div>
@@ -146,7 +146,7 @@
     var bookStatus = 1;
     var indexCount = 0;
 
-    // 初始化：加载作品信息 + 話
+    // 初始化：読み込み作品情報 + 話
     $.ajax({
         type: "get",
         url: "/book/queryBookDetail/" + bookId,

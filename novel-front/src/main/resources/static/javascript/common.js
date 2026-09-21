@@ -68,7 +68,7 @@ if (!token) {
             if (data.code == 200) {
                 $(".user_link").html("<i class=\"line mr20\">|</i>" +
                     "<a href=\"/user/userinfo.html\"  class=\"mr15\">" + data.data.nickName + "</a>" +
-                    "<a href=\"javascript:logout()\" >退出</a>");
+                    "<a href=\"javascript:logout()\" >ログアウト</a>");
                 ;
                 if ("/user/login.html" == window.location.pathname) {
                     var orginUrl = getSearchString("originUrl");
