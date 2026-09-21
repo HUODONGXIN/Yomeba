@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 public class BookShelfVO extends UserBookshelf {
 
-    private Integer catId;
+    private String catId;
     private String catName;
     private Long lastIndexId;
 

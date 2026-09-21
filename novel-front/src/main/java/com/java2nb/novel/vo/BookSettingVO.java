@@ -21,7 +21,7 @@ public class BookSettingVO extends BookSetting implements Serializable {
 
     private Float score;
 
-    private Integer catId;
+    private String catId;
 
     private String catName;
 

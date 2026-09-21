@@ -16,7 +16,7 @@ public class BookSpVO {
 
     private Byte workDirection;
 
-    private Integer catId;
+    private String catId;
 
     private Byte isVip;
 
