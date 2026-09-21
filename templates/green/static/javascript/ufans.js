@@ -61,7 +61,7 @@
         rStr += '		</li>';
         rStr += '	</ul>';
         rStr += '</div>';
-        rStr += '<p class="have_num">残高<span class="red">' + spmymoney + '</span>yomiコイン&nbsp;&nbsp;今回の応援<span class="red" id="pcTotal">500</span>yomiコイン<a class="red" href="../pay/" >[チャージ]</a></p>';
+        rStr += '<p class="have_num">残高<span class="red">' + spmymoney + '</span>yomiコイン&nbsp;&nbsp;今回の応援<span class="red" id="pcTotal">500</span>yomiコイン</p>';
         rStr += '<p><textarea class="popup_text" id="sendSupportNote"   placeholder="応援ありがとうございます！作者への応援メッセージをどうぞ！"></textarea></p>';
         rStr += '<p class="tc"><a class="btn_red btn_send_pc" href="javascript:void(0);" onclick="javascript:uFans.SendSupport();">応援する</a></p>';
         $("#showPC").html(rStr);

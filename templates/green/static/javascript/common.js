@@ -1,8 +1,7 @@
 var needLoginPath = ['/user/favorites.html', '/user/comment.html', '/user/feedback.html',
     '/user/feedback_list.html', '/user/read_history.html', '/user/set_name.html',
     '/user/set_password.html', '/user/set_sex.html', '/user/setup.html', '/user/userinfo.html',
-    "/pay/index.html," +
-    "/author/register.html", "/author/index.html"];
+        "/author/register.html", "/author/index.html"];
 var isLogin = false;
 var url = window.location.search;
 
