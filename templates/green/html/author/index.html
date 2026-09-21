@@ -66,44 +66,24 @@
                         <div class="fr"><a href="/author/book_add.html" class="btn_red">作品を作成</a></div>
                     </div>
 
+                    <style>
+                        .book-card{display:flex;align-items:center;background:#fff;border-radius:10px;padding:16px 20px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+                        .book-card .card-cover{position:relative;flex-shrink:0;width:56px;height:78px;}
+                        .book-card .card-cover img{width:56px;height:78px;border-radius:4px;object-fit:cover;}
+                        .book-card .card-info{flex:1;margin-left:16px;min-width:0;}
+                        .book-card .card-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+                        .book-card .card-title{font-size:17px;font-weight:bold;color:#222;}
+                        .book-card .tag{font-size:12px;padding:2px 10px;border-radius:10px;}
+                        .tag-pub{background:#e6f7e9;color:#2a9d4a;}
+                        .tag-off{background:#f0f0f0;color:#888;}
+                        .tag-serial{background:#e8f0fe;color:#3b6fd4;}
+                        .tag-done{background:#fff3e0;color:#e8862a;}
+                        .book-card .card-cat{font-size:13px;color:#999;margin-top:6px;}
+                        .book-card .card-meta{font-size:12px;color:#aaa;margin-top:6px;}
+                        .book-card .card-opt{flex-shrink:0;margin-left:16px;}
+                    </style>
                     <div id="divData" class="updateTable">
-                        <table cellpadding="0" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th class="goread">
-                                        書名
-                                    </th>
-                                    <th class="goread">
-                                        ジャンル
-                                    </th>
-                                    <th class="goread">
-                                        クリック数
-                                    </th>
-                                    <th class="goread">
-                                        昨日の購読数
-                                    </th>
-                                    <th class="goread">
-                                        更新時間
-                                    </th>
-                                    <th class="goread">
-                                        総文字数
-                                    </th>
-                                    <th class="goread">
-                                        公開状態
-                                    </th>
-                                    <th class="goread">
-                                        連載状態
-                                    </th>
-                                    <th class="goread">
-                                        操作
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody id="bookList">
-
-
-                            </tbody>
-                        </table>
+                        <div id="bookList"></div>
                         <div class="pageBox cf" id="shellPage">
                         </div>
                     </div>
@@ -193,45 +173,23 @@
                         var bookListHtml = "";
                         for (var i = 0; i < bookList.length; i++) {
                             var book = bookList[i];
-                            bookListHtml += (" <tr class=\"book_list\" vals=\"291\">\n" +
-                                /* "                            <td class=\"style bookclass\">\n" +
-                                 "                                ["+(i+1)+"]\n" +
-                                 "                            </td>\n" +*/
-
-                                "                            <td style=\"position: relative\" class=\"goread\">\n" +
-                                "<input class=\"opacity\" onchange=\"picChange('" + book.id + "')\"\n" +
-                                "                                           type=\"file\" id=\"file" + book.id + "\" name=\"file\"\n" +
-                                "                                           title=\"画像をクリックしてアップロード\"\n" +
-                                "                                           style=\"z-index: 100;cursor: pointer;left: 30px; top: 0px; width: 60px; height: 80px; opacity: 0; position: absolute;  \"\n" +
-                                "                                    />" +
-                                "<div style='display:flex;align-items:flex-start;'>" +
-                                "<img id=\"cover" + book.id + "\" width='50' height='70' src='" + book.picUrl + "' style='flex-shrink:0;'/>" +
-                                "<div style='margin-left:12px;text-align:left;'>" +
-                                "<div style='font-size:16px;font-weight:bold;color:#333;line-height:1.4;'>" + book.bookName + "</div>" +
-                                "</div></div></td>\n" +
-                                "                            <td class=\"goread\" >"
-                                + book.catName + "</td>\n" +
-
-                                "                            <td class=\"goread\" valsc=\"291|2037554|1\">"
-                                + book.visitCount + "</td>\n" +
-
-                                "                            <td class=\"goread\" valsc=\"291|2037554|1\">"
-                                + book.yesterdayBuy + "</td>\n" +
-
-                                "                            <td class=\"goread\">\n" +
-                                "                                " + new Date(Date.parse(book.lastIndexUpdateTime ? book.lastIndexUpdateTime : book.updateTime)).Format("yyyy-MM-dd hh:mm") + "更新\n" +
-                                "                            </td>\n" +
-
-                                "                            <td class=\"goread\" valsc=\"291|2037554|1\">"
-                                + book.wordCount + "</td>\n" +
-
-                                " <td class=\"goread\">" + (book.status == 1 ? '公開' : '非公開') + "</td>\n" +
-
-                                " <td class=\"goread\">" + (book.bookStatus == 1 ? '完結' : '連載中') + "</td>\n" +
-
-                                " <td class=\"goread\" id='opt" + book.id + "'>" +
+                            bookListHtml += ("<div class='book-card'>" +
+                                "<div class='card-cover'>" +
+                                "<input onchange=\"picChange('" + book.id + "')\" type=\"file\" id=\"file" + book.id + "\" name=\"file\" title=\"画像をクリックしてアップロード\" style=\"z-index:100;cursor:pointer;width:56px;height:78px;opacity:0;position:absolute;top:0;left:0;\" />" +
+                                "<img id=\"cover" + book.id + "\" src='" + book.picUrl + "'/>" +
+                                "</div>" +
+                                "<div class='card-info'>" +
+                                "<div class='card-head'>" +
+                                "<span class='card-title'>" + book.bookName + "</span>" +
+                                "<span class='tag " + (book.status == 1 ? 'tag-pub' : 'tag-off') + "'>" + (book.status == 1 ? '公開' : '非公開') + "</span>" +
+                                "<span class='tag " + (book.bookStatus == 1 ? 'tag-done' : 'tag-serial') + "'>" + (book.bookStatus == 1 ? '完結' : '連載中') + "</span>" +
+                                "</div>" +
+                                "<div class='card-cat'>" + book.catName + "</div>" +
+                                "<div class='card-meta'>" + book.visitCount + "クリック | 昨日" + book.yesterdayBuy + " | " + book.wordCount + "文字 | " + new Date(Date.parse(book.lastIndexUpdateTime ? book.lastIndexUpdateTime : book.updateTime)).Format("yyyy-MM-dd hh:mm") + "更新</div>" +
+                                "</div>" +
+                                "<div class='card-opt' id='opt" + book.id + "'>" +
                                 "<a class='redBtn' href='/author/book_edit.html?bookId=" + book.id + "'>編集</a>" +
-                                "</td>                     </tr>");
+                                "</div></div>");
                         }
                         $("#bookList").html(bookListHtml);
 
