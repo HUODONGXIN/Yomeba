@@ -204,7 +204,11 @@
                                 "                                           title=\"画像をクリックしてアップロード\"\n" +
                                 "                                           style=\"z-index: 100;cursor: pointer;left: 30px; top: 0px; width: 60px; height: 80px; opacity: 0; position: absolute;  \"\n" +
                                 "                                    />" +
-                                "<img id=\"cover" + book.id + "\" width='50' height='70' src='" + book.picUrl + "'/><br/>" + "                                " + book.bookName + "</td>\n" +
+                                "<div style='display:flex;align-items:flex-start;'>" +
+                                "<img id=\"cover" + book.id + "\" width='50' height='70' src='" + book.picUrl + "' style='flex-shrink:0;'/>" +
+                                "<div style='margin-left:12px;text-align:left;'>" +
+                                "<div style='font-size:16px;font-weight:bold;color:#333;line-height:1.4;'>" + book.bookName + "</div>" +
+                                "</div></div></td>\n" +
                                 "                            <td class=\"goread\" >"
                                 + book.catName + "</td>\n" +
 
