@@ -91,6 +91,14 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-row">
+                                    <div class="form-item"><b>AI創作支援：</b>
+                                        <select class="s_input" id="aiAssisted">
+                                            <option value="0">いいえ（AI不使用）</option>
+                                            <option value="1">はい（AI使用）</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-item"><b>ジャンル（最大3つまで）：</b>
                                 <div>
@@ -150,6 +158,7 @@
                 $("#coverImg").attr("src", b.picUrl);
                 $("#workDirection").val(b.workDirection);
                 $("#bookStatus").val(b.bookStatus);
+                if (b.aiAssisted != null) $("#aiAssisted").val(b.aiAssisted);
                 $("#bookName").val(b.bookName);
                 $("#bookDesc").val(b.bookDesc);
                 var catIds = (b.catId || "").split(",");
@@ -215,6 +224,7 @@
                 'id': bookId,
                 'bookName': $("#bookName").val(),
                 'workDirection': $("#workDirection").val(),
+                'aiAssisted': $("#aiAssisted").val(),
                 'bookStatus': $("#bookStatus").val(),
                 'catId': getCheckedCats().join(","),
                 'catName': getCheckedCatNames().join(","),
