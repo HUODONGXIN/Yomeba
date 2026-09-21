@@ -8,15 +8,15 @@ import com.java2nb.system.domain.UserDO;
  */
 public class UserVO {
     /**
-     * 更新的用户对象
+     * 更新対象ユーザーオブジェクト
      */
     private UserDO userDO = new UserDO();
     /**
-     * 旧密码
+     * 現在のパスワード
      */
     private String pwdOld;
     /**
-     * 新密码
+     * 新しいパスワード
      */
     private String pwdNew;
 

@@ -139,10 +139,10 @@ public class SysUserServiceImpl implements SysUserService {
                 userDO.setPassword(MD5Utils.encrypt(userDO.getUsername(), userVO.getPwdNew()));
                 return userMapper.update(userDO);
             } else {
-                throw new Exception("输入的旧密码有误！");
+                throw new Exception("入力された現在のパスワードが正しくありません！");
             }
         } else {
-            throw new Exception("你修改的不是你登录的账号！");
+            throw new Exception("ログイン中のアカウント以外は変更できません！");
         }
     }
 
@@ -150,7 +150,7 @@ public class SysUserServiceImpl implements SysUserService {
     public int adminResetPwd(UserVO userVO) throws Exception {
         UserDO userDO = get(userVO.getUserDO().getUserId());
         if ("admin".equals(userDO.getUsername())) {
-            throw new Exception("超级管理员的账号不允许直接重置！");
+            throw new Exception("管理者アカウントは直接リセットできません！");
         }
         userDO.setPassword(MD5Utils.encrypt(userDO.getUsername(), userVO.getPwdNew()));
         return userMapper.update(userDO);
@@ -199,7 +199,7 @@ public class SysUserServiceImpl implements SysUserService {
             tree.setState(state);
             trees.add(tree);
         }
-        // 默认顶级菜单为０，根据数据库实际情况调整
+        // デフォルトの最上位メニューは0。DBの実際の状況に応じて調整すること
         Tree<DeptDO> t = BuildTree.build(trees);
         return t;
     }
@@ -214,29 +214,29 @@ public class SysUserServiceImpl implements SysUserService {
         String fileName = file.getOriginalFilename();
         fileName = FileUtil.renameToUUID(fileName);
         FileDO sysFile = new FileDO(FileType.fileType(fileName), Constant.UPLOAD_FILES_PREFIX + fileName, new Date());
-        //获取图片后缀
+        //画像の拡張子を取得
         String prefix = fileName.substring((fileName.lastIndexOf(".") + 1));
         String[] str = avatar_data.split(",");
-        //获取截取的x坐标
+        //切り抜きのx座標を取得
         int x = (int) Math.floor(Double.parseDouble(str[0].split(":")[1]));
-        //获取截取的y坐标
+        //切り抜きのy座標を取得
         int y = (int) Math.floor(Double.parseDouble(str[1].split(":")[1]));
-        //获取截取的高度
+        //切り抜きの高さを取得
         int h = (int) Math.floor(Double.parseDouble(str[2].split(":")[1]));
-        //获取截取的宽度
+        //切り抜きの幅を取得
         int w = (int) Math.floor(Double.parseDouble(str[3].split(":")[1]));
-        //获取旋转的角度
+        //回転角度を取得
         int r = Integer.parseInt(str[4].split(":")[1].replaceAll("}", ""));
         try {
             BufferedImage cutImage = ImageUtils.cutImage(file, x, y, w, h, prefix);
             BufferedImage rotateImage = ImageUtils.rotateImage(cutImage, r);
             ByteArrayOutputStream out = new ByteArrayOutputStream();
             boolean flag = ImageIO.write(rotateImage, prefix, out);
-            //转换后存入数据库
+            //変換後にDBに保存
             byte[] b = out.toByteArray();
             FileUtil.uploadFile(b, jnConfig.getUploadPath(), fileName);
         } catch (Exception e) {
-            throw new Exception("图片裁剪错误！！");
+            throw new Exception("画像の切り抜きエラー！！");
         }
         Map<String, Object> result = new HashMap<>();
         if (sysFileService.save(sysFile) > 0) {

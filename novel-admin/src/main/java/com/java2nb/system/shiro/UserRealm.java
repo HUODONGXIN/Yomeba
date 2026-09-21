@@ -47,28 +47,28 @@ public class UserRealm extends AuthorizingRealm {
         String password = new String((char[]) token.getCredentials());
 
         SysUserDao userMapper = ApplicationContextRegister.getBean(SysUserDao.class);
-        // 查询用户信息
+        // ユーザー情報を検索
         UserDO user = userMapper.list(map).get(0);
 
-        // 账号不存在
+        // アカウントが存在しない
         if (user == null) {
-            throw new UnknownAccountException("账号或密码不正确");
+            throw new UnknownAccountException("アカウントまたはパスワードが正しくありません");
         }
 
-        // 密码错误
+        // パスワードが間違っている
         if (!password.equals(user.getPassword())) {
-            throw new IncorrectCredentialsException("账号或密码不正确");
+            throw new IncorrectCredentialsException("アカウントまたはパスワードが正しくありません");
         }
 
-        // 账号锁定
+        // アカウントがロックされている
         if (user.getStatus() == 0) {
-            throw new LockedAccountException("账号已被锁定,请联系管理员");
+            throw new LockedAccountException("アカウントがロックされています。管理者に連絡してください");
         }
 
-        //查询下级部门
+        //配下部門を検索
         DeptDao deptDao = ApplicationContextRegister.getBean(DeptDao.class);
         user.setSupDeptIds(deptDao.getDeptIdsByParentId(user.getDeptId()));
-        //查询数据权限
+        //データ権限を検索
         DataPermDao dataPermDao = ApplicationContextRegister.getBean(DataPermDao.class);
         List<DataPermDO> dataPerms = dataPermDao.selectDataPermsByUserId(user.getUserId());
         Map<String, List<DataPermDO>> permsMap = new HashMap<>();

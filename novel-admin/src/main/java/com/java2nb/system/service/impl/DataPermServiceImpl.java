@@ -87,7 +87,7 @@ public class DataPermServiceImpl implements DataPermService {
             tree.setText(permDO.getName());
             trees.add(tree);
         }
-        // 默认顶级菜单为０，根据数据库实际情况调整
+        // デフォルトの最上位メニューは0。DBの実際の状況に応じて調整すること
         Tree<DataPermDO> t = BuildTree.build(trees);
         return t;
     }
@@ -121,7 +121,7 @@ public class DataPermServiceImpl implements DataPermService {
             tree.setState(state);
             trees.add(tree);
         }
-        // 默认顶级菜单为０，根据数据库实际情况调整
+        // デフォルトの最上位メニューは0。DBの実際の状況に応じて調整すること
         Tree<DataPermDO> t = BuildTree.build(trees);
         return t;
     }

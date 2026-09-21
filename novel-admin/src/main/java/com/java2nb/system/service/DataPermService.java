@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 数据权限管理
- * 
+ * データ権限管理
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2019-11-25 11:40:03
