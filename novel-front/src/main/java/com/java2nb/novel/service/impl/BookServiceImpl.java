@@ -545,7 +545,7 @@ public class BookServiceImpl implements BookService {
         if (Objects.isNull(book.getPicUrl()) || !book.getPicUrl().startsWith(Constants.LOCAL_PIC_PREFIX)) {
             // 用户没有上传封面图片，AI自动生成封面图片
             threadPoolExecutor.execute(() -> {
-                String prompt = String.format("生成一本小说的封面图片，图片中间显示书名《%s》，书名下方显示作者“%s 著”。",
+                String prompt = String.format("小説の表紙画像を生成してください。画像中央に書名『%s』、その下に作者『%s 著』を表示してください。",
                     book.getBookName(), book.getAuthorName());
                 log.debug("prompt:{}", prompt);
                 ImageResponse response = openAiImageModel.call(

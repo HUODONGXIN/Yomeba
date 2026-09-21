@@ -26,7 +26,7 @@ public class IpLocationServiceImpl implements IpLocationService {
         try {
             // 示例返回："中国|0|湖北省|武汉市|电信"
             String region = searcher.search(ip);
-            log.info("IP：{}，区域：{}", ip, region);
+            log.info("IP：{}、地域：{}", ip, region);
             String[] regions = region.split("\\|");
             if (regions.length > 0) {
                 // 国家
@@ -34,7 +34,7 @@ public class IpLocationServiceImpl implements IpLocationService {
                 if ("0".equals(country)) {
                     // 内网IP，直接获取本机公网IP
                     String publicIp = IpUtil.getPublicIP();
-                    log.info("内网IP：{}，本机公网IP：{}", ip, publicIp);
+                    log.info("ローカルIP：{}、パブリックIP：{}", ip, publicIp);
                     if (StringUtils.hasText(publicIp)) {
                         return getLocation(publicIp);
                     }
@@ -59,7 +59,7 @@ public class IpLocationServiceImpl implements IpLocationService {
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }
-        return "未知地区";
+        return "不明な地域";
     }
 
 }

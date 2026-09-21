@@ -67,7 +67,7 @@ public class AuthorServiceImpl implements AuthorService {
             return "";
         } else {
             //邀请码无效
-            return "邀请码无效！";
+            return "招待コードが無効です";
         }
 
     }

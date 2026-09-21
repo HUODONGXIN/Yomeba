@@ -35,7 +35,7 @@ public class FrontNovelApplication {
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> {
-            log.info("项目启动啦，访问路径：{}",
+            log.info("アプリ起動完了、アクセスURL：{}",
                 "http://" + InetAddress.getLocalHost().getHostAddress() + ":" + ctx.getEnvironment()
                     .getProperty("server.port"));
         };

@@ -53,39 +53,39 @@ public class RandomBookInfoUtil {
      * 获取分类名
      * */
     public static String getCatNameById(Integer catId) {
-        String catName = "其他";
+        String catName = "その他";
 
         switch (catId) {
             case 1: {
-                catName = "玄幻奇幻";
+                catName = "ファンタジー";
                 break;
             }
             case 2: {
-                catName = "武侠仙侠";
+                catName = "武侠・仙侠";
                 break;
             }
             case 3: {
-                catName = "都市言情";
+                catName = "都市・恋愛";
                 break;
             }
             case 4: {
-                catName = "历史军事";
+                catName = "歴史・軍事";
                 break;
             }
             case 5: {
-                catName = "科幻灵异";
+                catName = "SF・ホラー";
                 break;
             }
             case 6: {
-                catName = "网游竞技";
+                catName = "ゲーム・競技";
                 break;
             }
             case 7: {
-                catName = "女生频道";
+                catName = "女性向け";
                 break;
             }
             case 8: {
-                catName = "轻小说";
+                catName = "ライトノベル";
                 break;
             }
             case 9: {

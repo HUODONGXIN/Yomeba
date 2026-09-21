@@ -21,7 +21,7 @@ public class HttpUtil {
     public static String getByHttpClientWithChrome(String url, String charset) {
         log.debug("Get url：{}", url);
         if (!Charset.isSupported(charset)) {
-            log.error("字符编码{}无效！", charset);
+            log.error("文字エンコーディング{}が無効です", charset);
             return null;
         }
         RestTemplate restTemplate = REST_TEMPLATE_MAP.computeIfAbsent(charset,

@@ -50,7 +50,7 @@ public class JwtTokenUtil {
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
-            log.info("JWT格式验证失败:{}",token);
+            log.info("JWT形式の検証に失敗:{}", token);
         }
         return claims;
     }
