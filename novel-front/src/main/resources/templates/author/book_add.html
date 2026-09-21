@@ -56,17 +56,16 @@
                                     <option value="1">女性向け</option>
                                 </select>
                                 </li>
-                                <b>ジャンル：</b>
-                                <li><select class="s_input" id="catId" name="catId">
-                                    <option value="1">ファンタジー</option>
-                                    <option value="2">武侠仙侠</option>
-                                    <option value="3">都市恋愛</option>
-                                    <option value="4">歴史・軍事</option>
-                                    <option value="5">SF・オカルト</option>
-                                    <option value="6">ゲーム・スポーツ</option>
-                                    <option value="7">女性向けチャンネル</option>
-                                </select></li>
-                                <input type="hidden" id="catName" name="catName" value="ファンタジー"/>
+                                <b>ジャンル（最大3つまで）：</b>
+                                <li>
+                                    <label style="margin-right:14px;"><input type="checkbox" class="catCb" value="1" data-name="ファンタジー" onchange="catCheck(this)"> ファンタジー</label>
+                                    <label style="margin-right:14px;"><input type="checkbox" class="catCb" value="2" data-name="武侠仙侠" onchange="catCheck(this)"> 武侠仙侠</label>
+                                    <label style="margin-right:14px;"><input type="checkbox" class="catCb" value="3" data-name="都市恋愛" onchange="catCheck(this)"> 都市恋愛</label>
+                                    <label style="margin-right:14px;"><input type="checkbox" class="catCb" value="4" data-name="歴史・軍事" onchange="catCheck(this)"> 歴史・軍事</label>
+                                    <label style="margin-right:14px;"><input type="checkbox" class="catCb" value="5" data-name="SF・オカルト" onchange="catCheck(this)"> SF・オカルト</label>
+                                    <label style="margin-right:14px;"><input type="checkbox" class="catCb" value="6" data-name="ゲーム・スポーツ" onchange="catCheck(this)"> ゲーム・スポーツ</label>
+                                    <label><input type="checkbox" class="catCb" value="7" data-name="女性向けチャンネル" onchange="catCheck(this)"> 女性向けチャンネル</label>
+                                </li>
                                 <b>小説名：</b>
                                 <li><input type="text" id="bookName" name="bookName" class="s_input" ></li>
                                 <b>連載状態：</b>
