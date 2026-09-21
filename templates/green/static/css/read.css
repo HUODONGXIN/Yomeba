@@ -30,9 +30,13 @@ body { /*background-color: #4a4a4a;*/
     background: rgba(255, 255, 255, .05)
 }
 
-/*颜色：浅黄白、护眼绿、粉色、浅黄、浅灰、夜间黑*/
+/*颜色：纯白、浅黄白、护眼绿、粉色、浅黄、浅灰、夜间黑*/
 body, .read_style_1 {
     background-color: #ebe5d8
+}
+
+.read_style_7 {
+    background-color: #ffffff
 }
 
 .read_style_2 {
@@ -53,6 +57,10 @@ body, .read_style_1 {
 
 .read_style_6 {
     background-color: #0e0f0f
+}
+
+.read_style_7 .textbox, .read_style_7 .read_menu li a, .read_style_7 .haveRead, .read_style_7 .nextPageBox a {
+    background-color: #ffffff
 }
 
 .read_style_1 .textbox, .read_style_1 .read_menu li a, .read_style_1 .haveRead, .read_style_1 .nextPageBox a {
@@ -548,9 +556,13 @@ body, .read_style_1 {
     border: 1px solid rgba(0, 0, 0, .1)
 }
 
-.readTheme .white {
-    background-color: #faf6ed;
+.readTheme .fff {
+    background-color: #ffffff;
     margin-left: 15px
+}
+
+.readTheme .white {
+    background-color: #faf6ed
 }
 
 .readTheme .green {
@@ -575,7 +587,7 @@ body, .read_style_1 {
 }
 
 /*.readTheme a.current, .readTheme a:hover { box-shadow: 1px 3px 5px #aaa }*/
-.read_style_1 .readTheme .white, .read_style_2 .readTheme .green, .read_style_3 .readTheme .pink, .read_style_4 .readTheme .yellow, .read_style_5 .readTheme .gray, .read_style_6 .readTheme .night {
+.read_style_1 .readTheme .white, .read_style_2 .readTheme .green, .read_style_3 .readTheme .pink, .read_style_4 .readTheme .yellow, .read_style_5 .readTheme .gray, .read_style_6 .readTheme .night, .read_style_7 .readTheme .fff {
     border-color: #3eaf7c
 }
 
@@ -597,10 +609,6 @@ body, .read_style_1 {
     font-size: 13px
 }
 
-.setFont .setKs {
-    font-family: kaiti;
-    font-size: 15px
-}
 
 .setupList li.fontSize a {
     text-align: center;
