@@ -336,7 +336,7 @@ public class PageController extends BaseController {
      */
     @RequestMapping("author/register.html")
     public String authorRegister() {
-        return "redirect:/index.html";
+        return ThreadLocalUtil.getTemplateDir() + "author/register";
     }
 
 

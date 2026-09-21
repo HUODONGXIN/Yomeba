@@ -20,7 +20,7 @@
                 <h3 th:text="'ログイン'+${application.website.name}"></h3>
                 <ul class="log_list">
                     <li><span id="LabErr"></span></li>
-                    <li><input name="txtUName" type="text" id="txtUName" placeholder="携帯番号 / ログインアカウント" class="s_input icon_name" /></li>
+                    <li><input name="txtUName" type="text" id="txtUName" placeholder="メールアドレス / ログインアカウント" class="s_input icon_name" /></li>
                     <li><input name="txtPassword" type="password" id="txtPassword" placeholder="パスワード" class="s_input icon_key" /></li>
                     <li class="autologin cf"><label class="fl"><input id="autoLogin" type="checkbox"  /><em>次回から自動ログイン</em></label></li>
                     <li><input type="button" name="btnLogin" value="ログイン" id="btnLogin" class="btn_red" /></li>
@@ -30,6 +30,9 @@
         <div class="user_r">
             <p class="tit">まだ会員登録されていませんか？</p>
             <a href="/user/register.html" class="btn_ora_white">今すぐ会員登録</a>
+            <p class="tit" style="margin-top:20px;">作家の方はこちら</p>
+            <a href="/author/register.html" class="btn_ora_white">作家新規登録</a>
+            <a href="/user/login.html?originUrl=/author/index.html" class="btn_ora_white" style="margin-top:8px;">作家ログイン</a>
             <div class="fast_login" style="display:none;">
                 <div class="fast_tit">
                     <p class="lines"></p>

@@ -29,7 +29,7 @@ public interface AuthorService {
      * @param author 注册信息
      * @return 返回错误信息
      */
-    String register(Long userId, Author author);
+    void register(Long userId, Author author);
 
     /**
      * 判断是否是作家
