@@ -40,7 +40,7 @@ function searchByK(k) {
 $("#searchKey").keypress(function (even) {
     if (even.which == 13) {
         even.stopPropagation();
-        //enter键按下
+        //Enterキー押下
         searchByK();
     }
 });
@@ -141,7 +141,7 @@ if (!token) {
             }
         },
         error: function () {
-            layer.alert('网络异常');
+            layer.alert('ネットワークエラーが発生しました');
         }
 
     });

@@ -189,10 +189,10 @@
                     layui.use('laypage', function () {
                         var laypage = layui.laypage;
 
-                        //执行一个laypage实例
+                        //laypageインスタンスを実行
                         laypage.render({
                             elem: 'books' //注意：ここでの test1 は ID で、# を付ける必要はありません
-                            , count: data.data.total //数据总数，从服务端得到,
+                            , count: data.data.total //データ総数、サーバーから取得,
                             , curr: data.data.pageNum
                             , limit: data.data.pageSize
                             , jump: function (obj, first) {
