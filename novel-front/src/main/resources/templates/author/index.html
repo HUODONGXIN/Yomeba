@@ -89,6 +89,12 @@
                                         総文字数
                                     </th>
                                     <th class="goread">
+                                        公開状態
+                                    </th>
+                                    <th class="goread">
+                                        連載状態
+                                    </th>
+                                    <th class="goread">
                                         操作
                                     </th>
                                 </tr>
@@ -214,6 +220,10 @@
 
                                 "                            <td class=\"goread\" valsc=\"291|2037554|1\">"
                                 + book.wordCount + "</td>\n" +
+
+                                " <td class=\"goread\">" + (book.status == 1 ? '公開' : '非公開') + "</td>\n" +
+
+                                " <td class=\"goread\">" + (book.bookStatus == 1 ? '完結' : '連載中') + "</td>\n" +
 
                                 " <td class=\"goread\" id='opt" + book.id + "'>" +
                                 "<a class='redBtn' href='/author/book_edit.html?bookId=" + book.id + "'>編集</a>" +
