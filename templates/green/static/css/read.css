@@ -166,7 +166,8 @@ body, .read_style_1 {
 .read_menu li a {
     display: block;
     width: 60px;
-    height: 60px;
+    height: auto;
+    min-height: 60px;
     position: relative; /*background-color: #fff;*/
     opacity: 0.95
 }
@@ -184,10 +185,13 @@ body, .read_style_1 {
 .read_menu li a b {
     font-weight: 400;
     display: block;
-    height: 60px;
+    height: auto;
     width: 60px;
     text-align: center;
-    line-height: 90px;
+    line-height: 1.4;
+    padding: 40px 2px 4px;
+    font-size: 12px;
+    word-break: break-all;
     color: rgba(0, 0, 0, .5);
 }
 
