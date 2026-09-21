@@ -29,9 +29,9 @@
       action="">
     <input type="hidden" id="bookIdHidden" name="bookId" th:value="${bookId}"/>
     <div class="layui-form-item">
-        <label class="layui-form-label">携帯番号 / ログインアカウント</label>
+        <label class="layui-form-label">メールアドレス / アカウント</label>
         <div class="layui-input-inline">
-            <input name="txtUName" type="text" id="txtUName" placeholder="携帯番号またはログインアカウントを入力してください"
+            <input name="txtUName" type="text" id="txtUName" placeholder="メールアドレスまたはアカウントを入力してください"
                    autocomplete="off" class="layui-input">
         </div>
     </div>
@@ -72,7 +72,7 @@
     $("#btnLogin").click(function () {
         var username = $("#txtUName").val();
         if (username.isBlank()) {
-            layer.alert("携帯番号またはログインアカウントを入力してください！");
+            layer.alert("メールアドレスまたはアカウントを入力してください！");
             return;
         }
         var password = $("#txtPassword").val();
