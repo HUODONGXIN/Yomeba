@@ -17,7 +17,7 @@ public final class BookDynamicSqlSupport {
     public static final SqlColumn<Byte> workDirection = book.workDirection;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
-    public static final SqlColumn<Integer> catId = book.catId;
+    public static final SqlColumn<String> catId = book.catId;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     public static final SqlColumn<String> catName = book.catName;
@@ -94,7 +94,7 @@ public final class BookDynamicSqlSupport {
 
         public final SqlColumn<Byte> workDirection = column("work_direction", JDBCType.TINYINT);
 
-        public final SqlColumn<Integer> catId = column("cat_id", JDBCType.INTEGER);
+        public final SqlColumn<String> catId = column("cat_id", JDBCType.VARCHAR);
 
         public final SqlColumn<String> catName = column("cat_name", JDBCType.VARCHAR);
 

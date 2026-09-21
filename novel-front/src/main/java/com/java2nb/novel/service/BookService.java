@@ -134,7 +134,7 @@ public interface BookService {
      * @param catId 分类id
      * @return 书籍集合
      * */
-    List<Book> listRecBookByCatId(Integer catId);
+    List<Book> listRecBookByCatId(String catId);
 
     /**
      * 查询首章目录ID

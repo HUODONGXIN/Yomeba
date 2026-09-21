@@ -168,6 +168,24 @@
     }
 
     var lock = false;
+    var CAT_MAX = 3;
+    function catCheck(el) {
+        if ($(".catCb:checked").length > CAT_MAX) {
+            el.checked = false;
+            $("#LabErr").html("ジャンルは最大" + CAT_MAX + "つまでです");
+        }
+    }
+    function getCheckedCats() {
+        var arr = [];
+        $(".catCb:checked").each(function(){ arr.push($(this).val()); });
+        return arr;
+    }
+    function getCheckedCatNames() {
+        var arr = [];
+        $(".catCb:checked").each(function(){ arr.push($(this).data("name")); });
+        return arr;
+    }
+
     function addBook() {
         if(lock){
             return;
@@ -184,6 +202,11 @@
         }
         if(bookName.length > 20){
             $("#LabErr").html("小説名が長すぎます！");
+            lock = false;
+            return;
+        }
+        if(getCheckedCats().length == 0){
+            $("#LabErr").html("ジャンルを選択してください！");
             lock = false;
             return;
         }
@@ -207,7 +230,7 @@
             type: "POST",
             url: "/author/addBook",
             data: {'workDirection': $("#workDirection").val(),
-            'catId':$("#catId").val(),'catName':$("#catId").find("option[value="+$("#catId").val()+"]").html(),
+            'catId':getCheckedCats().join(","),'catName':getCheckedCatNames().join(","),
             'bookName':bookName,'picUrl':picUrl,'bookDesc':bookDesc},
             dataType: "json",
             success: function (data) {

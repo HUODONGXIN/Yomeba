@@ -187,7 +187,7 @@ public class PageController extends BaseController {
         }, threadPoolExecutor);
         //加载随机推荐小说线程，该线程在加载小说基本信息线程执行完毕后才执行
         CompletableFuture<List<Book>> recBookCompletableFuture = bookCompletableFuture.thenApplyAsync((book) -> {
-            List<Book> books = bookService.listRecBookByCatId(book.getCatId());
+            List<Book> books = bookService.listRecBookByCatId(book.getCatId() == null ? null : book.getCatId().split(",")[0]);
             log.debug("加载随机推荐小说线程结束");
             return books;
         }, threadPoolExecutor);

@@ -17,7 +17,7 @@ public interface FrontBookMapper extends BookMapper {
 
     void addVisitCount(@Param("bookId") Long bookId, @Param("visitCount") Integer visitCount);
 
-    List<Book> listRecBookByCatId(@Param("catId") Integer catId);
+    List<Book> listRecBookByCatId(@Param("catId") String catId);
 
     void addCommentCount(@Param("bookId") Long bookId);
 

@@ -136,7 +136,7 @@ public class BookController extends BaseController {
      * 根据分类id查询同类推荐书籍
      */
     @GetMapping("listRecBookByCatId")
-    public RestResult<List<Book>> listRecBookByCatId(Integer catId) {
+    public RestResult<List<Book>> listRecBookByCatId(String catId) {
         return RestResult.ok(bookService.listRecBookByCatId(catId));
     }
 
