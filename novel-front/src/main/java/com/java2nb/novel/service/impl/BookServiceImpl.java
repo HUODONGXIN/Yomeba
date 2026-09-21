@@ -603,6 +603,7 @@ public class BookServiceImpl implements BookService {
             .set(BookDynamicSqlSupport.catId).equalTo(book.getCatId())
             .set(BookDynamicSqlSupport.catName).equalTo(book.getCatName())
             .set(BookDynamicSqlSupport.workDirection).equalTo(book.getWorkDirection())
+            .set(BookDynamicSqlSupport.bookStatus).equalTo(book.getBookStatus())
             .set(BookDynamicSqlSupport.bookDesc).equalTo(book.getBookDesc())
             .where(BookDynamicSqlSupport.id, isEqualTo(book.getId()))
             .build()
