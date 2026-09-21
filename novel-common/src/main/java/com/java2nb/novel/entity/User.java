@@ -25,6 +25,7 @@ public class User {
     private String account;
 
     @NotBlank(groups = {AddGroup.class}, message = "パスワードを入力してください！")
+    @Pattern(groups = {AddGroup.class}, regexp = "^[A-Za-z0-9]{6,20}$", message = "パスワードは英大文字・英小文字・数字の6〜20桁で入力してください！")
     @Null(groups = {UpdateGroup.class})
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     private String password;
