@@ -14,7 +14,7 @@ public class EsBookVO  {
     private Byte workDirection;
 
     
-    private Integer catId;
+    private String catId;
 
     
     private String catName;

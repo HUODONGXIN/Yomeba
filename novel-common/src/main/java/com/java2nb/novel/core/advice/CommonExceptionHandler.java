@@ -47,7 +47,7 @@ public class CommonExceptionHandler {
         log.error(e.getMessage(), e);
         if (isJsonRequest(request)) {
             // 如果是REST请求，返回JSON格式的错误响应
-            return RestResult.error();
+            return RestResult.error("システムエラーが発生しました");
         } else {
             //跳转页面过程中出现异常时统一跳转到404页面
             return new ModelAndView("404");
