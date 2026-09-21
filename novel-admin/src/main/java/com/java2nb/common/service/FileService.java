@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 文件上传
- * 
+ * ファイルアップロード
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2019-09-19 16:02:20
@@ -29,8 +29,8 @@ public interface FileService {
 	int batchRemove(Long[] ids);
 
 	/**
-	 * 判断一个文件是否存在
-	 * @param url FileDO中存的路径
+	 * ファイルが存在するかどうかを判定する
+	 * @param url FileDO に保存されているパス
 	 * @return
 	 */
     Boolean isExist(String url);

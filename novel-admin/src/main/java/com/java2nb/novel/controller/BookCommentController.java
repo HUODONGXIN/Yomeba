@@ -23,7 +23,7 @@ import com.java2nb.common.utils.Query;
 import com.java2nb.common.utils.R;
 
 /**
- * 小说评论表
+ * 小説コメントテーブル
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -42,12 +42,12 @@ public class BookCommentController {
         return "novel/bookComment/bookComment";
     }
 
-    @ApiOperation(value = "获取小说评论表列表", notes = "获取小说评论表列表")
+    @ApiOperation(value = "小説コメントテーブル一覧を取得", notes = "小説コメントテーブルの一覧を取得します")
     @ResponseBody
     @GetMapping("/list")
     @RequiresPermissions("novel:bookComment:bookComment")
     public R list(@RequestParam Map<String, Object> params) {
-        //查询列表数据
+        //一覧データを検索
         Query query = new Query(params);
         List<BookCommentDO> bookCommentList = bookCommentService.list(query);
         int total = bookCommentService.count(query);
@@ -55,14 +55,14 @@ public class BookCommentController {
         return R.ok().put("data", pageBean);
     }
 
-    @ApiOperation(value = "新增小说评论表页面", notes = "新增小说评论表页面")
+    @ApiOperation(value = "小説コメント新規追加ページ", notes = "小説コメントの新規追加ページを表示します")
     @GetMapping("/add")
     @RequiresPermissions("novel:bookComment:add")
     String add() {
         return "novel/bookComment/add";
     }
 
-    @ApiOperation(value = "修改小说评论表页面", notes = "修改小说评论表页面")
+    @ApiOperation(value = "小説コメント編集ページ", notes = "小説コメントの編集ページを表示します")
     @GetMapping("/edit/{id}")
     @RequiresPermissions("novel:bookComment:edit")
     String edit(@PathVariable("id") Long id, Model model) {
@@ -71,7 +71,7 @@ public class BookCommentController {
         return "novel/bookComment/edit";
     }
 
-    @ApiOperation(value = "查看小说评论表页面", notes = "查看小说评论表页面")
+    @ApiOperation(value = "小説コメント詳細ページ", notes = "小説コメントの詳細ページを表示します")
     @GetMapping("/detail/{id}")
     @RequiresPermissions("novel:bookComment:detail")
     String detail(@PathVariable("id") Long id, Model model) {
@@ -83,7 +83,7 @@ public class BookCommentController {
     /**
      * 保存
      */
-    @ApiOperation(value = "新增小说评论表", notes = "新增小说评论表")
+    @ApiOperation(value = "小説コメント新規追加", notes = "小説コメントを新規追加します")
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("novel:bookComment:add")
@@ -95,9 +95,9 @@ public class BookCommentController {
     }
 
     /**
-     * 修改
+     * 更新
      */
-    @ApiOperation(value = "修改小说评论表", notes = "修改小说评论表")
+    @ApiOperation(value = "小説コメント更新", notes = "小説コメントを更新します")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("novel:bookComment:edit")
@@ -107,9 +107,9 @@ public class BookCommentController {
     }
 
     /**
-     * 删除
+     * 削除
      */
-    @ApiOperation(value = "删除小说评论表", notes = "删除小说评论表")
+    @ApiOperation(value = "小説コメント削除", notes = "小説コメントを削除します")
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("novel:bookComment:remove")
@@ -121,9 +121,9 @@ public class BookCommentController {
     }
 
     /**
-     * 删除
+     * 一括削除
      */
-    @ApiOperation(value = "批量删除小说评论表", notes = "批量删除小说评论表")
+    @ApiOperation(value = "小説コメント一括削除", notes = "小説コメントを一括削除します")
     @PostMapping("/batchRemove")
     @ResponseBody
     @RequiresPermissions("novel:bookComment:batchRemove")

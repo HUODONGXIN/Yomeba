@@ -9,69 +9,69 @@ function load(deptId) {
 	$('#exampleTable')
 		.bootstrapTable(
 			{
-				method : 'get', // 服务器数据的请求方式 get or post
-				url : prefix + "/list", // 服务器数据的加载地址
+				method : 'get', // サーバーデータのリクエスト方式 get or post
+				url : prefix + "/list", // サーバーデータの読み込み先URL
 				// showRefresh : true,
 				// showToggle : true,
 				// showColumns : true,
 				iconSize : 'outline',
 				toolbar : '#exampleToolbar',
-				striped : true, // 设置为true会有隔行变色效果
-				dataType : "json", // 服务器返回的数据类型
-				pagination : true, // 设置为true会在底部显示分页条
+				striped : true, // trueにすると行ごとに背景色が変わります
+				dataType : "json", // サーバーが返すデータ型
+				pagination : true, // trueにすると下部にページネーションを表示します
 				// queryParamsType : "limit",
-				// //设置为limit则会发送符合RESTFull格式的参数
-				singleSelect : false, // 设置为true将禁止多选
+				// // limitに設定するとRESTFull形式のパラメータを送信します
+				singleSelect : false, // trueにすると複数選択が禁止されます
 				// contentType : "application/x-www-form-urlencoded",
-				// //发送到服务器的数据编码类型
-				pageSize : 10, // 如果设置了分页，每页数据条数
-				pageNumber : 1, // 如果设置了分布，首页页码
-				// search : true, // 是否显示搜索框
-				showColumns : false, // 是否显示内容下拉框（选择显示的列）
-				sidePagination : "server", // 设置在哪里进行分页，可选值为"client" 或者
+				// // サーバーに送信するデータのエンコード形式
+				pageSize : 10, // ページネーション設定時の1ページあたりの件数
+				pageNumber : 1, // ページネーション設定時の初期ページ番号
+				// search : true, // 検索ボックスを表示するか
+				showColumns : false, // 列選択ドロップダウンを表示するか（表示する列を選択）
+				sidePagination : "server", // ページネーションの処理場所（"client" または
 				// "server"
 				queryParams : function(params) {
 					return {
-						// 说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
+						// 説明：バックエンドに渡すパラメータには offset 開始インデックス、limit ステップ幅、sort ソート列、order: desc、および全列のキーと値のペアが含まれます
 						limit : params.limit,
 						offset : params.offset,
 						name : $('#searchName').val(),
 						deptId : deptId
 					};
 				},
-				// //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果
-				// queryParamsType = 'limit' ,返回参数必须包含
-				// limit, offset, search, sort, order 否则, 需要包含:
+				// // サーバーにデータをリクエストする際、パラメータを上書きして追加できます（例: toolbar のパラメータ）。
+				// queryParamsType = 'limit' の場合、戻り値には以下を含める必要があります:
+				// limit, offset, search, sort, order それ以外の場合は以下を含める必要があります:
 				// pageSize, pageNumber, searchText, sortName,
 				// sortOrder.
-				// 返回false将会终止请求
+				// false を返すとリクエストが中止されます
 				columns : [
 					{
 						checkbox : true
 					},
 					{
-						field : 'userId', // 列字段名
-						title : '序号' // 列标题
+						field : 'userId', // カラムフィールド名
+						title : 'No.' // 列のタイトル
 					},
 					{
 						field : 'name',
-						title : '姓名'
+						title : '氏名'
 					},
 					{
 						field : 'username',
-						title : '用户名'
+						title : 'アカウント'
 					},
 					{
 						field : 'email',
-						title : '邮箱'
+						title : 'メールアドレス'
 					},
 					{
 						field : 'status',
-						title : '状态',
+						title : '状態',
 						align : 'center',
 						formatter : function(value, row, index) {
 							if (value == '0') {
-								return '<span class="label label-danger">禁用</span>';
+								return '<span class="label label-danger">無効</span>';
 							} else if (value == '1') {
 								return '<span class="label label-primary">正常</span>';
 							}
@@ -82,13 +82,13 @@ function load(deptId) {
 						field : 'id',
 						align : 'center',
 						formatter : function(value, row, index) {
-							var e = '<a  class="btn btn-primary btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="编辑" onclick="edit(\''
+							var e = '<a  class="btn btn-primary btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="編集" onclick="edit(\''
 								+ row.userId
 								+ '\')"><i class="fa fa-edit "></i></a> ';
-							var d = '<a class="btn btn-warning btn-sm ' + s_remove_h + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
+							var d = '<a class="btn btn-warning btn-sm ' + s_remove_h + '" href="#" title="削除"  mce_href="#" onclick="remove(\''
 								+ row.userId
 								+ '\')"><i class="fa fa-remove"></i></a> ';
-							var f = '<a class="btn btn-success btn-sm ' + s_resetPwd_h + '" href="#" title="重置密码"  mce_href="#" onclick="resetPwd(\''
+							var f = '<a class="btn btn-success btn-sm ' + s_resetPwd_h + '" href="#" title="パスワードリセット"  mce_href="#" onclick="resetPwd(\''
 								+ row.userId
 								+ '\')"><i class="fa fa-key"></i></a> ';
 							return e + d + f;
@@ -100,19 +100,19 @@ function reLoad() {
 	$('#exampleTable').bootstrapTable('refresh');
 }
 function add() {
-	// iframe层
+	// iframeレイヤー
 	layer.open({
 		type : 2,
-		title : '增加用户',
+		title : 'ユーザー新規追加',
 		maxmin : true,
-		shadeClose : false, // 点击遮罩关闭层
+		shadeClose : false, // マスククリックでレイヤーを閉じる
 		area : [ '800px', '520px' ],
 		content : prefix + '/add'
 	});
 }
 function remove(id) {
-	layer.confirm('确定要删除选中的记录？', {
-		btn : [ '确定', '取消' ]
+	layer.confirm('選択したレコードを削除してもよろしいですか？', {
+		btn : [ '確定', 'キャンセル' ]
 	}, function() {
 		$.ajax({
 			url : "/sys/user/remove",
@@ -134,35 +134,35 @@ function remove(id) {
 function edit(id) {
 	layer.open({
 		type : 2,
-		title : '用户修改',
+		title : 'ユーザー編集',
 		maxmin : true,
 		shadeClose : false,
 		area : [ '800px', '520px' ],
-		content : prefix + '/edit/' + id // iframe的url
+		content : prefix + '/edit/' + id // iframeのURL
 	});
 }
 function resetPwd(id) {
 	layer.open({
 		type : 2,
-		title : '重置密码',
+		title : 'パスワードリセット',
 		maxmin : true,
-		shadeClose : false, // 点击遮罩关闭层
+		shadeClose : false, // マスククリックでレイヤーを閉じる
 		area : [ '400px', '260px' ],
-		content : prefix + '/resetPwd/' + id // iframe的url
+		content : prefix + '/resetPwd/' + id // iframeのURL
 	});
 }
 function batchRemove() {
-	var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
+	var rows = $('#exampleTable').bootstrapTable('getSelections'); // 選択中の全行を返します。選択レコードがない場合は空配列を返します
 	if (rows.length == 0) {
-		layer.msg("请选择要删除的数据");
+		layer.msg("削除するデータを選択してください");
 		return;
 	}
-	layer.confirm("确认要删除选中的'" + rows.length + "'条数据吗?", {
-		btn : [ '确定', '取消' ]
-	// 按钮
+	layer.confirm("選択した'" + rows.length + "'件のデータを削除してもよろしいですか?", {
+		btn : [ '確定', 'キャンセル' ]
+	// ボタン
 	}, function() {
 		var ids = new Array();
-		// 遍历所有选择的行数据，取每条数据对应的ID
+		// 選択中の全行を走査し、各行に対応するIDを取得します
 		$.each(rows, function(i, row) {
 			ids[i] = row['userId'];
 		});

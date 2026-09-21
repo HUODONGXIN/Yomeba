@@ -5,7 +5,7 @@ $(function () {
     });
 });
 /**
- * 基本信息提交
+ * 基本情報を送信
  */
 $("#base_save").click(function () {
     var hobbyStr = getHobbyStr();
@@ -22,7 +22,7 @@ $("#base_save").click(function () {
                 },
                 success : function(data) {
                     if (data.code == 0) {
-                        parent.layer.msg("更新成功");
+                        parent.layer.msg("更新しました");
                     } else {
                         parent.layer.alert(data.msg)
                     }
@@ -44,7 +44,7 @@ $("#pwd_save").click(function () {
             },
             success : function(data) {
                 if (data.code == 0) {
-                    parent.layer.alert("更新密码成功");
+                    parent.layer.alert("パスワードを更新しました");
                     $("#photo_info").click();
                 } else {
                     parent.layer.alert(data.msg)

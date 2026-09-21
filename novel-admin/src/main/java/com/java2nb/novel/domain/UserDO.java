@@ -25,51 +25,51 @@ public class UserDO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	
-	//主键
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+	//主キー
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long id;
-	//登录名
+	//ログイン名
 			private String username;
 	//アカウントコード
 			private String account;
-	//登录密码
+	//ログインパスワード
 			private String password;
-	//昵称
+	//ニックネーム
 			private String nickName;
-	//用户头像
+	//ユーザーアバター
 			private String userPhoto;
-	//用户性别，0：男，1：女
+	//ユーザーの性別。0：男、1：女
 			private Integer userSex;
-	//账户余额
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+	//アカウント残高
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long accountBalance;
-	//用户状态，0：正常
+	//ユーザーステータス。0：正常
 			private Integer status;
-	//创建时间
+	//作成日時
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 		private Date createTime;
-	//更新时间
+	//更新日時
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 		private Date updateTime;
 
 	/**
-	 * 设置：主键
+	 * 設定：主キー
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 	/**
-	 * 获取：主键
+	 * 取得：主キー
 	 */
 	public Long getId() {
 		return id;
 	}
 	/**
-	 * 设置：登录名
+	 * 設定：ログイン名
 	 */
 	public void setUsername(String username) {
 		this.username = username;
@@ -77,103 +77,103 @@ public class UserDO implements Serializable {
 	public String getAccount() { return account; }
 	public void setAccount(String account) { this.account = account; }
 	/**
-	 * 获取：登录名
+	 * 取得：ログイン名
 	 */
 	public String getUsername() {
 		return username;
 	}
 	/**
-	 * 设置：登录密码
+	 * 設定：ログインパスワード
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	/**
-	 * 获取：登录密码
+	 * 取得：ログインパスワード
 	 */
 	public String getPassword() {
 		return password;
 	}
 	/**
-	 * 设置：昵称
+	 * 設定：ニックネーム
 	 */
 	public void setNickName(String nickName) {
 		this.nickName = nickName;
 	}
 	/**
-	 * 获取：昵称
+	 * 取得：ニックネーム
 	 */
 	public String getNickName() {
 		return nickName;
 	}
 	/**
-	 * 设置：用户头像
+	 * 設定：ユーザーアバター
 	 */
 	public void setUserPhoto(String userPhoto) {
 		this.userPhoto = userPhoto;
 	}
 	/**
-	 * 获取：用户头像
+	 * 取得：ユーザーアバター
 	 */
 	public String getUserPhoto() {
 		return userPhoto;
 	}
 	/**
-	 * 设置：用户性别，0：男，1：女
+	 * 設定：ユーザーの性別。0：男、1：女
 	 */
 	public void setUserSex(Integer userSex) {
 		this.userSex = userSex;
 	}
 	/**
-	 * 获取：用户性别，0：男，1：女
+	 * 取得：ユーザーの性別。0：男、1：女
 	 */
 	public Integer getUserSex() {
 		return userSex;
 	}
 	/**
-	 * 设置：账户余额
+	 * 設定：アカウント残高
 	 */
 	public void setAccountBalance(Long accountBalance) {
 		this.accountBalance = accountBalance;
 	}
 	/**
-	 * 获取：账户余额
+	 * 取得：アカウント残高
 	 */
 	public Long getAccountBalance() {
 		return accountBalance;
 	}
 	/**
-	 * 设置：用户状态，0：正常
+	 * 設定：ユーザーステータス。0：正常
 	 */
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	/**
-	 * 获取：用户状态，0：正常
+	 * 取得：ユーザーステータス。0：正常
 	 */
 	public Integer getStatus() {
 		return status;
 	}
 	/**
-	 * 设置：创建时间
+	 * 設定：作成日時
 	 */
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 	/**
-	 * 获取：创建时间
+	 * 取得：作成日時
 	 */
 	public Date getCreateTime() {
 		return createTime;
 	}
 	/**
-	 * 设置：更新时间
+	 * 設定：更新日時
 	 */
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 	/**
-	 * 获取：更新时间
+	 * 取得：更新日時
 	 */
 	public Date getUpdateTime() {
 		return updateTime;

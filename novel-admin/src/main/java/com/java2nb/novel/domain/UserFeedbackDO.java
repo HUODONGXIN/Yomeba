@@ -18,19 +18,19 @@ public class UserFeedbackDO implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    //主键id
-    //java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-    //所以通过序列化成字符串来解决
+    //主キーID
+    //Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+    //そのため文字列にシリアライズして解決する
     @JsonSerialize(using = LongToStringSerializer.class)
     private Long id;
-    //用户id
-    //java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-    //所以通过序列化成字符串来解决
+    //ユーザーID
+    //Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+    //そのため文字列にシリアライズして解決する
     @JsonSerialize(using = LongToStringSerializer.class)
     private Long userId;
-    //反馈内容
+    //フィードバック内容
     private String content;
-    //反馈时间
+    //フィードバック日時
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
@@ -46,56 +46,56 @@ public class UserFeedbackDO implements Serializable {
     }
 
     /**
-     * 设置：主键id
+     * 設定：主キーID
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * 获取：主键id
+     * 取得：主キーID
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * 设置：用户id
+     * 設定：ユーザーID
      */
     public void setUserId(Long userId) {
         this.userId = userId;
     }
 
     /**
-     * 获取：用户id
+     * 取得：ユーザーID
      */
     public Long getUserId() {
         return userId;
     }
 
     /**
-     * 设置：反馈内容
+     * 設定：フィードバック内容
      */
     public void setContent(String content) {
         this.content = content;
     }
 
     /**
-     * 获取：反馈内容
+     * 取得：フィードバック内容
      */
     public String getContent() {
         return content;
     }
 
     /**
-     * 设置：反馈时间
+     * 設定：フィードバック日時
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
     /**
-     * 获取：反馈时间
+     * 取得：フィードバック日時
      */
     public Date getCreateTime() {
         return createTime;

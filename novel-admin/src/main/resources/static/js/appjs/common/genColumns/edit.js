@@ -1,7 +1,7 @@
 var columnData = JSON.parse($("#genColumns").val());
 var columnJsData = [[]];
 var row_template = ['text','text','text','text','text','text','text','text','text'];
-var headerCols = ['列名', '列类型', '映射java类型', '列注释', '列标签名', '页面显示类型', '字典类型', '是否必填', '列排序（升序）'];
+var headerCols = ['カラム名', 'カラム型', 'マッピングJava型', 'カラムコメント', 'カラムラベル名', '画面表示タイプ', 'データ辞書型', '必須かどうか', 'カラム並び順（昇順）'];
 for (var i = 0; i < columnData.length; i++) {
     columnJsData[i] = [columnData[i].columnName, columnData[i].columnType, columnData[i].javaType, columnData[i].columnComment,
         columnData[i].columnLabel, columnData[i].pageType, columnData[i].dictType, columnData[i].isRequired, columnData[i].columnSort];

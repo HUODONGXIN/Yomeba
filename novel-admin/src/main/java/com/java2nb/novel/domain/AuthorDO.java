@@ -15,8 +15,8 @@ import java.util.Date;
 
 
 /**
- * 作者表
- * 
+ * 作家テーブル
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2020-05-13 11:16:51
@@ -24,179 +24,179 @@ import java.util.Date;
 public class AuthorDO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
-	//主键
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+
+	//主キー
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long id;
-	//用户ID
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+	//ユーザーID
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long userId;
-	//登录账号（关联 user 表）
+	//ログインアカウント（user テーブルと紐付け）
 			private String username;
-	//登录密码（MD5 加密存储）
+	//ログインパスワード（MD5 で暗号化して保存）
 			private String password;
-	//邀请码
+	//招待コード
 			private String inviteCode;
-	//笔名
+	//ペンネーム
 			private String penName;
-	//手机号码
+	//電話番号
 			private String telPhone;
-	//QQ或微信账号
+	//QQ または WeChat のアカウント
 			private String chatAccount;
-	//电子邮箱
+	//メールアドレス
 			private String email;
-	//作品方向，0：男频，1：女频
+	//作品の方向性。0：男性向け、1：女性向け
 			private Integer workDirection;
-	//创建时间
+	//作成日時
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 		private Date createTime;
-	//0：正常，1：封禁
+	//0：正常、1：利用停止
 			private Integer status;
 
 	/**
-	 * 设置：主键
+	 * 設定：主キー
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 	/**
-	 * 获取：主键
+	 * 取得：主キー
 	 */
 	public Long getId() {
 		return id;
 	}
 	/**
-	 * 设置：用户ID
+	 * 設定：ユーザーID
 	 */
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	/**
-	 * 获取：用户ID
+	 * 取得：ユーザーID
 	 */
 	public Long getUserId() {
 		return userId;
 	}
 	/**
-	 * 设置：登录账号
+	 * 設定：ログインアカウント
 	 */
 	public void setUsername(String username) {
 		this.username = username;
 	}
 	/**
-	 * 获取：登录账号
+	 * 取得：ログインアカウント
 	 */
 	public String getUsername() {
 		return username;
 	}
 	/**
-	 * 设置：登录密码
+	 * 設定：ログインパスワード
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	/**
-	 * 获取：登录密码
+	 * 取得：ログインパスワード
 	 */
 	public String getPassword() {
 		return password;
 	}
 	/**
-	 * 设置：邀请码
+	 * 設定：招待コード
 	 */
 	public void setInviteCode(String inviteCode) {
 		this.inviteCode = inviteCode;
 	}
 	/**
-	 * 获取：邀请码
+	 * 取得：招待コード
 	 */
 	public String getInviteCode() {
 		return inviteCode;
 	}
 	/**
-	 * 设置：笔名
+	 * 設定：ペンネーム
 	 */
 	public void setPenName(String penName) {
 		this.penName = penName;
 	}
 	/**
-	 * 获取：笔名
+	 * 取得：ペンネーム
 	 */
 	public String getPenName() {
 		return penName;
 	}
 	/**
-	 * 设置：手机号码
+	 * 設定：電話番号
 	 */
 	public void setTelPhone(String telPhone) {
 		this.telPhone = telPhone;
 	}
 	/**
-	 * 获取：手机号码
+	 * 取得：電話番号
 	 */
 	public String getTelPhone() {
 		return telPhone;
 	}
 	/**
-	 * 设置：QQ或微信账号
+	 * 設定：QQ または WeChat のアカウント
 	 */
 	public void setChatAccount(String chatAccount) {
 		this.chatAccount = chatAccount;
 	}
 	/**
-	 * 获取：QQ或微信账号
+	 * 取得：QQ または WeChat のアカウント
 	 */
 	public String getChatAccount() {
 		return chatAccount;
 	}
 	/**
-	 * 设置：电子邮箱
+	 * 設定：メールアドレス
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 	/**
-	 * 获取：电子邮箱
+	 * 取得：メールアドレス
 	 */
 	public String getEmail() {
 		return email;
 	}
 	/**
-	 * 设置：作品方向，0：男频，1：女频
+	 * 設定：作品の方向性。0：男性向け、1：女性向け
 	 */
 	public void setWorkDirection(Integer workDirection) {
 		this.workDirection = workDirection;
 	}
 	/**
-	 * 获取：作品方向，0：男频，1：女频
+	 * 取得：作品の方向性。0：男性向け、1：女性向け
 	 */
 	public Integer getWorkDirection() {
 		return workDirection;
 	}
 	/**
-	 * 设置：创建时间
+	 * 設定：作成日時
 	 */
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 	/**
-	 * 获取：创建时间
+	 * 取得：作成日時
 	 */
 	public Date getCreateTime() {
 		return createTime;
 	}
 	/**
-	 * 设置：0：正常，1：封禁
+	 * 設定：0：正常、1：利用停止
 	 */
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	/**
-	 * 获取：0：正常，1：封禁
+	 * 取得：0：正常、1：利用停止
 	 */
 	public Integer getStatus() {
 		return status;

@@ -12,7 +12,7 @@
                 <input id="id" name="id" th:value="${bookComment.id}"
                        type="hidden">
                                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">小说ID：</label>
+                        <label class="col-sm-3 control-label">小説ID：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookComment.bookId}">
@@ -22,7 +22,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">评价内容：</label>
+                        <label class="col-sm-3 control-label">コメント内容：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookComment.commentContent}">
@@ -32,7 +32,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">回复数量：</label>
+                        <label class="col-sm-3 control-label">返信数：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookComment.replyCount}">
@@ -42,7 +42,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">审核状态，0：待审核，1：审核通过，2：审核不通过：</label>
+                        <label class="col-sm-3 control-label">審査状況（0：審査待ち、1：審査通過、2：審査却下）：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookComment.auditStatus}">
@@ -52,7 +52,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">评价时间：</label>
+                        <label class="col-sm-3 control-label">コメント日時：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookComment.createTime}==null?null:${#dates.format(bookComment.createTime,'yyyy-MM-dd HH:mm:ss')}">
@@ -61,7 +61,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">评价人：</label>
+                        <label class="col-sm-3 control-label">コメント投稿者：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookComment.createUserId}">

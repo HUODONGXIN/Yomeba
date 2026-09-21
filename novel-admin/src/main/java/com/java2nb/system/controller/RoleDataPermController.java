@@ -23,7 +23,7 @@ import com.java2nb.common.utils.Query;
 import com.java2nb.common.utils.R;
 
 /**
- * 角色与数据权限对应关系
+ * ロールとデータ権限の対応関係
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -42,12 +42,12 @@ public class RoleDataPermController {
         return "system/roleDataPerm/roleDataPerm";
     }
 
-    @ApiOperation(value = "获取角色与数据权限对应关系列表", notes = "获取角色与数据权限对应关系列表")
+    @ApiOperation(value = "ロールとデータ権限の対応関係一覧を取得", notes = "ロールとデータ権限の対応関係の一覧を取得します")
     @ResponseBody
     @GetMapping("/list")
     @RequiresPermissions("system:roleDataPerm:roleDataPerm")
     public R list(@RequestParam Map<String, Object> params) {
-        //查询列表数据
+        //一覧データを検索
         Query query = new Query(params);
         List<RoleDataPermDO> roleDataPermList = roleDataPermService.list(query);
         int total = roleDataPermService.count(query);
@@ -55,14 +55,14 @@ public class RoleDataPermController {
         return R.ok().put("data", pageBean);
     }
 
-    @ApiOperation(value = "新增角色与数据权限对应关系页面", notes = "新增角色与数据权限对应关系页面")
+    @ApiOperation(value = "ロールとデータ権限の対応関係新規追加ページ", notes = "ロールとデータ権限の対応関係の新規追加ページを表示します")
     @GetMapping("/add")
     @RequiresPermissions("system:roleDataPerm:add")
     String add() {
         return "system/roleDataPerm/add";
     }
 
-    @ApiOperation(value = "修改角色与数据权限对应关系页面", notes = "修改角色与数据权限对应关系页面")
+    @ApiOperation(value = "ロールとデータ権限の対応関係編集ページ", notes = "ロールとデータ権限の対応関係の編集ページを表示します")
     @GetMapping("/edit/{id}")
     @RequiresPermissions("system:roleDataPerm:edit")
     String edit(@PathVariable("id") Long id, Model model) {
@@ -71,7 +71,7 @@ public class RoleDataPermController {
         return "system/roleDataPerm/edit";
     }
 
-    @ApiOperation(value = "查看角色与数据权限对应关系页面", notes = "查看角色与数据权限对应关系页面")
+    @ApiOperation(value = "ロールとデータ権限の対応関係詳細ページ", notes = "ロールとデータ権限の対応関係の詳細ページを表示します")
     @GetMapping("/detail/{id}")
     @RequiresPermissions("system:roleDataPerm:detail")
     String detail(@PathVariable("id") Long id, Model model) {
@@ -83,7 +83,7 @@ public class RoleDataPermController {
     /**
      * 保存
      */
-    @ApiOperation(value = "新增角色与数据权限对应关系", notes = "新增角色与数据权限对应关系")
+    @ApiOperation(value = "ロールとデータ権限の対応関係新規追加", notes = "ロールとデータ権限の対応関係を新規追加します")
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("system:roleDataPerm:add")
@@ -95,9 +95,9 @@ public class RoleDataPermController {
     }
 
     /**
-     * 修改
+     * 更新
      */
-    @ApiOperation(value = "修改角色与数据权限对应关系", notes = "修改角色与数据权限对应关系")
+    @ApiOperation(value = "ロールとデータ権限の対応関係更新", notes = "ロールとデータ権限の対応関係を更新します")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("system:roleDataPerm:edit")
@@ -107,9 +107,9 @@ public class RoleDataPermController {
     }
 
     /**
-     * 删除
+     * 削除
      */
-    @ApiOperation(value = "删除角色与数据权限对应关系", notes = "删除角色与数据权限对应关系")
+    @ApiOperation(value = "ロールとデータ権限の対応関係削除", notes = "ロールとデータ権限の対応関係を削除します")
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("system:roleDataPerm:remove")
@@ -121,9 +121,9 @@ public class RoleDataPermController {
     }
 
     /**
-     * 删除
+     * 一括削除
      */
-    @ApiOperation(value = "批量删除角色与数据权限对应关系", notes = "批量删除角色与数据权限对应关系")
+    @ApiOperation(value = "ロールとデータ権限の対応関係一括削除", notes = "ロールとデータ権限の対応関係を一括削除します")
     @PostMapping("/batchRemove")
     @ResponseBody
     @RequiresPermissions("system:roleDataPerm:batchRemove")

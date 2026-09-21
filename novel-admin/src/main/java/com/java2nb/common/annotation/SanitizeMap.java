@@ -3,9 +3,9 @@ package com.java2nb.common.annotation;
 import java.lang.annotation.*;
 
 /**
- * 标记某个方法参数需要进行 Map 字段的清理和标准化处理。
+ * あるメソッドの引数に対して、Map フィールドのサニタイズと正規化処理を行うことを示すマーカー。
  *
- * <p>通常用于 DAO 接口中 list 方法的 Map 参数，用于防止非法排序字段或排序顺序。</p>
+ * <p>通常は DAO インターフェースの list メソッドの Map 引数に使用し、不正なソートフィールドやソート順を防ぐために用いる。</p>
  */
 @Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)

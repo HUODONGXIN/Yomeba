@@ -14,41 +14,41 @@ import com.alibaba.fastjson.JSON;
  */
 public class Tree<T> {
 	/**
-	 * 节点ID
+	 * ノードID
 	 */
 	private String id;
 	/**
-	 * 显示节点文本
+	 * ノードに表示するテキスト
 	 */
 	private String text;
 	/**
-	 * 节点状态，open closed
+	 * ノードの状態。open closed
 	 */
 	private Map<String, Object> state;
 	/**
-	 * 节点是否被选中 true false
+	 * ノードが選択されているかどうか true false
 	 */
 	private boolean checked = false;
 	/**
-	 * 节点属性
+	 * ノードの属性
 	 */
 	private Map<String, Object> attributes;
 
 	/**
-	 * 节点的子节点
+	 * ノードの子ノード
 	 */
 	private List<Tree<T>> children = new ArrayList<Tree<T>>();
 
 	/**
-	 * 父ID
+	 * 親ID
 	 */
 	private String parentId;
 	/**
-	 * 是否有父节点
+	 * 親ノードを持つかどうか
 	 */
 	private boolean hasParent = false;
 	/**
-	 * 是否有子节点
+	 * 子ノードを持つかどうか
 	 */
 	private boolean hasChildren = false;
 

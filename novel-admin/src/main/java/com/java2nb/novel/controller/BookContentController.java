@@ -23,7 +23,7 @@ import com.java2nb.common.utils.Query;
 import com.java2nb.common.utils.R;
 
 /**
- * 小说内容表
+ * 小説コンテンツテーブル
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -42,12 +42,12 @@ public class BookContentController {
         return "novel/bookContent/bookContent";
     }
 
-    @ApiOperation(value = "获取小说内容表列表", notes = "获取小说内容表列表")
+    @ApiOperation(value = "小説コンテンツテーブル一覧を取得", notes = "小説コンテンツテーブルの一覧を取得します")
     @ResponseBody
     @GetMapping("/list")
     @RequiresPermissions("novel:bookContent:bookContent")
     public R list(@RequestParam Map<String, Object> params) {
-        //查询列表数据
+        //一覧データを検索
         Query query = new Query(params);
         List<BookContentDO> bookContentList = bookContentService.list(query);
         int total = bookContentService.count(query);
@@ -55,14 +55,14 @@ public class BookContentController {
         return R.ok().put("data", pageBean);
     }
 
-    @ApiOperation(value = "新增小说内容表页面", notes = "新增小说内容表页面")
+    @ApiOperation(value = "小説コンテンツ新規追加ページ", notes = "小説コンテンツの新規追加ページを表示します")
     @GetMapping("/add")
     @RequiresPermissions("novel:bookContent:add")
     String add() {
         return "novel/bookContent/add";
     }
 
-    @ApiOperation(value = "修改小说内容表页面", notes = "修改小说内容表页面")
+    @ApiOperation(value = "小説コンテンツ編集ページ", notes = "小説コンテンツの編集ページを表示します")
     @GetMapping("/edit/{id}")
     @RequiresPermissions("novel:bookContent:edit")
     String edit(@PathVariable("id") Long id, Model model) {
@@ -71,7 +71,7 @@ public class BookContentController {
         return "novel/bookContent/edit";
     }
 
-    @ApiOperation(value = "查看小说内容表页面", notes = "查看小说内容表页面")
+    @ApiOperation(value = "小説コンテンツ詳細ページ", notes = "小説コンテンツの詳細ページを表示します")
     @GetMapping("/detail/{id}")
     @RequiresPermissions("novel:bookContent:detail")
     String detail(@PathVariable("id") Long id, Model model) {
@@ -83,7 +83,7 @@ public class BookContentController {
     /**
      * 保存
      */
-    @ApiOperation(value = "新增小说内容表", notes = "新增小说内容表")
+    @ApiOperation(value = "小説コンテンツ新規追加", notes = "小説コンテンツを新規追加します")
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("novel:bookContent:add")
@@ -95,9 +95,9 @@ public class BookContentController {
     }
 
     /**
-     * 修改
+     * 更新
      */
-    @ApiOperation(value = "修改小说内容表", notes = "修改小说内容表")
+    @ApiOperation(value = "小説コンテンツ更新", notes = "小説コンテンツを更新します")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("novel:bookContent:edit")
@@ -107,9 +107,9 @@ public class BookContentController {
     }
 
     /**
-     * 删除
+     * 削除
      */
-    @ApiOperation(value = "删除小说内容表", notes = "删除小说内容表")
+    @ApiOperation(value = "小説コンテンツ削除", notes = "小説コンテンツを削除します")
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("novel:bookContent:remove")
@@ -121,9 +121,9 @@ public class BookContentController {
     }
 
     /**
-     * 删除
+     * 一括削除
      */
-    @ApiOperation(value = "批量删除小说内容表", notes = "批量删除小说内容表")
+    @ApiOperation(value = "小説コンテンツ一括削除", notes = "小説コンテンツを一括削除します")
     @PostMapping("/batchRemove")
     @ResponseBody
     @RequiresPermissions("novel:bookContent:batchRemove")

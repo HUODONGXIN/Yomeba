@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 小说评论表
- * 
+ * 小説コメントテーブル
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2023-04-14 21:59:28

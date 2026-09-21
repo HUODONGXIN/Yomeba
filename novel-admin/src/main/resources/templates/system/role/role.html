@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
 	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <meta charset="utf-8">
 <head th:include="include::header"></head>
@@ -11,11 +11,11 @@
 					<div id="exampleToolbar" role="group">
 						<button shiro:hasPermission="sys:role:add" type="button"
 							class="btn btn-primary" onclick="add()">
-							<i class="fa fa-plus" aria-hidden="true"></i>添加
+							<i class="fa fa-plus" aria-hidden="true"></i>新規追加
 						</button>
 						<button shiro:hasPermission="sys:role:batchRemove" type="button"
 							class="btn btn-danger" onclick="batchRemove()">
-							<i class="fa fa-trash" aria-hidden="true"></i>删除
+							<i class="fa fa-trash" aria-hidden="true"></i>削除
 						</button>
 					</div>
 					<table id="exampleTable" data-mobile-responsive="true">
@@ -23,7 +23,7 @@
 				</div>
 			</div>
 		</div>
-		<!--shiro控制bootstraptable行内按钮看见性 -->
+		<!--shiroによるbootstraptable行内ボタンの表示制御 -->
 		<div>
 			<script type="text/javascript">
 				var s_edit_h = 'hidden';

@@ -7,39 +7,39 @@ function load() {
     $('#exampleTable')
         .bootstrapTable(
             {
-                method: 'get', // 服务器数据的请求方式 get or post
-                url: prefix + "/list", // 服务器数据的加载地址
+                method: 'get', // サーバーデータのリクエスト方式 get or post
+                url: prefix + "/list", // サーバーデータの読み込み先URL
                 //	showRefresh : true,
                 //	showToggle : true,
                 //	showColumns : true,
                 iconSize: 'outline',
                 toolbar: '#exampleToolbar',
-                striped: true, // 设置为true会有隔行变色效果
-                dataType: "json", // 服务器返回的数据类型
-                pagination: true, // 设置为true会在底部显示分页条
+                striped: true, // true に設定すると行ごとに背景色が変わります
+                dataType: "json", // サーバーが返すデータ型
+                pagination: true, // true に設定すると下部にページネーションが表示されます
                 // queryParamsType : "limit",
-                // //设置为limit则会发送符合RESTFull格式的参数
-                singleSelect: false, // 设置为true将禁止多选
+                // //limit に設定すると RESTful 形式のパラメータが送信されます
+                singleSelect: false, // true に設定すると複数選択が禁止されます
                 // contentType : "application/x-www-form-urlencoded",
-                // //发送到服务器的数据编码类型
-                pageSize: 10, // 如果设置了分页，每页数据条数
-                pageNumber: 1, // 如果设置了分布，首页页码
-                //search : true, // 是否显示搜索框
-                showColumns: false, // 是否显示内容下拉框（选择显示的列）
-                sidePagination: "server", // 设置在哪里进行分页，可选值为"client" 或者 "server"
+                // //サーバーに送信するデータのエンコード形式
+                pageSize: 10, // ページネーションを設定した場合、1ページあたりのデータ件数
+                pageNumber: 1, // ページネーションを設定した場合、最初のページ番号
+                //search : true, // 検索ボックスを表示するか
+                showColumns: false, // 表示する列を選択するドロップダウンを表示するか
+                sidePagination: "server", // ページネーションをどこで行うか（"client" または "server"）
                 queryParams: function (params) {
-                    //说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
+                    //説明：バックエンドに渡すパラメータには offset 開始インデックス、limit ステップ幅、sort ソート列、order：desc など、および全列のキーと値のペアが含まれます
                     var queryParams = getFormJson("searchForm");
                     queryParams.limit = params.limit;
                     queryParams.offset = params.offset;
                     return queryParams;
                 },
-                // //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果
-                // queryParamsType = 'limit' ,返回参数必须包含
-                // limit, offset, search, sort, order 否则, 需要包含:
+                // //サーバーデータをリクエストする際、パラメータを上書きして追加のパラメータ（例：toolbar 内のパラメータ）を追加できます
+                // queryParamsType = 'limit' の場合、戻り値のパラメータには以下を含める必要があります
+                // limit, offset, search, sort, order それ以外の場合は以下を含める必要があります：
                 // pageSize, pageNumber, searchText, sortName,
                 // sortOrder.
-                // 返回false将会终止请求
+                // false を返すとリクエストが中断されます
                 responseHandler: function (rs) {
 
                     if (rs.code == 0) {
@@ -54,7 +54,7 @@ function load() {
                         checkbox: true
                     },
                     {
-                        title: '序号',
+                        title: 'No.',
                         formatter: function () {
                             return arguments[2] + 1;
                         }
@@ -63,31 +63,31 @@ function load() {
 
                     {
                         field: 'inviteCode',
-                        title: '邀请码'
+                        title: '招待コード'
                     },
 
 
                     {
                         field: 'penName',
-                        title: '笔名'
+                        title: 'ペンネーム'
                     },
 
 
                     {
                         field: 'username',
-                        title: '登录账号'
+                        title: 'ログインアカウント'
                     },
 
 
                     {
                         field: 'telPhone',
-                        title: '手机号码'
+                        title: '携帯電話番号'
                     },
 
 
                     {
                         field: 'email',
-                        title: '电子邮箱'
+                        title: 'メールアドレス'
                     },
 
 
@@ -101,15 +101,15 @@ function load() {
 
                     {
                         field: 'createTime',
-                        title: '入驻时间'
+                        title: '登録日時'
                     },
 
 
                     {
                         field: 'status',
-                        title: '状态',
+                        title: '状態',
                         formatter: function (value, row, index) {
-                            return value == 1 ? '封禁' : '正常';
+                            return value == 1 ? '利用停止' : '正常';
                         }
                     },
 
@@ -120,20 +120,20 @@ function load() {
                         align: 'center',
                         formatter: function (value, row, index) {
                             if(row.status==1) {
-                                var e = '<a class="btn btn-primary btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="恢复正常" onclick="edit(\''
+                                var e = '<a class="btn btn-primary btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="正常に戻す" onclick="edit(\''
                                     + row.id
-                                    + '\',0)"><i >恢复正常</i></a> ';
+                                    + '\',0)"><i >正常に戻す</i></a> ';
                             }else{
-                                var e = '<a class="btn btn-primary btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="封禁" onclick="edit(\''
+                                var e = '<a class="btn btn-primary btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="利用停止" onclick="edit(\''
                                     + row.id
-                                    + '\',1)"><i >封禁</i></a> ';
+                                    + '\',1)"><i >利用停止</i></a> ';
                             }
-                            var editInfo = '<a class="btn btn-warning btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="编辑" onclick="editInfo(\''
+                            var editInfo = '<a class="btn btn-warning btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="編集" onclick="editInfo(\''
                                 + row.id
-                                + '\')"><i >编辑</i></a> ';
-                            var d = '<a class="btn btn-danger btn-sm ' + s_remove_h + '" href="#" mce_href="#" title="删除" onclick="remove(\''
+                                + '\')"><i >編集</i></a> ';
+                            var d = '<a class="btn btn-danger btn-sm ' + s_remove_h + '" href="#" mce_href="#" title="削除" onclick="remove(\''
                                 + row.id
-                                + '\')"><i >删除</i></a> ';
+                                + '\')"><i >削除</i></a> ';
                             return  editInfo + e + d;
                         }
                     }]
@@ -147,33 +147,33 @@ function reLoad() {
 function add() {
     layer.open({
         type: 2,
-        title: '增加',
+        title: '新規追加',
         maxmin: true,
-        shadeClose: false, // 点击遮罩关闭层
+        shadeClose: false, // オーバーレイをクリックしてレイヤーを閉じる
         area: ['800px', '520px'],
-        content: prefix + '/add' // iframe的url
+        content: prefix + '/add' // iframeのURL
     });
 }
 
 function editInfo(id) {
     layer.open({
         type: 2,
-        title: '编辑',
+        title: '編集',
         maxmin: true,
-        shadeClose: false, // 点击遮罩关闭层
+        shadeClose: false, // オーバーレイをクリックしてレイヤーを閉じる
         area: ['800px', '520px'],
-        content: prefix + '/edit/' + id // iframe的url
+        content: prefix + '/edit/' + id // iframeのURL
     });
 }
 
 function detail(id) {
     layer.open({
         type: 2,
-        title: '详情',
+        title: '詳細',
         maxmin: true,
-        shadeClose: false, // 点击遮罩关闭层
+        shadeClose: false, // オーバーレイをクリックしてレイヤーを閉じる
         area: ['800px', '520px'],
-        content: prefix + '/detail/' + id // iframe的url
+        content: prefix + '/detail/' + id // iframeのURL
     });
 }
 
@@ -182,14 +182,14 @@ function edit(id,status) {
         cache: true,
         type: "POST",
         url: "/novel/author/update",
-        data: {'id':id,'status':status},// 你的formid
+        data: {'id':id,'status':status},// あなたのformid
         async: false,
         error: function (request) {
             parent.layer.alert("Connection error");
         },
         success: function (data) {
             if (data.code == 0) {
-                parent.layer.msg("操作成功");
+                parent.layer.msg("操作が成功しました");
                 reLoad();
 
             } else {
@@ -201,8 +201,8 @@ function edit(id,status) {
 }
 
 function remove(id) {
-    layer.confirm('确定要删除选中的记录？', {
-        btn: ['确定', '取消']
+    layer.confirm('選択したレコードを削除してもよろしいですか？', {
+        btn: ['確定', 'キャンセル']
     }, function () {
         $.ajax({
             url: prefix + "/remove",
@@ -226,17 +226,17 @@ function resetPwd(id) {
 }
 
 function batchRemove() {
-    var rows = $('#exampleTable').bootstrapTable('getSelections'); // 返回所有选择的行，当没有选择的记录时，返回一个空数组
+    var rows = $('#exampleTable').bootstrapTable('getSelections'); // 選択された全行を返します。選択されたレコードがない場合は空配列を返します
     if (rows.length == 0) {
-        layer.msg("请选择要删除的数据");
+        layer.msg("削除するデータを選択してください");
         return;
     }
-    layer.confirm("确认要删除选中的'" + rows.length + "'条数据吗?", {
-        btn: ['确定', '取消']
-        // 按钮
+    layer.confirm("選択した'" + rows.length + "'件のデータを削除してもよろしいですか?", {
+        btn: ['確定', 'キャンセル']
+        // ボタン
     }, function () {
         var ids = new Array();
-        // 遍历所有选择的行数据，取每条数据对应的ID
+        // 選択された全行データを走査し、各データに対応するIDを取得します
         $.each(rows, function (i, row) {
             ids[i] = row['id'];
         });

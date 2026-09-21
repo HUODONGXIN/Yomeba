@@ -2,31 +2,31 @@ var E = window.wangEditor;
 $("[id^='contentEditor']").each(function (index, ele) {
     var relName = $(ele).attr("id").substring(13);
     var editor = new E('#contentEditor' + relName);
-// 自定义菜单配置
+// カスタムメニュー設定
     editor.customConfig.menus = [
-        'head',  // 标题
-        'bold',  // 粗体
-        'fontSize',  // 字号
-        'fontName',  // 字体
+        'head',  // 見出し
+        'bold',  // 太字
+        'fontSize',  // フォントサイズ
+        'fontName',  // フォント
         'italic',  // 斜体
-        'underline',  // 下划线
-        'strikeThrough',  // 删除线
-        'foreColor',  // 文字颜色
-        //'backColor',  // 背景颜色
-        //'link',  // 插入链接
-        'list',  // 列表
-        'justify',  // 对齐方式
+        'underline',  // 下線
+        'strikeThrough',  // 打ち消し線
+        'foreColor',  // 文字色
+        //'backColor',  // 背景色
+        //'link',  // リンク挿入
+        'list',  // リスト
+        'justify',  // 行揃え
         'quote',  // 引用
-        'emoticon',  // 表情
-        'image',  // 插入图片
-        //'table',  // 表格
-        //'video',  // 插入视频
-        //'code',  // 插入代码
-        'undo',  // 撤销
-        'redo'  // 重复
+        'emoticon',  // 絵文字
+        'image',  // 画像挿入
+        //'table',  // テーブル
+        //'video',  // 動画挿入
+        //'code',  // コード挿入
+        'undo',  // 元に戻す
+        'redo'  // やり直し
     ];
     editor.customConfig.onchange = function (html) {
-        // html 即变化之后的内容
+        // html は変更後の内容
         $("#" + relName).val(html);
     }
     editor.customConfig.uploadImgShowBase64 = true;
@@ -39,10 +39,10 @@ $("[id^='picImage']").each(function (index, ele) {
     var relName = $(ele).attr("id").substring(8);
     layui.use('upload', function () {
         var upload = layui.upload;
-        //执行实例
+        // インスタンスを実行
         var uploadInst = upload.render({
-            elem: '#picImage' + relName, //绑定元素
-            url: '/common/sysFile/upload', //上传接口
+            elem: '#picImage' + relName, // 要素をバインド
+            url: '/common/sysFile/upload', // アップロードAPI
             size: 1000,
             accept: 'file',
             done: function (r) {
@@ -71,16 +71,16 @@ function update() {
         cache: true,
         type: "POST",
         url: "/system/roleDataPerm/update",
-        data: $('#signupForm').serialize(),// 你的formid
+        data: $('#signupForm').serialize(),// あなたのformid
         async: false,
         error: function (request) {
             parent.layer.alert("Connection error");
         },
         success: function (data) {
             if (data.code == 0) {
-                parent.layer.msg("操作成功");
+                parent.layer.msg("操作が成功しました");
                 parent.reLoad();
-                var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+                var index = parent.layer.getFrameIndex(window.name); // ウィンドウインデックスを取得
                 parent.layer.close(index);
 
             } else {

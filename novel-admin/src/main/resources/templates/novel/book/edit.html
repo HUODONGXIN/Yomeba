@@ -12,7 +12,7 @@
                         <input id="id" name="id" th:value="${book.id}"
                                type="hidden">
                                                                                                                                         <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">作品方向，0：男频，1：女频：</label>
+                                                                            <label class="col-sm-3 control-label">作品方向（0：男性向け、1：女性向け）：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="workDirection" name="workDirection"
                                                    th:value="${book.workDirection}"
@@ -21,7 +21,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">分类ID：</label>
+                                                                            <label class="col-sm-3 control-label">ジャンルID：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="catId" name="catId"
                                                    th:value="${book.catId}"
@@ -30,7 +30,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">分类名：</label>
+                                                                            <label class="col-sm-3 control-label">ジャンル名：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="catName" name="catName"
                                                    th:value="${book.catName}"
@@ -39,7 +39,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">子分类ID：</label>
+                                                                            <label class="col-sm-3 control-label">子ジャンルID：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="catChildId" name="catChildId"
                                                    th:value="${book.catChildId}"
@@ -48,7 +48,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">子分类名：</label>
+                                                                            <label class="col-sm-3 control-label">子ジャンル名：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="catChildName" name="catChildName"
                                                    th:value="${book.catChildName}"
@@ -57,7 +57,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">小说封面：</label>
+                                                                            <label class="col-sm-3 control-label">小説表紙：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="picUrl" name="picUrl"
                                                    th:value="${book.picUrl}"
@@ -66,7 +66,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">小说名：</label>
+                                                                            <label class="col-sm-3 control-label">小説名：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="bookName" name="bookName"
                                                    th:value="${book.bookName}"
@@ -75,7 +75,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">男主角姓名：</label>
+                                                                            <label class="col-sm-3 control-label">主人公名：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="heroName" name="heroName"
                                                    th:value="${book.heroName}"
@@ -84,7 +84,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">女主角姓名：</label>
+                                                                            <label class="col-sm-3 control-label">ヒロイン名：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="ladyName" name="ladyName"
                                                    th:value="${book.ladyName}"
@@ -93,7 +93,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">作品风格，0：甜宠，1：虐恋，2：其他：</label>
+                                                                            <label class="col-sm-3 control-label">作品スタイル（0：甘々、1：切ない、2：その他）：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="bookStyle" name="bookStyle"
                                                    th:value="${book.bookStyle}"
@@ -102,7 +102,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">作品标签：</label>
+                                                                            <label class="col-sm-3 control-label">作品タグ：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="bookLabel" name="bookLabel"
                                                    th:value="${book.bookLabel}"
@@ -111,7 +111,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">作者id：</label>
+                                                                            <label class="col-sm-3 control-label">作家ID：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="authorId" name="authorId"
                                                    th:value="${book.authorId}"
@@ -120,7 +120,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">作者名：</label>
+                                                                            <label class="col-sm-3 control-label">作家名：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="authorName" name="authorName"
                                                    th:value="${book.authorName}"
@@ -129,7 +129,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">书籍描述：</label>
+                                                                            <label class="col-sm-3 control-label">作品説明：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="bookDesc" name="bookDesc"
                                                    th:value="${book.bookDesc}"
@@ -138,7 +138,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">评分，预留字段：</label>
+                                                                            <label class="col-sm-3 control-label">評価（予備項目）：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="score" name="score"
                                                    th:value="${book.score}"
@@ -147,7 +147,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">书籍状态，0：连载中，1：已完结：</label>
+                                                                            <label class="col-sm-3 control-label">作品状態（0：連載中、1：完結）：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="bookStatus" name="bookStatus"
                                                    th:value="${book.bookStatus}"
@@ -156,7 +156,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">点击量：</label>
+                                                                            <label class="col-sm-3 control-label">閲覧数：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="visitCount" name="visitCount"
                                                    th:value="${book.visitCount}"
@@ -165,7 +165,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">总字数：</label>
+                                                                            <label class="col-sm-3 control-label">総文字数：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="wordCount" name="wordCount"
                                                    th:value="${book.wordCount}"
@@ -174,7 +174,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">评论数：</label>
+                                                                            <label class="col-sm-3 control-label">コメント数：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="commentCount" name="commentCount"
                                                    th:value="${book.commentCount}"
@@ -183,7 +183,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">昨日订阅数：</label>
+                                                                            <label class="col-sm-3 control-label">昨日の購入数：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="yesterdayBuy" name="yesterdayBuy"
                                                    th:value="${book.yesterdayBuy}"
@@ -192,7 +192,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">最新目录ID：</label>
+                                                                            <label class="col-sm-3 control-label">最新話ID：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="lastIndexId" name="lastIndexId"
                                                    th:value="${book.lastIndexId}"
@@ -201,7 +201,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">最新目录名：</label>
+                                                                            <label class="col-sm-3 control-label">最新話名：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="lastIndexName" name="lastIndexName"
                                                    th:value="${book.lastIndexName}"
@@ -210,7 +210,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">最新目录更新时间：</label>
+                                                                            <label class="col-sm-3 control-label">最新話更新日時：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input type="text" class="laydate-icon layer-date form-control"
                                                    id="lastIndexUpdateTime"
@@ -221,7 +221,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">是否收费，1：收费，0：免费：</label>
+                                                                            <label class="col-sm-3 control-label">有料設定（1：有料、0：無料）：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="isVip" name="isVip"
                                                    th:value="${book.isVip}"
@@ -230,7 +230,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">状态，0：入库，1：上架：</label>
+                                                                            <label class="col-sm-3 control-label">状態（0：入庫、1：公開中）：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="status" name="status"
                                                    th:value="${book.status}"
@@ -239,7 +239,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">更新时间：</label>
+                                                                            <label class="col-sm-3 control-label">更新日時：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input type="text" class="laydate-icon layer-date form-control"
                                                    id="updateTime"
@@ -250,7 +250,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">创建时间：</label>
+                                                                            <label class="col-sm-3 control-label">作成日時：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input type="text" class="laydate-icon layer-date form-control"
                                                    id="createTime"
@@ -261,7 +261,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">爬虫源站ID：</label>
+                                                                            <label class="col-sm-3 control-label">クロール元サイトID：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="crawlSourceId" name="crawlSourceId"
                                                    th:value="${book.crawlSourceId}"
@@ -270,7 +270,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">抓取的源站小说ID：</label>
+                                                                            <label class="col-sm-3 control-label">クロール元小説ID：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="crawlBookId" name="crawlBookId"
                                                    th:value="${book.crawlBookId}"
@@ -279,7 +279,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">最后一次的抓取时间：</label>
+                                                                            <label class="col-sm-3 control-label">最終クロール日時：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input type="text" class="laydate-icon layer-date form-control"
                                                    id="crawlLastTime"
@@ -290,7 +290,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">是否已停止更新，0：未停止，1：已停止：</label>
+                                                                            <label class="col-sm-3 control-label">クロール停止状況（0：継続中、1：停止済）：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="crawlIsStop" name="crawlIsStop"
                                                    th:value="${book.crawlIsStop}"
@@ -300,7 +300,7 @@
                                 </div>
                                                                             <div class="form-group">
                             <div class="col-sm-8 col-sm-offset-3">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="submit" class="btn btn-primary">送信</button>
                             </div>
                         </div>
                     </form>

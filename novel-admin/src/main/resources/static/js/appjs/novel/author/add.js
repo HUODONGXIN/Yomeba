@@ -2,31 +2,31 @@ var E = window.wangEditor;
 $("[id^='contentEditor']").each(function (index, ele) {
     var relName = $(ele).attr("id").substring(13);
     var editor = new E('#contentEditor' + relName);
-// 自定义菜单配置
+// カスタムメニュー設定
     editor.customConfig.menus = [
-        'head',  // 标题
-        'bold',  // 粗体
-        'fontSize',  // 字号
-        'fontName',  // 字体
+        'head',  // タイトル
+        'bold',  // 太字
+        'fontSize',  // フォントサイズ
+        'fontName',  // フォント
         'italic',  // 斜体
-        'underline',  // 下划线
-        'strikeThrough',  // 删除线
-        'foreColor',  // 文字颜色
-        //'backColor',  // 背景颜色
-        //'link',  // 插入链接
-        'list',  // 列表
-        'justify',  // 对齐方式
+        'underline',  // 下線
+        'strikeThrough',  // 取り消し線
+        'foreColor',  // 文字色
+        //'backColor',  // 背景色
+        //'link',  // リンク挿入
+        'list',  // リスト
+        'justify',  // 配置
         'quote',  // 引用
-        'emoticon',  // 表情
-        'image',  // 插入图片
-        //'table',  // 表格
-        //'video',  // 插入视频
-        //'code',  // 插入代码
-        'undo',  // 撤销
-        'redo'  // 重复
+        'emoticon',  // 絵文字
+        'image',  // 画像挿入
+        //'table',  // テーブル
+        //'video',  // 動画挿入
+        //'code',  // コード挿入
+        'undo',  // 元に戻す
+        'redo'  // やり直し
     ];
     editor.customConfig.onchange = function (html) {
-        // html 即变化之后的内容
+        // html は変更後の内容
         $("#" + relName).val(html);
     }
     editor.customConfig.uploadImgShowBase64 = true;
@@ -38,10 +38,10 @@ $("[id^='picImage']").each(function (index, ele) {
     var relName = $(ele).attr("id").substring(8);
     layui.use('upload', function () {
         var upload = layui.upload;
-        //执行实例
+        //実行インスタンス
         var uploadInst = upload.render({
-            elem: '#picImage' + relName, //绑定元素
-            url: '/common/sysFile/upload', //上传接口
+            elem: '#picImage' + relName, //要素をバインド
+            url: '/common/sysFile/upload', //アップロードAPI
             size: 1000,
             accept: 'file',
             done: function (r) {
@@ -75,16 +75,16 @@ function save() {
         cache: true,
         type: "POST",
         url: "/novel/author/save",
-        data: $('#signupForm').serialize(),// 你的formid
+        data: $('#signupForm').serialize(),// あなたのformid
         async: false,
         error: function (request) {
             parent.layer.alert("Connection error");
         },
         success: function (data) {
             if (data.code == 0) {
-                parent.layer.msg("操作成功");
+                parent.layer.msg("操作が成功しました");
                 parent.reLoad();
-                var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+                var index = parent.layer.getFrameIndex(window.name); // ウィンドウインデックスを取得
                 parent.layer.close(index);
 
             } else {
@@ -97,10 +97,10 @@ function save() {
 }
 function validateRule() {
     var icon = "<i class='fa fa-times-circle'></i> ";
-    //自定义手机号格式校验（日本手机号：070/080/090 开头，共 11 位）
+    //携帯電話番号フォーマットチェック（日本の携帯：070/080/090 始まり、計 11 桁）
     $.validator.addMethod("isMobile", function (value, element) {
         return this.optional(element) || /^0[789]0\d{8}$/.test(value);
-    }, "请输入正确的手机号格式");
+    }, "正しい携帯電話番号の形式で入力してください");
     $("#signupForm").validate({
         ignore: "",
         rules: {
@@ -114,14 +114,14 @@ function validateRule() {
             status: {required: true}
         },
         messages: {
-            username: {required: icon + "请输入登录账号"},
-            password: {required: icon + "请输入登录密码", minlength: icon + "登录密码至少6位"},
-            penName: {required: icon + "请输入笔名"},
-            telPhone: {required: icon + "请输入手机号码", isMobile: icon + "请输入正确的日本手机号格式（070/080/090 开头共11位）"},
-            email: {email: icon + "请输入正确的邮箱格式"},
-            workDirection: {required: icon + "请选择作品方向"},
-            createTime: {required: icon + "请选择入驻时间"},
-            status: {required: icon + "请输入状态（0正常，1封禁）"}
+            username: {required: icon + "ログインアカウントを入力してください"},
+            password: {required: icon + "ログインパスワードを入力してください", minlength: icon + "ログインパスワードは6文字以上で入力してください"},
+            penName: {required: icon + "ペンネームを入力してください"},
+            telPhone: {required: icon + "携帯電話番号を入力してください", isMobile: icon + "正しい日本の携帯電話番号形式で入力してください（070/080/090 始まり計11桁）"},
+            email: {email: icon + "正しいメールアドレスの形式で入力してください"},
+            workDirection: {required: icon + "作品方向を選択してください"},
+            createTime: {required: icon + "登録日時を選択してください"},
+            status: {required: icon + "状態を入力してください（0：正常、1：利用停止）"}
         }
     })
 }

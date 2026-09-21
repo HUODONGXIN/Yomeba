@@ -9,8 +9,8 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 字典表
- * 
+ * データ辞書テーブル
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2019-10-03 15:45:42

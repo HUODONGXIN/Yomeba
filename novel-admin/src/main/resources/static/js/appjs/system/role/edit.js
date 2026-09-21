@@ -27,14 +27,14 @@ function loadMenuTree(menuTree) {
 	$('#menuTree').jstree('open_all');
 }
 function getAllSelectNodes() {
-	var ref = $('#menuTree').jstree(true); // 获得整个树
-	menuIds = ref.get_selected(); // 获得所有选中节点的，返回值为数组
+	var ref = $('#menuTree').jstree(true); // ツリー全体を取得
+	menuIds = ref.get_selected(); // 選択中のノードをすべて取得します。戻り値は配列です
 	$("#menuTree").find(".jstree-undetermined").each(function(i, element) {
 		menuIds.push($(element).closest('.jstree-node').attr("id"));
 	});
-	ref = $('#dataPermTree').jstree(true); // 获得整个树
+	ref = $('#dataPermTree').jstree(true); // ツリー全体を取得
 
-	permIds = ref.get_selected(); // 获得所有选中节点的，返回值为数组
+	permIds = ref.get_selected(); // 選択中のノードをすべて取得します。戻り値は配列です
 
 	$("#dataPermTree").find(".jstree-undetermined").each(function(i, element) {
 		permIds.push($(element).closest('.jstree-node').attr("id"));
@@ -81,7 +81,7 @@ function update() {
 		cache : true,
 		type : "POST",
 		url : "/sys/role/update",
-		data : role, // 你的formid
+		data : role, // あなたのformid
 		async : false,
 		error : function(request) {
 			alert("Connection error");
@@ -90,7 +90,7 @@ function update() {
 			if (r.code == 0) {
 				parent.layer.msg(r.msg);
 				parent.reLoad();
-				var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+				var index = parent.layer.getFrameIndex(window.name); // ウィンドウインデックスを取得
 				parent.layer.close(index);
 
 			} else {
@@ -110,7 +110,7 @@ function validateRule() {
 		},
 		messages : {
 			roleName : {
-				required : icon + "请输入角色名"
+				required : icon + "ロール名を入力してください"
 			}
 		}
 	});

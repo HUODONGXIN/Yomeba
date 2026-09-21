@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
- * 异常处理器
+ * 例外ハンドラー
  */
 @RestControllerAdvice
 public class CommonExceptionHandler {
@@ -32,7 +32,7 @@ public class CommonExceptionHandler {
     com.java2nb.common.service.BugLogService bugLogService;
 
     /**
-     * 自定义业务异常处理
+     * カスタム業務例外の処理
      */
     @ExceptionHandler(BusinessException.class)
     public R handleBusinessException(BusinessException e) {
@@ -43,20 +43,20 @@ public class CommonExceptionHandler {
     @ExceptionHandler(DuplicateKeyException.class)
     public R handleDuplicateKeyException(DuplicateKeyException e) {
         logger.error(e.getMessage(), e);
-        return R.error("数据库中已存在该记录");
+        return R.error("このレコードは既にデータベースに存在します");
     }
 
     @ExceptionHandler(org.springframework.web.servlet.NoHandlerFoundException.class)
     public R noHandlerFoundException(org.springframework.web.servlet.NoHandlerFoundException e) {
         logger.error(e.getMessage(), e);
-        return R.error(404, "没找找到页面");
+        return R.error(404, "ページが見つかりません");
     }
 
     @ExceptionHandler(AuthorizationException.class)
     public Object handleAuthorizationException(AuthorizationException e, HttpServletRequest request) {
         logger.error(e.getMessage(), e);
         if (HttpServletUtils.jsAjax(request)) {
-            return R.error(403, "未授权");
+            return R.error(403, "未認証です");
         }
         return new ModelAndView("error/403");
     }
@@ -75,7 +75,7 @@ public class CommonExceptionHandler {
             logDO.setUsername(current.getUsername());
         }
         logService.save(logDO);
-        // 写入 bug_log
+        // bug_log に書き込み
         try {
             com.java2nb.common.domain.BugLogDO bug = new com.java2nb.common.domain.BugLogDO();
             bug.setLevel("ERROR");
@@ -92,7 +92,7 @@ public class CommonExceptionHandler {
         } catch (Exception ignored) {}
         logger.error(e.getMessage(), e);
         if (HttpServletUtils.jsAjax(request)) {
-            return R.error(500, "服务器错误，请联系管理员");
+            return R.error(500, "サーバーエラーです。管理者に連絡してください");
         }
         return new ModelAndView("error/500");
     }

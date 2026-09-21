@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 小说目录表
+ * 小説目次テーブル
  *
  * @author xiongxy
  * @email 1179705413@qq.com

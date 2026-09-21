@@ -12,7 +12,7 @@
                 <input id="id" name="id" th:value="${friendLink.id}"
                        type="hidden">
                                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">链接名：</label>
+                        <label class="col-sm-3 control-label">リンク名：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${friendLink.linkName}">
@@ -22,7 +22,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">链接url：</label>
+                        <label class="col-sm-3 control-label">リンクURL：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${friendLink.linkUrl}">
@@ -32,7 +32,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">排序号：</label>
+                        <label class="col-sm-3 control-label">並び順：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${friendLink.sort}">
@@ -42,7 +42,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">是否开启，0：不开启，1：开启：</label>
+                        <label class="col-sm-3 control-label">有効化設定（0：無効、1：有効）：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8 dict-type" dict-type="yes_no"
                                  th:attr="dict-value=${friendLink.isOpen}">
@@ -52,7 +52,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">创建人id：</label>
+                        <label class="col-sm-3 control-label">作成者ID：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${friendLink.createUserId}">
@@ -62,7 +62,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">创建时间：</label>
+                        <label class="col-sm-3 control-label">作成日時：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${friendLink.createTime}==null?null:${#dates.format(friendLink.createTime,'yyyy-MM-dd HH:mm:ss')}">
@@ -71,7 +71,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">更新者用户id：</label>
+                        <label class="col-sm-3 control-label">更新者ID：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${friendLink.updateUserId}">
@@ -81,7 +81,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">更新时间：</label>
+                        <label class="col-sm-3 control-label">更新日時：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${friendLink.updateTime}==null?null:${#dates.format(friendLink.updateTime,'yyyy-MM-dd HH:mm:ss')}">

@@ -10,12 +10,12 @@
         <div class="col-lg-12 col-md-12 col-sm-12">
             <div class="ibox">
                 <div class="ibox-title" style="padding-bottom: 0;">
-                    <h3 class="text-center">个人资料中心</h3>
+                    <h3 class="text-center">プロフィール</h3>
                     <div class="gg-nav">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#basic_info" data-toggle="tab">基本资料</a></li>
-                            <li><a href="#photo_info" data-toggle="tab">头像修改</a></li>
-                            <li><a href="#pwd_info" data-toggle="tab">修改密码</a></li>
+                            <li class="active"><a href="#basic_info" data-toggle="tab">基本情報</a></li>
+                            <li><a href="#photo_info" data-toggle="tab">アバター変更</a></li>
+                            <li><a href="#pwd_info" data-toggle="tab">パスワード変更</a></li>
                         </ul>
                     </div>
                 </div>
@@ -27,16 +27,16 @@
                             <div class="gg-formGroup">
                                 <div class="gg-formTitle">
                                     <em class="gg-star">*</em>
-                                    <span>姓名:</span>
+                                    <span>氏名:</span>
                                 </div>
                                 <div class="gg-formDetail">
-                                    <input type="text" class="form-control" id="userName" name="name" th:value="${user.name}"  placeholder="请输入姓名" />
+                                    <input type="text" class="form-control" id="userName" name="name" th:value="${user.name}"  placeholder="氏名を入力してください" />
                                 </div>
                             </div>
                             <div class="gg-formGroup">
                                 <div class="gg-formTitle">
                                     <em class="gg-star">*</em>
-                                    <span>性别:</span>
+                                    <span>性別:</span>
                                 </div>
                                 <div class="gg-formDetail">
                                     <div class="radio i-checks">
@@ -49,29 +49,29 @@
                             <div class="gg-formGroup">
                                 <div class="gg-formTitle">
                                     <em class="gg-star">*</em>
-                                    <span>出生年月:</span>
+                                    <span>生年月:</span>
                                 </div>
                                 <div class="gg-formDetail">
-                                    <input type="text" class="laydate-icon layer-date form-control" id="birth" name="birth" th:value="${user.birth}==null?null:${#dates.format(user.birth,'yyyy-MM-dd')}" placeholder="请选择出生年月"
+                                    <input type="text" class="laydate-icon layer-date form-control" id="birth" name="birth" th:value="${user.birth}==null?null:${#dates.format(user.birth,'yyyy-MM-dd')}" placeholder="生年月を選択してください"
                                            onclick="laydate({istime: true, format: 'YYYY-MM-DD'})" style="background-color: #fff;" readonly="readonly"/>
                                 </div>
                             </div>
                             <div class="gg-formGroup">
                                 <div class="gg-formTitle">
                                     <em class="gg-star">*</em>
-                                    <span>手机:</span>
+                                    <span>携帯:</span>
                                 </div>
                                 <div class="gg-formDetail">
-                                    <input type="text" class="form-control" id="phone" name="mobile"  th:value="${user.mobile}" placeholder="请输入手机号" />
+                                    <input type="text" class="form-control" id="phone" name="mobile"  th:value="${user.mobile}" placeholder="携帯番号を入力してください" />
                                 </div>
                             </div>
                             <div class="gg-formGroup">
                                 <div class="gg-formTitle">
                                     <em class="gg-star">*</em>
-                                    <span>邮箱:</span>
+                                    <span>メール:</span>
                                 </div>
                                 <div class="gg-formDetail">
-                                    <input type="text" class="form-control" id="email" name="email" th:value="${user.email}" placeholder="请输入邮箱" />
+                                    <input type="text" class="form-control" id="email" name="email" th:value="${user.email}" placeholder="メールアドレスを入力してください" />
                                 </div>
                             </div>
                             <div class="gg-formGroup">
@@ -97,16 +97,16 @@
                             <div class="gg-formGroup">
                                 <div class="gg-formTitle">
                                     <em class="gg-star">*</em>
-                                    <span>联系地址:</span>
+                                    <span>住所:</span>
                                 </div>
                                 <div class="gg-formDetail">
-                                    <input type="text" class="form-control" id="address" name="liveAddress" th:value="${user.liveAddress}" placeholder="请输入居住地址" />
+                                    <input type="text" class="form-control" id="address" name="liveAddress" th:value="${user.liveAddress}" placeholder="居住住所を入力してください" />
                                 </div>
                             </div>
                             <div class="gg-formGroup">
                                 <div class="gg-formTitle">
                                     <em class="gg-star">*</em>
-                                    <span>爱好:</span>
+                                    <span>趣味:</span>
                                 </div>
                                 <div class="gg-formDetail">
                                     <div class="checxbox i-checks" >
@@ -130,7 +130,7 @@
                                     <div class="avatar-upload">
                                         <input class="avatar-src" name="avatar_src" type="hidden">
                                         <input class="avatar-data" name="avatar_data" type="hidden">
-                                        <label for="avatarInput">选取文件</label>
+                                        <label for="avatarInput">ファイルを選択</label>
                                         <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
                                     </div>
                                     <!-- Crop and preview -->
@@ -148,20 +148,20 @@
                                     <div class="row avatar-btns">
                                         <div class="col-md-9">
                                             <div class="btn-group">
-                                                <button class="btn btn-primary" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees">左旋转</button>
+                                                <button class="btn btn-primary" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees">左回転</button>
                                                 <button class="btn btn-primary" data-method="rotate" data-option="-15" type="button">-15°</button>
                                                 <button class="btn btn-primary" data-method="rotate" data-option="-30" type="button">-30°</button>
                                                 <button class="btn btn-primary" data-method="rotate" data-option="-45" type="button">-45°</button>
                                             </div>
                                             <div class="btn-group">
-                                                <button class="btn btn-primary" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees">右旋转</button>
+                                                <button class="btn btn-primary" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees">右回転</button>
                                                 <button class="btn btn-primary" data-method="rotate" data-option="15" type="button">15°</button>
                                                 <button class="btn btn-primary" data-method="rotate" data-option="30" type="button">30°</button>
                                                 <button class="btn btn-primary" data-method="rotate" data-option="45" type="button">45°</button>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <button class="btn btn-primary btn-block avatar-save" type="submit">完成裁剪</button>
+                                            <button class="btn btn-primary btn-block avatar-save" type="submit">切り抜き完了</button>
                                         </div>
                                     </div>
                                 </div>
@@ -178,31 +178,31 @@
                             <div class="gg-formGroup">
                                 <div class="gg-formTitle">
                                     <em class="gg-star">*</em>
-                                    <span>旧密码:</span>
+                                    <span>現在のパスワード:</span>
                                 </div>
                                 <div class="gg-formDetail gg-dashed">
-                                    <input type="password" class="form-control gg-border0" id="pwdOld" name="pwdOld" placeholder="请输入旧密码" />
-                                    <span class="fa fa-eye gg-faeye" title="鼠标移入显示内容"><span>
+                                    <input type="password" class="form-control gg-border0" id="pwdOld" name="pwdOld" placeholder="現在のパスワードを入力してください" />
+                                    <span class="fa fa-eye gg-faeye" title="マウスを合わせると内容を表示"><span>
                                 </div>
                             </div>
                             <div class="gg-formGroup">
                                 <div class="gg-formTitle">
                                     <em class="gg-star">*</em>
-                                    <span>新密码:</span>
+                                    <span>新しいパスワード:</span>
                                 </div>
                                 <div class="gg-formDetail gg-dashed">
-                                    <input type="password" class="form-control gg-border0" id="pwdNew" name="pwdNew" placeholder="请输入新密码" />
-                                    <span class="fa fa-eye gg-faeye" title="鼠标移入显示内容"></span>
+                                    <input type="password" class="form-control gg-border0" id="pwdNew" name="pwdNew" placeholder="新しいパスワードを入力してください" />
+                                    <span class="fa fa-eye gg-faeye" title="マウスを合わせると内容を表示"></span>
                                 </div>
                             </div>
                             <div class="gg-formGroup">
                                 <div class="gg-formTitle">
                                     <em class="gg-star">*</em>
-                                    <span>确认密码:</span>
+                                    <span>パスワード確認:</span>
                                 </div>
                                 <div class="gg-formDetail gg-dashed">
-                                    <input type="password" class="form-control gg-border0" id="confirm_password" name="confirm_password" placeholder="请确认密码" />
-                                    <span class="fa fa-eye gg-faeye" title="鼠标移入显示内容"></span>
+                                    <input type="password" class="form-control gg-border0" id="confirm_password" name="confirm_password" placeholder="パスワードを確認してください" />
+                                    <span class="fa fa-eye gg-faeye" title="マウスを合わせると内容を表示"></span>
                                 </div>
                             </div>
                         </form>

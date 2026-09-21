@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 新闻表
+ * ニューステーブル
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -40,12 +40,12 @@ public class NewsController {
         return "novel/news/news";
     }
 
-    @ApiOperation(value = "获取新闻表列表", notes = "获取新闻表列表")
+    @ApiOperation(value = "ニューステーブル一覧を取得", notes = "ニューステーブルの一覧を取得します")
     @ResponseBody
     @GetMapping("/list")
     @RequiresPermissions("novel:news:news")
     public R list(@RequestParam Map<String, Object> params) {
-        //查询列表数据
+        //一覧データを検索
         Query query = new Query(params);
         List<NewsDO> newsList = newsService.list(query);
         int total = newsService.count(query);
@@ -53,14 +53,14 @@ public class NewsController {
         return R.ok().put("data", pageBean);
     }
 
-    @ApiOperation(value = "新增新闻表页面", notes = "新增新闻表页面")
+    @ApiOperation(value = "ニュース新規追加ページ", notes = "ニュースの新規追加ページを表示します")
     @GetMapping("/add")
     @RequiresPermissions("novel:news:add")
     String add() {
         return "novel/news/add";
     }
 
-    @ApiOperation(value = "修改新闻表页面", notes = "修改新闻表页面")
+    @ApiOperation(value = "ニュース編集ページ", notes = "ニュースの編集ページを表示します")
     @GetMapping("/edit/{id}")
     @RequiresPermissions("novel:news:edit")
     String edit(@PathVariable("id") Long id, Model model) {
@@ -69,7 +69,7 @@ public class NewsController {
         return "novel/news/edit";
     }
 
-    @ApiOperation(value = "查看新闻表页面", notes = "查看新闻表页面")
+    @ApiOperation(value = "ニュース詳細ページ", notes = "ニュースの詳細ページを表示します")
     @GetMapping("/detail/{id}")
     @RequiresPermissions("novel:news:detail")
     String detail(@PathVariable("id") Long id, Model model) {
@@ -81,7 +81,7 @@ public class NewsController {
     /**
      * 保存
      */
-    @ApiOperation(value = "新增新闻表", notes = "新增新闻表")
+    @ApiOperation(value = "ニュース新規追加", notes = "ニュースを新規追加します")
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("novel:news:add")
@@ -94,9 +94,9 @@ public class NewsController {
     }
 
     /**
-     * 修改
+     * 更新
      */
-    @ApiOperation(value = "修改新闻表", notes = "修改新闻表")
+    @ApiOperation(value = "ニュース更新", notes = "ニュースを更新します")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("novel:news:edit")
@@ -107,9 +107,9 @@ public class NewsController {
     }
 
     /**
-     * 删除
+     * 削除
      */
-    @ApiOperation(value = "删除新闻表", notes = "删除新闻表")
+    @ApiOperation(value = "ニュース削除", notes = "ニュースを削除します")
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("novel:news:remove")
@@ -122,9 +122,9 @@ public class NewsController {
     }
 
     /**
-     * 删除
+     * 一括削除
      */
-    @ApiOperation(value = "批量删除新闻表", notes = "批量删除新闻表")
+    @ApiOperation(value = "ニュース一括削除", notes = "ニュースを一括削除します")
     @PostMapping("/batchRemove")
     @ResponseBody
     @RequiresPermissions("novel:news:batchRemove")

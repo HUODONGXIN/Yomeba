@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 首页小说推荐
+ * ホーム小説レコメンド
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -40,12 +40,12 @@ public class BookSettingController {
         return "novel/bookSetting/bookSetting";
     }
 
-    @ApiOperation(value = "获取首页小说设置表列表", notes = "获取首页小说设置表列表")
+    @ApiOperation(value = "ホーム小説設定テーブル一覧を取得", notes = "ホーム小説設定テーブルの一覧を取得します")
     @ResponseBody
     @GetMapping("/list")
     @RequiresPermissions("novel:bookSetting:bookSetting")
     public R list(@RequestParam Map<String, Object> params) {
-        //查询列表数据
+        //一覧データを検索
         Query query = new Query(params);
         List<BookSettingDO> bookSettingList = bookSettingService.list(query);
         int total = bookSettingService.count(query);
@@ -53,14 +53,14 @@ public class BookSettingController {
         return R.ok().put("data", pageBean);
     }
 
-    @ApiOperation(value = "新增首页小说设置表页面", notes = "新增首页小说设置表页面")
+    @ApiOperation(value = "ホーム小説設定新規追加ページ", notes = "ホーム小説設定の新規追加ページを表示します")
     @GetMapping("/add")
     @RequiresPermissions("novel:bookSetting:add")
     String add() {
         return "novel/bookSetting/add";
     }
 
-    @ApiOperation(value = "修改首页小说设置表页面", notes = "修改首页小说设置表页面")
+    @ApiOperation(value = "ホーム小説設定編集ページ", notes = "ホーム小説設定の編集ページを表示します")
     @GetMapping("/edit/{id}")
     @RequiresPermissions("novel:bookSetting:edit")
     String edit(@PathVariable("id") Long id, Model model) {
@@ -69,7 +69,7 @@ public class BookSettingController {
         return "novel/bookSetting/edit";
     }
 
-    @ApiOperation(value = "查看首页小说设置表页面", notes = "查看首页小说设置表页面")
+    @ApiOperation(value = "ホーム小説設定詳細ページ", notes = "ホーム小説設定の詳細ページを表示します")
     @GetMapping("/detail/{id}")
     @RequiresPermissions("novel:bookSetting:detail")
     String detail(@PathVariable("id") Long id, Model model) {
@@ -81,7 +81,7 @@ public class BookSettingController {
     /**
      * 保存
      */
-    @ApiOperation(value = "新增首页小说设置表", notes = "新增首页小说设置表")
+    @ApiOperation(value = "ホーム小説設定新規追加", notes = "ホーム小説設定を新規追加します")
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("novel:bookSetting:add")
@@ -93,9 +93,9 @@ public class BookSettingController {
     }
 
     /**
-     * 修改
+     * 更新
      */
-    @ApiOperation(value = "修改首页小说设置表", notes = "修改首页小说设置表")
+    @ApiOperation(value = "ホーム小説設定更新", notes = "ホーム小説設定を更新します")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("novel:bookSetting:edit")
@@ -106,9 +106,9 @@ public class BookSettingController {
     }
 
     /**
-     * 删除
+     * 削除
      */
-    @ApiOperation(value = "删除首页小说设置表", notes = "删除首页小说设置表")
+    @ApiOperation(value = "ホーム小説設定削除", notes = "ホーム小説設定を削除します")
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("novel:bookSetting:remove")
@@ -120,9 +120,9 @@ public class BookSettingController {
     }
 
     /**
-     * 删除
+     * 一括削除
      */
-    @ApiOperation(value = "批量删除首页小说设置表", notes = "批量删除首页小说设置表")
+    @ApiOperation(value = "ホーム小説設定一括削除", notes = "ホーム小説設定を一括削除します")
     @PostMapping("/batchRemove")
     @ResponseBody
     @RequiresPermissions("novel:bookSetting:batchRemove")

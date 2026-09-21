@@ -9,7 +9,7 @@ import java.util.Date;
 
 
 /**
- * 小说评论表
+ * 小説コメントテーブル
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -20,28 +20,28 @@ public class BookCommentDO implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    //主键
-    //java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-    //所以通过序列化成字符串来解决
+    //主キー
+    //Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+    //そのため文字列にシリアライズして解決する
     @JsonSerialize(using = LongToStringSerializer.class)
     private Long id;
-    //小说ID
-    //java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-    //所以通过序列化成字符串来解决
+    //小説ID
+    //Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+    //そのため文字列にシリアライズして解決する
     @JsonSerialize(using = LongToStringSerializer.class)
     private Long bookId;
-    //评价内容
+    //コメント内容
     private String commentContent;
-    //回复数量
+    //返信件数
     private Integer replyCount;
-    //审核状态，0：待审核，1：审核通过，2：审核不通过
+    //審査ステータス。0：審査待ち、1：審査通過、2：審査却下
     private Integer auditStatus;
-    //评价时间
+    //コメント日時
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    //评价人
-    //java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-    //所以通过序列化成字符串来解决
+    //コメントしたユーザー
+    //Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+    //そのため文字列にシリアライズして解決する
     @JsonSerialize(using = LongToStringSerializer.class)
     private Long createUserId;
 
@@ -66,98 +66,98 @@ public class BookCommentDO implements Serializable {
     }
 
     /**
-     * 设置：主键
+     * 設定：主キー
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * 获取：主键
+     * 取得：主キー
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * 设置：小说ID
+     * 設定：小説ID
      */
     public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
     /**
-     * 获取：小说ID
+     * 取得：小説ID
      */
     public Long getBookId() {
         return bookId;
     }
 
     /**
-     * 设置：评价内容
+     * 設定：コメント内容
      */
     public void setCommentContent(String commentContent) {
         this.commentContent = commentContent;
     }
 
     /**
-     * 获取：评价内容
+     * 取得：コメント内容
      */
     public String getCommentContent() {
         return commentContent;
     }
 
     /**
-     * 设置：回复数量
+     * 設定：返信件数
      */
     public void setReplyCount(Integer replyCount) {
         this.replyCount = replyCount;
     }
 
     /**
-     * 获取：回复数量
+     * 取得：返信件数
      */
     public Integer getReplyCount() {
         return replyCount;
     }
 
     /**
-     * 设置：审核状态，0：待审核，1：审核通过，2：审核不通过
+     * 設定：審査ステータス。0：審査待ち、1：審査通過、2：審査却下
      */
     public void setAuditStatus(Integer auditStatus) {
         this.auditStatus = auditStatus;
     }
 
     /**
-     * 获取：审核状态，0：待审核，1：审核通过，2：审核不通过
+     * 取得：審査ステータス。0：審査待ち、1：審査通過、2：審査却下
      */
     public Integer getAuditStatus() {
         return auditStatus;
     }
 
     /**
-     * 设置：评价时间
+     * 設定：コメント日時
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
     /**
-     * 获取：评价时间
+     * 取得：コメント日時
      */
     public Date getCreateTime() {
         return createTime;
     }
 
     /**
-     * 设置：评价人
+     * 設定：コメントしたユーザー
      */
     public void setCreateUserId(Long createUserId) {
         this.createUserId = createUserId;
     }
 
     /**
-     * 获取：评价人
+     * 取得：コメントしたユーザー
      */
     public Long getCreateUserId() {
         return createUserId;

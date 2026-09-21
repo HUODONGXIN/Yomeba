@@ -16,10 +16,10 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
- * 拦截所有 Mapper 接口的 list* 方法，对带有 @SanitizeMap 注解的 Map 参数进行排序字段和顺序的规范化处理。
+ * すべての Mapper インターフェースの list* メソッドをインターセプトし、@SanitizeMap アノテーションが付与された Map 引数のソート項目と順序を正規化します。
  *
- * <p>主要防止 SQL 注入或非法排序字段、非法排序顺序的问题。
- * 例如对 sort 和 order 字段进行白名单过滤和标准化处理。</p>
+ * <p>主に SQL インジェクションや不正なソート項目・不正なソート順序を防ぎます。
+ * 例えば sort と order フィールドに対してホワイトリストフィルタリングと標準化を行います。</p>
  */
 @Aspect
 @Component
@@ -27,18 +27,18 @@ import java.util.Map;
 public class MapSortValidationAspect {
 
     /**
-     * 拦截所有 Mapper 接口的 list* 方法（如 list(), listByPage 等）。
-     * 对带有 @SanitizeMap 注解的 Map 参数进行处理。
+     * すべての Mapper インターフェースの list* メソッド（list(), listByPage など）をインターセプトします。
+     * @SanitizeMap アノテーションが付与された Map 引数を処理します。
      *
-     * <p>执行逻辑：</p>
+     * <p>実行ロジック：</p>
      * <ol>
-     *   <li>获取方法参数及注解信息</li>
-     *   <li>遍历所有参数，检查是否带有 @SanitizeMap 注解</li>
-     *   <li>如果参数是 Map 类型且有注解，则进行字段清理</li>
+     *   <li>メソッドの引数とアノテーション情報を取得</li>
+     *   <li>すべての引数を走査し、@SanitizeMap アノテーションが付与されているか確認</li>
+     *   <li>引数が Map 型でアノテーションがある場合、項目のクリーニングを実行</li>
      * </ol>
      *
-     * @param joinPoint 切点信息
-     * @return 方法执行结果
+     * @param joinPoint ポイントカット情報
+     * @return メソッド実行結果
      */
     @SneakyThrows
     @Around("execution(* com.java2nb.*.dao.*Dao.list*(..))")

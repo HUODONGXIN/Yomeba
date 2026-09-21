@@ -40,7 +40,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * 小说表
+ * 小説テーブル
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -81,12 +81,12 @@ public class BookController {
         return "novel/book/book";
     }
 
-    @ApiOperation(value = "获取小说表列表", notes = "获取小说表列表")
+    @ApiOperation(value = "小説テーブル一覧を取得", notes = "小説テーブルの一覧を取得します")
     @ResponseBody
     @GetMapping("/list")
     @RequiresPermissions("novel:book:book")
     public R list(@RequestParam Map<String, Object> params) {
-        //查询列表数据
+        //一覧データを検索
         Query query = new Query(params);
         List<BookDO> bookList = bookService.list(query);
         int total = bookService.count(query);
@@ -94,14 +94,14 @@ public class BookController {
         return R.ok().put("data", pageBean);
     }
 
-    @ApiOperation(value = "新增小说表页面", notes = "新增小说表页面")
+    @ApiOperation(value = "小説新規追加ページ", notes = "小説の新規追加ページを表示します")
     @GetMapping("/add")
     @RequiresPermissions("novel:book:add")
     String add() {
         return "novel/book/add";
     }
 
-    @ApiOperation(value = "修改小说表页面", notes = "修改小说表页面")
+    @ApiOperation(value = "小説編集ページ", notes = "小説の編集ページを表示します")
     @GetMapping("/edit/{id}")
     @RequiresPermissions("novel:book:edit")
     String edit(@PathVariable("id") Long id, Model model) {
@@ -110,7 +110,7 @@ public class BookController {
         return "novel/book/edit";
     }
 
-    @ApiOperation(value = "查看小说表页面", notes = "查看小说表页面")
+    @ApiOperation(value = "小説詳細ページ", notes = "小説の詳細ページを表示します")
     @GetMapping("/detail/{id}")
     @RequiresPermissions("novel:book:detail")
     String detail(@PathVariable("id") Long id, Model model) {
@@ -122,7 +122,7 @@ public class BookController {
     /**
      * 保存
      */
-    @ApiOperation(value = "新增小说表", notes = "新增小说表")
+    @ApiOperation(value = "小説新規追加", notes = "小説を新規追加します")
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("novel:book:add")
@@ -134,9 +134,9 @@ public class BookController {
     }
 
     /**
-     * 修改
+     * 更新
      */
-    @ApiOperation(value = "修改小说表", notes = "修改小说表")
+    @ApiOperation(value = "小説更新", notes = "小説を更新します")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("novel:book:edit")
@@ -146,9 +146,9 @@ public class BookController {
     }
 
     /**
-     * 删除
+     * 削除
      */
-    @ApiOperation(value = "删除小说表", notes = "删除小说表")
+    @ApiOperation(value = "小説削除", notes = "小説を削除します")
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("novel:book:remove")
@@ -160,9 +160,9 @@ public class BookController {
     }
 
     /**
-     * 删除
+     * 一括削除
      */
-    @ApiOperation(value = "批量删除小说表", notes = "批量删除小说表")
+    @ApiOperation(value = "小説一括削除", notes = "小説を一括削除します")
     @PostMapping("/batchRemove")
     @ResponseBody
     @RequiresPermissions("novel:book:batchRemove")
@@ -172,9 +172,9 @@ public class BookController {
     }
 
     /**
-     * 已有小说的分类列表（筛选下拉用）
+     * 既存小説のジャンル一覧（絞り込みドロップダウン用）
      */
-    @ApiOperation(value = "已有小说的分类列表", notes = "已有小说的分类列表")
+    @ApiOperation(value = "既存小説のジャンル一覧", notes = "既存小説のジャンル一覧を取得します")
     @GetMapping("/listCategories")
     @ResponseBody
     public R listCategories() {
@@ -182,7 +182,7 @@ public class BookController {
     }
 
     /**
-     * 小说下载
+     * 小説ダウンロード
      */
     @RequestMapping(value = "/download")
     public void download(@RequestParam("bookId") Long bookId, @RequestParam("bookName") String bookName,
@@ -194,13 +194,13 @@ public class BookController {
                 .setIfAbsent(Constant.BOOK_IS_DOWNLOADING_KEY + bookId, "1", 10, TimeUnit.MINUTES);
             if (Boolean.FALSE.equals(success)) {
                 resp.setContentType("text/html;charset=UTF-8");
-                out.write("该小说正在下载中，请稍后重试！".getBytes(StandardCharsets.UTF_8));
+                out.write("この小説はダウンロード中です。しばらく待ってから再試行してください。".getBytes(StandardCharsets.UTF_8));
                 out.close();
                 return;
             }
-            //设置响应头，对文件进行url编码
+            //レスポンスヘッダーを設定し、ファイル名をURLエンコード
             bookName = URLEncoder.encode(bookName, StandardCharsets.UTF_8);
-            //解决手机端不能下载附件的问题
+            //モバイル端末で添付ファイルをダウンロードできない問題を解決
             resp.setContentType("application/octet-stream");
             resp.setHeader("Content-Disposition", "attachment;filename=" + bookName + ".txt");
 
@@ -215,7 +215,7 @@ public class BookController {
                 List<List<BookIndexDO>> bookIndexSmallList = bookIndexBigList.stream().collect(
                     Collectors.groupingBy(item -> bookIndexBigList.indexOf(item) / 100)).values().stream().toList();
                 for (List<BookIndexDO> bookIndexList : bookIndexSmallList) {
-                    // 获取集合中所有的ID
+                    // コレクション内のすべてのIDを取得
                     List<Long> bookIndexIds = bookIndexList.stream().map(BookIndexDO::getId).toList();
                     List<BookContentDO> bookContentList = bookContentService.listByIndexIds(bookIndexIds);
                     Map<Long, String> bookContentMap = bookContentList.stream()

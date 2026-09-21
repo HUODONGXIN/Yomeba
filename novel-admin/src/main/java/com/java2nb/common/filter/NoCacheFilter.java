@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * 全局禁用页面与静态资源缓存（no-cache）。
- * 防止浏览器缓存旧版 HTML/JS/CSS，导致修改后用户看不到最新内容。
+ * ページと静的リソースのキャッシュをグローバルに無効化する（no-cache）。
+ * ブラウザが古い HTML/JS/CSS をキャッシュし、修正後に最新の内容が表示されない事象を防ぐ。
  */
 @Component
 @Order(1)
@@ -27,7 +27,7 @@ public class NoCacheFilter implements Filter {
         HttpServletResponse resp = (HttpServletResponse) response;
         String uri = req.getRequestURI();
 
-        // 上传的图片等文件保留缓存，其余页面/脚本/样式一律不缓存
+        // アップロード画像などのファイルはキャッシュを残し、それ以外のページ・スクリプト・スタイルはキャッシュしない
         if (!uri.startsWith("/files/")) {
             resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             resp.setHeader("Pragma", "no-cache");

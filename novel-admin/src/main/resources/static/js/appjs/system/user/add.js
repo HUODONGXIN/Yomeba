@@ -24,16 +24,16 @@ function save() {
 		cache : true,
 		type : "POST",
 		url : "/sys/user/save",
-		data : $('#signupForm').serialize(),// 你的formid
+		data : $('#signupForm').serialize(),// あなたのformid
 		async : false,
 		error : function(request) {
 			parent.layer.alert("Connection error");
 		},
 		success : function(data) {
 			if (data.code == 0) {
-				parent.layer.msg("操作成功");
+				parent.layer.msg("操作が成功しました");
 				parent.reLoad();
-				var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+				var index = parent.layer.getFrameIndex(window.name); // ウィンドウインデックスを取得
 				parent.layer.close(index);
 
 			} else {
@@ -55,10 +55,10 @@ function validateRule() {
 				required : true,
 				minlength : 2,
 				remote : {
-					url : "/sys/user/exit", // 后台处理程序
-					type : "post", // 数据发送方式
-					dataType : "json", // 接受数据格式
-					data : { // 要传递的数据
+					url : "/sys/user/exit", // バックエンドの処理プログラム
+					type : "post", // データ送信方式
+					dataType : "json", // データ受信形式
+					data : { // 送信するデータ
 						username : function() {
 							return $("#username").val();
 						}
@@ -87,23 +87,23 @@ function validateRule() {
 		messages : {
 
 			name : {
-				required : icon + "请输入姓名"
+				required : icon + "氏名を入力してください"
 			},
 			username : {
-				required : icon + "请输入您的用户名",
-				minlength : icon + "用户名必须两个字符以上",
-				remote : icon + "用户名已经存在"
+				required : icon + "アカウントを入力してください",
+				minlength : icon + "アカウントは2文字以上で入力してください",
+				remote : icon + "アカウントは既に存在します"
 			},
 			password : {
-				required : icon + "请输入您的密码",
-				minlength : icon + "密码必须6个字符以上"
+				required : icon + "パスワードを入力してください",
+				minlength : icon + "パスワードは6文字以上で入力してください"
 			},
 			confirm_password : {
-				required : icon + "请再次输入密码",
-				minlength : icon + "密码必须6个字符以上",
-				equalTo : icon + "两次输入的密码不一致"
+				required : icon + "パスワードを再入力してください",
+				minlength : icon + "パスワードは6文字以上で入力してください",
+				equalTo : icon + "入力されたパスワードが一致しません"
 			},
-			email : icon + "请输入您的E-mail",
+			email : icon + "メールアドレスを入力してください",
 		}
 	})
 }
@@ -111,7 +111,7 @@ function validateRule() {
 var openDept = function(){
 	layer.open({
 		type:2,
-		title:"选择部门",
+		title:"部門を選択",
 		area : [ '300px', '450px' ],
 		content:"/system/sysDept/treeView"
 	})

@@ -67,7 +67,7 @@ public class GeneratorController {
     public R genCode(String tableName) {
         String[] tableNames = new String[]{tableName};
         generatorService.generatorCode(tableNames);
-        return R.ok("代码生成成功，请到本地项目中查看！");
+        return R.ok("コード生成に成功しました。ローカルプロジェクトでご確認ください！");
     }
 
     @RequestMapping("/batchDownload")
@@ -89,7 +89,7 @@ public class GeneratorController {
         String[] tableNames = new String[]{};
         tableNames = JSON.parseArray(tables).toArray(tableNames);
         generatorService.generatorCode(tableNames);
-        return R.ok("代码批量生成成功，请到本地项目中查看！");
+        return R.ok("コードの一括生成に成功しました。ローカルプロジェクトでご確認ください！");
     }
 
     @GetMapping("/edit")
@@ -119,7 +119,7 @@ public class GeneratorController {
             conf.setProperty("srcPath", map.get("srcPath"));
             conf.save();
         } catch (ConfigurationException e) {
-            return R.error("保存配置文件出错");
+            return R.error("設定ファイルの保存中にエラーが発生しました");
         }
         return R.ok();
     }
@@ -145,7 +145,7 @@ public class GeneratorController {
     /**
      * 保存
      */
-    @ApiOperation(value = "新增", notes = "新增")
+    @ApiOperation(value = "新規追加", notes = "新規追加します")
     @ResponseBody
     @PostMapping("/genColumns/save")
     public R save(@RequestBody List<GenColumnsDO> list) {

@@ -12,7 +12,7 @@
                         <input id="id" name="id" th:value="${pay.id}"
                                type="hidden">
                                                                                                                                         <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">保留：</label>
+                                                                            <label class="col-sm-3 control-label">外部取引番号：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="outTradeNo" name="outTradeNo"
                                                    th:value="${pay.outTradeNo}"
@@ -21,7 +21,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">订单号：</label>
+                                                                            <label class="col-sm-3 control-label">注文番号：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="tradeNo" name="tradeNo"
                                                    th:value="${pay.tradeNo}"
@@ -30,7 +30,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">保留：</label>
+                                                                            <label class="col-sm-3 control-label">支払い方法：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="payChannel" name="payChannel"
                                                    th:value="${pay.payChannel}"
@@ -39,7 +39,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">交易香蕉币：</label>
+                                                                            <label class="col-sm-3 control-label">取引yomiコイン：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="totalAmount" name="totalAmount"
                                                    th:value="${pay.totalAmount}"
@@ -48,7 +48,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">支付用户ID：</label>
+                                                                            <label class="col-sm-3 control-label">支払ユーザーID：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="userId" name="userId"
                                                    th:value="${pay.userId}"
@@ -57,7 +57,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">支付状态：0：支付失败，1：支付成功，2：待支付：</label>
+                                                                            <label class="col-sm-3 control-label">支払状態（0：支払失敗、1：支払成功、2：支払待ち）：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input id="payStatus" name="payStatus"
                                                    th:value="${pay.payStatus}"
@@ -66,7 +66,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">创建时间：</label>
+                                                                            <label class="col-sm-3 control-label">作成日時：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input type="text" class="laydate-icon layer-date form-control"
                                                    id="createTime"
@@ -77,7 +77,7 @@
                                                                             </div>
                                 </div>
                                                                                                                 <div class="form-group">
-                                                                            <label class="col-sm-3 control-label">更新时间：</label>
+                                                                            <label class="col-sm-3 control-label">更新日時：</label>
                                                                         <div class="col-sm-8">
                                                                                     <input type="text" class="laydate-icon layer-date form-control"
                                                    id="updateTime"
@@ -89,7 +89,7 @@
                                 </div>
                                                                             <div class="form-group">
                             <div class="col-sm-8 col-sm-offset-3">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="submit" class="btn btn-primary">送信</button>
                             </div>
                         </div>
                     </form>

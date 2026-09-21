@@ -40,20 +40,20 @@ public class MenuController extends BaseController {
 		return menus;
 	}
 
-	@Log("添加菜单")
+	@Log("メニュー新規追加")
 	@RequiresPermissions("sys:menu:add")
 	@GetMapping("/add/{pId}")
 	String add(Model model, @PathVariable("pId") Long pId) {
 		model.addAttribute("pId", pId);
 		if (pId == 0) {
-			model.addAttribute("pName", "根目录");
+			model.addAttribute("pName", "ルートディレクトリ");
 		} else {
 			model.addAttribute("pName", menuService.get(pId).getName());
 		}
 		return prefix + "/add";
 	}
 
-	@Log("编辑菜单")
+	@Log("メニュー編集")
 	@RequiresPermissions("sys:menu:edit")
 	@GetMapping("/edit/{id}")
 	String edit(Model model, @PathVariable("id") Long id) {
@@ -61,7 +61,7 @@ public class MenuController extends BaseController {
 		Long pId = mdo.getParentId();
 		model.addAttribute("pId", pId);
 		if (pId == 0) {
-			model.addAttribute("pName", "根目录");
+			model.addAttribute("pName", "ルートディレクトリ");
 		} else {
 			model.addAttribute("pName", menuService.get(pId).getName());
 		}
@@ -69,48 +69,48 @@ public class MenuController extends BaseController {
 		return prefix+"/edit";
 	}
 
-	@Log("保存菜单")
+	@Log("メニュー保存")
 	@RequiresPermissions("sys:menu:add")
 	@PostMapping("/save")
 	@ResponseBody
 	R save(MenuDO menu) {
 		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+			return R.error(1, "デモシステムでは変更できません。完全な機能をご利用になるにはプログラムをデプロイしてください。");
 		}
 		if (menuService.save(menu) > 0) {
 			return R.ok();
 		} else {
-			return R.error(1, "保存失败");
+			return R.error(1, "保存に失敗しました");
 		}
 	}
 
-	@Log("更新菜单")
+	@Log("メニュー更新")
 	@RequiresPermissions("sys:menu:edit")
 	@PostMapping("/update")
 	@ResponseBody
 	R update(MenuDO menu) {
 		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+			return R.error(1, "デモシステムでは変更できません。完全な機能をご利用になるにはプログラムをデプロイしてください。");
 		}
 		if (menuService.update(menu) > 0) {
 			return R.ok();
 		} else {
-			return R.error(1, "更新失败");
+			return R.error(1, "更新に失敗しました");
 		}
 	}
 
-	@Log("删除菜单")
+	@Log("メニュー削除")
 	@RequiresPermissions("sys:menu:remove")
 	@PostMapping("/remove")
 	@ResponseBody
 	R remove(Long id) {
 		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+			return R.error(1, "デモシステムでは変更できません。完全な機能をご利用になるにはプログラムをデプロイしてください。");
 		}
 		if (menuService.remove(id) > 0) {
 			return R.ok();
 		} else {
-			return R.error(1, "删除失败");
+			return R.error(1, "削除に失敗しました");
 		}
 	}
 
