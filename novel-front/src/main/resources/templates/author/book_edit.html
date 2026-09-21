@@ -51,6 +51,7 @@
         <div class="my_l">
             <ul class="log_list">
                 <li><a class="link_4 on" href="/author/index.html">作品管理</a></li>
+                <li><a id="menuIndex" href="javascript:void(0)">章節管理</a></li>
                 <li><a class="link_2 " href="/author/author_income_detail.html">収入</a></li>
             </ul>
         </div>
@@ -112,42 +113,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- 章節管理卡片 -->
-                <div class="card">
-                    <div class="card-toolbar">
-                        <div class="cf">
-                            <h2 class="fl" style="margin:0;font-size:16px;">章リスト</h2>
-                            <div class="fr">
-                                <a href="javascript:batchDelete()" class="btn_red" style="margin-right:8px;">一括削除</a>
-                                <a href="javascript:batchOffline()" class="btn_red" style="margin-right:8px;">一括非公開</a>
-                                <a href="javascript:addContent()" class="btn_red">新しい章を作成</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="noContentDiv">
-                        <div class="tc" style="margin-top:60px"><a href="javascript:addContent()" class="btn_red">新しい章を作成</a></div>
-                    </div>
-                    <div id="hasContentDiv" style="display:none;">
-                        <div id="divData" class="updateTable">
-                            <table cellpadding="0" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th style="width:30px;"><input type="checkbox" id="checkAll" onclick="toggleAll(this)"></th>
-                                    <th class="name">章名</th>
-                                    <th class="goread">更新時間</th>
-                                    <th class="goread">有料かどうか</th>
-                                    <th class="goread">操作</th>
-                                </tr>
-                                </thead>
-                                <tbody id="bookList"></tbody>
-                            </table>
-                            <div class="pageBox cf" id="shellPage"></div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
@@ -169,6 +134,7 @@
 
 <script language="javascript" type="text/javascript">
     var bookId = getSearchString("bookId");
+    document.getElementById("menuIndex").href = "/author/book_index.html?bookId=" + bookId;
     var bookStatus = 1;
     var indexCount = 0;
 
@@ -194,7 +160,6 @@
             }
         }
     });
-    search(1, 5);
 
     // カバー画像アップロード
     $("#coverFile").change(function () {
@@ -310,149 +275,5 @@
         var arr = [];
         $(".catCb:checked").each(function(){ arr.push($(this).data("name")); });
         return arr;
-    }
-    function toggleAll(el) {
-        $(".idxCb").prop("checked", el.checked);
-    }
-    function getCheckedIndexIds() {
-        var arr = [];
-        $(".idxCb:checked").each(function(){ arr.push($(this).val()); });
-        return arr;
-    }
-    function batchDelete() {
-        var ids = getCheckedIndexIds();
-        if (ids.length == 0) { layer.msg("章を選択してください"); return; }
-        layer.confirm(ids.length + "件の章を削除しますか？", function () {
-            var done = 0;
-            ids.forEach(function (id) {
-                $.ajax({ type: "delete", url: "/author/deleteIndex/" + id, dataType: "json",
-                    complete: function () { done++; if (done == ids.length) { layer.msg('削除しました'); search(1, 5); } } });
-            });
-        });
-    }
-    function batchOffline() {
-        var ids = getCheckedIndexIds();
-        if (ids.length == 0) { layer.msg("章を選択してください"); return; }
-        layer.confirm(ids.length + "件の章を非公開にしますか？", function () {
-            var done = 0;
-            ids.forEach(function (id) {
-                $.ajax({ type: "post", url: "/author/updateIndexStatus",
-                    data: {'indexId': id, 'status': 0}, dataType: "json",
-                    complete: function () { done++; if (done == ids.length) { layer.msg('操作完了'); search(1, 5); } } });
-            });
-        });
-    }
-
-    function search(curr, limit) {
-        $.ajax({
-            type: "get",
-            url: "/book/queryIndexList",
-            data: {'bookId': bookId, 'curr': curr, 'limit': limit, 'orderBy': 'index_num desc', 'showAll': true},
-            dataType: "json",
-            success: function (data) {
-                if (data.code == 200) {
-                    var bookList = data.data.list;
-                    indexCount = bookList.length;
-                    if (bookList.length > 0) {
-                        $("#hasContentDiv").css("display", "block");
-                        $("#noContentDiv").css("display", "none");
-                        var bookListHtml = "";
-                        for (var i = 0; i < bookList.length; i++) {
-                            var book = bookList[i];
-                            bookListHtml += (" <tr class=\"book_list\">" +
-                                "<td><input type='checkbox' class='idxCb' value='" + book.id + "'></td>" +
-                                "<td id='name" + book.id + "' class=\"name\">" + book.indexName + "</td>" +
-                                "<td class=\"goread\">" + new Date(Date.parse(book.updateTime)).Format("yyyy-MM-dd hh:mm") + "<br/>更新</td>" +
-                                "<td class=\"goread\">" + (book.isVip == 1 ? '有料' : '無料') + "</td>" +
-                                "<td class=\"goread\" id='opt" + book.id + "'>" +
-                                "<a class='redBtn' href='javascript:updateIndex(\"" + book.id + "\"," + book.isVip + ")'>変更</a><br/>" +
-                                "<a href='javascript:deleteIndex(\"" + book.id + "\")'>削除</a><br/>" +
-                                (book.status == 1 ? "<a href='javascript:updateIndexStatus(\"" + book.id + "\",0)'>非公開</a>" : "<a href='javascript:updateIndexStatus(\"" + book.id + "\",1)'>公開</a>") +
-                                "</td></tr>");
-                        }
-                        $("#bookList").html(bookListHtml);
-                        layui.use('laypage', function () {
-                            var laypage = laypage.laypage;
-                            laypage.render({
-                                elem: 'shellPage',
-                                count: data.data.total,
-                                curr: data.data.pageNum,
-                                limit: data.data.pageSize,
-                                jump: function (obj, first) {
-                                    if (!first) {
-                                        search(obj.curr, obj.limit);
-                                    }
-                                }
-                            });
-                        });
-                    } else {
-                        $("#hasContentDiv").css("display", "none");
-                        $("#noContentDiv").css("display", "block");
-                    }
-                } else if (data.code == 1001) {
-                    location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
-                } else {
-                    layer.alert(data.msg);
-                }
-            },
-            error: function () {
-                layer.alert('ネットワークエラー');
-            }
-        });
-    }
-
-    function updateIndexStatus(indexId, status) {
-        layer.confirm(status == 1 ? 'この章を公開しますか？' : 'この章を非公開にしますか？', function () {
-            $.ajax({
-                type: "post",
-                url: "/author/updateIndexStatus",
-                data: {'indexId': indexId, 'status': status},
-                dataType: "json",
-                success: function (data) {
-                    if (data.code == 200) {
-                        layer.msg('操作完了');
-                        search(1, 5);
-                    } else {
-                        layer.alert(data.msg);
-                    }
-                },
-                error: function () {
-                    layer.alert('ネットワークエラー');
-                }
-            });
-        });
-    }
-
-    function addContent() {
-        location.href = "/author/content_add.html?indexCount=" + indexCount + "&bookId=" + bookId;
-    }
-
-    function updateIndex(indexId, isVip) {
-        var indexName = $.trim($("#name" + indexId).text());
-        location.href = "/author/content_update.html?bookId=" + bookId
-            + "&indexId=" + indexId
-            + "&indexName=" + encodeURI(encodeURI(indexName))
-            + "&isVip=" + isVip;
-    }
-
-    function deleteIndex(indexId) {
-        layer.confirm('この章を削除しますか？', function () {
-            $.ajax({
-                type: "delete",
-                url: "/author/deleteIndex/" + indexId,
-                dataType: "json",
-                success: function (data) {
-                    if (data.code == 200) {
-                        layer.msg('削除しました');
-                        search(1, 5);
-                    } else {
-                        layer.alert(data.msg);
-                    }
-                },
-                error: function () {
-                    layer.alert('ネットワークエラー');
-                }
-            });
-        });
     }
 </script>
