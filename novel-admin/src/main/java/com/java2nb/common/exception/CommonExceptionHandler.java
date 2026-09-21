@@ -28,6 +28,9 @@ public class CommonExceptionHandler {
     @Autowired
     LogService logService;
 
+    @Autowired
+    com.java2nb.common.service.BugLogService bugLogService;
+
     /**
      * 自定义业务异常处理
      */
@@ -72,6 +75,21 @@ public class CommonExceptionHandler {
             logDO.setUsername(current.getUsername());
         }
         logService.save(logDO);
+        // 写入 bug_log
+        try {
+            com.java2nb.common.domain.BugLogDO bug = new com.java2nb.common.domain.BugLogDO();
+            bug.setLevel("ERROR");
+            bug.setMessage(e.getMessage() != null ? e.getMessage() : e.toString());
+            StringBuilder sb = new StringBuilder();
+            for (StackTraceElement el : e.getStackTrace()) sb.append(el.toString()).append("\n");
+            bug.setStack(sb.toString());
+            bug.setUrl(request.getRequestURL().toString());
+            bug.setParams(request.getQueryString());
+            bug.setIp(request.getRemoteAddr());
+            bug.setUserAgent(request.getHeader("User-Agent"));
+            bug.setGmtCreate(new Date());
+            bugLogService.save(bug);
+        } catch (Exception ignored) {}
         logger.error(e.getMessage(), e);
         if (HttpServletUtils.jsAjax(request)) {
             return R.error(500, "服务器错误，请联系管理员");
