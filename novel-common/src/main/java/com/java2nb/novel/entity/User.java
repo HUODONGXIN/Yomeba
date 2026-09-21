@@ -15,7 +15,7 @@ public class User {
 
 
     @NotBlank(groups = {AddGroup.class}, message = "メールアドレスを入力してください！")
-    @Pattern(groups = {AddGroup.class}, regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$", message = "メールアドレスの形式が正しくありません！")
+    @Pattern(groups = {AddGroup.class}, regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "メールアドレスの形式が正しくありません！")
     @Null(groups = {UpdateGroup.class})
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     private String username;
