@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content animated fadeInRight">
+		<div class="col-sm-12">
+			<div class="ibox">
+				<div class="ibox-body">
+					<div class="fixed-table-toolbar">
+						<div class="columns pull-left">
+							<button type="button" class="btn btn-danger" onclick="batchRemove()">
+								<i class="fa fa-trash"></i> 删除
+							</button>
+						</div>
+						<div class="columns pull-right" role="group">
+							<button class="btn btn-success" onclick="reLoad()">
+								<i class="fa fa-search"></i> 查询
+							</button>
+						</div>
+						<div class="pull-right search col-md-2">
+							<input id="searchUrl" type="text" class="form-control" placeholder="URL">
+						</div>
+						<div class="pull-right search col-md-2">
+							<input id="searchMessage" type="text" class="form-control" placeholder="错误信息">
+						</div>
+						<div class="pull-right search col-md-2">
+							<select id="searchLevel" class="form-control">
+								<option value="">全部级别</option>
+								<option value="ERROR">ERROR</option>
+								<option value="WARN">WARN</option>
+								<option value="INFO">INFO</option>
+							</select>
+						</div>
+					</div>
+					<table id="exampleTable" data-mobile-responsive="true"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/monitor/bugLog/bugLog.js"></script>
+</body>
+</html>
