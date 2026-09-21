@@ -73,6 +73,12 @@
                     <div class="form-item"><b>小説名：</b>
                         <input type="text" id="bookName" class="s_input"/>
                     </div>
+                    <div class="form-item"><b>連載状態：</b>
+                        <select class="s_input" id="bookStatus">
+                            <option value="0">連載中</option>
+                            <option value="1">完結</option>
+                        </select>
+                    </div>
                     <div class="form-item"><b>小説紹介：</b>
                         <textarea id="bookDesc" rows="5" cols="53" class="textarea"></textarea>
                     </div>
@@ -140,6 +146,7 @@
                 var b = res.data;
                 bookStatus = b.status;
                 $("#workDirection").val(b.workDirection);
+                $("#bookStatus").val(b.bookStatus);
                 $("#bookName").val(b.bookName);
                 $("#bookDesc").val(b.bookDesc);
                 var catIds = (b.catId || "").split(",");
@@ -168,6 +175,7 @@
                 'id': bookId,
                 'bookName': $("#bookName").val(),
                 'workDirection': $("#workDirection").val(),
+                'bookStatus': $("#bookStatus").val(),
                 'catId': getCheckedCats().join(","),
                 'catName': getCheckedCatNames().join(","),
                 'bookDesc': $("#bookDesc").val()
