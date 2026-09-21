@@ -45,31 +45,13 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public String register(Long userId, Author author) {
+    public void register(Long userId, Author author) {
         Date currentDate = new Date();
-        //判断邀请码是否有效
-        if (authorCodeMapper.count(c ->
-            c.where(AuthorCodeDynamicSqlSupport.inviteCode, isEqualTo(author.getInviteCode()))
-                .and(AuthorCodeDynamicSqlSupport.isUse, isEqualTo((byte) 0))
-                .and(AuthorCodeDynamicSqlSupport.validityTime, isGreaterThan(currentDate))) > 0) {
-            //邀请码有效
-            //保存作家信息
-            author.setUserId(userId);
-            author.setCreateTime(currentDate);
-            authorMapper.insertSelective(author);
-            //设置邀请码状态为已使用
-            authorCodeMapper.update(update(authorCode)
-                .set(AuthorCodeDynamicSqlSupport.isUse)
-                .equalTo((byte) 1)
-                .where(AuthorCodeDynamicSqlSupport.inviteCode, isEqualTo(author.getInviteCode()))
-                .build()
-                .render(RenderingStrategies.MYBATIS3));
-            return "";
-        } else {
-            //邀请码无效
-            return "招待コードが無効です";
-        }
-
+        // 招待コード不要、誰でも自由に作家登録可能
+        author.setUserId(userId);
+        author.setCreateTime(currentDate);
+        author.setStatus((byte) 1);
+        authorMapper.insertSelective(author);
     }
 
     @Override

@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common_head(~{::title},~{::meta},~{::link},~{})">
+    <title th:text="'作家新規登録_'+${application.website.name}"></title>
+    <meta name="keywords" th:content="'作家登録,小説投稿,'+${application.website.name}"/>
+    <link rel="stylesheet" href="/css/user.css" />
+</head>
+<body class="">
+
+<div th:replace="common/top :: top('')">
+</div>
+
+<div class="main box_center cf">
+    <div class="userBox cf">
+        <form method="post" action="./register.html" id="form2">
+            <div class="user_l">
+                <h3>作家アカウント新規登録</h3>
+                <ul class="log_list">
+                    <li><span id="LabErr"></span></li>
+                    <li><input name="txtUName" type="text" id="txtUName" class="s_input icon_name"
+                               placeholder="メールアドレス（ログインID）"/></li>
+                    <li><input name="txtPenName" type="text" id="txtPenName" class="s_input"
+                               placeholder="作家名（ペンネーム）"/></li>
+                    <li><input name="txtPassword" type="password" id="txtPassword" class="s_input icon_key"
+                               placeholder="パスワード：6〜20桁の英数字"/></li>
+                    <li class="log_code cf"><input name="TxtChkCode" type="text" maxlength="4" id="TxtChkCode"
+                                                   class="s_input icon_code" placeholder="認証コード"/><img
+                            style="border: 1px solid #eee" class="code_pic" src="" id="chkd"
+                            onclick="getVerify(this);"/></li>
+                    <li><input type="button" name="btnRegister" value="作家登録" id="btnRegister" class="btn_red"/></li>
+                </ul>
+            </div>
+        </form>
+        <div class="user_r">
+            <p class="tit">すでにアカウントをお持ちですか？</p>
+            <a href="/user/login.html" class="btn_ora_white">ログイン</a>
+            <p class="tit" style="margin-top:20px;">読者アカウントはこちら</p>
+            <a href="/user/register.html" class="btn_ora_white">読者として登録</a>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/footer :: footer">
+</div>
+<div th:replace="common/js :: js"></div>
+<script language="javascript" type="text/javascript">
+    $("#chkd").click();
+
+    function getVerify(obj) {
+        obj.src = "/file/getVerify?" + Math.random();
+    }
+
+    $("#btnRegister").click(function () {
+        var username = $("#txtUName").val();
+        var password = $("#txtPassword").val();
+        var penName = $("#txtPenName").val();
+        var velCode = $("#TxtChkCode").val();
+
+        if (username == "" || password == "" || penName == "" || velCode == "") {
+            layer.open({ content: 'すべての項目を入力してください', style: UserUtil.msgStyle, time: 2 });
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "/author/register",
+            data: { username: username, password: password, penName: penName, velCode: velCode },
+            success: function (r) {
+                if (r.code == 200) {
+                    localStorage.setItem("token", r.data.token);
+                    layer.msg("登録成功！", { time: 1500 }, function () {
+                        location.href = "/author/index.html";
+                    });
+                } else {
+                    layer.open({ content: r.msg, style: UserUtil.msgStyle, time: 2 });
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

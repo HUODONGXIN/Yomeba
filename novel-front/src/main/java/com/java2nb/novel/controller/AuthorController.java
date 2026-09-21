@@ -10,8 +10,13 @@ import com.java2nb.novel.entity.Author;
 import com.java2nb.novel.entity.AuthorIncome;
 import com.java2nb.novel.entity.AuthorIncomeDetail;
 import com.java2nb.novel.entity.Book;
+import com.java2nb.novel.entity.User;
 import com.java2nb.novel.service.AuthorService;
 import com.java2nb.novel.service.BookService;
+import com.java2nb.novel.service.UserService;
+import com.java2nb.novel.core.cache.CacheService;
+import com.java2nb.novel.core.utils.IpUtil;
+import com.java2nb.novel.core.utils.RandomValidateCodeUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -44,6 +49,39 @@ public class AuthorController extends BaseController {
     private final ChatClient chatClient;
 
     private final OpenAiChatModel chatModel;
+
+    private final UserService userService;
+
+    private final CacheService cacheService;
+
+    /**
+     * 作家新規登録（招待コード不要）
+     */
+    @PostMapping("register")
+    public RestResult<?> register(@RequestParam String username,
+                                  @RequestParam String password,
+                                  @RequestParam String penName,
+                                  @RequestParam String velCode,
+                                  HttpServletRequest request) {
+        // 認証コードチェック
+        if (!velCode.equals(cacheService.get(RandomValidateCodeUtil.RANDOM_CODE_KEY + ":" + IpUtil.getRealIp(request)))) {
+            return RestResult.fail(ResponseStatus.VEL_CODE_ERROR);
+        }
+        // ユーザー登録
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        UserDetails userDetails = userService.register(user);
+        // 作家登録
+        Author author = new Author();
+        author.setPenName(penName);
+        author.setTelPhone(username);
+        authorService.register(userDetails.getId(), author);
+        // トークン生成（自動ログイン）
+        java.util.Map<String, Object> data = new java.util.HashMap<>(1);
+        data.put("token", jwtTokenUtil.generateToken(userDetails));
+        return RestResult.ok(data);
+    }
 
     /**
      * 校验笔名是否存在

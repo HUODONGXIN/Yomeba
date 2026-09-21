@@ -20,8 +20,8 @@ public enum ResponseStatus implements IResultCode {
      * */
    NO_LOGIN(1001, "ログインしていません"),
     VEL_CODE_ERROR(1002, "認証コードが不正です"),
-    USERNAME_EXIST(1003,"この携帯番号は既に登録されています"),
-    USERNAME_PASS_ERROR(1004,"携帯番号またはパスワードが違います"),
+    USERNAME_EXIST(1003,"このメールアドレスは既に登録されています"),
+    USERNAME_PASS_ERROR(1004,"メールアドレスまたはパスワードが違います"),
     TWO_PASSWORD_DIFF(1005, "新しいパスワードが一致しません"),
     OLD_PASSWORD_ERROR(1006, "現在のパスワードが違います"),
     USER_NO_BALANCE(1007, "残高が不足しています"),
