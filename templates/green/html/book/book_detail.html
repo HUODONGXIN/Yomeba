@@ -62,7 +62,7 @@
         <div class="wrap_left fl">
             <div class="wrap_bg">
 
-                <!--章目次 start-->
+                <!--話目次 start-->
                 <div class="pad20_nobt">
                     <div class="bookChapter">
                         <div class="book_tit">
@@ -79,11 +79,11 @@
                                       th:text="'更新時間：'+${#dates.format(book.lastIndexUpdateTime, 'yy/MM/dd HH:mm:ss')}"></span>
                             </li>
                             <li class="zj_yl" id="lastBookContent"> 　</li>
-                            <!--ここは該当章のプレビューです。先頭42文字を抜粋-->
+                            <!--ここは該当話のプレビューです。先頭42文字を抜粋-->
                         </ul>
                     </div>
                 </div>
-                <!--章目次 end-->
+                <!--話目次 end-->
 
                 <!--作品コメント欄 start-->
                 <div class="pad20">
@@ -239,7 +239,7 @@
 <script type="text/javascript">
     var pathname = window.location.pathname;
     var bookId = pathname.substring(pathname.lastIndexOf("/") + 1, pathname.lastIndexOf("."))
-    //章情報を取得
+    //話情報を取得
     var lastBookIndexId = $("#lastBookIndexId").val();
     if (lastBookIndexId) {
         $.ajax({

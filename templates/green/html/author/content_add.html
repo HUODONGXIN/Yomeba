@@ -117,12 +117,12 @@
                     <form method="post" action="./register.html" id="form2">
                         <div class="user_l">
                             <div></div>
-                            <h3>小説章内容の入力</h3>
+                            <h3>小説話内容の入力</h3>
                             <ul class="log_list">
                                 <li><span id="LabErr"></span></li>
-                                <b>章名：</b>
+                                <b>話名：</b>
                                 <li><input type="text" id="bookIndex" name="bookIndex" class="s_input"></li>
-                                <b>章内容：</b>
+                                <b>話内容：</b>
                                 <li id="contentLi" style="width: 500px">
                                     <div class="editor-container">
                                         <div class="ai-toolbar">
@@ -213,14 +213,14 @@
 
         var indexName = $("#bookIndex").val();
         if (!indexName) {
-            $("#LabErr").html("章名を入力してください！");
+            $("#LabErr").html("話名を入力してください！");
             lock = false;
             return;
         }
 
         var content = $("#bookContent").val();
         if (!content) {
-            $("#LabErr").html("章内容を入力してください！");
+            $("#LabErr").html("話内容を入力してください！");
             lock = false;
             return;
         }
