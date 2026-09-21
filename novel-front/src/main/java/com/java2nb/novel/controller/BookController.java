@@ -252,8 +252,9 @@ public class BookController extends BaseController {
     public RestResult<PageBean<BookIndex>> indexList(Long bookId,
         @RequestParam(value = "curr", defaultValue = "1") int page,
         @RequestParam(value = "limit", defaultValue = "5") int pageSize,
-        @RequestParam(value = "orderBy", defaultValue = "index_num desc") String orderBy) {
-        return RestResult.ok(PageBuilder.build(bookService.queryIndexList(bookId, orderBy, page, pageSize)));
+        @RequestParam(value = "orderBy", defaultValue = "index_num desc") String orderBy,
+        @RequestParam(value = "showAll", defaultValue = "false") boolean showAll) {
+        return RestResult.ok(PageBuilder.build(bookService.queryIndexList(bookId, orderBy, page, pageSize, showAll)));
     }
 
 

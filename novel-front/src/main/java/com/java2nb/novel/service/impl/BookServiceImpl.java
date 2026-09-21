@@ -237,6 +237,11 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<BookIndex> queryIndexList(Long bookId, String orderBy, Integer page, Integer pageSize) {
+        return queryIndexList(bookId, orderBy, page, pageSize, false);
+    }
+
+    @Override
+    public List<BookIndex> queryIndexList(Long bookId, String orderBy, Integer page, Integer pageSize, boolean showAll) {
         if (page != null && pageSize != null) {
             PageHelper.startPage(page, pageSize);
         }
@@ -244,9 +249,12 @@ public class BookServiceImpl implements BookService {
             BookIndexDynamicSqlSupport.id,
             BookIndexDynamicSqlSupport.bookId, BookIndexDynamicSqlSupport.indexNum,
             BookIndexDynamicSqlSupport.indexName, BookIndexDynamicSqlSupport.updateTime,
-            BookIndexDynamicSqlSupport.isVip)
+            BookIndexDynamicSqlSupport.isVip, BookIndexDynamicSqlSupport.status)
             .from(bookIndex)
             .where(BookIndexDynamicSqlSupport.bookId, isEqualTo(bookId));
+        if (!showAll) {
+            where = where.and(BookIndexDynamicSqlSupport.status, isEqualTo((byte) 1));
+        }
         if ("index_num desc".equals(orderBy)) {
             where.orderBy(BookIndexDynamicSqlSupport.indexNum.descending());
         }
@@ -574,6 +582,36 @@ public class BookServiceImpl implements BookService {
             .equalTo(status)
             .where(id, isEqualTo(bookId))
             .and(BookDynamicSqlSupport.authorId, isEqualTo(authorId))
+            .build()
+            .render(RenderingStrategies.MYBATIS3));
+    }
+
+    @Override
+    public void updateIndexStatus(Long indexId, Byte status, Long authorId) {
+        //校验章节归属作者
+        BookIndex index = bookIndexMapper.selectMany(select(BookIndexDynamicSqlSupport.id,
+            BookIndexDynamicSqlSupport.bookId)
+            .from(BookIndexDynamicSqlSupport.bookIndex)
+            .where(BookIndexDynamicSqlSupport.id, isEqualTo(indexId))
+            .build()
+            .render(RenderingStrategies.MYBATIS3)).stream().findFirst().orElse(null);
+        if (index == null) {
+            return;
+        }
+        Book ownerBook = bookMapper.selectMany(select(BookDynamicSqlSupport.id,
+            BookDynamicSqlSupport.authorId)
+            .from(BookDynamicSqlSupport.book)
+            .where(BookDynamicSqlSupport.id, isEqualTo(index.getBookId()))
+            .build()
+            .render(RenderingStrategies.MYBATIS3)).stream().findFirst().orElse(null);
+        if (ownerBook == null || !authorId.equals(ownerBook.getAuthorId())) {
+            //不是自己的章节
+            return;
+        }
+        bookIndexMapper.update(update(BookIndexDynamicSqlSupport.bookIndex)
+            .set(BookIndexDynamicSqlSupport.status)
+            .equalTo(status)
+            .where(BookIndexDynamicSqlSupport.id, isEqualTo(indexId))
             .build()
             .render(RenderingStrategies.MYBATIS3));
     }

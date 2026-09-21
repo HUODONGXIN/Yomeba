@@ -1,13 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
+
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>著者管理システム-Yomeba</title>
-        <link rel="stylesheet" href="/css/base.css?v=1"/>
-        <link rel="stylesheet" href="/css/user.css"/>
+        <link rel="stylesheet" href="/css/base.css?v=1" />
+        <link rel="stylesheet" href="/css/user.css" />
         <style type="text/css">
             .redBtn {
                 padding: 5px;
@@ -24,80 +26,82 @@
         </style>
     </head>
 </head>
+
 <body class="">
 
-<div th:replace="common/top :: top('')">
-    <div class="header">
-        <div class="mainNav" id="mainNav">
-            <div class="box_center cf"
-                 style="text-align: center;height: 44px;line-height: 48px;color: #fff;font-size: 16px;">
+    <div th:replace="common/top :: top('')">
+        <div class="header">
+            <div class="mainNav" id="mainNav">
+                <div class="box_center cf"
+                    style="text-align: center;height: 44px;line-height: 48px;color: #fff;font-size: 16px;">
 
-                Yomeba著者管理
+                    Yomeba著者管理
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<div class="main box_center cf">
-    <div class="userBox cf">
-        <div class="my_l">
+    <div class="main box_center cf">
+        <div class="userBox cf">
+            <div class="my_l">
 
-            <ul class="log_list">
-                <li><a class="link_4 on" href="/author/index.html">小説管理</a></li>
-                <li><a class="link_2 " href="/author/author_income_detail.html">収入</a></li>
-                <!-- <li><a class="link_1 " href="/user/userinfo.html">批量小説クロール</a></li>
+                <ul class="log_list">
+                    <li><a class="link_4 on" href="/author/index.html">作品管理</a></li>
+                    <li><a class="link_2 " href="/author/author_income_detail.html">収入</a></li>
+                    <!-- <li><a class="link_1 " href="/user/userinfo.html">批量小説クロール</a></li>
                  <li><a class="link_4 " href="/user/favorites.html">単本小説クロール</a></li>-->
-            </ul>
-
-        </div>
-        <div class="my_r">
-            <div id="noContentDiv">
-                <div class="tc" style="margin-top: 200px"><a href="/author/book_add.html" class="btn_red">作品を作成</a></div>
+                </ul>
 
             </div>
-            <div class="my_bookshelf" id="hasContentDiv" style="display: none">
-                <div class="title cf">
-                    <h2 class="fl">小説リスト</h2>
-                    <div class="fr"><a href="/author/book_add.html" class="btn_red">小説を公開</a></div>
-                </div>
-
-                <div id="divData" class="updateTable">
-                    <table cellpadding="0" cellspacing="0">
-                        <thead>
-                        <tr>
-                            <th class="goread">
-                                書名
-                            </th>
-                            <th class="goread">
-                                ジャンル
-                            </th>
-                            <th class="goread">
-                                クリック数
-                            </th>
-                            <th class="goread">
-                                昨日の購読数
-                            </th>
-                            <th class="goread">
-                                更新時間
-                            </th>
-                            <th class="goread">
-                                総文字数
-                            </th>
-                            <th class="goread">
-                                操作
-                            </th>
-                        </tr>
-                        </thead>
-                        <tbody id="bookList">
-
-
-                        </tbody>
-                    </table>
-                    <div class="pageBox cf" id="shellPage">
+            <div class="my_r">
+                <div id="noContentDiv">
+                    <div class="tc" style="margin-top: 200px"><a href="/author/book_add.html" class="btn_red">作品を作成</a>
                     </div>
+
                 </div>
-                <!--<div id="divData" class="updateTable">
+                <div class="my_bookshelf" id="hasContentDiv" style="display: none">
+                    <div class="title cf">
+                        <h2 class="fl">小説リスト</h2>
+                        <div class="fr"><a href="/author/book_add.html" class="btn_red">作品を作成</a></div>
+                    </div>
+
+                    <div id="divData" class="updateTable">
+                        <table cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="goread">
+                                        書名
+                                    </th>
+                                    <th class="goread">
+                                        ジャンル
+                                    </th>
+                                    <th class="goread">
+                                        クリック数
+                                    </th>
+                                    <th class="goread">
+                                        昨日の購読数
+                                    </th>
+                                    <th class="goread">
+                                        更新時間
+                                    </th>
+                                    <th class="goread">
+                                        総文字数
+                                    </th>
+                                    <th class="goread">
+                                        操作
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="bookList">
+
+
+                            </tbody>
+                        </table>
+                        <div class="pageBox cf" id="shellPage">
+                        </div>
+                    </div>
+                    <!--<div id="divData" class="updateTable">
                     <table cellpadding="0" cellspacing="0">
                         <thead>
                         <tr>
@@ -128,10 +132,10 @@
                     <div class="pageBox cf" id="shellPage">
                     </div>
                 </div>-->
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </body>
@@ -153,26 +157,26 @@
         $.ajax({
             type: "get",
             url: "/author/listBookByPage",
-            data: {'curr': curr, 'limit': limit},
+            data: { 'curr': curr, 'limit': limit },
             dataType: "json",
             success: function (data) {
                 if (data.code == 200) {
                     var bookList = data.data.list;
                     if (bookList.length > 0) {
-                        if(curr == 1 && bookList[0].picUrl == '/images/default.gif'){
-                            coverUpdateInterval = setInterval(function(){
+                        if (curr == 1 && bookList[0].picUrl == '/images/default.gif') {
+                            coverUpdateInterval = setInterval(function () {
                                 $.ajax({
                                     type: "get",
                                     url: "/author/queryAiGenPic",
-                                    data: {'bookId': bookList[0].id},
+                                    data: { 'bookId': bookList[0].id },
                                     dataType: "json",
                                     success: function (data) {
-                                        if(data.code == 200 && data.data){
-                                            $("#cover"+bookList[0].id).attr("src", data.data);
+                                        if (data.code == 200 && data.data) {
+                                            $("#cover" + bookList[0].id).attr("src", data.data);
                                             clearInterval(coverUpdateInterval);
                                         }
                                     }
-                                  });
+                                });
                             }, 3000);
                             setTimeout(() => {
                                 clearInterval(coverUpdateInterval);
@@ -194,7 +198,7 @@
                                 "                                           title=\"画像をクリックしてアップロード\"\n" +
                                 "                                           style=\"z-index: 100;cursor: pointer;left: 30px; top: 0px; width: 60px; height: 80px; opacity: 0; position: absolute;  \"\n" +
                                 "                                    />" +
-                                "<img id=\"cover" + book.id + "\" width='50' height='70' src='" + book.picUrl + "'/><br/>" +                                "                                " + book.bookName + "</td>\n" +
+                                "<img id=\"cover" + book.id + "\" width='50' height='70' src='" + book.picUrl + "'/><br/>" + "                                " + book.bookName + "</td>\n" +
                                 "                            <td class=\"goread\" >"
                                 + book.catName + "</td>\n" +
 
@@ -214,7 +218,8 @@
                                 " <td class=\"goread\" id='opt" + book.id + "'>" +
                                 "<a class='redBtn' href='/author/index_list.html?bookId=" + book.id + "'>章管理  </a><br/>" +
                                 "<a href='/author/author_income_detail.html?bookId=" + book.id + "'>報酬照会  </a><br/>" +
-                                "<a href='/book/" + book.id + ".html'>作品情報</a>" +
+                                "<a href='/book/" + book.id + ".html'>作品情報</a><br/>" +
+                                (book.status == 1 ? "<a href='javascript:updateBookStatus(\"" + book.id + "\",0)'>下架</a>" : "<a href='javascript:updateBookStatus(\"" + book.id + "\",1)'>公開</a>") +
                                 "</td>                     </tr>");
                         }
                         $("#bookList").html(bookListHtml);
@@ -271,7 +276,7 @@
         $.ajax({
             type: "POST",
             url: "/author/updateBookStatus",
-            data: {'bookId': bookId, 'status': status == 0 ? 1 : 0},
+            data: { 'bookId': bookId, 'status': status == 0 ? 1 : 0 },
             dataType: "json",
             success: function (data) {
                 if (data.code == 200) {
@@ -297,7 +302,7 @@
     }
 
 
-   function picChange(bookId) {
+    function picChange(bookId) {
         var file = $("#file" + bookId).val(); //ファイル名
         if (file != "") {
             if (checkPicUpload($("#file" + bookId)[0])) {
@@ -314,11 +319,11 @@
                             $.ajax({
                                 type: "POST",
                                 url: "/author/updateBookPic",
-                                data: {'bookId': bookId, 'bookPic': data.data},
+                                data: { 'bookId': bookId, 'bookPic': data.data },
                                 dataType: "json",
                                 success: function (data) {
                                     if (data.code == 200) {
-                                        $("#cover"+bookId).attr("src", picUrl);
+                                        $("#cover" + bookId).attr("src", picUrl);
                                     } else {
                                         layer.alert(data.msg);
                                     }
@@ -344,4 +349,5 @@
 
     }
 </script>
+
 </html>
