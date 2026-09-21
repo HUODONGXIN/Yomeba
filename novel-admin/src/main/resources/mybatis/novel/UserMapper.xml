@@ -6,6 +6,7 @@
     <select id="get" resultType="com.java2nb.novel.domain.UserDO">
         select `id`,
                `username`,
+               `account`,
                `password`,
                `nick_name`,
                `user_photo`,
@@ -20,7 +21,7 @@
 
     <select id="list" resultType="com.java2nb.novel.domain.UserDO">
         select
-        `id`,`username`,`password`,`nick_name`,`user_photo`,`user_sex`,`account_balance`,`status`,`create_time`,`update_time`
+        `id`,`username`,`account`,`password`,`nick_name`,`user_photo`,`user_sex`,`account_balance`,`status`,`create_time`,`update_time`
         from user
         <where>
             <if test="id != null and id != ''">and id = #{id}</if>
@@ -155,7 +156,7 @@
     </select>
     <select id="batchGet" resultType="com.java2nb.novel.domain.UserDO">
         select
-        `id`,`username`,`password`,`nick_name`,`user_photo`,`user_sex`,`account_balance`,`status`,`create_time`,`update_time`
+        `id`,`username`,`account`,`password`,`nick_name`,`user_photo`,`user_sex`,`account_balance`,`status`,`create_time`,`update_time`
         from user where id in
         <foreach item="id" collection="list" open="(" separator="," close=")">
             #{id}
