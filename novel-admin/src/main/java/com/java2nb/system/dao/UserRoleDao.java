@@ -10,8 +10,8 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 用户与角色对应关系
- * 
+ * ユーザーとロールの対応関係
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2019-10-03 11:08:59

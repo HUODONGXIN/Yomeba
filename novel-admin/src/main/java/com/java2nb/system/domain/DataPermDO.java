@@ -10,7 +10,7 @@ import java.util.Objects;
 
 
 /**
- * 数据权限管理
+ * データ権限管理
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -22,166 +22,166 @@ public class DataPermDO implements Serializable {
 
 
     //
-    //java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-    //所以通过序列化成字符串来解决
+    //JavaのlongはJSのnumberより表現範囲が広く、一部の数値はJSで保持できない(不正確な値になる)
+    //そのため文字列にシリアライズして解決する
     @JsonSerialize(using = LongToStringSerializer.class)
     private Long id;
-    //权限名称
+    //権限名
     private String name;
-    //数据表名称
+    //テーブル名
     private String tableName;
-    //所属模块
+    //所属モジュール
     private String moduleName;
-    //用户权限控制属性名
+    //ユーザー権限制御属性名
     private String crlAttrName;
-    //数据表权限控制列名
+    //テーブル権限制御カラム名
     private String crlColumnName;
-    //权限code，all_开头表示查看所有数据的权限，sup_开头表示查看下级数据的权限，own_开头表示查看本级数据的权限
+    //権限コード、all_プレフィックスは全データ参照権限、sup_プレフィックスは配下データ参照権限、own_プレフィックスは自データ参照権限を表す
     private String permCode;
-    //排序
+    //並び順
     private Integer orderNum;
-    //创建时间
+    //作成日時
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date gmtCreate;
-    //修改时间
+    //更新日時
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date gmtModified;
 
     /**
-     * 设置：
+     * 設定：
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * 获取：
+     * 取得：
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * 设置：权限名称
+     * 設定：権限名
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * 获取：权限名称
+     * 取得：権限名
      */
     public String getName() {
         return name;
     }
 
     /**
-     * 设置：数据表名称
+     * 設定：テーブル名
      */
     public void setTableName(String tableName) {
         this.tableName = tableName;
     }
 
     /**
-     * 获取：数据表名称
+     * 取得：テーブル名
      */
     public String getTableName() {
         return tableName;
     }
 
     /**
-     * 设置：所属模块
+     * 設定：所属モジュール
      */
     public void setModuleName(String moduleName) {
         this.moduleName = moduleName;
     }
 
     /**
-     * 获取：所属模块
+     * 取得：所属モジュール
      */
     public String getModuleName() {
         return moduleName;
     }
 
     /**
-     * 设置：用户权限控制属性名
+     * 設定：ユーザー権限制御属性名
      */
     public void setCrlAttrName(String crlAttrName) {
         this.crlAttrName = crlAttrName;
     }
 
     /**
-     * 获取：用户权限控制属性名
+     * 取得：ユーザー権限制御属性名
      */
     public String getCrlAttrName() {
         return crlAttrName;
     }
 
     /**
-     * 设置：数据表权限控制列名
+     * 設定：テーブル権限制御カラム名
      */
     public void setCrlColumnName(String crlColumnName) {
         this.crlColumnName = crlColumnName;
     }
 
     /**
-     * 获取：数据表权限控制列名
+     * 取得：テーブル権限制御カラム名
      */
     public String getCrlColumnName() {
         return crlColumnName;
     }
 
     /**
-     * 设置：权限code，all_开头表示查看所有数据的权限，sup_开头表示查看下级数据的权限，own_开头表示查看本级数据的权限
+     * 設定：権限コード、all_プレフィックスは全データ参照権限、sup_プレフィックスは配下データ参照権限、own_プレフィックスは自データ参照権限を表す
      */
     public void setPermCode(String permCode) {
         this.permCode = permCode;
     }
 
     /**
-     * 获取：权限code，all_开头表示查看所有数据的权限，sup_开头表示查看下级数据的权限，own_开头表示查看本级数据的权限
+     * 取得：権限コード、all_プレフィックスは全データ参照権限、sup_プレフィックスは配下データ参照権限、own_プレフィックスは自データ参照権限を表す
      */
     public String getPermCode() {
         return permCode;
     }
 
     /**
-     * 设置：排序
+     * 設定：並び順
      */
     public void setOrderNum(Integer orderNum) {
         this.orderNum = orderNum;
     }
 
     /**
-     * 获取：排序
+     * 取得：並び順
      */
     public Integer getOrderNum() {
         return orderNum;
     }
 
     /**
-     * 设置：创建时间
+     * 設定：作成日時
      */
     public void setGmtCreate(Date gmtCreate) {
         this.gmtCreate = gmtCreate;
     }
 
     /**
-     * 获取：创建时间
+     * 取得：作成日時
      */
     public Date getGmtCreate() {
         return gmtCreate;
     }
 
     /**
-     * 设置：修改时间
+     * 設定：更新日時
      */
     public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;
     }
 
     /**
-     * 获取：修改时间
+     * 取得：更新日時
      */
     public Date getGmtModified() {
         return gmtModified;

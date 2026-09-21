@@ -10,7 +10,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 角色与数据权限对应关系
+ * ロールとデータ権限の対応関係
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2019-11-25 11:32:49
