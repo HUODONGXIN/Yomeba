@@ -65,6 +65,8 @@ public class Book implements Serializable{
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     private Byte status;
 
+    private Byte aiAssisted;
+
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     private Date updateTime;
 

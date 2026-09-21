@@ -90,6 +90,14 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="form-row">
+                                        <div class="form-item"><b>AI創作支援：</b>
+                                            <select class="s_input" id="aiAssisted" name="aiAssisted">
+                                                <option value="0">いいえ（AI不使用）</option>
+                                                <option value="1">はい（AI使用）</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-item"><b>ジャンル（最大3つまで）：</b>
                                     <span id="LabErr"></span>
@@ -263,7 +271,7 @@
         $.ajax({
             type: "POST",
             url: "/author/addBook",
-            data: {'workDirection': $("#workDirection").val(),
+            data: {'workDirection': $("#workDirection").val(), 'aiAssisted': $("#aiAssisted").val(),
             'catId':getCheckedCats().join(","),'catName':getCheckedCatNames().join(","),
             'bookName':bookName,'picUrl':picUrl,'bookDesc':bookDesc},
             dataType: "json",
