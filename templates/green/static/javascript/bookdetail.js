@@ -247,13 +247,9 @@
     SetReadFontFamilyClear: function (fontNum) {
         $("#setup_font_yahei").removeClass("current");
         $("#setup_font_simsun").removeClass("current");
-        $("#setup_font_ks").removeClass("current");
         if (fontNum == 1) {
             $("#setup_font_simsun").addClass("current");
             $(".readBox").css("font-family", "Simsun");
-        } else if (fontNum == 2) {
-            $("#setup_font_ks").addClass("current");
-            $(".readBox").css("font-family", "kaiti");
         } else {
             $("#setup_font_yahei").addClass("current");
             $(".readBox").css("font-family", "microsoft yahei");
