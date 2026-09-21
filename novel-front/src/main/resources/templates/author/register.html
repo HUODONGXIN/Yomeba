@@ -23,7 +23,8 @@
                     <li><input name="txtPenName" type="text" id="txtPenName" class="s_input"
                                placeholder="作家名（ペンネーム）"/></li>
                     <li><input name="txtPassword" type="password" id="txtPassword" class="s_input icon_key"
-                               placeholder="パスワード：6〜20桁の英数字"/></li>
+                               placeholder="パスワード：英大文字・小文字・数字の6〜20桁"/></li>
+                    <li id="pwdTip" style="color:#e74c3c;font-size:12px;display:none;">パスワードは英大文字・英小文字・数字の6〜20桁で入力してください</li>
                     <li class="log_code cf"><input name="TxtChkCode" type="text" maxlength="4" id="TxtChkCode"
                                                    class="s_input icon_code" placeholder="認証コード"/><img
                             style="border: 1px solid #eee" class="code_pic" src="" id="chkd"
@@ -46,6 +47,16 @@
 <div th:replace="common/js :: js"></div>
 <script language="javascript" type="text/javascript">
     $("#chkd").click();
+
+    $("#txtPassword").on("input", function() {
+        var v = $(this).val();
+        if (v === "") { $("#pwdTip").hide(); return; }
+        if (!/^[A-Za-z0-9]{6,20}$/.test(v)) {
+            $("#pwdTip").show();
+        } else {
+            $("#pwdTip").hide();
+        }
+    });
 
     function getVerify(obj) {
         obj.src = "/file/getVerify?" + Math.random();

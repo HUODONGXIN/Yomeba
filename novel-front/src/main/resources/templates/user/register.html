@@ -23,7 +23,8 @@
                     <li><input name="txtUName" type="text" id="txtUName" class="s_input icon_name"
                                placeholder="メールアドレスを入力してください"/></li>
                     <li><input name="txtPassword" type="password" id="txtPassword" class="s_input icon_key"
-                               placeholder="パスワードを入力：6〜20桁の英数字"/></li>
+                               placeholder="パスワード：英大文字・小文字・数字の6〜20桁"/></li>
+                    <li id="pwdTip" style="color:#e74c3c;font-size:12px;display:none;">パスワードは英大文字・英小文字・数字の6〜20桁で入力してください</li>
                     <li class="log_code cf"><input name="TxtChkCode" type="text" maxlength="4" id="TxtChkCode"
                                                    class="s_input icon_code" placeholder="認証コードを入力してください"/><img
                             style="border: 1px solid #eee" class="code_pic" src="" id="chkd"
@@ -72,6 +73,17 @@
                 return false;
             }
         });
+    });
+
+    // パスワードリアルタイム検証
+    $('#txtPassword').on('input', function() {
+        var v = $(this).val();
+        if (v === '') { $('#pwdTip').hide(); return; }
+        if (!/^[A-Za-z0-9]{6,20}$/.test(v)) {
+            $('#pwdTip').show();
+        } else {
+            $('#pwdTip').hide();
+        }
     });
 
     //認証コードを取得
