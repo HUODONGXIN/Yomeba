@@ -249,10 +249,10 @@
         $("#setup_font_simsun").removeClass("current");
         if (fontNum == 1) {
             $("#setup_font_simsun").addClass("current");
-            $(".readBox").css("font-family", "Simsun");
+            $(".readBox").css("font-family", ""Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", "Simsun", serif");
         } else {
             $("#setup_font_yahei").addClass("current");
-            $(".readBox").css("font-family", "microsoft yahei");
+            $(".readBox").css("font-family", ""Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", "Microsoft YaHei", sans-serif");
         }
     },
     GetReadSet: function (bid, cid, preId, nextId, crank) {

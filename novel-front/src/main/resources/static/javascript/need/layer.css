@@ -26,7 +26,7 @@
 
 .layermmain {
     display: table;
-    font-family: Helvetica, arial, sans-serif;
+    font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", "Microsoft YaHei", sans-serif;
     pointer-events: none
 }
 
