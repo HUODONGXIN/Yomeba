@@ -230,6 +230,11 @@ public interface BookService {
     void updateBookStatus(Long bookId, Byte status, Long authorId);
 
     /**
+     * 更新作品信息（名称/分类/方向/简介）
+     */
+    void updateBook(Book book, Long authorId);
+
+    /**
      * 更新章节状态（公开/下架）
      */
     void updateIndexStatus(Long indexId, Byte status, Long authorId);

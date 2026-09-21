@@ -587,6 +587,29 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public void updateBook(Book book, Long authorId) {
+        Book ownerBook = bookMapper.selectMany(select(BookDynamicSqlSupport.id,
+            BookDynamicSqlSupport.authorId)
+            .from(BookDynamicSqlSupport.book)
+            .where(BookDynamicSqlSupport.id, isEqualTo(book.getId()))
+            .build()
+            .render(RenderingStrategies.MYBATIS3)).stream().findFirst().orElse(null);
+        if (ownerBook == null || !authorId.equals(ownerBook.getAuthorId())) {
+            //不是自己的作品
+            return;
+        }
+        bookMapper.update(update(BookDynamicSqlSupport.book)
+            .set(BookDynamicSqlSupport.bookName).equalTo(book.getBookName())
+            .set(BookDynamicSqlSupport.catId).equalTo(book.getCatId())
+            .set(BookDynamicSqlSupport.catName).equalTo(book.getCatName())
+            .set(BookDynamicSqlSupport.workDirection).equalTo(book.getWorkDirection())
+            .set(BookDynamicSqlSupport.bookDesc).equalTo(book.getBookDesc())
+            .where(BookDynamicSqlSupport.id, isEqualTo(book.getId()))
+            .build()
+            .render(RenderingStrategies.MYBATIS3));
+    }
+
+    @Override
     public void updateIndexStatus(Long indexId, Byte status, Long authorId) {
         //校验章节归属作者
         BookIndex index = bookIndexMapper.selectMany(select(BookIndexDynamicSqlSupport.id,

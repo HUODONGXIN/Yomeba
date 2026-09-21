@@ -97,6 +97,16 @@ public class AuthorController extends BaseController {
 
 
     /**
+     * 更新作品信息
+     */
+    @PostMapping("updateBook")
+    public RestResult<Void> updateBook(Book book, HttpServletRequest request) {
+        Author author = checkAuthor(request);
+        bookService.updateBook(book, author.getId());
+        return RestResult.ok();
+    }
+
+    /**
      * 更新章节状态（公开/下架）
      */
     @PostMapping("updateIndexStatus")

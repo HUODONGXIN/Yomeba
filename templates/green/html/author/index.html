@@ -216,10 +216,7 @@
                                 + book.wordCount + "</td>\n" +
 
                                 " <td class=\"goread\" id='opt" + book.id + "'>" +
-                                "<a class='redBtn' href='/author/index_list.html?bookId=" + book.id + "'>章管理  </a><br/>" +
-                                "<a href='/author/author_income_detail.html?bookId=" + book.id + "'>報酬照会  </a><br/>" +
-                                "<a href='/book/" + book.id + ".html'>作品情報</a><br/>" +
-                                (book.status == 1 ? "<a href='javascript:updateBookStatus(\"" + book.id + "\",0)'>下架</a>" : "<a href='javascript:updateBookStatus(\"" + book.id + "\",1)'>公開</a>") +
+                                "<a class='redBtn' href='/author/book_edit.html?bookId=" + book.id + "'>編集</a>" +
                                 "</td>                     </tr>");
                         }
                         $("#bookList").html(bookListHtml);
@@ -270,36 +267,6 @@
 
     }
 
-
-    function updateBookStatus(bookId, status) {
-
-        $.ajax({
-            type: "POST",
-            url: "/author/updateBookStatus",
-            data: { 'bookId': bookId, 'status': status == 0 ? 1 : 0 },
-            dataType: "json",
-            success: function (data) {
-                if (data.code == 200) {
-
-                    location.reload();
-
-
-                } else if (data.code == 1001) {
-                    //未ログイン
-                    location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
-
-                } else {
-                    layer.alert(data.msg);
-                }
-
-            },
-            error: function () {
-                layer.alert('ネットワークエラー');
-            }
-        })
-
-
-    }
 
 
     function picChange(bookId) {
