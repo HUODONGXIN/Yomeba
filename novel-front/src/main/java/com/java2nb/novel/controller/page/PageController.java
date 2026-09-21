@@ -67,7 +67,7 @@ public class PageController extends BaseController {
 
             boolean isAuthor = authorService.isAuthor(user.getId());
             if (!isAuthor) {
-                return "redirect:/author/register.html";
+                return "redirect:/index.html";
             }
         }
 
@@ -335,24 +335,8 @@ public class PageController extends BaseController {
      * 作者注册页面
      */
     @RequestMapping("author/register.html")
-    public String authorRegister(Author author, HttpServletRequest request, Model model) {
-        UserDetails user = getUserDetails(request);
-        if (user == null) {
-            //未登录
-            return "redirect:/user/login.html?originUrl=/author/register.html";
-        }
-
-        if (StringUtils.isNotBlank(author.getInviteCode())) {
-            //提交作者注册信息
-            String errorInfo = authorService.register(user.getId(), author);
-            if (StringUtils.isBlank(errorInfo)) {
-                //注册成功
-                return "redirect:/author/index.html";
-            }
-            model.addAttribute("LabErr", errorInfo);
-            model.addAttribute("author", author);
-        }
-        return "author/register";
+    public String authorRegister() {
+        return "redirect:/index.html";
     }
 
 
