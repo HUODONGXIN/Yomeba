@@ -52,6 +52,11 @@ public class PageController extends BaseController {
     public String module2(@PathVariable("module") String module, @PathVariable("url") String url,
         HttpServletRequest request) {
 
+        if (request.getRequestURI().startsWith("/pay")) {
+            //充值功能已移除
+            return "redirect:/";
+        }
+
         if (request.getRequestURI().startsWith("/author")) {
             //访问作者专区
             UserDetails user = getUserDetails(request);
@@ -131,15 +136,6 @@ public class PageController extends BaseController {
     public String readHistory() {
         return ThreadLocalUtil.getTemplateDir() + "user/read_history";
     }
-
-    /**
-     * 充值页
-     */
-    @RequestMapping("pay/index.html")
-    public String pay() {
-        return ThreadLocalUtil.getTemplateDir() + "pay/index.html";
-    }
-
 
     /**
      * 作品页
