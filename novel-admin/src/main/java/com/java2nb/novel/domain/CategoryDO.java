@@ -15,8 +15,8 @@ import java.util.Date;
 
 
 /**
- * 新闻类别表
- * 
+ * ニュースカテゴリテーブル
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2020-12-01 10:03:41
@@ -24,110 +24,110 @@ import java.util.Date;
 public class CategoryDO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
-	//主键
+
+	//主キー
 			private Integer id;
-	//分类名
+	//ジャンル名
 			private String name;
-	//排序
+	//並び順
 			private Integer sort;
-	//
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+	//作成者ID
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long createUserId;
-	//
+	//作成日時
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 		private Date createTime;
-	//
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+	//更新者ID
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long updateUserId;
-	//
+	//更新日時
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 		private Date updateTime;
 
 	/**
-	 * 设置：主键
+	 * 設定：主キー
 	 */
 	public void setId(Integer id) {
 		this.id = id;
 	}
 	/**
-	 * 获取：主键
+	 * 取得：主キー
 	 */
 	public Integer getId() {
 		return id;
 	}
 	/**
-	 * 设置：分类名
+	 * 設定：ジャンル名
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	/**
-	 * 获取：分类名
+	 * 取得：ジャンル名
 	 */
 	public String getName() {
 		return name;
 	}
 	/**
-	 * 设置：排序
+	 * 設定：並び順
 	 */
 	public void setSort(Integer sort) {
 		this.sort = sort;
 	}
 	/**
-	 * 获取：排序
+	 * 取得：並び順
 	 */
 	public Integer getSort() {
 		return sort;
 	}
 	/**
-	 * 设置：
+	 * 設定：作成者ID
 	 */
 	public void setCreateUserId(Long createUserId) {
 		this.createUserId = createUserId;
 	}
 	/**
-	 * 获取：
+	 * 取得：作成者ID
 	 */
 	public Long getCreateUserId() {
 		return createUserId;
 	}
 	/**
-	 * 设置：
+	 * 設定：作成日時
 	 */
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 	/**
-	 * 获取：
+	 * 取得：作成日時
 	 */
 	public Date getCreateTime() {
 		return createTime;
 	}
 	/**
-	 * 设置：
+	 * 設定：更新者ID
 	 */
 	public void setUpdateUserId(Long updateUserId) {
 		this.updateUserId = updateUserId;
 	}
 	/**
-	 * 获取：
+	 * 取得：更新者ID
 	 */
 	public Long getUpdateUserId() {
 		return updateUserId;
 	}
 	/**
-	 * 设置：
+	 * 設定：更新日時
 	 */
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 	/**
-	 * 获取：
+	 * 取得：更新日時
 	 */
 	public Date getUpdateTime() {
 		return updateTime;

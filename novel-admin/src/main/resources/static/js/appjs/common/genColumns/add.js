@@ -12,16 +12,16 @@ function save() {
 		cache : true,
 		type : "POST",
 		url : "/common/genColumns/save",
-		data : $('#signupForm').serialize(),// 你的formid
+		data : $('#signupForm').serialize(),// あなたのformid
 		async : false,
 		error : function(request) {
 			parent.layer.alert("Connection error");
 		},
 		success : function(data) {
 			if (data.code == 0) {
-				parent.layer.msg("操作成功");
+				parent.layer.msg("操作が成功しました");
 				parent.reLoad();
-				var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+				var index = parent.layer.getFrameIndex(window.name); // ウィンドウインデックスを取得
 				parent.layer.close(index);
 
 			} else {
@@ -42,7 +42,7 @@ function validateRule() {
 		},
 		messages : {
 			name : {
-				required : icon + "请输入姓名"
+				required : icon + "氏名を入力してください"
 			}
 		}
 	})

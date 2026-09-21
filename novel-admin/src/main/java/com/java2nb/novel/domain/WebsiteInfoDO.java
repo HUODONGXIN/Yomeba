@@ -15,8 +15,8 @@ import java.util.Date;
 
 
 /**
- * 网站信息表
- * 
+ * サイト情報テーブル
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2023-04-14 11:05:43
@@ -24,183 +24,183 @@ import java.util.Date;
 public class WebsiteInfoDO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
-	//主键
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+
+	//主キー
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long id;
-	//网站名
+	//サイト名
 			private String name;
-	//网站域名
+	//サイトドメイン
 			private String domain;
-	//SEO关键词
+	//SEOキーワード
 			private String keyword;
-	//网站描述
+	//サイトの説明
 			private String description;
-	//站长QQ
+	//運営者QQ
 			private String qq;
-	//网站logo图片（默认）
+	//サイトロゴ画像（デフォルト）
 			private String logo;
-	//网站logo图片（深色）
+	//サイトロゴ画像（ダーク）
 			private String logoDark;
-	//创建时间
+	//作成日時
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 		private Date createTime;
-	//创建人ID
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+	//作成者ID
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long createUserId;
-	//更新时间
+	//更新日時
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 		private Date updateTime;
-	//更新人ID
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+	//更新者ID
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long updateUserId;
 
 	/**
-	 * 设置：主键
+	 * 設定：主キー
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 	/**
-	 * 获取：主键
+	 * 取得：主キー
 	 */
 	public Long getId() {
 		return id;
 	}
 	/**
-	 * 设置：网站名
+	 * 設定：サイト名
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	/**
-	 * 获取：网站名
+	 * 取得：サイト名
 	 */
 	public String getName() {
 		return name;
 	}
 	/**
-	 * 设置：网站域名
+	 * 設定：サイトドメイン
 	 */
 	public void setDomain(String domain) {
 		this.domain = domain;
 	}
 	/**
-	 * 获取：网站域名
+	 * 取得：サイトドメイン
 	 */
 	public String getDomain() {
 		return domain;
 	}
 	/**
-	 * 设置：SEO关键词
+	 * 設定：SEOキーワード
 	 */
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
 	/**
-	 * 获取：SEO关键词
+	 * 取得：SEOキーワード
 	 */
 	public String getKeyword() {
 		return keyword;
 	}
 	/**
-	 * 设置：网站描述
+	 * 設定：サイトの説明
 	 */
 	public void setDescription(String description) {
 		this.description = description;
 	}
 	/**
-	 * 获取：网站描述
+	 * 取得：サイトの説明
 	 */
 	public String getDescription() {
 		return description;
 	}
 	/**
-	 * 设置：站长QQ
+	 * 設定：運営者QQ
 	 */
 	public void setQq(String qq) {
 		this.qq = qq;
 	}
 	/**
-	 * 获取：站长QQ
+	 * 取得：運営者QQ
 	 */
 	public String getQq() {
 		return qq;
 	}
 	/**
-	 * 设置：网站logo图片（默认）
+	 * 設定：サイトロゴ画像（デフォルト）
 	 */
 	public void setLogo(String logo) {
 		this.logo = logo;
 	}
 	/**
-	 * 获取：网站logo图片（默认）
+	 * 取得：サイトロゴ画像（デフォルト）
 	 */
 	public String getLogo() {
 		return logo;
 	}
 	/**
-	 * 设置：网站logo图片（深色）
+	 * 設定：サイトロゴ画像（ダーク）
 	 */
 	public void setLogoDark(String logoDark) {
 		this.logoDark = logoDark;
 	}
 	/**
-	 * 获取：网站logo图片（深色）
+	 * 取得：サイトロゴ画像（ダーク）
 	 */
 	public String getLogoDark() {
 		return logoDark;
 	}
 	/**
-	 * 设置：创建时间
+	 * 設定：作成日時
 	 */
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 	/**
-	 * 获取：创建时间
+	 * 取得：作成日時
 	 */
 	public Date getCreateTime() {
 		return createTime;
 	}
 	/**
-	 * 设置：创建人ID
+	 * 設定：作成者ID
 	 */
 	public void setCreateUserId(Long createUserId) {
 		this.createUserId = createUserId;
 	}
 	/**
-	 * 获取：创建人ID
+	 * 取得：作成者ID
 	 */
 	public Long getCreateUserId() {
 		return createUserId;
 	}
 	/**
-	 * 设置：更新时间
+	 * 設定：更新日時
 	 */
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 	/**
-	 * 获取：更新时间
+	 * 取得：更新日時
 	 */
 	public Date getUpdateTime() {
 		return updateTime;
 	}
 	/**
-	 * 设置：更新人ID
+	 * 設定：更新者ID
 	 */
 	public void setUpdateUserId(Long updateUserId) {
 		this.updateUserId = updateUserId;
 	}
 	/**
-	 * 获取：更新人ID
+	 * 取得：更新者ID
 	 */
 	public Long getUpdateUserId() {
 		return updateUserId;

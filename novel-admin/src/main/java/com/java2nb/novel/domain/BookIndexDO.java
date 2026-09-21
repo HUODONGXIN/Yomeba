@@ -15,8 +15,8 @@ import java.util.Date;
 
 
 /**
- * 小说目录表
- * 
+ * 小説目次テーブル
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2023-04-14 19:51:54
@@ -24,152 +24,152 @@ import java.util.Date;
 public class BookIndexDO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
-	//主键
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+
+	//主キー
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long id;
-	//小说ID
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+	//小説ID
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long bookId;
-	//目录号
+	//話番号
 			private Integer indexNum;
-	//目录名
+	//話タイトル
 			private String indexName;
-	//字数
+	//文字数
 			private Integer wordCount;
-	//是否收费，1：收费，0：免费
+	//有料かどうか。1：有料、0：無料
 			private Integer isVip;
-	//章节费用（屋币）
+	//話の料金（yomiコイン）
 			private Integer bookPrice;
-	//存储方式
+	//保存方式
 			private String storageType;
-	//
+	//作成日時
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 		private Date createTime;
-	//
+	//更新日時
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 		private Date updateTime;
 
 	/**
-	 * 设置：主键
+	 * 設定：主キー
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 	/**
-	 * 获取：主键
+	 * 取得：主キー
 	 */
 	public Long getId() {
 		return id;
 	}
 	/**
-	 * 设置：小说ID
+	 * 設定：小説ID
 	 */
 	public void setBookId(Long bookId) {
 		this.bookId = bookId;
 	}
 	/**
-	 * 获取：小说ID
+	 * 取得：小説ID
 	 */
 	public Long getBookId() {
 		return bookId;
 	}
 	/**
-	 * 设置：目录号
+	 * 設定：話番号
 	 */
 	public void setIndexNum(Integer indexNum) {
 		this.indexNum = indexNum;
 	}
 	/**
-	 * 获取：目录号
+	 * 取得：話番号
 	 */
 	public Integer getIndexNum() {
 		return indexNum;
 	}
 	/**
-	 * 设置：目录名
+	 * 設定：話タイトル
 	 */
 	public void setIndexName(String indexName) {
 		this.indexName = indexName;
 	}
 	/**
-	 * 获取：目录名
+	 * 取得：話タイトル
 	 */
 	public String getIndexName() {
 		return indexName;
 	}
 	/**
-	 * 设置：字数
+	 * 設定：文字数
 	 */
 	public void setWordCount(Integer wordCount) {
 		this.wordCount = wordCount;
 	}
 	/**
-	 * 获取：字数
+	 * 取得：文字数
 	 */
 	public Integer getWordCount() {
 		return wordCount;
 	}
 	/**
-	 * 设置：是否收费，1：收费，0：免费
+	 * 設定：有料かどうか。1：有料、0：無料
 	 */
 	public void setIsVip(Integer isVip) {
 		this.isVip = isVip;
 	}
 	/**
-	 * 获取：是否收费，1：收费，0：免费
+	 * 取得：有料かどうか。1：有料、0：無料
 	 */
 	public Integer getIsVip() {
 		return isVip;
 	}
 	/**
-	 * 设置：章节费用（屋币）
+	 * 設定：話の料金（yomiコイン）
 	 */
 	public void setBookPrice(Integer bookPrice) {
 		this.bookPrice = bookPrice;
 	}
 	/**
-	 * 获取：章节费用（屋币）
+	 * 取得：話の料金（yomiコイン）
 	 */
 	public Integer getBookPrice() {
 		return bookPrice;
 	}
 	/**
-	 * 设置：存储方式
+	 * 設定：保存方式
 	 */
 	public void setStorageType(String storageType) {
 		this.storageType = storageType;
 	}
 	/**
-	 * 获取：存储方式
+	 * 取得：保存方式
 	 */
 	public String getStorageType() {
 		return storageType;
 	}
 	/**
-	 * 设置：
+	 * 設定：作成日時
 	 */
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 	/**
-	 * 获取：
+	 * 取得：作成日時
 	 */
 	public Date getCreateTime() {
 		return createTime;
 	}
 	/**
-	 * 设置：
+	 * 設定：更新日時
 	 */
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
 	}
 	/**
-	 * 获取：
+	 * 取得：更新日時
 	 */
 	public Date getUpdateTime() {
 		return updateTime;

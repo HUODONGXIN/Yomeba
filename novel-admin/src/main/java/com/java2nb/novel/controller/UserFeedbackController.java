@@ -42,12 +42,12 @@ public class UserFeedbackController {
         return "novel/userFeedback/userFeedback";
     }
 
-    @ApiOperation(value = "获取列表", notes = "获取列表")
+    @ApiOperation(value = "一覧を取得", notes = "一覧を取得します")
     @ResponseBody
     @GetMapping("/list")
     @RequiresPermissions("novel:userFeedback:userFeedback")
     public R list(@RequestParam Map<String, Object> params) {
-        //查询列表数据
+        //一覧データを検索
         Query query = new Query(params);
         List<UserFeedbackDO> userFeedbackList = userFeedbackService.list(query);
         int total = userFeedbackService.count(query);
@@ -55,14 +55,14 @@ public class UserFeedbackController {
         return R.ok().put("data", pageBean);
     }
 
-    @ApiOperation(value = "新增页面", notes = "新增页面")
+    @ApiOperation(value = "新規追加ページ", notes = "新規追加ページを表示します")
     @GetMapping("/add")
     @RequiresPermissions("novel:userFeedback:add")
     String add() {
         return "novel/userFeedback/add";
     }
 
-    @ApiOperation(value = "修改页面", notes = "修改页面")
+    @ApiOperation(value = "編集ページ", notes = "編集ページを表示します")
     @GetMapping("/edit/{id}")
     @RequiresPermissions("novel:userFeedback:edit")
     String edit(@PathVariable("id") Long id, Model model) {
@@ -71,7 +71,7 @@ public class UserFeedbackController {
         return "novel/userFeedback/edit";
     }
 
-    @ApiOperation(value = "查看页面", notes = "查看页面")
+    @ApiOperation(value = "詳細ページ", notes = "詳細ページを表示します")
     @GetMapping("/detail/{id}")
     @RequiresPermissions("novel:userFeedback:detail")
     String detail(@PathVariable("id") Long id, Model model) {
@@ -83,7 +83,7 @@ public class UserFeedbackController {
     /**
      * 保存
      */
-    @ApiOperation(value = "新增", notes = "新增")
+    @ApiOperation(value = "新規追加", notes = "新規追加します")
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("novel:userFeedback:add")
@@ -95,9 +95,9 @@ public class UserFeedbackController {
     }
 
     /**
-     * 修改
+     * 更新
      */
-    @ApiOperation(value = "修改", notes = "修改")
+    @ApiOperation(value = "更新", notes = "更新します")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("novel:userFeedback:edit")
@@ -107,9 +107,9 @@ public class UserFeedbackController {
     }
 
     /**
-     * 删除
+     * 削除
      */
-    @ApiOperation(value = "删除", notes = "删除")
+    @ApiOperation(value = "削除", notes = "削除します")
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("novel:userFeedback:remove")
@@ -121,9 +121,9 @@ public class UserFeedbackController {
     }
 
     /**
-     * 删除
+     * 一括削除
      */
-    @ApiOperation(value = "批量删除", notes = "批量删除")
+    @ApiOperation(value = "一括削除", notes = "一括削除します")
     @PostMapping("/batchRemove")
     @ResponseBody
     @RequiresPermissions("novel:userFeedback:batchRemove")

@@ -7,7 +7,7 @@ import java.util.Objects;
 
 
 /**
- * 字典表
+ * データ辞書テーブル
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -17,210 +17,210 @@ public class DictDO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    //编号
+    //No.
     private Long id;
-    //标签名
+    //ラベル名
     private String name;
-    //数据值
+    //データ値
     private String value;
-    //类型
+    //タイプ
     private String type;
-    //描述
+    //説明
     private String description;
-    //排序（升序）
+    //並び順（昇順）
     private BigDecimal sort;
-    //父级编号
+    //親No.
     private Long parentId;
-    //创建者
+    //作成者
     private Integer createBy;
-    //创建时间
+    //作成日時
     private Date createDate;
     //更新者
     private Long updateBy;
-    //更新时间
+    //更新日時
     private Date updateDate;
-    //备注信息
+    //備考
     private String remarks;
-    //删除标记
+    //削除フラグ
     private String delFlag;
 
     /**
-     * 设置：编号
+     * 設定：No.
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * 获取：编号
+     * 取得：No.
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * 设置：标签名
+     * 設定：ラベル名
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * 获取：标签名
+     * 取得：ラベル名
      */
     public String getName() {
         return name;
     }
 
     /**
-     * 设置：数据值
+     * 設定：データ値
      */
     public void setValue(String value) {
         this.value = value;
     }
 
     /**
-     * 获取：数据值
+     * 取得：データ値
      */
     public String getValue() {
         return value;
     }
 
     /**
-     * 设置：类型
+     * 設定：タイプ
      */
     public void setType(String type) {
         this.type = type;
     }
 
     /**
-     * 获取：类型
+     * 取得：タイプ
      */
     public String getType() {
         return type;
     }
 
     /**
-     * 设置：描述
+     * 設定：説明
      */
     public void setDescription(String description) {
         this.description = description;
     }
 
     /**
-     * 获取：描述
+     * 取得：説明
      */
     public String getDescription() {
         return description;
     }
 
     /**
-     * 设置：排序（升序）
+     * 設定：並び順（昇順）
      */
     public void setSort(BigDecimal sort) {
         this.sort = sort;
     }
 
     /**
-     * 获取：排序（升序）
+     * 取得：並び順（昇順）
      */
     public BigDecimal getSort() {
         return sort;
     }
 
     /**
-     * 设置：父级编号
+     * 設定：親No.
      */
     public void setParentId(Long parentId) {
         this.parentId = parentId;
     }
 
     /**
-     * 获取：父级编号
+     * 取得：親No.
      */
     public Long getParentId() {
         return parentId;
     }
 
     /**
-     * 设置：创建者
+     * 設定：作成者
      */
     public void setCreateBy(Integer createBy) {
         this.createBy = createBy;
     }
 
     /**
-     * 获取：创建者
+     * 取得：作成者
      */
     public Integer getCreateBy() {
         return createBy;
     }
 
     /**
-     * 设置：创建时间
+     * 設定：作成日時
      */
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
     /**
-     * 获取：创建时间
+     * 取得：作成日時
      */
     public Date getCreateDate() {
         return createDate;
     }
 
     /**
-     * 设置：更新者
+     * 設定：更新者
      */
     public void setUpdateBy(Long updateBy) {
         this.updateBy = updateBy;
     }
 
     /**
-     * 获取：更新者
+     * 取得：更新者
      */
     public Long getUpdateBy() {
         return updateBy;
     }
 
     /**
-     * 设置：更新时间
+     * 設定：更新日時
      */
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
 
     /**
-     * 获取：更新时间
+     * 取得：更新日時
      */
     public Date getUpdateDate() {
         return updateDate;
     }
 
     /**
-     * 设置：备注信息
+     * 設定：備考
      */
     public void setRemarks(String remarks) {
         this.remarks = remarks;
     }
 
     /**
-     * 获取：备注信息
+     * 取得：備考
      */
     public String getRemarks() {
         return remarks;
     }
 
     /**
-     * 设置：删除标记
+     * 設定：削除フラグ
      */
     public void setDelFlag(String delFlag) {
         this.delFlag = delFlag;
     }
 
     /**
-     * 获取：删除标记
+     * 取得：削除フラグ
      */
     public String getDelFlag() {
         return delFlag;

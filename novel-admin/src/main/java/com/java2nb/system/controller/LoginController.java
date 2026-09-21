@@ -38,7 +38,7 @@ public class LoginController extends BaseController {
     JnConfig jnConfig;
 
 
-    @Log("请求访问主页")
+    @Log("ホームアクセスをリクエスト")
     @GetMapping({"","/","/index"})
     String index(Model model) {
         List<Tree<MenuDO>> menus = menuService.listMenuTree(getUserId());
@@ -65,24 +65,24 @@ public class LoginController extends BaseController {
         return "login";
     }
 
-    @Log("登录")
+    @Log("ログイン")
     @PostMapping("/login")
     @ResponseBody
     R ajaxLogin(String username, String password,String verify,HttpServletRequest request) {
 
         try {
-            //从session中获取随机数
+            //セッションから乱数を取得
             String random = (String) request.getSession().getAttribute(RandomValidateCodeUtil.RANDOMCODEKEY);
             if (StringUtils.isBlank(verify)) {
-                return R.error("请输入验证码");
+                return R.error("認証コードを入力してください");
             }
             if (random.equals(verify)) {
             } else {
-                return R.error("请输入正确的验证码");
+                return R.error("正しい認証コードを入力してください");
             }
         } catch (Exception e) {
-            logger.error("验证码校验失败", e);
-            return R.error("验证码校验失败");
+            logger.error("認証コードの検証に失敗しました", e);
+            return R.error("認証コードの検証に失敗しました");
         }
         password = MD5Utils.encrypt(username, password);
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
@@ -91,7 +91,7 @@ public class LoginController extends BaseController {
             subject.login(token);
             return R.ok();
         } catch (AuthenticationException e) {
-            return R.error("用户或密码错误");
+            return R.error("アカウントまたはパスワードが正しくありません");
         }
     }
 
@@ -107,19 +107,19 @@ public class LoginController extends BaseController {
     }
 
     /**
-     * 生成验证码
+     * 認証コードを生成
      */
     @GetMapping(value = "/getVerify")
     public void getVerify(HttpServletRequest request, HttpServletResponse response) {
         try {
-            response.setContentType("image/jpeg");//设置相应类型,告诉浏览器输出的内容为图片
-            response.setHeader("Pragma", "No-cache");//设置响应头信息，告诉浏览器不要缓存此内容
+            response.setContentType("image/jpeg");//レスポンスタイプを設定し、ブラウザに出力内容が画像であることを通知
+            response.setHeader("Pragma", "No-cache");//レスポンスヘッダーを設定し、ブラウザにこの内容をキャッシュしないよう通知
             response.setHeader("Cache-Control", "no-cache");
             response.setDateHeader("Expire", 0);
             RandomValidateCodeUtil randomValidateCode = new RandomValidateCodeUtil();
-            randomValidateCode.getRandcode(request, response);//输出验证码图片方法
+            randomValidateCode.getRandcode(request, response);//認証コード画像を出力するメソッド
         } catch (Exception e) {
-            logger.error("获取验证码失败>>>> ", e);
+            logger.error("認証コードの取得に失敗しました>>>> ", e);
         }
     }
 

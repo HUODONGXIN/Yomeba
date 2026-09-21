@@ -12,14 +12,14 @@ function save() {
 		cache : true,
 		type : "POST",
 		url : "/common/dict/save",
-		data : $('#signupForm').serialize(), // 你的formid
+		data : $('#signupForm').serialize(), // あなたのformid
 		async : false,
 		error : function(request) {
-			parent.layer.alert("网络超时");
+			parent.layer.alert("ネットワークがタイムアウトしました");
 		},
 		success : function(data) {
 			if (data.code == 0) {
-				parent.layer.msg("操作成功");
+				parent.layer.msg("操作が成功しました");
 				parent.reLoad();
 				var index = parent.layer.getFrameIndex(window.name);
 				parent.layer.close(index);
@@ -42,7 +42,7 @@ function validateRule() {
 		},
 		messages : {
 			name : {
-				required : icon + "请输入名字"
+				required : icon + "名前を入力してください"
 			}
 		}
 	})

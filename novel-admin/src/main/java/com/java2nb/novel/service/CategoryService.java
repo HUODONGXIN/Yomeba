@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 新闻类别表
- * 
+ * ニュースカテゴリテーブル
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2020-12-01 10:03:41

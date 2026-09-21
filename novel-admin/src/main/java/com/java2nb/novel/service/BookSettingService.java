@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 首页小说设置表
- * 
+ * ホーム画面小説設定テーブル
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2023-04-18 10:01:13

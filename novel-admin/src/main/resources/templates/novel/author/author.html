@@ -10,16 +10,16 @@
                 <div class="fixed-table-toolbar">
                     <div class="columns pull-left">
                         <button class="btn btn-primary" onclick="add()" shiro:hasPermission="novel:author:add"><i
-                                class="fa fa-plus"></i>&nbsp;添加</button>
+                                class="fa fa-plus"></i>&nbsp;新規追加</button>
                     </div>
                     <div class="columns pull-right">
-                        <button class="btn btn-success" onclick="reLoad()">查询</button>
+                        <button class="btn btn-success" onclick="reLoad()">検索</button>
                     </div>
 
                     <form id="searchForm">
                         <div class="columns pull-right col-md-2">
                             <input id="penName" name="penName" type="text" class="form-control"
-                                   placeholder="笔名">
+                                   placeholder="ペンネーム">
                         </div>
                     </form>
 
@@ -30,7 +30,7 @@
         </div>
     </div>
 </div>
-<!--shiro控制bootstraptable行内按钮看见性 -->
+<!--shiroによるbootstraptable行内ボタンの表示制御 -->
 <div>
     <script type="text/javascript">
         var s_detail_h = 'hidden';

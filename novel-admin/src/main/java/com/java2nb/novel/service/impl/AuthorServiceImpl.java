@@ -45,7 +45,7 @@ public class AuthorServiceImpl implements AuthorService {
 	@Override
 	@org.springframework.transaction.annotation.Transactional(rollbackFor = Exception.class)
 	public int save(AuthorDO author){
-		//创建作者登录账号（前台作家专区登录使用 user 表，密码为纯 MD5，与 user 表现有账号一致）
+		//作家のログインアカウントを作成する（フロントの作家専用ログインは user テーブルを使用、パスワードは純粋な MD5 で user テーブルの既存アカウントと一致させる）
 		if (author.getUsername() != null && !author.getUsername().trim().isEmpty()
 				&& author.getPassword() != null && !author.getPassword().trim().isEmpty()) {
 			UserDO user = new UserDO();
@@ -72,7 +72,7 @@ public class AuthorServiceImpl implements AuthorService {
 	public int remove(Long id){
 		AuthorDO author = authorDao.get(id);
 		int result = authorDao.remove(id);
-		//连带删除作者登录账号
+		//作家のログインアカウントも連動して削除する
 		if (author != null && author.getUserId() != null) {
 			userDao.remove(author.getUserId());
 		}
@@ -80,7 +80,7 @@ public class AuthorServiceImpl implements AuthorService {
 	}
 
 	/**
-	 * 标准 MD5 小写十六进制（与前台 user 表登录密码加密方式一致）
+	 * 標準 MD5 の小文字十六進数（フロントの user テーブルのログインパスワード暗号化方式と一致させる）
 	 */
 	private String md5(String text) {
 		try {
@@ -92,7 +92,7 @@ public class AuthorServiceImpl implements AuthorService {
 			}
 			return sb.toString();
 		} catch (Exception e) {
-			throw new RuntimeException("MD5 加密失败", e);
+			throw new RuntimeException("MD5 暗号化に失敗しました", e);
 		}
 	}
 	

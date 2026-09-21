@@ -1,11 +1,11 @@
 var prefix = "/sys/menu"
 $(function() {
 	validateRule();
-	//打开图标列表
+	// アイコン一覧を開く
     $("#ico-btn").click(function(){
         layer.open({
             type: 2,
-			title:'图标列表',
+			title:'アイコン一覧',
             content: '/fonts/FontIcoList.html',
             area: ['480px', '90%'],
             success: function(layero, index){
@@ -32,9 +32,9 @@ function submit01() {
 		},
 		success : function(data) {
 			if (data.code == 0) {
-				parent.layer.msg("保存成功");
+				parent.layer.msg("保存しました");
 				parent.reLoad();
-				var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+				var index = parent.layer.getFrameIndex(window.name); // ウィンドウインデックスを取得
 				parent.layer.close(index);
 
 			} else {
@@ -57,10 +57,10 @@ function validateRule() {
 		},
 		messages : {
 			name : {
-				required : icon + "请输入菜单名"
+				required : icon + "メニュー名を入力してください"
 			},
 			type : {
-				required : icon + "请选择菜单类型"
+				required : icon + "メニュータイプを選択してください"
 			}
 		}
 	})

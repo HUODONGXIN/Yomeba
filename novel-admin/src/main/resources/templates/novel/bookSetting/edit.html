@@ -12,7 +12,7 @@
                         <input id="id" name="id" th:value="${bookSetting.id}"
                                type="hidden">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">小说ID：</label>
+                            <label class="col-sm-3 control-label">小説ID：</label>
                             <div class="col-sm-8">
                                 <input id="bookId" name="bookId"
                                        th:value="${bookSetting.bookId}"
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">排序号：</label>
+                            <label class="col-sm-3 control-label">並び順：</label>
                             <div class="col-sm-8">
                                 <input id="sort" name="sort"
                                        th:value="${bookSetting.sort}"
@@ -30,10 +30,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">推荐类型：</label>
+                            <label class="col-sm-3 control-label">レコメンド種別：</label>
                             <div class="col-sm-8">
 
-                                <select data-placeholder="--选择--" id="type" disabled
+                                <select data-placeholder="--選択--" id="type" disabled
                                         name="type"
                                         class="form-control chosen-select" tabindex="2"
                                         dict-type="book_rec_type"
@@ -43,7 +43,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-8 col-sm-offset-3">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="submit" class="btn btn-primary">送信</button>
                             </div>
                         </div>
                     </form>

@@ -35,14 +35,14 @@ public class RoleController extends BaseController {
 		return roles;
 	}
 
-	@Log("添加角色")
+	@Log("ロール新規追加")
 	@RequiresPermissions("sys:role:add")
 	@GetMapping("/add")
 	String add() {
 		return prefix + "/add";
 	}
 
-	@Log("编辑角色")
+	@Log("ロール編集")
 	@RequiresPermissions("sys:role:edit")
 	@GetMapping("/edit/{id}")
 	String edit(@PathVariable("id") Long id, Model model) {
@@ -51,58 +51,58 @@ public class RoleController extends BaseController {
 		return prefix + "/edit";
 	}
 
-	@Log("保存角色")
+	@Log("ロール保存")
 	@RequiresPermissions("sys:role:add")
 	@PostMapping("/save")
 	@ResponseBody()
 	R save(RoleDO role) {
 		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+			return R.error(1, "デモシステムでは変更できません。完全な機能をご利用になるにはプログラムをデプロイしてください。");
 		}
 		if (roleService.save(role) > 0) {
 			return R.ok();
 		} else {
-			return R.error(1, "保存失败");
+			return R.error(1, "保存に失敗しました");
 		}
 	}
 
-	@Log("更新角色")
+	@Log("ロール更新")
 	@RequiresPermissions("sys:role:edit")
 	@PostMapping("/update")
 	@ResponseBody()
 	R update(RoleDO role) {
 		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+			return R.error(1, "デモシステムでは変更できません。完全な機能をご利用になるにはプログラムをデプロイしてください。");
 		}
 		if (roleService.update(role) > 0) {
 			return R.ok();
 		} else {
-			return R.error(1, "保存失败");
+			return R.error(1, "保存に失敗しました");
 		}
 	}
 
-	@Log("删除角色")
+	@Log("ロール削除")
 	@RequiresPermissions("sys:role:remove")
 	@PostMapping("/remove")
 	@ResponseBody()
 	R save(Long id) {
 		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+			return R.error(1, "デモシステムでは変更できません。完全な機能をご利用になるにはプログラムをデプロイしてください。");
 		}
 		if (roleService.remove(id) > 0) {
 			return R.ok();
 		} else {
-			return R.error(1, "删除失败");
+			return R.error(1, "削除に失敗しました");
 		}
 	}
 	
 	@RequiresPermissions("sys:role:batchRemove")
-	@Log("批量删除角色")
+	@Log("ロール一括削除")
 	@PostMapping("/batchRemove")
 	@ResponseBody
 	R batchRemove(@RequestParam("ids[]") Long[] ids) {
 		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+			return R.error(1, "デモシステムでは変更できません。完全な機能をご利用になるにはプログラムをデプロイしてください。");
 		}
 		int r = roleService.batchremove(ids);
 		if (r > 0) {

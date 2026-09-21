@@ -19,155 +19,155 @@ public class FriendLinkDO implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    //主键
+    //主キー
     private Integer id;
-    //链接名
+    //リンク名
     private String linkName;
-    //链接url
+    //リンクURL
     @URL
     private String linkUrl;
-    //排序号
+    //並び順
     private Integer sort;
-    //是否开启，0：不开启，1：开启
+    //有効かどうか。0：無効、1：有効
     private Integer isOpen;
-    //创建人id
-    //java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-    //所以通过序列化成字符串来解决
+    //作成者ID
+    //Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+    //そのため文字列にシリアライズして解決する
     @JsonSerialize(using = LongToStringSerializer.class)
     private Long createUserId;
-    //创建时间
+    //作成日時
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    //更新者用户id
-    //java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-    //所以通过序列化成字符串来解决
+    //更新者ユーザーID
+    //Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+    //そのため文字列にシリアライズして解決する
     @JsonSerialize(using = LongToStringSerializer.class)
     private Long updateUserId;
-    //更新时间
+    //更新日時
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     /**
-     * 设置：主键
+     * 設定：主キー
      */
     public void setId(Integer id) {
         this.id = id;
     }
 
     /**
-     * 获取：主键
+     * 取得：主キー
      */
     public Integer getId() {
         return id;
     }
 
     /**
-     * 设置：链接名
+     * 設定：リンク名
      */
     public void setLinkName(String linkName) {
         this.linkName = linkName;
     }
 
     /**
-     * 获取：链接名
+     * 取得：リンク名
      */
     public String getLinkName() {
         return linkName;
     }
 
     /**
-     * 设置：链接url
+     * 設定：リンクURL
      */
     public void setLinkUrl(String linkUrl) {
         this.linkUrl = linkUrl;
     }
 
     /**
-     * 获取：链接url
+     * 取得：リンクURL
      */
     public String getLinkUrl() {
         return linkUrl;
     }
 
     /**
-     * 设置：排序号
+     * 設定：並び順
      */
     public void setSort(Integer sort) {
         this.sort = sort;
     }
 
     /**
-     * 获取：排序号
+     * 取得：並び順
      */
     public Integer getSort() {
         return sort;
     }
 
     /**
-     * 设置：是否开启，0：不开启，1：开启
+     * 設定：有効かどうか。0：無効、1：有効
      */
     public void setIsOpen(Integer isOpen) {
         this.isOpen = isOpen;
     }
 
     /**
-     * 获取：是否开启，0：不开启，1：开启
+     * 取得：有効かどうか。0：無効、1：有効
      */
     public Integer getIsOpen() {
         return isOpen;
     }
 
     /**
-     * 设置：创建人id
+     * 設定：作成者ID
      */
     public void setCreateUserId(Long createUserId) {
         this.createUserId = createUserId;
     }
 
     /**
-     * 获取：创建人id
+     * 取得：作成者ID
      */
     public Long getCreateUserId() {
         return createUserId;
     }
 
     /**
-     * 设置：创建时间
+     * 設定：作成日時
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
     /**
-     * 获取：创建时间
+     * 取得：作成日時
      */
     public Date getCreateTime() {
         return createTime;
     }
 
     /**
-     * 设置：更新者用户id
+     * 設定：更新者ユーザーID
      */
     public void setUpdateUserId(Long updateUserId) {
         this.updateUserId = updateUserId;
     }
 
     /**
-     * 获取：更新者用户id
+     * 取得：更新者ユーザーID
      */
     public Long getUpdateUserId() {
         return updateUserId;
     }
 
     /**
-     * 设置：更新时间
+     * 設定：更新日時
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
     /**
-     * 获取：更新时间
+     * 取得：更新日時
      */
     public Date getUpdateTime() {
         return updateTime;

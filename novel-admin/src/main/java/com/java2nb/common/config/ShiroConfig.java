@@ -45,7 +45,7 @@ public class ShiroConfig {
     }
 
     /**
-     * ShiroDialect，为了在thymeleaf里使用shiro的标签的bean
+     * ShiroDialect。thymeleaf で shiro のタグを使用するための Bean
      *
      * @return
      */
@@ -85,9 +85,9 @@ public class ShiroConfig {
     @Bean
     public SecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        //设置realm.
+        //realm を設定する
         securityManager.setRealm(userRealm());
-        // 自定义缓存实现 使用redis
+        // カスタムキャッシュ実装。redis を使用
         securityManager.setCacheManager(rediscacheManager());
         securityManager.setSessionManager(sessionManager());
         return securityManager;
@@ -100,7 +100,7 @@ public class ShiroConfig {
     }
 
     /**
-     * 开启shiro aop注解支持. 使用代理方式;所以需要开启代码支持;
+     * shiro の AOP アノテーションサポートを有効にする。プロキシ方式を使用するため、コードサポートを有効にする必要がある。
      *
      * @param securityManager
      * @return
@@ -113,7 +113,7 @@ public class ShiroConfig {
     }
 
     /**
-     * 配置shiro redisManager
+     * shiro の redisManager を設定する
      *
      * @return
      */
@@ -122,14 +122,14 @@ public class ShiroConfig {
         RedisManager redisManager = new RedisManager();
         redisManager.setHost(host);
         redisManager.setPort(port);
-        redisManager.setExpire(1800);// 配置缓存过期时间
+        redisManager.setExpire(1800);// キャッシュの有効期限を設定する
         //redisManager.setTimeout(1800);
         redisManager.setPassword(password);
         return redisManager;
     }
 
     /**
-     * cacheManager 缓存 redis实现 使用的是shiro-redis开源插件
+     * cacheManager のキャッシュは redis で実装する。shiro-redis オープンソースプラグインを使用。
      *
      * @return
      */
@@ -141,7 +141,7 @@ public class ShiroConfig {
 
 
     /**
-     * RedisSessionDAO shiro sessionDao层的实现 通过redis 使用的是shiro-redis开源插件
+     * RedisSessionDAO は shiro の sessionDao 層の実装。redis 経由で shiro-redis オープンソースプラグインを使用。
      */
     @Bean
     public RedisSessionDAO redisSessionDAO() {
@@ -156,7 +156,7 @@ public class ShiroConfig {
     }
 
     /**
-     * shiro session的管理
+     * shiro セッションの管理
      */
     @Bean
     public DefaultWebSessionManager sessionManager() {

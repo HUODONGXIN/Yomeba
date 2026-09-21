@@ -21,8 +21,8 @@ public class ApplicationContextRegister implements ApplicationContextAware {
     private static Logger logger = LoggerFactory.getLogger(ApplicationContextRegister.class);
     private static ApplicationContext APPLICATION_CONTEXT;
     /**
-     * 设置spring上下文
-     * @param applicationContext spring上下文
+     * Spring コンテキストを設定する
+     * @param applicationContext Spring コンテキスト
      * @throws BeansException
      * */
     @Override  public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
@@ -31,7 +31,7 @@ public class ApplicationContextRegister implements ApplicationContextAware {
     }
 
     /**
-     * 获取容器
+     * コンテナを取得する
      * @return
      */
     public static ApplicationContext getApplicationContext() {
@@ -39,7 +39,7 @@ public class ApplicationContextRegister implements ApplicationContextAware {
     }
 
     /**
-     * 获取容器对象
+     * コンテナから Bean を取得する
      * @param type
      * @param <T>
      * @return

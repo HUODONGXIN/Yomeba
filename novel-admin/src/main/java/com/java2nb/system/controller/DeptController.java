@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 部门管理
+ * 部門管理
  * 
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -38,7 +38,7 @@ public class DeptController extends BaseController {
 		return prefix + "/dept";
 	}
 
-	@ApiOperation(value="获取部门列表", notes="获取部门列表")
+	@ApiOperation(value="部門一覧を取得", notes="部門の一覧を取得します")
 	@ResponseBody
 	@GetMapping("/list")
 	@RequiresPermissions("system:sysDept:sysDept")
@@ -53,7 +53,7 @@ public class DeptController extends BaseController {
 	String add(@PathVariable("pId") Long pId, Model model) {
 		model.addAttribute("pId", pId);
 		if (pId == 0) {
-			model.addAttribute("pName", "总部门");
+			model.addAttribute("pName", "総本部門");
 		} else {
 			model.addAttribute("pName", sysDeptService.get(pId).getName());
 		}
@@ -66,7 +66,7 @@ public class DeptController extends BaseController {
 		DeptDO sysDept = sysDeptService.get(deptId);
 		model.addAttribute("sysDept", sysDept);
 		if(Constant.DEPT_ROOT_ID.equals(sysDept.getParentId())) {
-			model.addAttribute("parentDeptName", "无");
+			model.addAttribute("parentDeptName", "なし");
 		}else {
 			DeptDO parDept = sysDeptService.get(sysDept.getParentId());
 			model.addAttribute("parentDeptName", parDept.getName());
@@ -82,7 +82,7 @@ public class DeptController extends BaseController {
 	@RequiresPermissions("system:sysDept:add")
 	public R save(DeptDO sysDept) {
 		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+			return R.error(1, "デモシステムでは変更できません。完全な機能をご利用になるにはプログラムをデプロイしてください。");
 		}
 		if (sysDeptService.save(sysDept) > 0) {
 			return R.ok();
@@ -91,14 +91,14 @@ public class DeptController extends BaseController {
 	}
 
 	/**
-	 * 修改
+	 * 更新
 	 */
 	@ResponseBody
 	@RequestMapping("/update")
 	@RequiresPermissions("system:sysDept:edit")
 	public R update(DeptDO sysDept) {
 		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+			return R.error(1, "デモシステムでは変更できません。完全な機能をご利用になるにはプログラムをデプロイしてください。");
 		}
 		if (sysDeptService.update(sysDept) > 0) {
 			return R.ok();
@@ -107,39 +107,39 @@ public class DeptController extends BaseController {
 	}
 
 	/**
-	 * 删除
+	 * 削除
 	 */
 	@PostMapping("/remove")
 	@ResponseBody
 	@RequiresPermissions("system:sysDept:remove")
 	public R remove(Long deptId) {
 		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+			return R.error(1, "デモシステムでは変更できません。完全な機能をご利用になるにはプログラムをデプロイしてください。");
 		}
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("parentId", deptId);
 		if(sysDeptService.count(map)>0) {
-			return R.error(1, "包含下级部门,不允许修改");
+			return R.error(1, "配下部門を含むため、変更できません");
 		}
 		if(sysDeptService.checkDeptHasUser(deptId)) {
 			if (sysDeptService.remove(deptId) > 0) {
 				return R.ok();
 			}
 		}else {
-			return R.error(1, "部门包含用户,不允许修改");
+			return R.error(1, "部門にユーザーが含まれているため、変更できません");
 		}
 		return R.error();
 	}
 
 	/**
-	 * 删除
+	 * 一括削除
 	 */
 	@PostMapping("/batchRemove")
 	@ResponseBody
 	@RequiresPermissions("system:sysDept:batchRemove")
 	public R remove(@RequestParam("ids[]") Long[] deptIds) {
 		if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
-			return R.error(1, "演示系统不允许修改,完整体验请部署程序");
+			return R.error(1, "デモシステムでは変更できません。完全な機能をご利用になるにはプログラムをデプロイしてください。");
 		}
 		sysDeptService.batchRemove(deptIds);
 		return R.ok();

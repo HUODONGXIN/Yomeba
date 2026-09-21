@@ -23,7 +23,7 @@ import com.java2nb.common.utils.Query;
 import com.java2nb.common.utils.R;
 
 /**
- * 新闻类别表
+ * ニュースカテゴリテーブル
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -42,12 +42,12 @@ public class CategoryController {
         return "novel/category/category";
     }
 
-    @ApiOperation(value = "获取新闻类别表列表", notes = "获取新闻类别表列表")
+    @ApiOperation(value = "ニュースカテゴリテーブル一覧を取得", notes = "ニュースカテゴリテーブルの一覧を取得します")
     @ResponseBody
     @GetMapping("/list")
     @RequiresPermissions("novel:category:category")
     public R list(@RequestParam Map<String, Object> params) {
-        //查询列表数据
+        //一覧データを検索
         Query query = new Query(params);
         List<CategoryDO> categoryList = categoryService.list(query);
         int total = categoryService.count(query);
@@ -55,14 +55,14 @@ public class CategoryController {
         return R.ok().put("data", pageBean);
     }
 
-    @ApiOperation(value = "新增新闻类别表页面", notes = "新增新闻类别表页面")
+    @ApiOperation(value = "ニュースカテゴリ新規追加ページ", notes = "ニュースカテゴリの新規追加ページを表示します")
     @GetMapping("/add")
     @RequiresPermissions("novel:category:add")
     String add() {
         return "novel/category/add";
     }
 
-    @ApiOperation(value = "修改新闻类别表页面", notes = "修改新闻类别表页面")
+    @ApiOperation(value = "ニュースカテゴリ編集ページ", notes = "ニュースカテゴリの編集ページを表示します")
     @GetMapping("/edit/{id}")
     @RequiresPermissions("novel:category:edit")
     String edit(@PathVariable("id") Integer id, Model model) {
@@ -71,7 +71,7 @@ public class CategoryController {
         return "novel/category/edit";
     }
 
-    @ApiOperation(value = "查看新闻类别表页面", notes = "查看新闻类别表页面")
+    @ApiOperation(value = "ニュースカテゴリ詳細ページ", notes = "ニュースカテゴリの詳細ページを表示します")
     @GetMapping("/detail/{id}")
     @RequiresPermissions("novel:category:detail")
     String detail(@PathVariable("id") Integer id, Model model) {
@@ -83,7 +83,7 @@ public class CategoryController {
     /**
      * 保存
      */
-    @ApiOperation(value = "新增新闻类别表", notes = "新增新闻类别表")
+    @ApiOperation(value = "ニュースカテゴリ新規追加", notes = "ニュースカテゴリを新規追加します")
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("novel:category:add")
@@ -95,9 +95,9 @@ public class CategoryController {
     }
 
     /**
-     * 修改
+     * 更新
      */
-    @ApiOperation(value = "修改新闻类别表", notes = "修改新闻类别表")
+    @ApiOperation(value = "ニュースカテゴリ更新", notes = "ニュースカテゴリを更新します")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("novel:category:edit")
@@ -107,9 +107,9 @@ public class CategoryController {
     }
 
     /**
-     * 删除
+     * 削除
      */
-    @ApiOperation(value = "删除新闻类别表", notes = "删除新闻类别表")
+    @ApiOperation(value = "ニュースカテゴリ削除", notes = "ニュースカテゴリを削除します")
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("novel:category:remove")
@@ -121,9 +121,9 @@ public class CategoryController {
     }
 
     /**
-     * 删除
+     * 一括削除
      */
-    @ApiOperation(value = "批量删除新闻类别表", notes = "批量删除新闻类别表")
+    @ApiOperation(value = "ニュースカテゴリ一括削除", notes = "ニュースカテゴリを一括削除します")
     @PostMapping("/batchRemove")
     @ResponseBody
     @RequiresPermissions("novel:category:batchRemove")

@@ -12,7 +12,7 @@ public class XssAndSqlHttpServletRequestWrapper extends HttpServletRequestWrappe
     private HttpServletRequest request;
 
     /**
-     * 假如有有html 代码是自己传来的  需要设定对应的name 不过滤
+     * HTML コードが自前で送信されたものである場合、対応する name を設定してフィルタしない
      */
     private static final List<String> noFilterNames = Arrays.asList("attach","push_ip","content");
 

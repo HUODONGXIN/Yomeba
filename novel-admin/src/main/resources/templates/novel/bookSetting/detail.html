@@ -12,7 +12,7 @@
                 <input id="id" name="id" th:value="${bookSetting.id}"
                        type="hidden">
                                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">小说ID：</label>
+                        <label class="col-sm-3 control-label">小説ID：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookSetting.bookId}">
@@ -22,7 +22,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">排序号：</label>
+                        <label class="col-sm-3 control-label">並び順：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookSetting.sort}">
@@ -32,7 +32,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">推荐类型：</label>
+                        <label class="col-sm-3 control-label">レコメンド種別：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8 dict-type" dict-type="book_rec_type"
                                  th:attr="dict-value=${bookSetting.type}">
@@ -42,7 +42,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">创建时间：</label>
+                        <label class="col-sm-3 control-label">作成日時：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookSetting.createTime}==null?null:${#dates.format(bookSetting.createTime,'yyyy-MM-dd HH:mm:ss')}">
@@ -51,7 +51,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">创建人ID：</label>
+                        <label class="col-sm-3 control-label">作成者ID：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookSetting.createUserId}">
@@ -61,7 +61,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">更新时间：</label>
+                        <label class="col-sm-3 control-label">更新日時：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookSetting.updateTime}==null?null:${#dates.format(bookSetting.updateTime,'yyyy-MM-dd HH:mm:ss')}">
@@ -70,7 +70,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">更新人ID：</label>
+                        <label class="col-sm-3 control-label">更新者ID：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookSetting.updateUserId}">

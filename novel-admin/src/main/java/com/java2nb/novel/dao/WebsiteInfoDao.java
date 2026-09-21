@@ -10,7 +10,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 网站信息表
+ * サイト情報テーブル
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2023-04-14 11:05:43

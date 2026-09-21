@@ -3,7 +3,7 @@ package com.java2nb.common.exception;
 import lombok.Data;
 
 /**
- * 自定义业务异常
+ * カスタム業務例外
  */
 @Data
 public class BusinessException extends RuntimeException {
@@ -13,8 +13,8 @@ public class BusinessException extends RuntimeException {
     private int code;
     
     public BusinessException(int code,String msg) {
-		//不调用父类Throwable的fillInStackTrace()方法生成栈追踪信息，提高应用性能
-		//构造器之间的调用必须在第一行
+		//親クラスThrowableのfillInStackTrace()メソッドを呼び出さずスタックトレース情報を生成しないことで、アプリのパフォーマンスを向上させます
+		//コンストラクタ間の呼び出しは1行目に記述する必要があります
 		super(msg, null, false, false);
 		this.code = code;
 		this.msg = msg;

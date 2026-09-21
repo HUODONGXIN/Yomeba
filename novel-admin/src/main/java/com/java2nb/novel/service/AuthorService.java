@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 作者表
- * 
+ * 作家テーブル
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2020-05-13 11:16:51

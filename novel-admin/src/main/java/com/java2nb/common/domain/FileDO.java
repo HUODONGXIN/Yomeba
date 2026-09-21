@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 文件上传
+ * ファイルアップロード
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -15,11 +15,11 @@ public class FileDO implements Serializable {
 
     //
     private Long id;
-    // 文件类型
+    // ファイルタイプ
     private Integer type;
-    // URL地址
+    // URL
     private String url;
-    // 创建时间
+    // 作成日時
     private Date createDate;
 
 
@@ -37,56 +37,56 @@ public class FileDO implements Serializable {
 
 
     /**
-     * 设置：
+     * 設定：
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * 获取：
+     * 取得：
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * 设置：文件类型
+     * 設定：ファイルタイプ
      */
     public void setType(Integer type) {
         this.type = type;
     }
 
     /**
-     * 获取：文件类型
+     * 取得：ファイルタイプ
      */
     public Integer getType() {
         return type;
     }
 
     /**
-     * 设置：URL地址
+     * 設定：URL
      */
     public void setUrl(String url) {
         this.url = url;
     }
 
     /**
-     * 获取：URL地址
+     * 取得：URL
      */
     public String getUrl() {
         return url;
     }
 
     /**
-     * 设置：创建时间
+     * 設定：作成日時
      */
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
     /**
-     * 获取：创建时间
+     * 取得：作成日時
      */
     public Date getCreateDate() {
         return createDate;

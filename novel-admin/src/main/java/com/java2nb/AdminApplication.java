@@ -33,13 +33,13 @@ public class AdminApplication {
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx, DataSource dataSource) {
         return args -> {
-            log.info("创建连接池...");
+            log.info("コネクションプールを作成中...");
             try (Connection connection = dataSource.getConnection()) {
-                log.info("连接池已创建.");
-                log.info("数据库：{}", connection.getMetaData().getDatabaseProductName());
-                log.info("数据库版本：{}", connection.getMetaData().getDatabaseProductVersion());
+                log.info("コネクションプールを作成しました。");
+                log.info("データベース：{}", connection.getMetaData().getDatabaseProductName());
+                log.info("データベースバージョン：{}", connection.getMetaData().getDatabaseProductVersion());
             }
-            log.info("项目启动啦，访问路径：{}",
+            log.info("プロジェクトを起動しました。アクセスURL：{}",
                 "http://" + InetAddress.getLocalHost().getHostAddress() + ":" + ctx.getEnvironment()
                     .getProperty("server.port"));
         };

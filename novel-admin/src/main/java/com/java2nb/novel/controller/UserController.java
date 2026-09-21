@@ -42,12 +42,12 @@ public class UserController {
         return "novel/user/user";
     }
 
-    @ApiOperation(value = "获取列表", notes = "获取列表")
+    @ApiOperation(value = "一覧を取得", notes = "一覧を取得します")
     @ResponseBody
     @GetMapping("/list")
     @RequiresPermissions("novel:user:user")
     public R list(@RequestParam Map<String, Object> params) {
-        //查询列表数据
+        //一覧データを検索
         Query query = new Query(params);
         List<UserDO> userList = userService.list(query);
         int total = userService.count(query);
@@ -55,14 +55,14 @@ public class UserController {
         return R.ok().put("data", pageBean);
     }
 
-    @ApiOperation(value = "新增页面", notes = "新增页面")
+    @ApiOperation(value = "新規追加ページ", notes = "新規追加ページを表示します")
     @GetMapping("/add")
     @RequiresPermissions("novel:user:add")
     String add() {
         return "novel/user/add";
     }
 
-    @ApiOperation(value = "修改页面", notes = "修改页面")
+    @ApiOperation(value = "編集ページ", notes = "編集ページを表示します")
     @GetMapping("/edit/{id}")
     @RequiresPermissions("novel:user:edit")
     String edit(@PathVariable("id") Long id, Model model) {
@@ -71,7 +71,7 @@ public class UserController {
         return "novel/user/edit";
     }
 
-    @ApiOperation(value = "查看页面", notes = "查看页面")
+    @ApiOperation(value = "詳細ページ", notes = "詳細ページを表示します")
     @GetMapping("/detail/{id}")
     @RequiresPermissions("novel:user:detail")
     String detail(@PathVariable("id") Long id, Model model) {
@@ -83,7 +83,7 @@ public class UserController {
     /**
      * 保存
      */
-    @ApiOperation(value = "新增", notes = "新增")
+    @ApiOperation(value = "新規追加", notes = "新規追加します")
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("novel:user:add")
@@ -95,9 +95,9 @@ public class UserController {
     }
 
     /**
-     * 修改
+     * 更新
      */
-    @ApiOperation(value = "修改", notes = "修改")
+    @ApiOperation(value = "更新", notes = "更新します")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("novel:user:edit")
@@ -107,9 +107,9 @@ public class UserController {
     }
 
     /**
-     * 删除
+     * 削除
      */
-    @ApiOperation(value = "删除", notes = "删除")
+    @ApiOperation(value = "削除", notes = "削除します")
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("novel:user:remove")
@@ -121,9 +121,9 @@ public class UserController {
     }
 
     /**
-     * 删除
+     * 一括削除
      */
-    @ApiOperation(value = "批量删除", notes = "批量删除")
+    @ApiOperation(value = "一括削除", notes = "一括削除します")
     @PostMapping("/batchRemove")
     @ResponseBody
     @RequiresPermissions("novel:user:batchRemove")

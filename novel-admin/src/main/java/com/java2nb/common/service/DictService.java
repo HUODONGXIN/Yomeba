@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 字典表
- * 
+ * データ辞書テーブル
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2019-09-29 18:28:07
@@ -34,20 +34,20 @@ public interface DictService {
 	String getName(String type,String value);
 
 	/**
-	 * 获取爱好列表
+	 * 趣味のリストを取得する
 	 * @return
      * @param userDO
 	 */
 	List<DictDO> getHobbyList(UserDO userDO);
 
 	/**
-	 * 获取性别列表
+	 * 性別のリストを取得する
  	 * @return
 	 */
 	List<DictDO> getSexList();
 
 	/**
-	 * 根据type获取数据
+	 * type をもとにデータを取得する
 	 * @param map
 	 * @return
 	 */

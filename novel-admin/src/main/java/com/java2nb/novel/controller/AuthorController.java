@@ -23,7 +23,7 @@ import com.java2nb.common.utils.Query;
 import com.java2nb.common.utils.R;
 
 /**
- * 作者表
+ * 作家テーブル
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -42,12 +42,12 @@ public class AuthorController {
         return "novel/author/author";
     }
 
-    @ApiOperation(value = "获取作者表列表", notes = "获取作者表列表")
+    @ApiOperation(value = "作家テーブル一覧を取得", notes = "作家テーブルの一覧を取得します")
     @ResponseBody
     @GetMapping("/list")
     @RequiresPermissions("novel:author:author")
     public R list(@RequestParam Map<String, Object> params) {
-        //查询列表数据
+        //一覧データを検索
         Query query = new Query(params);
         List<AuthorDO> authorList = authorService.list(query);
         int total = authorService.count(query);
@@ -55,14 +55,14 @@ public class AuthorController {
         return R.ok().put("data", pageBean);
     }
 
-    @ApiOperation(value = "新增作者表页面", notes = "新增作者表页面")
+    @ApiOperation(value = "作家新規追加ページ", notes = "作家の新規追加ページを表示します")
     @GetMapping("/add")
     @RequiresPermissions("novel:author:add")
     String add() {
         return "novel/author/add";
     }
 
-    @ApiOperation(value = "修改作者表页面", notes = "修改作者表页面")
+    @ApiOperation(value = "作家編集ページ", notes = "作家の編集ページを表示します")
     @GetMapping("/edit/{id}")
     @RequiresPermissions("novel:author:edit")
     String edit(@PathVariable("id") Long id, Model model) {
@@ -71,7 +71,7 @@ public class AuthorController {
         return "novel/author/edit";
     }
 
-    @ApiOperation(value = "查看作者表页面", notes = "查看作者表页面")
+    @ApiOperation(value = "作家詳細ページ", notes = "作家の詳細ページを表示します")
     @GetMapping("/detail/{id}")
     @RequiresPermissions("novel:author:detail")
     String detail(@PathVariable("id") Long id, Model model) {
@@ -83,7 +83,7 @@ public class AuthorController {
     /**
      * 保存
      */
-    @ApiOperation(value = "新增作者表", notes = "新增作者表")
+    @ApiOperation(value = "作家新規追加", notes = "作家を新規追加します")
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("novel:author:add")
@@ -95,9 +95,9 @@ public class AuthorController {
     }
 
     /**
-     * 修改
+     * 更新
      */
-    @ApiOperation(value = "修改作者表", notes = "修改作者表")
+    @ApiOperation(value = "作家更新", notes = "作家を更新します")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("novel:author:edit")
@@ -107,9 +107,9 @@ public class AuthorController {
     }
 
     /**
-     * 删除
+     * 削除
      */
-    @ApiOperation(value = "删除作者表", notes = "删除作者表")
+    @ApiOperation(value = "作家削除", notes = "作家を削除します")
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("novel:author:remove")
@@ -121,9 +121,9 @@ public class AuthorController {
     }
 
     /**
-     * 删除
+     * 一括削除
      */
-    @ApiOperation(value = "批量删除作者表", notes = "批量删除作者表")
+    @ApiOperation(value = "作家一括削除", notes = "作家を一括削除します")
     @PostMapping("/batchRemove")
     @ResponseBody
     @RequiresPermissions("novel:author:batchRemove")

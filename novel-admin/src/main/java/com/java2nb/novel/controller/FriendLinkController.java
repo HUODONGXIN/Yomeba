@@ -39,12 +39,12 @@ public class FriendLinkController {
         return "novel/friendLink/friendLink";
     }
 
-    @ApiOperation(value = "获取列表", notes = "获取列表")
+    @ApiOperation(value = "一覧を取得", notes = "一覧を取得します")
     @ResponseBody
     @GetMapping("/list")
     @RequiresPermissions("novel:friendLink:friendLink")
     public R list(@RequestParam Map<String, Object> params) {
-        //查询列表数据
+        //一覧データを検索
         Query query = new Query(params);
         List<FriendLinkDO> friendLinkList = friendLinkService.list(query);
         int total = friendLinkService.count(query);
@@ -52,14 +52,14 @@ public class FriendLinkController {
         return R.ok().put("data", pageBean);
     }
 
-    @ApiOperation(value = "新增页面", notes = "新增页面")
+    @ApiOperation(value = "新規追加ページ", notes = "新規追加ページを表示します")
     @GetMapping("/add")
     @RequiresPermissions("novel:friendLink:add")
     String add() {
         return "novel/friendLink/add";
     }
 
-    @ApiOperation(value = "修改页面", notes = "修改页面")
+    @ApiOperation(value = "編集ページ", notes = "編集ページを表示します")
     @GetMapping("/edit/{id}")
     @RequiresPermissions("novel:friendLink:edit")
     String edit(@PathVariable("id") Integer id, Model model) {
@@ -68,7 +68,7 @@ public class FriendLinkController {
         return "novel/friendLink/edit";
     }
 
-    @ApiOperation(value = "查看页面", notes = "查看页面")
+    @ApiOperation(value = "詳細ページ", notes = "詳細ページを表示します")
     @GetMapping("/detail/{id}")
     @RequiresPermissions("novel:friendLink:detail")
     String detail(@PathVariable("id") Integer id, Model model) {
@@ -80,7 +80,7 @@ public class FriendLinkController {
     /**
      * 保存
      */
-    @ApiOperation(value = "新增", notes = "新增")
+    @ApiOperation(value = "新規追加", notes = "新規追加します")
     @ResponseBody
     @PostMapping("/save")
     @RequiresPermissions("novel:friendLink:add")
@@ -93,9 +93,9 @@ public class FriendLinkController {
     }
 
     /**
-     * 修改
+     * 更新
      */
-    @ApiOperation(value = "修改", notes = "修改")
+    @ApiOperation(value = "更新", notes = "更新します")
     @ResponseBody
     @RequestMapping("/update")
     @RequiresPermissions("novel:friendLink:edit")
@@ -106,9 +106,9 @@ public class FriendLinkController {
     }
 
     /**
-     * 删除
+     * 削除
      */
-    @ApiOperation(value = "删除", notes = "删除")
+    @ApiOperation(value = "削除", notes = "削除します")
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("novel:friendLink:remove")
@@ -121,9 +121,9 @@ public class FriendLinkController {
     }
 
     /**
-     * 删除
+     * 一括削除
      */
-    @ApiOperation(value = "批量删除", notes = "批量删除")
+    @ApiOperation(value = "一括削除", notes = "一括削除します")
     @PostMapping("/batchRemove")
     @ResponseBody
     @RequiresPermissions("novel:friendLink:batchRemove")

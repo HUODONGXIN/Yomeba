@@ -43,13 +43,13 @@ public class MainsiteErrorController implements ErrorController {
         response.setStatus(200);
         int code = response.getStatus();
         if (404 == code) {
-            return R.error(404, "未找到资源");
+            return R.error(404, "リソースが見つかりません");
         } else if (403 == code) {
-            return R.error(403, "没有访问权限");
+            return R.error(403, "アクセス権限がありません");
         } else if (401 == code) {
-            return R.error(403, "登录过期");
+            return R.error(403, "ログインの有効期限が切れました");
         } else {
-            return R.error(500, "服务器错误");
+            return R.error(500, "サーバーエラー");
         }
     }
 

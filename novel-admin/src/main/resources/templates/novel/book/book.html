@@ -11,48 +11,48 @@
                     <div class="columns pull-left">
                         <button shiro:hasPermission="novel:book:add" type="button"
                                 class="btn  btn-primary" onclick="add()">
-                            <i class="fa fa-plus" aria-hidden="true"></i>添加
+                            <i class="fa fa-plus" aria-hidden="true"></i>新規追加
                         </button>
                         <div id="batchDelBtn" style="display:none;">
                             <button shiro:hasPermission="novel:book:batchRemove" type="button"
                                     class="btn  btn-danger"
                                     onclick="batchRemove()">
-                                <i class="fa fa-trash" aria-hidden="true"></i>批量删除
+                                <i class="fa fa-trash" aria-hidden="true"></i>一括削除
                             </button>
                         </div>
                     </div>
                     <div class="columns pull-right">
-                        <button class="btn btn-success" onclick="reLoad()">查询</button>
+                        <button class="btn btn-success" onclick="reLoad()">検索</button>
                     </div>
 
                     <form id="searchForm">
                         <div class="columns pull-right col-md-1">
                             <select id="workDirection" name="workDirection" class="form-control">
                                 <option value="">作品方向</option>
-                                <option value="0">男频</option>
-                                <option value="1">女频</option>
+                                <option value="0">男性向け</option>
+                                <option value="1">女性向け</option>
                             </select>
                         </div>
                         <div class="columns pull-right col-md-2">
                             <select id="catId" name="catId" class="form-control">
-                                <option value="">作品分类</option>
+                                <option value="">ジャンル</option>
                             </select>
                         </div>
                         <div class="columns pull-right col-md-2">
                             <input id="minCreateTime" name="minCreateTime" type="date" class="form-control"
-                                   placeholder="入库开始">
+                                   placeholder="入庫開始">
                         </div>
                         <div class="columns pull-right col-md-2">
                             <input id="maxCreateTime" name="maxCreateTime" type="date" class="form-control"
-                                   placeholder="入库结束">
+                                   placeholder="入庫終了">
                         </div>
                         <div class="columns pull-right col-md-2">
                             <input id="bookName" name="bookName" type="text" class="form-control"
-                                   placeholder="小说名">
+                                   placeholder="小説名">
                         </div>
                         <div class="columns pull-right col-md-2">
                             <input id="authorName" name="authorName" type="text" class="form-control"
-                                   placeholder="作者名">
+                                   placeholder="作家名">
                         </div>
                     </form>
 
@@ -63,7 +63,7 @@
         </div>
     </div>
 </div>
-<!--shiro控制bootstraptable行内按钮看见性 -->
+<!--shiroによるbootstraptable行内ボタンの表示制御 -->
 <div>
     <script type="text/javascript">
         var s_detail_h = 'hidden';
@@ -92,7 +92,7 @@
     $(function () {
         $.get("/novel/book/listCategories", function (r) {
             if (r.code == 0 && r.data) {
-                var opts = '<option value="">作品分类</option>';
+                var opts = '<option value="">ジャンル</option>';
                 $.each(r.data, function (i, c) {
                     opts += '<option value="' + c.id + '">' + c.name + '</option>';
                 });

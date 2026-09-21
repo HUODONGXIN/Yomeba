@@ -15,8 +15,8 @@ import java.util.Date;
 
 
 /**
- * 作家邀请码表
- * 
+ * 作家招待コードテーブル
+ *
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2020-05-13 11:29:15
@@ -24,96 +24,96 @@ import java.util.Date;
 public class AuthorCodeDO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	
-	//主键
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+
+	//主キー
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long id;
-	//邀请码
+	//招待コード
 			private String inviteCode;
-	//有效时间
+	//有効期限
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 		private Date validityTime;
-	//是否使用过，0：未使用，1:使用过
+	//使用済みかどうか。0：未使用、1：使用済み
 			private Integer isUse;
-	//创建时间
+	//作成日時
 			@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 		private Date createTime;
-	//创建人ID
-		//java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-	//所以通过序列化成字符串来解决
+	//作成者ID
+		//Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+	//そのため文字列にシリアライズして解決する
 	@JsonSerialize(using = LongToStringSerializer.class)
 			private Long createUserId;
 
 	/**
-	 * 设置：主键
+	 * 設定：主キー
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 	/**
-	 * 获取：主键
+	 * 取得：主キー
 	 */
 	public Long getId() {
 		return id;
 	}
 	/**
-	 * 设置：邀请码
+	 * 設定：招待コード
 	 */
 	public void setInviteCode(String inviteCode) {
 		this.inviteCode = inviteCode;
 	}
 	/**
-	 * 获取：邀请码
+	 * 取得：招待コード
 	 */
 	public String getInviteCode() {
 		return inviteCode;
 	}
 	/**
-	 * 设置：有效时间
+	 * 設定：有効期限
 	 */
 	public void setValidityTime(Date validityTime) {
 		this.validityTime = validityTime;
 	}
 	/**
-	 * 获取：有效时间
+	 * 取得：有効期限
 	 */
 	public Date getValidityTime() {
 		return validityTime;
 	}
 	/**
-	 * 设置：是否使用过，0：未使用，1:使用过
+	 * 設定：使用済みかどうか。0：未使用、1：使用済み
 	 */
 	public void setIsUse(Integer isUse) {
 		this.isUse = isUse;
 	}
 	/**
-	 * 获取：是否使用过，0：未使用，1:使用过
+	 * 取得：使用済みかどうか。0：未使用、1：使用済み
 	 */
 	public Integer getIsUse() {
 		return isUse;
 	}
 	/**
-	 * 设置：创建时间
+	 * 設定：作成日時
 	 */
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
 	/**
-	 * 获取：创建时间
+	 * 取得：作成日時
 	 */
 	public Date getCreateTime() {
 		return createTime;
 	}
 	/**
-	 * 设置：创建人ID
+	 * 設定：作成者ID
 	 */
 	public void setCreateUserId(Long createUserId) {
 		this.createUserId = createUserId;
 	}
 	/**
-	 * 获取：创建人ID
+	 * 取得：作成者ID
 	 */
 	public Long getCreateUserId() {
 		return createUserId;

@@ -10,7 +10,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 首页小说设置表
+ * ホーム画面小説設定テーブル
  * @author xiongxy
  * @email 1179705413@qq.com
  * @date 2023-04-18 10:01:13

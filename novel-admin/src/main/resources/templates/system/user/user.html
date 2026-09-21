@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
 	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <meta charset="utf-8">
 <head th:include="include :: header"></head>
@@ -9,7 +9,7 @@
 			<div class="col-sm-3">
 				<div class="ibox ibox-body">
 					<div class="ibox-title">
-						<h5>选择部门</h5>
+						<h5>部門を選択</h5>
 					</div>
 					<div class="ibox-content">
 						<div id="jstree"></div>
@@ -22,20 +22,20 @@
 							<div class="columns pull-left">
 								<button shiro:hasPermission="sys:user:add" type="button"
 									class="btn  btn-primary" onclick="add()">
-									<i class="fa fa-plus hidden" aria-hidden="true"></i>添加
+									<i class="fa fa-plus hidden" aria-hidden="true"></i>新規追加
 								</button>
 								<button shiro:hasPermission="sys:user:batchRemove" type="button"
 									class="btn  btn-danger" onclick="batchRemove()">
-									<i class="fa fa-trash hidden" aria-hidden="true"></i>删除
+									<i class="fa fa-trash hidden" aria-hidden="true"></i>削除
 								</button>
 							</div>
 							<div class="columns pull-right">
-								<button class="btn btn-success" onclick="reLoad()">查询</button>
+								<button class="btn btn-success" onclick="reLoad()">検索</button>
 							</div>
 
 							<div class="columns pull-right col-md-2">
 								<input id="searchName" type="text" class="form-control"
-									placeholder="姓名">
+									placeholder="氏名">
 							</div>
 						</div>
 						<table id="exampleTable" data-mobile-responsive="true">
@@ -44,7 +44,7 @@
 				</div>
 			</div>
 		</div>
-		<!--shiro控制bootstraptable行内按钮看见性 -->
+		<!--shiroによるbootstraptable行内ボタンの表示制御 -->
 		<div>
 			<script type="text/javascript">
 				var s_edit_h = 'hidden';

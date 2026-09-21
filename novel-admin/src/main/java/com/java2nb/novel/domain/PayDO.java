@@ -9,7 +9,7 @@ import java.util.Date;
 
 
 /**
- * 充值订单
+ * チャージ注文
  *
  * @author xiongxy
  * @email 1179705413@qq.com
@@ -20,33 +20,33 @@ public class PayDO implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    //主键
-    //java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-    //所以通过序列化成字符串来解决
+    //主キー
+    //Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+    //そのため文字列にシリアライズして解決する
     @JsonSerialize(using = LongToStringSerializer.class)
     private Long id;
-    //保留
-    //java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-    //所以通过序列化成字符串来解决
+    //予約
+    //Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+    //そのため文字列にシリアライズして解決する
     @JsonSerialize(using = LongToStringSerializer.class)
     private Long outTradeNo;
-    //订单号
+    //注文番号
     private String tradeNo;
-    //保留
+    //予約
     private Integer payChannel;
-    //交易香蕉币
+    //取引 yomiコイン数
     private Integer totalAmount;
-    //支付用户ID
-    //java中的long能表示的范围比js中number大,也就意味着部分数值在js中存不下(变成不准确的值)
-    //所以通过序列化成字符串来解决
+    //支払ユーザーID
+    //Java の long は JS の number より表現範囲が広く、一部の数値は JS で正確に保持できない（不正確な値になる）
+    //そのため文字列にシリアライズして解決する
     @JsonSerialize(using = LongToStringSerializer.class)
     private Long userId;
-    //支付状态：0：支付失败，1：支付成功，2：待支付
+    //支払ステータス。0：支払失敗、1：支払成功、2：支払待ち
     private Integer payStatus;
-    //创建时间
+    //作成日時
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    //更新时间
+    //更新日時
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
@@ -61,126 +61,126 @@ public class PayDO implements Serializable {
     }
 
     /**
-     * 设置：主键
+     * 設定：主キー
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * 获取：主键
+     * 取得：主キー
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * 设置：保留
+     * 設定：予約
      */
     public void setOutTradeNo(Long outTradeNo) {
         this.outTradeNo = outTradeNo;
     }
 
     /**
-     * 获取：保留
+     * 取得：予約
      */
     public Long getOutTradeNo() {
         return outTradeNo;
     }
 
     /**
-     * 设置：订单号
+     * 設定：注文番号
      */
     public void setTradeNo(String tradeNo) {
         this.tradeNo = tradeNo;
     }
 
     /**
-     * 获取：订单号
+     * 取得：注文番号
      */
     public String getTradeNo() {
         return tradeNo;
     }
 
     /**
-     * 设置：保留
+     * 設定：予約
      */
     public void setPayChannel(Integer payChannel) {
         this.payChannel = payChannel;
     }
 
     /**
-     * 获取：保留
+     * 取得：予約
      */
     public Integer getPayChannel() {
         return payChannel;
     }
 
     /**
-     * 设置：交易香蕉币
+     * 設定：取引 yomiコイン数
      */
     public void setTotalAmount(Integer totalAmount) {
         this.totalAmount = totalAmount;
     }
 
     /**
-     * 获取：交易香蕉币
+     * 取得：取引 yomiコイン数
      */
     public Integer getTotalAmount() {
         return totalAmount;
     }
 
     /**
-     * 设置：支付用户ID
+     * 設定：支払ユーザーID
      */
     public void setUserId(Long userId) {
         this.userId = userId;
     }
 
     /**
-     * 获取：支付用户ID
+     * 取得：支払ユーザーID
      */
     public Long getUserId() {
         return userId;
     }
 
     /**
-     * 设置：支付状态：0：支付失败，1：支付成功，2：待支付
+     * 設定：支払ステータス。0：支払失敗、1：支払成功、2：支払待ち
      */
     public void setPayStatus(Integer payStatus) {
         this.payStatus = payStatus;
     }
 
     /**
-     * 获取：支付状态：0：支付失败，1：支付成功，2：待支付
+     * 取得：支払ステータス。0：支払失敗、1：支払成功、2：支払待ち
      */
     public Integer getPayStatus() {
         return payStatus;
     }
 
     /**
-     * 设置：创建时间
+     * 設定：作成日時
      */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
     /**
-     * 获取：创建时间
+     * 取得：作成日時
      */
     public Date getCreateTime() {
         return createTime;
     }
 
     /**
-     * 设置：更新时间
+     * 設定：更新日時
      */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
     /**
-     * 获取：更新时间
+     * 取得：更新日時
      */
     public Date getUpdateTime() {
         return updateTime;

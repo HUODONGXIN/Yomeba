@@ -1,4 +1,4 @@
-// 以下为官方示例
+// 以下は公式サンプルです
 $().ready(function() {
 	validateRule();
 	// $("#signupForm").validate();
@@ -15,7 +15,7 @@ function update() {
 		cache : true,
 		type : "POST",
 		url : "/sys/user/update",
-		data : $('#signupForm').serialize(),// 你的formid
+		data : $('#signupForm').serialize(),// あなたのformid
 		async : false,
 		error : function(request) {
 			alert("Connection error");
@@ -24,7 +24,7 @@ function update() {
 			if (data.code == 0) {
 				parent.layer.msg(data.msg);
 				parent.reLoad();
-				var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+				var index = parent.layer.getFrameIndex(window.name); // ウィンドウインデックスを取得
 				parent.layer.close(index);
 
 			} else {
@@ -92,29 +92,29 @@ function validateRule() {
 		messages : {
 
 			name : {
-				required : icon + "请输入姓名"
+				required : icon + "氏名を入力してください"
 			},
 			username : {
-				required : icon + "请输入您的用户名",
-				minlength : icon + "用户名必须两个字符以上"
+				required : icon + "アカウントを入力してください",
+				minlength : icon + "アカウントは2文字以上で入力してください"
 			},
 			password : {
-				required : icon + "请输入您的密码",
-				minlength : icon + "密码必须6个字符以上"
+				required : icon + "パスワードを入力してください",
+				minlength : icon + "パスワードは6文字以上で入力してください"
 			},
 			confirm_password : {
-				required : icon + "请再次输入密码",
-				minlength : icon + "密码必须6个字符以上",
-				equalTo : icon + "两次输入的密码不一致"
+				required : icon + "パスワードを再入力してください",
+				minlength : icon + "パスワードは6文字以上で入力してください",
+				equalTo : icon + "入力されたパスワードが一致しません"
 			},
-			email : icon + "请输入您的E-mail",
+			email : icon + "メールアドレスを入力してください",
 		}
 	})
 }
 var openDept = function(){
 	layer.open({
 		type:2,
-		title:"选择部门",
+		title:"部門を選択",
 		area : [ '300px', '450px' ],
 		content:"/system/sysDept/treeView"
 	})

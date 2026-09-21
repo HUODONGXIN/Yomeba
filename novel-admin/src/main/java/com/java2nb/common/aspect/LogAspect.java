@@ -46,11 +46,11 @@ public class LogAspect {
     @Around("logPointCut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
         long beginTime = System.currentTimeMillis();
-        // 执行方法
+        // メソッドを実行
         Object result = point.proceed();
-        // 执行时长(毫秒)
+        // 実行時間（ミリ秒）
         long time = System.currentTimeMillis() - beginTime;
-        //异步保存日志
+        // 非同期でログを保存
         saveLog(point, time);
         return result;
     }
@@ -61,14 +61,14 @@ public class LogAspect {
         LogDO sysLog = new LogDO();
         Log syslog = method.getAnnotation(Log.class);
         if (syslog != null) {
-            // 注解上的描述
+            // アノテーション上の説明
             sysLog.setOperation(syslog.value());
         }
-        // 请求的方法名
+        // リクエストされたメソッド名
         String className = joinPoint.getTarget().getClass().getName();
         String methodName = signature.getName();
         sysLog.setMethod(className + "." + methodName + "()");
-        // 请求的参数
+        // リクエストされたパラメータ
         Object[] args = joinPoint.getArgs();
         try {
             String params = JSONUtils.beanToJson(args[0]).substring(0, 4999);
@@ -76,11 +76,11 @@ public class LogAspect {
         } catch (Exception e) {
 
         }
-        // 获取request
+        // request を取得
         HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
-        // 设置IP地址
+        // IPアドレスを設定
         sysLog.setIp(IPUtils.getIpAddr(request));
-        // 用户名
+        // ユーザー名
         UserDO currUser = ShiroUtils.getUser();
         if (null == currUser) {
             if (null != sysLog.getParams()) {
@@ -88,17 +88,17 @@ public class LogAspect {
                 sysLog.setUsername(sysLog.getParams());
             } else {
                 sysLog.setUserId(-1L);
-                sysLog.setUsername("获取用户信息为空");
+                sysLog.setUsername("ユーザー情報の取得が空です");
             }
         } else {
             sysLog.setUserId(ShiroUtils.getUserId());
             sysLog.setUsername(ShiroUtils.getUser().getUsername());
         }
         sysLog.setTime((int) time);
-        // 系统当前时间
+        // システム現在時刻
         Date date = new Date();
         sysLog.setGmtCreate(date);
-        // 保存系统日志
+        // システムログを保存
         logService.save(sysLog);
     }
 }

@@ -6,68 +6,68 @@ package com.java2nb.common.config;
 public interface CacheKey {
 
     /**
-     * 首页小说设置
+     * ホーム画面の小説設定
      */
     String INDEX_BOOK_SETTINGS_KEY = "indexBookSettingsKey:v2";
 
     /**
-     * 首页新闻
+     * ホーム画面のニュース
      */
     String INDEX_NEWS_KEY = "indexNewsKey";
 
     /**
-     * 首页点击榜单
+     * ホーム画面のアクセス数ランキング
      */
     String INDEX_CLICK_BANK_BOOK_KEY = "indexClickBankBookKey";
 
     /**
-     * 首页友情链接
+     * ホーム画面のリンク集
      */
     String INDEX_LINK_KEY = "indexLinkKey";
 
     /**
-     * 首页新书榜单
+     * ホーム画面の新着小説ランキング
      */
     String INDEX_NEW_BOOK_KEY = "indexNewBookKey";
 
 
     /**
-     * 首页更新榜单
+     * ホーム画面の更新ランキング
      */
     String INDEX_UPDATE_BOOK_KEY = "indexUpdateBookKey";
 
     /**
-     * 模板目录保存key
+     * テンプレートディレクトリ保存用キー
      */
     String TEMPLATE_DIR_KEY = "templateDirKey";
     ;
 
     /**
-     * 正在运行的爬虫线程存储KEY前缀
+     * 実行中のクローラースレッドを格納するキーのプレフィックス
      */
     String RUNNING_CRAWL_THREAD_KEY_PREFIX = "runningCrawlTreadDataKeyPrefix";
 
     /**
-     * 上一次搜索引擎更新的时间
+     * 前回の検索エンジン更新日時
      */
     String ES_LAST_UPDATE_TIME = "esLastUpdateTime";
 
     /**
-     * 搜索引擎转换锁
+     * 検索エンジン変換ロック
      */
     String ES_TRANS_LOCK = "esTransLock";
 
     /**
-     * 上一次搜索引擎是否更新过小说点击量
+     * 前回の検索エンジンで小説のアクセス数を更新したかどうか
      */
     String ES_IS_UPDATE_VISIT = "esIsUpdateVisit";
 
     /**
-     * 累积的小说点击量
+     * 累積された小説のアクセス数
      */
     String BOOK_ADD_VISIT_COUNT = "bookAddVisitCount";
     /**
-     * 测试爬虫规则缓存
+     * クロールルールテスト用キャッシュ
      */
     String BOOK_TEST_PARSE = "testParse";
 }

@@ -12,7 +12,7 @@
                 <input id="id" name="id" th:value="${bookIndex.id}"
                        type="hidden">
                                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">小说ID：</label>
+                        <label class="col-sm-3 control-label">小説ID：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookIndex.bookId}">
@@ -22,7 +22,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">目录号：</label>
+                        <label class="col-sm-3 control-label">話番号：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookIndex.indexNum}">
@@ -32,7 +32,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">目录名：</label>
+                        <label class="col-sm-3 control-label">話タイトル：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookIndex.indexName}">
@@ -42,7 +42,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">字数：</label>
+                        <label class="col-sm-3 control-label">文字数：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookIndex.wordCount}">
@@ -52,7 +52,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">是否收费，1：收费，0：免费：</label>
+                        <label class="col-sm-3 control-label">有料設定（1：有料、0：無料）：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookIndex.isVip}">
@@ -62,7 +62,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">章节费用（屋币）：</label>
+                        <label class="col-sm-3 control-label">話単価（yomiコイン）：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookIndex.bookPrice}">
@@ -72,7 +72,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">存储方式：</label>
+                        <label class="col-sm-3 control-label">保存形式：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookIndex.storageType}">
@@ -82,7 +82,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">：</label>
+                        <label class="col-sm-3 control-label">作成日時：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookIndex.createTime}==null?null:${#dates.format(bookIndex.createTime,'yyyy-MM-dd HH:mm:ss')}">
@@ -91,7 +91,7 @@
 
                     </div>
                                                                             <div class="form-group">
-                        <label class="col-sm-3 control-label">：</label>
+                        <label class="col-sm-3 control-label">更新日時：</label>
 
                                                     <div style="padding-top:8px" class="col-sm-8"
                                  th:text="${bookIndex.updateTime}==null?null:${#dates.format(bookIndex.updateTime,'yyyy-MM-dd HH:mm:ss')}">

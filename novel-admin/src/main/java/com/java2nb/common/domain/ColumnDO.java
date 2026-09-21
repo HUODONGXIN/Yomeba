@@ -1,23 +1,23 @@
 package com.java2nb.common.domain;
 
 /**
- * 列的属性
- * 
- * 
+ * カラムの属性
+ *
+ *
  */
 public class ColumnDO {
-	// 列名
+	// カラム名
 	private String columnName;
-	// 列名类型
+	// カラムの型
 	private String dataType;
-	// 列名备注
+	// カラムのコメント
 	private String comments;
 
-	// 属性名称(第一个字母大写)，如：user_name => UserName
+	// 属性名（先頭大文字）。例：user_name => UserName
 	private String attrName;
-	// 属性名称(第一个字母小写)，如：user_name => userName
+	// 属性名（先頭小文字）。例：user_name => userName
 	private String attrname;
-	// 属性类型
+	// 属性の型
 	private String attrType;
 	// auto_increment
 	private String extra;
