@@ -48,17 +48,17 @@
                 <div class="card">
                     <div class="card-toolbar">
                         <div class="cf">
-                            <h2 class="fl" style="margin:0;font-size:16px;">章リスト</h2>
+                            <h2 class="fl" style="margin:0;font-size:16px;">話リスト</h2>
                             <div class="fr">
                                 <a href="javascript:batchDelete()" class="btn_red" style="margin-right:8px;">一括削除</a>
                                 <a href="javascript:batchOffline()" class="btn_red" style="margin-right:8px;">一括非公開</a>
-                                <a href="javascript:addContent()" class="btn_red">新しい章を作成</a>
+                                <a href="javascript:addContent()" class="btn_red">新しい話を作成</a>
                             </div>
                         </div>
                     </div>
 
                     <div id="noContentDiv">
-                        <div class="tc" style="margin-top:60px"><a href="javascript:addContent()" class="btn_red">新しい章を作成</a></div>
+                        <div class="tc" style="margin-top:60px"><a href="javascript:addContent()" class="btn_red">新しい話を作成</a></div>
                     </div>
                     <div id="hasContentDiv" style="display:none;">
                         <div id="divData" class="updateTable">
@@ -66,7 +66,7 @@
                                 <thead>
                                 <tr>
                                     <th style="width:30px;"><input type="checkbox" id="checkAll" onclick="toggleAll(this)"></th>
-                                    <th class="name">章名</th>
+                                    <th class="name">話名</th>
                                     <th class="goread">更新時間</th>
                                     <th class="goread">有料かどうか</th>
                                     <th class="goread">操作</th>
@@ -109,8 +109,8 @@
     }
     function batchDelete() {
         var ids = getCheckedIndexIds();
-        if (ids.length == 0) { layer.msg("章を選択してください"); return; }
-        layer.confirm(ids.length + "件の章を削除しますか？", function () {
+        if (ids.length == 0) { layer.msg("話を選択してください"); return; }
+        layer.confirm(ids.length + "件の話を削除しますか？", function () {
             var done = 0;
             ids.forEach(function (id) {
                 $.ajax({ type: "delete", url: "/author/deleteIndex/" + id, dataType: "json",
@@ -120,8 +120,8 @@
     }
     function batchOffline() {
         var ids = getCheckedIndexIds();
-        if (ids.length == 0) { layer.msg("章を選択してください"); return; }
-        layer.confirm(ids.length + "件の章を非公開にしますか？", function () {
+        if (ids.length == 0) { layer.msg("話を選択してください"); return; }
+        layer.confirm(ids.length + "件の話を非公開にしますか？", function () {
             var done = 0;
             ids.forEach(function (id) {
                 $.ajax({ type: "post", url: "/author/updateIndexStatus",
@@ -190,7 +190,7 @@
     }
 
     function updateIndexStatus(indexId, status) {
-        layer.confirm(status == 1 ? 'この章を公開しますか？' : 'この章を非公開にしますか？', function () {
+        layer.confirm(status == 1 ? 'この話を公開しますか？' : 'この話を非公開にしますか？', function () {
             $.ajax({
                 type: "post",
                 url: "/author/updateIndexStatus",
@@ -224,7 +224,7 @@
     }
 
     function deleteIndex(indexId) {
-        layer.confirm('この章を削除しますか？', function () {
+        layer.confirm('この話を削除しますか？', function () {
             $.ajax({
                 type: "delete",
                 url: "/author/deleteIndex/" + indexId,

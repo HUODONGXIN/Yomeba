@@ -51,14 +51,14 @@
         </div>
         <div class="my_r">
             <div id="noContentDiv">
-                <div class="tc" style="margin-top: 200px"><a href="javascript:addContent()" class="btn_red">新しい章を作成</a>
+                <div class="tc" style="margin-top: 200px"><a href="javascript:addContent()" class="btn_red">新しい話を作成</a>
                 </div>
 
             </div>
             <div class="my_bookshelf" id="hasContentDiv" style="display: none">
                 <div class="title cf">
-                    <h2 class="fl">章リスト</h2>
-                    <div class="fr"><a href="javascript:addContent()" class="btn_red">新しい章を作成</a></div>
+                    <h2 class="fl">話リスト</h2>
+                    <div class="fr"><a href="javascript:addContent()" class="btn_red">新しい話を作成</a></div>
                 </div>
 
                 <div id="divData" class="updateTable">
@@ -69,7 +69,7 @@
                                  番号
                              </th>-->
                             <th class="name">
-                                章名
+                                話名
                             </th>
                             <th class="goread">
                                 更新時間
@@ -231,7 +231,7 @@
     }
 
     function updateIndexStatus(indexId, status) {
-        layer.confirm(status == 1 ? 'この章を公開しますか？' : 'この章を非公開にしますか？', function () {
+        layer.confirm(status == 1 ? 'この話を公開しますか？' : 'この話を非公開にしますか？', function () {
             $.ajax({
                 type: "post",
                 url: "/author/updateIndexStatus",
