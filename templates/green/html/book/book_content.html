@@ -1,17 +1,18 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head th:replace="common/header :: common_head(~{::title},~{::meta},~{::link},~{})">
     <title th:utext="${book.bookName}+'_'+${bookIndex.indexName}+'_'+${application.website.name}"></title>
     <meta name="keywords"
-          th:content="${book.bookName}+'公式初掲載,'+${book.bookName}+'小説,'+${book.bookName}+'最新話,'+${book.bookName}+'txtダウンロード,'+${book.bookName}+'ポップアップなし,'+${book.bookName}+'完本オフライン'"/>
+        th:content="${book.bookName}+'公式初掲載,'+${book.bookName}+'小説,'+${book.bookName}+'最新話,'+${book.bookName}+'txtダウンロード,'+${book.bookName}+'ポップアップなし,'+${book.bookName}+'完本オフライン'" />
     <meta name="description"
-          th:content="${book.bookName}+','+${book.bookName}+'小説読書,'+${application.website.name}+'は'+${book.bookName}+'の初掲載最新話およびtxtダウンロードを提供,'+${book.bookName}+'最新更新話は'+${application.website.name}+'へ。'"/>
-    <link rel="stylesheet" href="/css/read.css"/>
-    <link href="/css/book.css" rel="stylesheet"/>
+        th:content="${book.bookName}+','+${book.bookName}+'小説読書,'+${application.website.name}+'は'+${book.bookName}+'の初掲載最新話およびtxtダウンロードを提供,'+${book.bookName}+'最新更新話は'+${application.website.name}+'へ。'" />
+    <link rel="stylesheet" href="/css/read.css" />
+    <link href="/css/book.css" rel="stylesheet" />
 
 </head>
-<link href="/layui/css/layui.css" rel="stylesheet"/>
+<link href="/layui/css/layui.css" rel="stylesheet" />
 <style type="text/css">
     .screen_toolbar {
         position: fixed;
@@ -21,7 +22,6 @@
         text-align: center;
         z-index: 100;
     }
-
 </style>
 <div th:replace="common/js :: js"></div>
 <script src="/javascript/bookdetail.js" type="text/javascript"></script>
@@ -33,194 +33,200 @@
 
 
 </script>
-<body class="read_style_7" oncontextmenu="return false" onselectstart="return false"
-      ondragstart="return false" onbeforecopy="return false" oncopy="document.selection.empty()"
-      onselect="document.selection.empty()">
 
-<input type="hidden" id="bookId" th:value="${book.id}"/>
-<input type="hidden" id="bookName" th:value="${book.bookName}"/>
-<input type="hidden" id="preIndexName" th:value="${bookIndex.indexName}"/>
+<body class="read_style_7" oncontextmenu="return false" onselectstart="return false" ondragstart="return false"
+    onbeforecopy="return false" oncopy="document.selection.empty()" onselect="document.selection.empty()">
 
-<input type="hidden" id="preContentId" th:value="${bookIndex.id}"/>
-<input type="hidden" id="preIndexId" th:value="${preBookIndexId}"/>
-<input type="hidden" id="nextIndexId" th:value="${nextBookIndexId}"/>
-<input type="hidden" id="logo" th:value="${application.website.logo}"/>
-<input type="hidden" id="logoDark" th:value="${application.website.logoDark}"/>
+    <input type="hidden" id="bookId" th:value="${book.id}" />
+    <input type="hidden" id="bookName" th:value="${book.bookName}" />
+    <input type="hidden" id="preIndexName" th:value="${bookIndex.indexName}" />
 
-<div th:replace="common/top :: top('10')">
-</div>
+    <input type="hidden" id="preContentId" th:value="${bookIndex.id}" />
+    <input type="hidden" id="preIndexId" th:value="${preBookIndexId}" />
+    <input type="hidden" id="nextIndexId" th:value="${nextBookIndexId}" />
+    <input type="hidden" id="logo" th:value="${application.website.logo}" />
+    <input type="hidden" id="logoDark" th:value="${application.website.logoDark}" />
 
-<div id="showDetail">
+    <div th:replace="common/top :: top('10')">
+    </div>
 
-    <div class="readBody cf">
-        <div class="readMain cf">
-            <div class="read_menu">
-                <div class="menu_left" style="">
-                    <ul>
-                        <li><a class="ico_catalog" th:href="'/book/indexList-'+${book.id}+'.html'" title="目次">
-                            <b>目次</b></a></li>
-                        <li><a class="ico_page" th:href="'/book/'+${book.id}+'.html'" title="書籍ページへ"><b>書籍ページ</b></a></li>
-                        <li class="li_shelf" id="cFavs"><a class="ico_shelf" href="javascript:void(0);" title="本棚に追加"
-                                                           onclick="javascript:BookDetail.AddFavorites(37,1959973,1);"><b>本棚に追加</b></a>
-                        </li>
-                        <li class="li_shelfed" style="display: none;"><a class="ico_shelfed" href="javascript:void(0);"
-                                                                         title="お気に入り登録済み"><b>お気に入り登録済み</b></a></li>
+    <div id="showDetail">
 
-                        <li><a class="ico_comment" th:href="'/book/comment-'+${book.id}+'.html'" title="レビュー">
-                            <b>レビュー</b></a></li>
-                        <li><a class="ico_setup" href="javascript:void(0);" title="設定"><b>設定</b></a></li>
-                    </ul>
-                </div>
-                <div class="menu_right" style="position: fixed; bottom: 0">
-                    <ul>
-                        <li><a class="ico_pagePrev"
-                               th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'"
-                               title="前の話"><i>前の話</i></a></li>
-                        <li><a class="ico_pageNext"
-                               th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'"
-                               title="次の話"><i>次の話</i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="readWrap">
-                <div class="bookNav">
-                    <a href="/">ホーム </a>&gt; <a th:href="'/book/bookclass.html?c='+${book.catId}"
-                                               th:text="${book.catName}">
-                </a>&gt; <a th:href="'/book/'+${book.id}+'.html'" th:utext="${book.bookName}">
+        <div class="readBody cf">
+            <div class="readMain cf">
+                <div class="read_menu">
+                    <div class="menu_left" style="">
+                        <ul>
+                            <li><a class="ico_catalog" th:href="'/book/indexList-'+${book.id}+'.html'" title="目次">
+                                    <b>目次</b></a></li>
+                            <li><a class="ico_page" th:href="'/book/'+${book.id}+'.html'"
+                                    title="作品ページへ"><b>作品ページ</b></a></li>
+                            <li class="li_shelf" id="cFavs"><a class="ico_shelf" href="javascript:void(0);"
+                                    title="本棚に追加"
+                                    onclick="javascript:BookDetail.AddFavorites(37,1959973,1);"><b>本棚に追加</b></a>
+                            </li>
+                            <li class="li_shelfed" style="display: none;"><a class="ico_shelfed"
+                                    href="javascript:void(0);" title="お気に入り登録済み"><b>お気に入り登録済み</b></a></li>
 
-                </a>
-                </div>
-                <div id="readcontent">
-                    <div class="textbox cf">
-
-                        <div class="book_title">
-                            <h1 th:utext="${bookIndex.indexName}">
-                            </h1>
-                            <div class="textinfo">
-                                ジャンル：<a th:href="'/book/bookclass.html?c='+${book.catId}" th:text="${book.catName}"></a>
-                                著者：<a th:href="'javascript:searchByK(\''+${book.authorName}+'\')'"
-                                      th:utext="${book.authorName}"></a><span
-                                    th:text="'文字数：'+${bookIndex.wordCount}"></span><span
-                                    th:text="'更新時間：'+${#dates.format(bookIndex.updateTime, 'yy/MM/dd HH:mm:ss')}"></span>
-                            </div>
-                        </div>
-                        <div class="txtwrap" th:if="${needBuy}">
-                            <div id="showReading" class="readBox" style="font-size: 16px; font-family: microsoft yahei">
-                                <p>
-
-                                </p>
-
-                                <div class="pc_bar" style="display: none;">
-                                    <a href="javascript:void(0);" class="icon_pc"
-                                       onclick="javascript:uFans.startSupportRead();">
-                                        <span><i class="icon_yb"></i><em>応援</em></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div id="showBooking" class="orderBox">
-                                <h3>この話はVIP話です。購読後に続きを読めます</h3>
-                                <form method="post" action="./2052117.html?bid=302&amp;cid=2052117" id="Form1">
-                                    <ul class="order_list">
-                                        <li>価格：<span class="red" th:text="${bookIndex.bookPrice}+'yomiコイン(1元=100yomiコイン)'"></span>
-                                        </li>
-                                        <li id="panelPay" class="btns"><a class="btn_red"
-                                                                          href="javascript:buyBookIndex()">購入</a></li>
-
-                                    </ul>
-                                    <input type="hidden" name="HidCId" id="HidCId" value="2052117">
-                                    <input type="hidden" name="HidBId" id="HidBId" value="302">
-                                    <input type="hidden" name="HidCRank" id="HidCRank" value="49">
-                                </form>
-                            </div>
-                        </div>
-                        <div class="txtwrap" th:if="${!needBuy}">
-                            <div id="showReading" class="readBox" style="font-size: 16px; font-family: microsoft yahei"
-                                 th:utext="${bookContent.content}">
-
-
-                                <div class="pc_bar" style="display: none;">
-                                    <a href="javascript:void(0);" class="icon_pc"
-                                       onclick="javascript:uFans.startSupportRead();">
-                                        <span><i class="icon_yb"></i><em>応援</em></span>
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-
+                            <li><a class="ico_comment" th:href="'/book/comment-'+${book.id}+'.html'" title="レビュー">
+                                    <b>レビュー</b></a></li>
+                            <li><a class="ico_setup" href="javascript:void(0);" title="設定"><b>設定</b></a></li>
+                        </ul>
+                    </div>
+                    <div class="menu_right" style="position: fixed; bottom: 0">
+                        <ul>
+                            <li><a class="ico_pagePrev"
+                                    th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'"
+                                    title="前の話"><i>前の話</i></a></li>
+                            <li><a class="ico_pageNext"
+                                    th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'"
+                                    title="次の話"><i>次の話</i></a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="nextPageBox">
-                    <a class="prev"
-                       th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'">前の話</a>
-                    <a class="dir" th:href="'/book/indexList-'+${book.id}+'.html'"
-                    >目次</a> <a class="next"
-                               th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'">次の話</a>
+                <div class="readWrap">
+                    <div class="bookNav">
+                        <a href="/">ホーム </a>&gt; <a th:href="'/book/bookclass.html?c='+${book.catId}"
+                            th:text="${book.catName}">
+                        </a>&gt; <a th:href="'/book/'+${book.id}+'.html'" th:utext="${book.bookName}">
+
+                        </a>
+                    </div>
+                    <div id="readcontent">
+                        <div class="textbox cf">
+
+                            <div class="book_title">
+                                <h1 th:utext="${bookIndex.indexName}">
+                                </h1>
+                                <div class="textinfo">
+                                    ジャンル：<a th:href="'/book/bookclass.html?c='+${book.catId}"
+                                        th:text="${book.catName}"></a>
+                                    著者：<a th:href="'javascript:searchByK(\''+${book.authorName}+'\')'"
+                                        th:utext="${book.authorName}"></a><span
+                                        th:text="'文字数：'+${bookIndex.wordCount}"></span><span
+                                        th:text="'更新時間：'+${#dates.format(bookIndex.updateTime, 'yy/MM/dd HH:mm:ss')}"></span>
+                                </div>
+                            </div>
+                            <div class="txtwrap" th:if="${needBuy}">
+                                <div id="showReading" class="readBox" style="font-size: 16px; font-family: " Yu
+                                    Gothic", "Hiragino Kaku Gothic ProN" , "Meiryo" , "Noto Sans JP" , "Microsoft YaHei"
+                                    , sans-serif">
+                                    <p>
+
+                                    </p>
+
+                                    <div class="pc_bar" style="display: none;">
+                                        <a href="javascript:void(0);" class="icon_pc"
+                                            onclick="javascript:uFans.startSupportRead();">
+                                            <span><i class="icon_yb"></i><em>応援</em></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div id="showBooking" class="orderBox">
+                                    <h3>この話はVIP話です。購読後に続きを読めます</h3>
+                                    <form method="post" action="./2052117.html?bid=302&amp;cid=2052117" id="Form1">
+                                        <ul class="order_list">
+                                            <li>価格：<span class="red"
+                                                    th:text="${bookIndex.bookPrice}+'yomiコイン(1元=100yomiコイン)'"></span>
+                                            </li>
+                                            <li id="panelPay" class="btns"><a class="btn_red"
+                                                    href="javascript:buyBookIndex()">購入</a></li>
+
+                                        </ul>
+                                        <input type="hidden" name="HidCId" id="HidCId" value="2052117">
+                                        <input type="hidden" name="HidBId" id="HidBId" value="302">
+                                        <input type="hidden" name="HidCRank" id="HidCRank" value="49">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="txtwrap" th:if="${!needBuy}">
+                                <div id="showReading" class="readBox" style="font-size: 16px; font-family: " Yu
+                                    Gothic", "Hiragino Kaku Gothic ProN" , "Meiryo" , "Noto Sans JP" , "Microsoft YaHei"
+                                    , sans-serif" th:utext="${bookContent.content}">
+
+
+                                    <div class="pc_bar" style="display: none;">
+                                        <a href="javascript:void(0);" class="icon_pc"
+                                            onclick="javascript:uFans.startSupportRead();">
+                                            <span><i class="icon_yb"></i><em>応援</em></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="nextPageBox">
+                        <a class="prev"
+                            th:href="'javascript:enterPreIndexPage(\''+${book.id}+'\',\''+${preBookIndexId}+'\');'">前の話</a>
+                        <a class="dir" th:href="'/book/indexList-'+${book.id}+'.html'">目次</a> <a class="next"
+                            th:href="'javascript:enterNextIndexPage(\''+${book.id}+'\',\''+${nextBookIndexId}+'\');'">次の話</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="readPopup qrBox" style="display: none">
-        <a class="closePopup" href="javascript:void(0);" onclick="javascript:$('.maskBox,.qrBox').hide();"></a>
-        <div class="popupTit">
-            <h3>スマホで読む</h3>
+        <div class="readPopup qrBox" style="display: none">
+            <a class="closePopup" href="javascript:void(0);" onclick="javascript:$('.maskBox,.qrBox').hide();"></a>
+            <div class="popupTit">
+                <h3>スマホで読む</h3>
+            </div>
+            <div class="qrList">
+                <ul>
+                </ul>
+            </div>
         </div>
-        <div class="qrList">
-            <ul>
-            </ul>
-        </div>
-    </div>
-    <div class="readPopup setupBox" style="display: none;">
-        <a class="closePopup" href="javascript:void(0);" onclick="javascript:$('.maskBox,.setupBox').hide();"></a>
-        <div class="popupTit">
-            <h3>設定</h3>
-        </div>
-        <div class="setupList">
-            <ul>
-                <li class="readTheme">
-                    <em class="tit">読書テーマ：</em>
-                    <a id="setup_color_fff" class="fff current"
-                       href="javascript:void(0);" title="純白" onclick="javascript:BookDetail.SetBackUpColor(7);"></a><a
-                        id="setup_color_white" class="white" href="javascript:void(0);" title="白"
-                        onclick="javascript:BookDetail.SetBackUpColor(1);"></a><a id="setup_color_green" class="green"
-                                                                                  href="javascript:void(0);" title="緑"
-                                                                                  onclick="javascript:BookDetail.SetBackUpColor(2);"></a><a id="setup_color_pink" class="pink"
-                                                                                  href="javascript:void(0);" title="ピンク"
-                                                                                  onclick="javascript:BookDetail.SetBackUpColor(3);"></a><a
-                        id="setup_color_yellow" class="yellow" href="javascript:void(0);" title="黄"
-                        onclick="javascript:BookDetail.SetBackUpColor(4);"></a><a id="setup_color_gray" class="gray"
-                                                                                  href="javascript:void(0);" title="グレー"
-                                                                                  onclick="javascript:BookDetail.SetBackUpColor(5);"></a><a
-                        id="setup_color_night" class="night" href="javascript:void(0);" title="夜間"
-                        onclick="javascript:BookDetail.SetBackUpColor(6);"></a></li>
-                <li class="setFont setBtn"><em class="tit">本文フォント：</em> <a id="setup_font_yahei" class="setYahei current"
-                                                                         href="javascript:void(0);"
-                                                                         onclick="javascript:BookDetail.SetReadFontFamily(0);">ゴシック</a>
-                    <a id="setup_font_simsun" class="setSimsun" href="javascript:void(0);"
-                       onclick="javascript:BookDetail.SetReadFontFamily(1);">明朝</a>
-                </li>
-                <li class="fontSize setBtn"><em class="tit">文字サイズ：</em> <a class="small" href="javascript:void(0);"
-                                                                          onclick="javascript:BookDetail.SetReadFont(-2);">A-</a><span
-                        class="current_font"
-                        id="cFonts">
+        <div class="readPopup setupBox" style="display: none;">
+            <a class="closePopup" href="javascript:void(0);" onclick="javascript:$('.maskBox,.setupBox').hide();"></a>
+            <div class="popupTit">
+                <h3>設定</h3>
+            </div>
+            <div class="setupList">
+                <ul>
+                    <li class="readTheme">
+                        <em class="tit">読書テーマ：</em>
+                        <a id="setup_color_fff" class="fff current" href="javascript:void(0);" title="純白"
+                            onclick="javascript:BookDetail.SetBackUpColor(7);"></a><a id="setup_color_white"
+                            class="white" href="javascript:void(0);" title="白"
+                            onclick="javascript:BookDetail.SetBackUpColor(1);"></a><a id="setup_color_green"
+                            class="green" href="javascript:void(0);" title="緑"
+                            onclick="javascript:BookDetail.SetBackUpColor(2);"></a><a id="setup_color_pink" class="pink"
+                            href="javascript:void(0);" title="ピンク"
+                            onclick="javascript:BookDetail.SetBackUpColor(3);"></a><a id="setup_color_yellow"
+                            class="yellow" href="javascript:void(0);" title="黄"
+                            onclick="javascript:BookDetail.SetBackUpColor(4);"></a><a id="setup_color_gray" class="gray"
+                            href="javascript:void(0);" title="グレー"
+                            onclick="javascript:BookDetail.SetBackUpColor(5);"></a><a id="setup_color_night"
+                            class="night" href="javascript:void(0);" title="夜間"
+                            onclick="javascript:BookDetail.SetBackUpColor(6);"></a>
+                    </li>
+                    <li class="setFont setBtn"><em class="tit">本文フォント：</em> <a id="setup_font_yahei"
+                            class="setYahei current" href="javascript:void(0);"
+                            onclick="javascript:BookDetail.SetReadFontFamily(0);">ゴシック</a>
+                        <a id="setup_font_simsun" class="setSimsun" href="javascript:void(0);"
+                            onclick="javascript:BookDetail.SetReadFontFamily(1);">明朝</a>
+                    </li>
+                    <li class="fontSize setBtn"><em class="tit">文字サイズ：</em> <a class="small" href="javascript:void(0);"
+                            onclick="javascript:BookDetail.SetReadFont(-2);">A-</a><span class="current_font"
+                            id="cFonts">
                             16</span><a class="big" href="javascript:void(0);"
-                                        onclick="javascript:BookDetail.SetReadFont(2);">A+</a></li>
-            </ul>
+                            onclick="javascript:BookDetail.SetReadFont(2);">A+</a></li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
-<div class="maskBox" style="display: none">
-</div>
-<div id="showError">
-    <span id="LabErrorStatus"></span>
-</div>
+    <div class="maskBox" style="display: none">
+    </div>
+    <div id="showError">
+        <span id="LabErrorStatus"></span>
+    </div>
 
-<div class="maskBox" style="display: none" onclick="javascript:uFans.closeBox();"></div>
-<div class="readPopup pcBox" style="display: none" id="showPC"></div>
-<div class="readPopup flowerBox" style="display: none" id="showFlower"></div>
-<div class="readPopup newsTipBox" style="display: none;" id="showNote"></div>
+    <div class="maskBox" style="display: none" onclick="javascript:uFans.closeBox();"></div>
+    <div class="readPopup pcBox" style="display: none" id="showPC"></div>
+    <div class="readPopup flowerBox" style="display: none" id="showFlower"></div>
+    <div class="readPopup newsTipBox" style="display: none;" id="showNote"></div>
 
-<!--
+    <!--
 <div id="screenInput" class="screen_toolbar" >
     <div style="height: 5px" class="layui-col-xs2 layui-col-sm3 layui-col-md4 layui-col-lg4"></div>
     <div class="layui-col-xs6 layui-col-sm4 layui-col-md4 layui-col-lg4">
@@ -241,146 +247,51 @@
     </div>
 </form>-->
 
-<script language="javascript" type="text/javascript">
-    var logo = $("#logo").val();
-    var logoDark = $("#logoDark").val();
-    if (font) {
-        $(".readBox").css("font-size", font + "px");
-        $("#cFonts").html(font);
-        $("#ChapterBody").attr("class", "article-content font" + font);
-        BookDetail.reShowCover();
-    }
-    if (fontNum) {
-        BookDetail.SetReadFontFamily(fontNum);
-    }
-    if (colorNum) {
-        BookDetail.SetBackUpColor(colorNum);
-        if (colorNum == 6) {
-            $(".logo img").attr("src", logoDark);
+    <script language="javascript" type="text/javascript">
+        var logo = $("#logo").val();
+        var logoDark = $("#logoDark").val();
+        if (font) {
+            $(".readBox").css("font-size", font + "px");
+            $("#cFonts").html(font);
+            $("#ChapterBody").attr("class", "article-content font" + font);
+            BookDetail.reShowCover();
         }
-    }
-    //本棚にあるかどうかを確認
-    $.ajax({
-        type: "get",
-        url: "/user/queryIsInShelf",
-        data: {'bookId': $("#bookId").val()},
-        dataType: "json",
-        success: function (data) {
-            if (data.code == 200) {
-                if (data.data) {
-                    $("#cFavs").html("<a class=\"ico_shelf\" href=\"javascript:void(0);\"><b>お気に入り登録済み</b></a>");
-                }
-                //読書履歴を追加
-                $.ajax({
-                    type: "POST",
-                    url: "/user/addReadHistory",
-                    data: {'bookId': $("#bookId").val(), 'preContentId': $("#preContentId").val()},
-                    dataType: "json",
-                    success: function (data) {
-
-                    },
-                    error: function () {
-                    }
-                })
-
-
-            } else if (data.code == 1001) {
-                //未ログイン
-
-            } else {
-                layer.alert(data.msg);
+        if (fontNum) {
+            BookDetail.SetReadFontFamily(fontNum);
+        }
+        if (colorNum) {
+            BookDetail.SetBackUpColor(colorNum);
+            if (colorNum == 6) {
+                $(".logo img").attr("src", logoDark);
             }
-
-        },
-        error: function () {
-            layer.alert('ネットワークエラー');
         }
-    })
-
-
-    var bookId = $("#bookId").val();
-    var indexId = $("#preContentId").val();
-    var preIndexId = $("#preIndexId").val();
-    var nextIndexId = $("#nextIndexId").val();
-    $(function () {
-        BookDetail.GetReadSet(bookId, indexId, preIndexId, nextIndexId, 1);
-        $(".ico_setup").click(function () {
-
-            $(".maskBox,.setupBox").show();
-        });
-        $(".ico_phone").click(function () {
-            $(".maskBox,.qrBox").show();
-        });
-
-        $(window).scroll(function () {
-            var vtop = $(document).scrollTop();
-            var vbottom = $(document).height() - vtop - $(window).height();
-            if (vtop > 50) {
-                $(".menu_left").css("position", "fixed");
-                $(".menu_left").css("top", "2px");
-            } else {
-                $(".menu_left").css("position", "absolute");
-                $(".menu_left").css("top", "60px")
-            }
-
-            if (vbottom < 150) {
-                $(".menu_right").css("position", "absolute");
-                $(".menu_right").css("bottom", "150px");
-            } else {
-                $(".menu_right").css("position", "fixed");
-                $(".menu_right").css("bottom", "2px");
-            }
-        });
-
-        var bgClass = '1';
-        if (bgClass == 6) {
-            $(".logo img").attr("src", logoDark);
-        }
-        $(".readTheme a").click(function () {
-            $(".logo img").attr("src", logo);
-        })
-        $("#setup_color_night").click(function () {
-            $(".logo img").attr("src", logoDark);
-        });
-
-
-    });
-
-    function enterPreIndexPage(bookId, bookIndexId) {
-        if (bookIndexId != 0) {
-            window.location.href = '/book/' + bookId + '/' + bookIndexId + ".html";
-        } else {
-            window.location.href = '/book/indexList-' + bookId + '.html';
-        }
-
-    }
-
-    function enterNextIndexPage(bookId, bookIndexId) {
-        if (bookIndexId != 0) {
-            window.location.href = '/book/' + bookId + '/' + bookIndexId + ".html";
-        } else {
-            window.location.href = '/book/indexList-' + bookId + '.html';
-        }
-
-    }
-
-    function buyBookIndex() {
+        //本棚にあるかどうかを確認
         $.ajax({
-            type: "POST",
-            url: "/user/buyBookIndex",
-            data: {
-                'bookId': $("#bookId").val(), "bookName": $("#bookName").val(),
-                "bookIndexId": $("#preContentId").val(), "bookIndexName": $("#preIndexName").val()
-            },
+            type: "get",
+            url: "/user/queryIsInShelf",
+            data: { 'bookId': $("#bookId").val() },
             dataType: "json",
             success: function (data) {
                 if (data.code == 200) {
-                    location.reload();
+                    if (data.data) {
+                        $("#cFavs").html("<a class=\"ico_shelf\" href=\"javascript:void(0);\"><b>お気に入り登録済み</b></a>");
+                    }
+                    //読書履歴を追加
+                    $.ajax({
+                        type: "POST",
+                        url: "/user/addReadHistory",
+                        data: { 'bookId': $("#bookId").val(), 'preContentId': $("#preContentId").val() },
+                        dataType: "json",
+                        success: function (data) {
+
+                        },
+                        error: function () {
+                        }
+                    })
 
 
                 } else if (data.code == 1001) {
                     //未ログイン
-                    location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
 
                 } else {
                     layer.alert(data.msg);
@@ -392,10 +303,106 @@
             }
         })
 
-    }
 
-    $.post("/book/addVisitCount", {"bookId": $("#bookId").val()}, function () {
-    });
-</script>
+        var bookId = $("#bookId").val();
+        var indexId = $("#preContentId").val();
+        var preIndexId = $("#preIndexId").val();
+        var nextIndexId = $("#nextIndexId").val();
+        $(function () {
+            BookDetail.GetReadSet(bookId, indexId, preIndexId, nextIndexId, 1);
+            $(".ico_setup").click(function () {
+
+                $(".maskBox,.setupBox").show();
+            });
+            $(".ico_phone").click(function () {
+                $(".maskBox,.qrBox").show();
+            });
+
+            $(window).scroll(function () {
+                var vtop = $(document).scrollTop();
+                var vbottom = $(document).height() - vtop - $(window).height();
+                if (vtop > 50) {
+                    $(".menu_left").css("position", "fixed");
+                    $(".menu_left").css("top", "2px");
+                } else {
+                    $(".menu_left").css("position", "absolute");
+                    $(".menu_left").css("top", "60px")
+                }
+
+                if (vbottom < 150) {
+                    $(".menu_right").css("position", "absolute");
+                    $(".menu_right").css("bottom", "150px");
+                } else {
+                    $(".menu_right").css("position", "fixed");
+                    $(".menu_right").css("bottom", "2px");
+                }
+            });
+
+            var bgClass = '1';
+            if (bgClass == 6) {
+                $(".logo img").attr("src", logoDark);
+            }
+            $(".readTheme a").click(function () {
+                $(".logo img").attr("src", logo);
+            })
+            $("#setup_color_night").click(function () {
+                $(".logo img").attr("src", logoDark);
+            });
+
+
+        });
+
+        function enterPreIndexPage(bookId, bookIndexId) {
+            if (bookIndexId != 0) {
+                window.location.href = '/book/' + bookId + '/' + bookIndexId + ".html";
+            } else {
+                window.location.href = '/book/indexList-' + bookId + '.html';
+            }
+
+        }
+
+        function enterNextIndexPage(bookId, bookIndexId) {
+            if (bookIndexId != 0) {
+                window.location.href = '/book/' + bookId + '/' + bookIndexId + ".html";
+            } else {
+                window.location.href = '/book/indexList-' + bookId + '.html';
+            }
+
+        }
+
+        function buyBookIndex() {
+            $.ajax({
+                type: "POST",
+                url: "/user/buyBookIndex",
+                data: {
+                    'bookId': $("#bookId").val(), "bookName": $("#bookName").val(),
+                    "bookIndexId": $("#preContentId").val(), "bookIndexName": $("#preIndexName").val()
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.code == 200) {
+                        location.reload();
+
+
+                    } else if (data.code == 1001) {
+                        //未ログイン
+                        location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
+
+                    } else {
+                        layer.alert(data.msg);
+                    }
+
+                },
+                error: function () {
+                    layer.alert('ネットワークエラー');
+                }
+            })
+
+        }
+
+        $.post("/book/addVisitCount", { "bookId": $("#bookId").val() }, function () {
+        });
+    </script>
 </body>
+
 </html>

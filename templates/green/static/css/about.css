@@ -13,7 +13,7 @@
 .news_list li h5 { font-size: 14px }
 .news_list li p { color: #999; padding-top: 15px }
 .news_nav { color: #999; padding: 0px 0; line-height: 2.5; }
-.news_nav a { font: 12px/1 "Microsoft YaHei"; margin: 0 5px; }
+.news_nav a { font: 12px/1 "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", "Microsoft YaHei", sans-serif; margin: 0 5px; }
 .news_title { text-align: center; border-bottom: 1px solid #eee; margin: 30px auto 40px; }
 .news_title h2 { font-size: 20px; }
 .news_title .from { color: #999; display: block; margin: 20px 0; }

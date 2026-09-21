@@ -554,7 +554,7 @@
 }
 
 .fansCon .list2 .num {
-    font: 16px/59px "microsoft yahei", Arial, "宋体";
+    font: 16px/59px "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", "Microsoft YaHei", sans-serif;
     width: 32px;
     color: #666;
     font-weight: bold

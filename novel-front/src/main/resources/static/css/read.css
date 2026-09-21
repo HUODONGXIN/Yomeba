@@ -14,7 +14,7 @@ a:hover, .redFont, .current, .bookNav a:hover, .textinfo a:hover {
 /* 阅读页背景 */
 body { /*background-color: #4a4a4a;*/
     color: #333;
-    font-family: "Microsoft YaHei"
+    font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", "Microsoft YaHei", sans-serif
 }
 
 .topMain {
@@ -278,7 +278,7 @@ body, .read_style_1 {
 }
 
 .bookNav a {
-    font: 12px/1 "Microsoft YaHei";
+    font: 12px/1 "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", "Microsoft YaHei", sans-serif;
     margin: 0 5px
 }
 
@@ -296,14 +296,14 @@ body, .read_style_1 {
 
 .book_title h1 {
     padding: 60px 0 30px;
-    font: 26px/1 "Microsoft YaHei";
+    font: 26px/1 "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", "Microsoft YaHei", sans-serif;
     color: #000;
     text-align: center
 }
 
 .textinfo {
     color: rgba(0, 0, 0, .5);
-    font: 12px/1.8 "Microsoft YaHei";
+    font: 12px/1.8 "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", "Microsoft YaHei", sans-serif;
     text-align: center;
     position: relative
 }
@@ -348,7 +348,7 @@ body, .read_style_1 {
 
 .orderBox h3 {
     padding: 0 50px;
-    font: 18px/1 "Microsoft YaHei";
+    font: 18px/1 "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", "Microsoft YaHei", sans-serif;
     margin: 25px 0
 }
 
@@ -609,7 +609,7 @@ body, .read_style_1 {
 }
 
 .setFont .setSimsun {
-    font-family: Simsun;
+    font-family: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", "Simsun", serif;
     font-size: 13px
 }
 

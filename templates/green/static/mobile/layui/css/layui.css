@@ -2707,7 +2707,7 @@ a cite {
 }
 
 .layui-laypage-next em, .layui-laypage-prev em {
-    font-family: Sim sun;
+    font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Meiryo", "Noto Sans JP", "Microsoft YaHei", sans-serif;
     font-size: 16px
 }
 
