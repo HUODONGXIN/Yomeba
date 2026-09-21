@@ -39,7 +39,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label">パスワード</label>
         <div class="layui-input-inline">
-            <input name="txtPassword" type="password" id="txtPassword" placeholder="请输入パスワード"
+            <input name="txtPassword" type="password" id="txtPassword" placeholder="パスワードを入力してください"
                    autocomplete="off" class="layui-input">
         </div>
 
@@ -47,7 +47,7 @@
     <div class="layui-form-item ">
         <label class="layui-form-label">認証コード</label>
         <div class="layui-input-inline">
-            <input name="txtUName" type="text" id="TxtChkCode" placeholder="请输入認証コード"
+            <input name="txtUName" type="text" id="TxtChkCode" placeholder="認証コードを入力してください"
                    autocomplete="off" class="layui-input">
         </div>
         <div class="layui-input-inline"><img
@@ -83,12 +83,12 @@
         }
         var password = $("#txtPassword").val();
         if (password.isBlank()) {
-            layer.alert("パスワード不能为空！");
+            layer.alert("パスワードを入力してください！");
             return;
         }
         var velCode = $("#TxtChkCode").val();
         if (velCode.isBlank()) {
-            layer.alert("認証コード不能为空！");
+            layer.alert("認証コードを入力してください！");
             return;
         }
         $.ajax({
@@ -112,7 +112,7 @@
 
     })
 
-    //获取認証コード
+    //認証コードを取得
     function getVerify(obj) {
         obj.src = "/file/getVerify?" + Math.random();
     }

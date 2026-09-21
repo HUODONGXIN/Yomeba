@@ -39,7 +39,7 @@ function searchByK(k) {
 $("#searchKey").keypress(function (even) {
     if (even.which == 13) {
         even.stopPropagation();
-        //enter键按下
+        //Enterキー押下
         searchByK();
     }
 });
@@ -89,7 +89,7 @@ if (!token) {
             }
         },
         error: function () {
-            layer.alert('网络异常');
+            layer.alert('ネットワークエラーが発生しました');
         }
 
     });
@@ -130,7 +130,7 @@ function isImg(str) {
 }
 
 
-//校验图片上传
+//画像アップロード検証
 function checkPicUpload(file) {
 
     if (!isImg(file.value.substr(file.value.lastIndexOf(".")))) {
@@ -147,7 +147,7 @@ function checkPicUpload(file) {
     } else {
         fileSize = file.files[0].size;
     }
-    fileSize = Math.round(fileSize / 1024 * 100) / 100; //单位为KB
+    fileSize = Math.round(fileSize / 1024 * 100) / 100; //単位はKB
     if (fileSize >= 1024) {
         layer.alert('アップロードする画像のサイズは1Mを超えることはできません！');
         return false;
