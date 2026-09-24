@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common_head(~{::title},~{::meta},~{::link},~{})">
+    <title th:text="'作家ログイン_'+${application.website.name}"></title>
+    <meta name="keywords" th:content="'作家ログイン,小説投稿,'+${application.website.name}" />
+    <link rel="stylesheet" href="/css/user.css" />
+</head>
+<body class="">
+
+<div th:replace="common/top :: top('')">
+</div>
+
+<div class="main box_center cf">
+    <div class="userBox cf">
+        <div class="user_l">
+            <form method="post" action="./login.html" id="form1">
+                <h3>作家ログイン</h3>
+                <ul class="log_list">
+                    <li><span id="LabErr"></span></li>
+                    <li><input name="txtUName" type="text" id="txtUName" placeholder="メールアドレス / アカウント" class="s_input icon_name" /></li>
+                    <li><input name="txtPassword" type="password" id="txtPassword" placeholder="パスワード" class="s_input icon_key" /></li>
+                    <li><input type="button" name="btnLogin" value="ログイン" id="btnLogin" class="btn_red" /></li>
+                </ul>
+            </form>
+        </div>
+        <div class="user_r">
+            <p class="tit">まだ作家登録されていませんか？</p>
+            <a href="/author/register.html" class="btn_ora_white">今すぐ作家登録</a>
+            <p class="tit" style="margin-top:20px;">読者の方はこちら</p>
+            <a href="/user/login.html" class="btn_ora_white">会員ログイン</a>
+            <a href="/user/register.html" class="btn_ora_white" style="margin-top:8px;">会員登録</a>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/footer :: footer">
+</div>
+
+<div th:replace="common/js :: js"></div>
+<script type="text/javascript">
+    $("#btnLogin").click(function () {
+        var username = $("#txtUName").val();
+        if (username.isBlank()) {
+            $("#LabErr").html("メールアドレスまたはアカウントを入力してください！");
+            return;
+        }
+        var password = $("#txtPassword").val();
+        if (password.isBlank()) {
+            $("#LabErr").html("パスワードを入力してください！");
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url: "/user/login",
+            data: {"username": username, "password": password},
+            dataType: "json",
+            success: function (data) {
+                if (data.code == 200) {
+                    $.cookie('Authorization', data.data.token, { path: '/' });
+                    var orginUrl = getSearchString("originUrl");
+                    window.location.href = orginUrl == undefined || orginUrl.isBlank() ? "/author/index.html" : orginUrl;
+                } else {
+                    $("#LabErr").html(data.msg);
+                }
+            },
+            error: function () {
+                layer.alert('ネットワークエラー');
+            }
+        })
+    })
+</script>
+</body>
+</html>

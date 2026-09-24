@@ -29,6 +29,9 @@ public final class UserDynamicSqlSupport {
     public static final SqlColumn<Byte> userSex = user.userSex;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
+    public static final SqlColumn<String> account = user.account;
+
+    @Generated("org.mybatis.generator.api.MyBatisGenerator")
     public static final SqlColumn<Long> accountBalance = user.accountBalance;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
@@ -53,6 +56,8 @@ public final class UserDynamicSqlSupport {
         public final SqlColumn<String> userPhoto = column("user_photo", JDBCType.VARCHAR);
 
         public final SqlColumn<Byte> userSex = column("user_sex", JDBCType.TINYINT);
+
+        public final SqlColumn<String> account = column("account", JDBCType.VARCHAR);
 
         public final SqlColumn<Long> accountBalance = column("account_balance", JDBCType.BIGINT);
 

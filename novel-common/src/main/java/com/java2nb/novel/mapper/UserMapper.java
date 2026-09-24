@@ -130,6 +130,7 @@ public interface UserMapper {
             .map(nickName).toPropertyWhenPresent("nickName", record::getNickName)
             .map(userPhoto).toPropertyWhenPresent("userPhoto", record::getUserPhoto)
             .map(userSex).toPropertyWhenPresent("userSex", record::getUserSex)
+            .map(account).toPropertyWhenPresent("account", record::getAccount)
             .map(accountBalance).toPropertyWhenPresent("accountBalance", record::getAccountBalance)
             .map(status).toPropertyWhenPresent("status", record::getStatus)
             .map(createTime).toPropertyWhenPresent("createTime", record::getCreateTime)
