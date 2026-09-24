@@ -339,5 +339,13 @@ public class PageController extends BaseController {
         return ThreadLocalUtil.getTemplateDir() + "author/register";
     }
 
+    /**
+     * 作者登录页面
+     */
+    @RequestMapping("author/login.html")
+    public String authorLogin() {
+        return ThreadLocalUtil.getTemplateDir() + "author/login";
+    }
+
 
 }

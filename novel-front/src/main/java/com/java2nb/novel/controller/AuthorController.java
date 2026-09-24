@@ -75,7 +75,7 @@ public class AuthorController extends BaseController {
         // 作家登録
         Author author = new Author();
         author.setPenName(penName);
-        author.setTelPhone(username);
+        author.setEmail(username);
         authorService.register(userDetails.getId(), author);
         // トークン生成（自動ログイン）
         java.util.Map<String, Object> data = new java.util.HashMap<>(1);
