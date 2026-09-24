@@ -21,9 +21,10 @@
                 <ul class="log_list">
                     <li><span id="LabErr"></span></li>
                     <li><input name="txtUName" type="text" id="txtUName" class="s_input icon_name"
-                               placeholder="携帯番号を入力してください"/></li>
+                               placeholder="メールアドレスを入力してください"/></li>
                     <li><input name="txtPassword" type="password" id="txtPassword" class="s_input icon_key"
-                               placeholder="パスワードを入力：6〜20桁の英数字"/></li>
+                               placeholder="パスワード：英大文字・小文字・数字の6〜20桁"/></li>
+                    <li id="pwdTip" style="color:#e74c3c;font-size:12px;display:none;">パスワードは英大文字・英小文字・数字の6〜20桁で入力してください</li>
                     <li class="log_code cf"><input name="TxtChkCode" type="text" maxlength="4" id="TxtChkCode"
                                                    class="s_input icon_code" placeholder="認証コードを入力してください"/><img
                             style="border: 1px solid #eee" class="code_pic" src="" id="chkd"
@@ -35,6 +36,8 @@
         <div class="user_r">
             <p class="tit">すでにアカウントをお持ちですか？</p>
             <a href="/user/login.html" class="btn_ora_white">今すぐログイン</a>
+            <p class="tit" style="margin-top:20px;">作家になりたい方はこちら</p>
+            <a href="/author/register.html" class="btn_ora_white">作家新規登録</a>
             <div class="fast_login" style="display:none;">
                 <div class="fast_tit">
                     <p class="lines"></p>
@@ -72,6 +75,17 @@
         });
     });
 
+    // パスワードリアルタイム検証
+    $('#txtPassword').on('input', function() {
+        var v = $(this).val();
+        if (v === '') { $('#pwdTip').hide(); return; }
+        if (!/^[A-Za-z0-9]{6,20}$/.test(v)) {
+            $('#pwdTip').show();
+        } else {
+            $('#pwdTip').hide();
+        }
+    });
+
     //認証コードを取得
     function getVerify(obj) {
         obj.src = "/file/getVerify?" + Math.random();
@@ -80,11 +94,11 @@
     $("#btnRegister").click(function () {
         var username = $("#txtUName").val();
         if (username.isBlank()) {
-            $("#LabErr").html("携帯番号を入力してください！");
+            $("#LabErr").html("メールアドレスを入力してください！");
             return;
         }
-        if (!username.isPhone()) {
-            $("#LabErr").html("携帯番号の形式が正しくありません！");
+        if (!/^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(username)) {
+            $("#LabErr").html("メールアドレスの形式が正しくありません！");
             return;
         }
         var password = $("#txtPassword").val();

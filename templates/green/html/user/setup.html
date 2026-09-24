@@ -15,7 +15,7 @@
 
             <ul class="log_list">
                 <li><a class="link_1 " href="/user/userinfo.html">マイページ</a></li>
-                <li><a class="link_9 " href="/author/index.html">作品管理</a></li>
+                <li th:if="${isAuthor}"><a class="link_9 " href="/author/index.html">作品管理</a></li>
                 <li><a class="link_4" href="/user/favorites.html">マイ本棚</a></li>
                 <li><a class="link_6" href="/user/comment.html">マイレビュー</a></li>
                 <li><a class="link_7 " href="/user/feedback_list.html">マイフィードバック</a></li>
@@ -72,9 +72,9 @@
                     $("#my_name").html(data.data.username + "<em class=\"ml10\">[変更]</em>");
                 }
                 if (data.data.userSex === '0') {
-                    $("#my_sex").html("男性<em class=\"ml10\">[変更]</em>");
+                    $("#my_sex").html("男性性<em class=\"ml10\">[変更]</em>");
                 } else if (data.data.userSex === '1') {
-                    $("#my_sex").html("女性<em class=\"ml10\">[変更]</em>");
+                    $("#my_sex").html("女性性<em class=\"ml10\">[変更]</em>");
                 } else {
                     $("#my_sex").html("選択してください");
                 }

@@ -1,0 +1,38 @@
+
+====================================================================
+【部署验证 2026-09-09（日语站已在 http://localhost:8083 运行）】
+====================================================================
+■ 结论：front 8083 = 日语站（外部 templates/green），admin 80 = 后台。数据库日语数据已同步。
+
+■ 部署中发现的三个根因（均已修复并提交 d5201a2，已推送）：
+1) FrontNovelApplication.main 丢弃 args
+   SpringApplication.run(FrontNovelApplication.class) 没传 args →
+   --spring.profiles.active=prod 从未生效，永远跑 dev + jar 内中文模板。
+   修复：改为 run(..., args)，重新打包后 prod 生效，加载外部日语模板。
+2) novel-front/pom.xml maven-antrun-plugin（package 阶段）覆盖模板
+   构建时把 src/main/resources/templates（中文旧版）copy 覆盖到
+   ../templates/green/html + ../templates/green/static → 每次打包还原中文模板。
+   修复：注释这两段 copy（外部 templates/ 为权威，勿再覆盖）。
+3) Redis 缓存旧中文数据（新闻标题等）
+   修复：redis-cli -a test123456 FLUSHALL。
+
+■ 环境依赖（勿删）：
+- /etc/hosts 已追加 192.168.3.11 admindeMac-mini.local / admindeMac-mini
+  （IdWorker 启动需真实网卡 MAC，en1=192.168.3.11；删了 front 起不来）
+- MySQL 3306 root/test123456 库 novel_plus；Redis 6379 密码 test123456
+
+■ 启动命令：
+  front:  java -jar novel-front/target/novel-front-5.3.3.jar --spring.profiles.active=prod   (8083)
+  admin:  java -jar novel-admin/target/novel-admin-5.3.3.jar                                    (80)
+  日志: /tmp/novel-front.log  /tmp/novel-admin.log
+
+■ 构建注意：
+- mvn package 前必须 rm -rf novel-front/target/build（否则 zip 自包含报错）
+- 构建后 git checkout -- novel-front/src/main/build/scripts/novel-front.bat
+  （antrun fixcrlf 会改动换行符，属构建副作用）
+- 根 pom 聚合含缺失模块 novel-crawl，只能逐模块 -f 构建
+
+■ 已知剩余（不影响日语站）：
+- admin 管理后台界面未日语化（sys_menu/sys_dict 保留中文，既定范围）
+- jar 内 dev 模板仍为中文（prod 用外部日语模板，dev 模式才可见中文）
+- 首页推荐位/部分区块依赖书籍数据，无数据时区块不显示（正常）

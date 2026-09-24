@@ -3,8 +3,8 @@
         <div class="box_center cf">
             <div class="top_l">
                 <a href="/" class="on" th:text="${application.website.name}"></a><i class="line">|</i><a
-                    href="/?m=2">モバイル（女性向け）</a><i class="line">|</i><a
-                    href="/?m=1">モバイル（男性向け）</a><i class="line">|</i><a
+                    href="/?m=2">モバイル（女性性向け）</a><i class="line">|</i><a
+                    href="/?m=1">モバイル（男性性向け）</a><i class="line">|</i><a
                     href="/">クライアントダウンロード</a>
             </div>
             <div class="top_r">
@@ -43,7 +43,6 @@
                 <li th:class="${navType}==0?'on':''"><a href="/">ホーム</a></li>
                 <li th:class="${navType}==1?'on':''"><a href="/book/bookclass.html">すべての作品</a></li>
                 <li th:class="${navType}==2?'on':''"><a href="/book/book_ranking.html">ランキング</a></li>
-                                <li><a href="/author/index.html">作家専用</a></li>
 
             </ul>
         </div>

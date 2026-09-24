@@ -15,7 +15,7 @@
 
             <ul class="log_list">
                 <li><a class="link_1 " href="/user/userinfo.html">マイページ</a></li>
-                <li><a class="link_9 " href="/author/index.html">作品管理</a></li>
+                <li th:if="${isAuthor}"><a class="link_9 " href="/author/index.html">作品管理</a></li>
                 <li><a class="link_4" href="/user/favorites.html">マイ本棚</a></li>
                 <li><a class="link_6" href="/user/comment.html">マイレビュー</a></li>
                 <li><a class="link_7 " href="/user/feedback_list.html">マイフィードバック</a></li>
@@ -28,8 +28,8 @@
                 <div class="my_info_txt">
                     <ul class="mytab_list">
                         <li><i class="tit">私の性別</i>
-                            <label><input type="radio" name="sex" value="0"/>&nbsp;男性</label>
-                            <label><input class="ml20" type="radio" name="sex" value="1" checked/>&nbsp;女性</label>
+                            <label><input type="radio" name="sex" value="0"/>&nbsp;男性性</label>
+                            <label><input class="ml20" type="radio" name="sex" value="1" checked/>&nbsp;女性性</label>
                         </li>
                         <li class="mt20"><i class="tit">&nbsp;</i><input type="button" onclick="updateSex()" name="btn"
                                                                          value="変更" id="btn" class="s_btn btn_red"/>
