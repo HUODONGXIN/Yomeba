@@ -1,5 +1,6 @@
 package com.java2nb.novel.core.config;
 
+import com.java2nb.novel.core.filter.NoCacheFilter;
 import com.java2nb.novel.core.filter.NovelFilter;
 import com.java2nb.novel.core.filter.XssFilter;
 import jakarta.servlet.DispatcherType;
@@ -38,6 +39,16 @@ public class FilterConfig{
         frBean.addUrlPatterns("/*");
         frBean.addInitParameter("picSavePath",picSavePath);
         return frBean;
+    }
+
+    @Bean
+    public FilterRegistrationBean<NoCacheFilter> noCacheFilterRegistration() {
+        FilterRegistrationBean<NoCacheFilter> registration = new FilterRegistrationBean<>();
+        registration.setFilter(new NoCacheFilter());
+        registration.addUrlPatterns("/*");
+        registration.setName("noCacheFilter");
+        registration.setOrder(0);
+        return registration;
     }
 
     @Bean

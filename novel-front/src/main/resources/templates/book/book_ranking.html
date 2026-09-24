@@ -1,70 +1,24 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head th:replace="common/header :: common_head(~{::title},~{::meta},~{::link},~{})">
     <title th:text="'小説ランキング_'+${application.website.name}"></title>
     <meta name="keywords" content="小説ランキング,人気小説ランキング,完結小説ランキング,最新小説ランキング,ネット小説ランキング,ランキング,クリックランキング,新作ランキング,おすすめランキング" />
     <meta name="description" th:content="'最新の人気ネット小説ランキング。各種人気小説ランキングを掲載。読者の皆様に愛される小説作品が揃っています。'+${application.website.name}+'。'" />
-    <link rel="stylesheet" href="/css/main.css" />
-    <link rel="stylesheet" href="/css/book.css" />
+    <link rel="stylesheet" href="/css/main.css?v=1" />
+    <link rel="stylesheet" href="/css/book.css?v=4" />
 </head>
 <body>
 
 <div th:replace="common/top :: top('2')">
 </div>
 <div class="main box_center cf mb50">
-    <div class="channelRankingContent cf">
-        <div class="wrap_left fl">
-            <div class="wrap_bg">
-                <!--榜单詳細 start-->
-                <div class="pad20">
-
-                    <div class="book_tit">
-                        <div class="fl">
-                            <h3 class="font26 mt5 mb5" id="rankName">クリックランキング</h3>
-                        </div>
-                        <a class="fr"></a>
-                    </div>
-                    <div class="updateTable rankTable">
-                        <table cellpadding="0" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th class="rank">順位</th>
-                                <th class="style">ジャンル</th>
-                                <th class="name">書名</th>
-                                <th class="chapter">最新話</th>
-                                <th class="author">著者</th>
-                                <th class="word">文字数</th>
-                            </tr>
-                            </thead>
-                            <tbody id="bookRankList">
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!--榜单詳細 end-->
-
-            </div>
+    <div class="rank-wrap">
+        <div class="rank-tabs">
+            <a class="on" data-type="0" href="javascript:listRank(0)">人気</a>
+            <a data-type="1" href="javascript:listRank(1)">最新</a>
+            <a data-type="4" href="javascript:listRank(4)">文字数</a>
         </div>
-
-        <div class="wrap_right fr">
-            <div class="wrap_inner wrap_right_cont mb20">
-                <div class="title cf noborder">
-                    <h3 class="on">ランキング</h3>
-                </div>
-                <div class="rightList2">
-                    <ul id="rankType">
-                        <li><a class="on" href="javascript:listRank(0)">クリックランキング</a></li>
-                        <li><a href="javascript:listRank(1)">新作ランキング</a></li>
-                        <li><a href="javascript:listRank(2)">更新ランキング</a></li>
-                        <li><a href="javascript:listRank(3)">コメントランキング</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <div class="rank-list" id="bookRankList"></div>
     </div>
 </div>
 
@@ -73,76 +27,77 @@
 <div th:replace="common/js :: js"></div>
 
 <script type="text/javascript">
-    $("#rankType a").click(function () {
-        $("#rankType .on").removeClass("on");
-        $(this).addClass("on");
-    })
+
+    function escHtml(s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+            return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c];
+        });
+    }
+
+    function coverBg(name) {
+        var hue = ((name || '').length * 47 + 120) % 360;
+        return 'linear-gradient(135deg, hsl(' + hue + ',65%,60%), hsl(' + ((hue + 45) % 360) + ',70%,42%))';
+    }
+
+    function coverHtml(book) {
+        var title = escHtml(book.bookName);
+        var fb = '<div class="rk-cover-fallback" style="background:' + coverBg(book.bookName) + '">' + title + '</div>';
+        if (book.picUrl && book.picUrl.indexOf('default.gif') < 0) {
+            return '<img class="rk-cover-img" src="' + book.picUrl + '" alt="' + title + '"/>';
+        }
+        return fb;
+    }
 
     var rankType = getSearchString("type");
-    if(rankType==undefined){
-        rankType=0;
-    }else{
-        $("#rankType a").eq(rankType).click();
+    if (rankType == undefined) {
+        rankType = 0;
     }
     listRank(rankType);
 
-    function listRank(rankType){
+    function listRank(t) {
+        $(".rank-tabs a").removeClass("on");
+        $(".rank-tabs a[data-type='" + t + "']").addClass("on");
         $.ajax({
             type: "get",
             url: "/book/listRank",
-            data: {'type':rankType,'limit':30},
+            data: {'type': t, 'limit': 30},
             dataType: "json",
             success: function (data) {
                 if (data.code == 200) {
                     var bookRankList = data.data;
-                    var bookRankListHtml = "";
-                    for(var i=0;i<bookRankList.length;i++){
+                    var html = "";
+                    for (var i = 0; i < bookRankList.length; i++) {
                         var book = bookRankList[i];
-                        var classHtml = "";
-                        if(i<3){
-                            classHtml="num"+(i+1);
+                        var status = (book.bookStatus == 1) ? '完結' : '連載中';
+                        var wc = (book.wordCount / 10000).toFixed(1) + '万字';
+                        var cats = (book.catName || '').split(',');
+                        var catHtml = '';
+                        for (var j = 0; j < cats.length; j++) {
+                            if (cats[j]) {
+                                catHtml += '<span class="rk-tag">' + escHtml(cats[j]) + '</span>';
+                            }
                         }
-                        bookRankListHtml+=("<tr>\n" +
-                            "                                <td class=\"rank\"><i class=\""+classHtml+"\">"+(i+1)+"</i></td>\n" +
-                            "                                <td class=\"style\"><a href=\"/book/bookclass.html?c="+book.catId+"\" >["+book.catName+"]</a></td>\n" +
-                            "                                <td class=\"name\"><a href=\"/book/"+book.id+".html\" >"+book.bookName+"</a></td>\n" +
-                            "                                <td class=\"chapter\"><a href=\"/book/"+book.id+".html\" >"+book.lastIndexName+"</a>\n" +
-                            "                                </td>\n" +
-                            "                                <td class=\"author\"><a href=\"javascript:void(0)\">"+book.authorName+"</a></td>\n" +
-                            "                                <td class=\"word\">"+(book.wordCount / 10000).toFixed(2)+"万</td>\n" +
-                            "                            </tr>");
+                        html += ('<div class="rank-item">' +
+                            '<a class="rk-cover" href="/book/' + book.id + '.html">' + coverHtml(book) + '</a>' +
+                            '<div class="rk-info">' +
+                            '<h4 class="rk-title"><a href="/book/' + book.id + '.html">' + escHtml(book.bookName) + '</a></h4>' +
+                            '<p class="rk-desc">' + escHtml(book.bookDesc) + '</p>' +
+                            '<div class="rk-status">' + status + '：' + wc + '</div>' +
+                            '<div class="rk-author">著者：' + escHtml(book.authorName) + '</div>' +
+                            '<div class="rk-tags">' + catHtml + '</div>' +
+                            '</div>' +
+                            '<span class="rk-num">' + (i + 1) + '</span>' +
+                            '</div>');
                     }
-                    $("#bookRankList").html(bookRankListHtml);
-
+                    $("#bookRankList").html(html);
                 } else {
                     layer.alert(data.msg);
                 }
-
             },
             error: function () {
                 layer.alert('ネットワークエラー');
             }
         })
-        switch (rankType) {
-            case 0 : {
-                $("#rankName").html("クリックランキング");
-                break;
-            }
-            case 1 : {
-                $("#rankName").html("新作ランキング");
-                break;
-            }
-            case 2 : {
-                $("#rankName").html("更新ランキング");
-                break;
-            }
-            case 3 : {
-                $("#rankName").html("コメントランキング");
-                break;
-            }
-
-        }
-
     }
 </script>
 

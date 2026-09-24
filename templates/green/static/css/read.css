@@ -4,7 +4,7 @@ a {
 }
 
 a:hover, .redFont, .current, .bookNav a:hover, .textinfo a:hover {
-    color: #3eaf7c
+    color: #3CB4FA
 }
 
 .read_menu li a, .closePopup, .menu_left li a span, .menu_right li a span, .icon_check, .icon_yb {
@@ -592,7 +592,7 @@ body, .read_style_1 {
 
 /*.readTheme a.current, .readTheme a:hover { box-shadow: 1px 3px 5px #aaa }*/
 .read_style_1 .readTheme .white, .read_style_2 .readTheme .green, .read_style_3 .readTheme .pink, .read_style_4 .readTheme .yellow, .read_style_5 .readTheme .gray, .read_style_6 .readTheme .night, .read_style_7 .readTheme .fff {
-    border-color: #3eaf7c
+    border-color: #3CB4FA
 }
 
 .setBtn a {
@@ -711,7 +711,7 @@ body, .read_style_1 {
     line-height: 1;
     border-radius: 50%;
     display: inline-block;
-    background-color: #3eaf7c;
+    background-color: #3CB4FA;
     color: #fefefe;
     font-size: 22px;
     letter-spacing: 0px;
@@ -772,7 +772,7 @@ body, .read_style_1 {
 }
 
 .read_dz.on {
-    color: #3eaf7c;
+    color: #3CB4FA;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#0cff8800, endColorstr=#0cff8800);
     background: rgba(255, 136, 0, .05)
 }
@@ -893,9 +893,9 @@ body, .read_style_1 {
 }
 
 .order_allzj {
-    background: #3eaf7c;
+    background: #3CB4FA;
     color: #fff;
-    border-color: #3eaf7c
+    border-color: #3CB4FA
 }
 
 .order_allzj .red {
@@ -904,8 +904,8 @@ body, .read_style_1 {
 
 .order_allzj:hover {
     color: #fff;
-    background: #3eaf7c;
-    border-color: #3eaf7c
+    background: #3CB4FA;
+    border-color: #3CB4FA
 }
 
 .order_tip {

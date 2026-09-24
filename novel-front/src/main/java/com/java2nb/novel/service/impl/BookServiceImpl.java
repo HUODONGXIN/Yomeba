@@ -345,12 +345,17 @@ public class BookServiceImpl implements BookService {
                 sortSpecification = commentCount.descending();
                 break;
             }
+            case 4: {
+                //文字数ランキング
+                sortSpecification = wordCount.descending();
+                break;
+            }
             default: {
                 break;
             }
         }
         SelectStatementProvider selectStatement = select(id, catId, catName, bookName, lastIndexId, lastIndexName,
-            authorId, authorName, picUrl, bookDesc, wordCount, lastIndexUpdateTime)
+            authorId, authorName, picUrl, bookDesc, wordCount, lastIndexUpdateTime, score, visitCount, bookStatus)
             .from(book)
             .where(wordCount, isGreaterThan(0))
             .orderBy(sortSpecification)

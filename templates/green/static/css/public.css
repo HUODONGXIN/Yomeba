@@ -197,10 +197,10 @@ p.cue {
 /*- form -*/
 .btn {
     display: inline-block;
-    background-color: #3eaf7c;
+    background-color: #3CB4FA;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
-    border: 1px solid #3eaf7c;
+    border: 1px solid #3CB4FA;
     color: #FFF;
     line-height: 1;
     padding: 7px 20px;

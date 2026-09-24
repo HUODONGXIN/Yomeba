@@ -57,7 +57,7 @@ if (!token) {
         location.href = '/user/login.html?originUrl=' + encodeURIComponent(location.href);
     }
 
-    $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">ログイン</a><a href=\"/user/register.html\" >会員登録</a>");
+    $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\" class=\"btn-login\">ログイン</a><a href=\"/user/register.html\" class=\"btn-free\">無料登録</a>");
 } else {
     $.ajax({
         type: "POST",
@@ -85,7 +85,7 @@ if (!token) {
                 if (needLoginPath.indexOf(window.location.pathname) != -1) {
                     location.href = '/user/login.html';
                 }
-                $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\"  class=\"mr15\">ログイン</a><a href=\"/user/register.html\" >会員登録</a>");
+                $(".user_link").html("<i class=\"line mr20\">|</i><a href=\"/user/login.html\" class=\"btn-login\">ログイン</a><a href=\"/user/register.html\" class=\"btn-free\">無料登録</a>");
             }
         },
         error: function () {

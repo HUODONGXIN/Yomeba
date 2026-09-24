@@ -45,7 +45,7 @@ a {
 }
 
 a:hover, .topBar a:hover, .red, .record_list li:hover .read_link a {
-    color: #3eaf7c
+    color: #3CB4FA
 }
 
 .red1 {
@@ -331,15 +331,32 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 }
 
 .logo {
-    width: 160px;
+    width: 220px;
     float: left;
-    padding: 23px 130px 0 0;
-    display: block
+    padding: 20px 80px 0 0;
+    display: block;
+    text-decoration: none
 }
 
 .logo img {
     width: auto;
     height: 48px
+}
+
+.logo-text {
+    display: block;
+    font-size: 26px;
+    font-weight: 700;
+    color: #2E9BE0;
+    line-height: 1.15
+}
+
+.logo-sub {
+    display: block;
+    font-size: 12px;
+    color: #868e96;
+    margin-top: 2px;
+    letter-spacing: .5px
 }
 
 .searchBar {
@@ -360,7 +377,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     height: 36px;
     line-height: 36px \9;
     vertical-align: middle;
-    border: 1px solid #3eaf7c;
+    border: 1px solid #d5d9e0;
     border-right: none;
     color: #333;
     float: left;
@@ -377,7 +394,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     height: 38px;
     text-align: center;
     border-radius: 0 20px 20px 0;
-    background-color: #3eaf7c;
+    background-color: #3CB4FA;
     cursor: pointer;
 }
 
@@ -414,9 +431,48 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     height: 38px;
     line-height: 38px;
     padding-left: 20px;
-    font-size: 15px;
-    color: #404040;
-    float: right
+    float: right;
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+.bookShelf .btn-login {
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 24px;
+    border-radius: 18px;
+    border: 1px solid #c8cdd5;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    text-decoration: none;
+    transition: border-color .15s, color .15s
+}
+
+.bookShelf .btn-login:hover {
+    border-color: #3CB4FA;
+    color: #3CB4FA
+}
+
+.bookShelf .btn-free {
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 24px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #3CB4FA, #2E9BE0);
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(60, 180, 250, .3);
+    transition: box-shadow .15s
+}
+
+.bookShelf .btn-free:hover {
+    box-shadow: 0 4px 12px rgba(60, 180, 250, .4);
+    color: #fff
 }
 
 .bookShelf .user_head {
@@ -441,7 +497,8 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 .mainNav {
     width: 100%;
     height: 48px;
-    background: #3eaf7c;
+    background: #fff;
+    border-bottom: 1px solid #e9ecef;
     margin-bottom: 20px
 }
 
@@ -453,15 +510,16 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     float: left;
     height: 44px;
     line-height: 48px;
-    color: #fff;
+    color: #333;
     font-size: 16px;
     margin: 0 34px;
-    border-bottom: 2px solid #3eaf7c;
+    border-bottom: 2px solid transparent;
     transition: color .3s, background-color .3s, border .3s
 }
 
 .mainNav .nav li.on a, .mainNav .nav li a:hover {
-    border-bottom: 2px solid rgba(255, 255, 255, .8)
+    border-bottom: 2px solid #3CB4FA;
+    color: #3CB4FA
 }
 
 .footer {
@@ -516,8 +574,8 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 }
 
 .btn_red, .btn_ora {
-    border: 1px solid #3eaf7c;
-    background: #3eaf7c;
+    border: 1px solid #3CB4FA;
+    background: #3CB4FA;
     color: #fff
 }
 
@@ -528,8 +586,8 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 }
 
 .btn_ora_white {
-    border: 1px solid #3eaf7c;
-    color: #3eaf7c
+    border: 1px solid #3CB4FA;
+    color: #3CB4FA
 }
 
 .btn_ora_white:hover {
@@ -538,7 +596,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 
 .btn_link {
     padding: 2px 6px;
-    background: #3eaf7c;
+    background: #3CB4FA;
     color: #fff;
     border-radius: 2px
 }
@@ -549,7 +607,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 }
 
 .btn_ora:hover, .btn_red:hover, .btn_link:hover {
-    background: #3eaf7c;
+    background: #3CB4FA;
     color: #fff
 }
 
@@ -586,7 +644,7 @@ i.vip_b {
     line-height: 22px;
     font-size: 15px;
     color: #fff;
-    background: #3eaf7c;
+    background: #3CB4FA;
     border-radius: 4px;
     margin-left: 5px;
     display: inline-block;
@@ -609,7 +667,7 @@ i.vip_b {
 }
 
 .pageBox .current, .pageBox a:hover {
-    background: #3eaf7c;
+    background: #3CB4FA;
     color: #fff
 }
 
@@ -795,7 +853,7 @@ i.vip_b {
 }
 
 .copyright .menu a:hover, .bookShelf .sj_link:hover {
-    color: #3eaf7c
+    color: #3CB4FA
 }
 
 .rightList .more, .more_bar {
@@ -930,7 +988,7 @@ i.vip_b {
 }
 
 .layui-laypage-curr {
-    background: #3eaf7c;
+    background: #3CB4FA;
 }
 
 .layui-laypage-curr em {

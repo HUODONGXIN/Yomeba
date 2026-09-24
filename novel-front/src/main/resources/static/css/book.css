@@ -356,8 +356,8 @@
     width: 132px;
     height: 52px;
     line-height: 52px;
-    color: #3eaf7c;
-    border: 2px solid #3eaf7c;
+    color: #3CB4FA;
+    border: 2px solid #3CB4FA;
     background: #fff
 }
 
@@ -722,7 +722,7 @@
 .icon_qyzz {
     padding: 5px;
     line-height: 1;
-    background: #3eaf7c;
+    background: #3CB4FA;
     color: #fff;
     border-radius: 3px;
     display: inline-block
@@ -811,3 +811,229 @@
     background: #fff;
     padding: 16px 0 20px }
 
+
+/* ============================================================
+   ランキングページ（設計図ベース）
+   ============================================================ */
+.rank-wrap {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 22px 26px;
+}
+.rank-tabs {
+    display: flex;
+    gap: 6px;
+    border-bottom: 2px solid #f1f3f5;
+    margin-bottom: 8px;
+}
+.rank-tabs a {
+    padding: 10px 32px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #666;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: color .15s, border-color .15s;
+}
+.rank-tabs a:hover {
+    color: #3CB4FA;
+}
+.rank-tabs a.on {
+    color: #3CB4FA;
+    border-bottom-color: #3CB4FA;
+}
+.rank-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid #f1f3f5;
+}
+.rank-item:last-child {
+    border-bottom: none;
+}
+.rk-cover {
+    flex: none;
+    width: 108px;
+    display: block;
+}
+.rk-cover-img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    display: block;
+}
+.rk-cover-fallback {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    word-break: break-word;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.rk-info {
+    flex: 1;
+    min-width: 0;
+}
+.rk-title {
+    margin: 0 0 6px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+    max-height: 2.8em;
+    overflow: hidden;
+}
+.rk-title a {
+    color: #222;
+    text-decoration: none;
+}
+.rk-title a:hover {
+    color: #3CB4FA;
+}
+.rk-desc {
+    margin: 0 0 8px;
+    font-size: 12.5px;
+    color: #868e96;
+    line-height: 1.6;
+    max-height: 3.2em;
+    overflow: hidden;
+}
+.rk-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font-size: 12.5px;
+    color: #495057;
+    margin-bottom: 8px;
+}
+.rk-status {
+    display: block;
+    color: #e67700;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+.rk-author {
+    display: block;
+    color: #495057;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.rk-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.rk-tag {
+    padding: 2px 10px;
+    border-radius: 4px;
+    background: #E8F5FD;
+    color: #1E7FC4;
+    font-size: 12px;
+}
+.rk-num {
+    flex: none;
+    width: 70px;
+    text-align: center;
+    font-size: 44px;
+    font-weight: 800;
+    font-style: italic;
+    color: #dee2e6;
+    line-height: 1;
+}
+.rank-item:nth-child(1) .rk-num {
+    color: #f59f00;
+}
+.rank-item:nth-child(2) .rk-num {
+    color: #adb5bd;
+}
+.rank-item:nth-child(3) .rk-num {
+    color: #e8924a;
+}
+
+/* ===== ジャンルページ カードグリッド ===== */
+.bookCardGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 24px 20px 0;
+}
+.gc-card {
+    width: 180px;
+}
+.gc-cover {
+    display: block;
+    width: 145px;
+    height: 195px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #f1f3f5;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+}
+.gc-cover img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.gc-cover-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    line-height: 1.4;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.gc-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-top: 10px;
+    min-height: 39px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #212529;
+    line-height: 1.4;
+}
+.gc-title:hover {
+    color: #1971c2;
+}
+.gc-desc {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: #868e96;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.gc-word {
+    margin: 4px 0 0;
+    font-size: 12px;
+    color: #e8790f;
+}
+.gc-author {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: #868e96;
+}
