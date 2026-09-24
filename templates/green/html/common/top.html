@@ -1,49 +1,30 @@
 <div th:fragment="top(navType)" class="header">
-    <div class="topBar" style="display: none">
-        <div class="box_center cf">
-            <div class="top_l">
-                <a href="/" class="on" th:text="${application.website.name}"></a><i class="line">|</i><a
-                    href="/?m=2">モバイル（女性性向け）</a><i class="line">|</i><a
-                    href="/?m=1">モバイル（男性性向け）</a><i class="line">|</i><a
-                    href="/">クライアントダウンロード</a>
-            </div>
-            <div class="top_r">
-                <div class="top_nearread">
-                    <a href="javascript:void(0);" class="nearread" id="headerUserHistoryBtn">最近読んだ本<i
-                            class="icon_down"></i></a>
-                    <div class="book_record" style="display:none" id="headerUserHistory">
-                    </div>
-                </div>
-                <span>
-                </span>
-            </div>
-        </div>
-    </div>
     <div class="topMain">
         <div class="box_center cf">
-            <a href="/?m=2" class="logo fl"><img th:src="${application.website.logo}"
-                                                 th:alt="${application.website.name}"/></a>
+            <a href="/" class="logo fl">
+                <span class="logo-text" th:text="${application.website.name}"></span>
+                <span class="logo-sub">小説はYomebaで読む</span>
+            </a>
             <div class="searchBar fl">
                 <div class="search cf">
-                    <input type="text" placeholder="書名、著者、キーワード" class="s_int" name="searchKey" id="searchKey"/>
+                    <input type="text" placeholder="作品名、作家名、キーワードで探す" class="s_int" name="searchKey" id="searchKey"/>
                     <label class="search_btn" id="btnSearch" onclick="searchByK()"><i class="icon"></i></label>
                 </div>
             </div>
             <div class="bookShelf fr" id="headerUserInfo">
-                <a class="sj_link" href="/user/favorites.html">マイ本棚</a>
-                <span class="user_link"><i class="line mr20">|</i><a href="/user/login.html" class="mr15">ログイン</a><a
-                        href="/user/register.html">会員登録</a></span>
+                <span class="user_link">
+                    <a href="/user/login.html" class="btn-login">ログイン</a>
+                    <a href="/user/register.html" class="btn-free">無料登録</a>
+                </span>
             </div>
         </div>
     </div>
     <div class="mainNav" id="mainNav" th:style="${navType} == 10?'display:none':''">
         <div class="box_center cf">
             <ul class="nav" id="navModule">
-
                 <li th:class="${navType}==0?'on':''"><a href="/">ホーム</a></li>
-                <li th:class="${navType}==1?'on':''"><a href="/book/bookclass.html">すべての作品</a></li>
                 <li th:class="${navType}==2?'on':''"><a href="/book/book_ranking.html">ランキング</a></li>
-
+                <li th:class="${navType}==1?'on':''"><a href="/book/bookclass.html">ジャンル</a></li>
             </ul>
         </div>
     </div>

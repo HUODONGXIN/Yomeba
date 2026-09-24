@@ -1,0 +1,404 @@
+/* ============================================================
+   Yomeba トップページ専用スタイル（UI設計図ベース）
+   ============================================================ */
+
+/* ---- HERO バナー ---- */
+.hero {
+    width: 100%;
+    background: linear-gradient(120deg, #2E9BE0 0%, #2E9BE0 45%, #4AA8E8 100%);
+    overflow: hidden;
+}
+.hero-inner {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 46px 0 50px;
+    position: relative;
+    color: #fff;
+}
+.hero-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 20px;
+    padding: 3px 14px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+.hero-title {
+    font-size: 34px;
+    line-height: 1.25;
+    font-weight: 700;
+    margin: 0 0 12px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+.hero-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.92);
+    margin: 0;
+}
+
+/* ---- キャンペーン ---- */
+.campaign {
+    width: 100%;
+    background: #fff3d8;
+    border-bottom: 1px solid #f2dfae;
+}
+.campaign-body {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 16px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+.campaign-txt strong {
+    display: block;
+    font-size: 16px;
+    color: #c2410c;
+    margin-bottom: 3px;
+}
+.campaign-txt span {
+    font-size: 12.5px;
+    color: #7a5a1e;
+}
+.btn-free {
+    flex: none;
+    background: linear-gradient(135deg, #3CB4FA, #2E9BE0);
+    color: #fff;
+    border-radius: 24px;
+    padding: 10px 26px;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(46, 155, 224, 0.35);
+    transition: transform .15s, box-shadow .15s;
+}
+.btn-free:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(46, 155, 224, 0.45);
+    color: #fff;
+}
+
+/* ---- 本体コンテナ ---- */
+.home-main {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 18px 0 30px;
+}
+
+/* ---- セクション ---- */
+.sec {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 20px 22px 22px;
+    margin-bottom: 16px;
+}
+.sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+.sec-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: #222;
+    margin: 0;
+    padding-left: 12px;
+    position: relative;
+    line-height: 1.3;
+}
+.sec-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+    width: 5px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #3CB4FA, #4AA8E8);
+}
+.sec-more {
+    font-size: 12.5px;
+    color: #666;
+    text-decoration: none;
+}
+.sec-more:hover {
+    color: #3CB4FA;
+}
+
+/* ---- 作品横並びレール ---- */
+.rail {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 14px;
+}
+.rail-item .rail-cover {
+    display: block;
+}
+.rail-item .rail-title {
+    margin: 8px 0 0;
+    font-size: 12.5px;
+    line-height: 1.45;
+    height: 3.6em;
+    overflow: hidden;
+}
+.rail-item .rail-title a {
+    color: #333;
+    text-decoration: none;
+}
+.rail-item .rail-title a:hover {
+    color: #3CB4FA;
+}
+
+/* ---- カバー ---- */
+.cover {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+    display: block;
+}
+.cover-fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+    padding: 10px;
+    box-sizing: border-box;
+    word-break: break-word;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+/* ---- 分類タブ ---- */
+.genre-tabs {
+    list-style: none;
+    margin: 0 0 16px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.genre-tabs li {
+    margin: 0;
+}
+.genre-tabs a {
+    display: block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: #f1f3f5;
+    color: #495057;
+    font-size: 13px;
+    text-decoration: none;
+    transition: background .15s, color .15s;
+}
+.genre-tabs a:hover {
+    background: #E8F5FD;
+    color: #1E7FC4;
+}
+.genre-tabs li.on a {
+    background: linear-gradient(135deg, #3CB4FA, #2E9BE0);
+    color: #fff;
+    font-weight: 700;
+}
+
+/* ---- おすすめ双列リスト ---- */
+.book-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 22px;
+}
+.list-item {
+    display: flex;
+    gap: 14px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background .15s;
+}
+.list-item:hover {
+    background: #f8f9fa;
+}
+.list-item .li-cover {
+    flex: none;
+    width: 88px;
+}
+.list-item .li-info {
+    min-width: 0;
+    flex: 1;
+}
+.list-item .li-title {
+    margin: 0 0 6px;
+    font-size: 14.5px;
+    font-weight: 700;
+    line-height: 1.4;
+    max-height: 2.8em;
+    overflow: hidden;
+}
+.list-item .li-title a {
+    color: #222;
+    text-decoration: none;
+}
+.list-item .li-title a:hover {
+    color: #3CB4FA;
+}
+.li-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+.li-score {
+    color: #e67700;
+    font-weight: 700;
+}
+.li-count {
+    color: #868e96;
+}
+.li-author {
+    color: #495057;
+}
+.li-cat {
+    color: #1E7FC4;
+    background: #E8F5FD;
+    border-radius: 4px;
+    padding: 1px 6px;
+}
+.li-desc {
+    margin: 0;
+    font-size: 12px;
+    color: #868e96;
+    line-height: 1.6;
+    max-height: 3.2em;
+    overflow: hidden;
+}
+
+/* ---- ジャンルボード（男性向け/女性向け） ---- */
+.genre-board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 26px;
+}
+.genre-col {
+    min-width: 0;
+}
+.genre-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    padding-left: 12px;
+    position: relative;
+}
+.genre-title::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1px;
+    bottom: 1px;
+    width: 5px;
+    border-radius: 3px;
+}
+.genre-title.male {
+    color: #2E9BE0;
+}
+.genre-title.male::before {
+    background: #3CB4FA;
+}
+.genre-title.female {
+    color: #d6336c;
+}
+.genre-title.female::before {
+    background: #f06595;
+}
+.genre-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.genre-tags a {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 6px;
+    background: #f1f3f5;
+    border: 1px solid #e9ecef;
+    color: #495057;
+    font-size: 12.5px;
+    text-decoration: none;
+    transition: all .15s;
+}
+.genre-tags a:hover {
+    border-color: #3CB4FA;
+    color: #3CB4FA;
+    background: #E8F5FD;
+}
+
+/* ---- お知らせ ---- */
+.news-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.news-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px dashed #e9ecef;
+    font-size: 13px;
+}
+.news-list li:last-child {
+    border-bottom: none;
+}
+.news-cat {
+    flex: none;
+    color: #3CB4FA;
+    font-weight: 700;
+    font-size: 12px;
+}
+.news-title {
+    flex: 1;
+    color: #333;
+    text-decoration: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.news-title:hover {
+    color: #3CB4FA;
+}
+.news-time {
+    flex: none;
+    color: #adb5bd;
+    font-size: 12px;
+}
+
+/* ---- レスポンシブ ---- */
+@media (max-width: 1080px) {
+    .hero-inner, .campaign-body, .home-main {
+        width: auto;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+    .rail {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .book-list {
+        grid-template-columns: 1fr;
+    }
+    .genre-board {
+        grid-template-columns: 1fr;
+    }
+}

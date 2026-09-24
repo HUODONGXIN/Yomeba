@@ -8,7 +8,8 @@
           th:content="${application.website.name}+'は毎日更新の小説連載、小説ランキングを提供。恋愛小説、都市小説、ファンタジー小説、タイムスリップ小説、青春小説、ネット小説、無料小説、全本小説、最新話無料小説の読書は'+${application.website.name}+'へ。'"/>
     <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
     <link href="/favicon.ico" type="image/x-icon" rel="Bookmark"/>
-    <link rel="stylesheet" href="/css/main.css"/>
+    <link rel="stylesheet" href="/css/main.css?v=1"/>
+    <link rel="stylesheet" href="/css/book.css?v=4"/>
 </head>
 <body>
 
@@ -73,26 +74,10 @@
     </div>
 
     <div class="channelWrap channelClassContent cf">
-        <div class="updateTable rankTable">
-            <table cellpadding="0" cellspacing="0">
-                <thead>
-                <tr>
-                    <th class="rank">番号</th>
-                    <th class="style">ジャンル</th>
-                    <th class="name">書名</th>
-                    <th class="chapter">最新話</th>
-                    <th class="author">著者</th>
-                    <th class="word">文字数</th>
-                </tr>
-                </thead>
-                <tbody id="bookList">
+        <div class="bookCardGrid" id="bookList">
+        </div>
 
-
-                </tbody>
-            </table>
-
-            <div class="pageBox cf" id="books">
-            </div>
+        <div class="pageBox cf" id="books">
         </div>
     </div>
 </div>
@@ -173,16 +158,21 @@
                     var bookListHtml = "";
                     for (var i = 0; i < bookList.length; i++) {
                         var book = bookList[i];
-                        var wordCount = (book.wordCount / 10000).toFixed(2);
-                        bookListHtml += (" <tr>\n" +
-                            "                    <td class=\"rank\"><i>" + (i + 1) + "</i></td>\n" +
-                            "                    <td class=\"style\"><a href=\"/book/bookclass.html?c="+book.catId+"\"  cls=\"13\">[" + book.catName + "]</a></td>\n" +
-                            "                    <td class=\"name\"><a href=\"/book/"+book.id+".html\" >" + book.bookName + "</a></td>\n" +
-                            "                    <td class=\"chapter\"><a href=\"/book/"+book.id+".html\" >" + book.lastIndexName + "</a>\n" +
-                            "                    </td>\n" +
-                            "                    <td class=\"author\"><a href=\"javascript:void(0)\">" + book.authorName + "</a></td>\n" +
-                            "                    <td class=\"word\">" + wordCount + "万</td>\n" +
-                            "                </tr>");
+                        var wordCount = (book.wordCount / 10000).toFixed(1);
+                        var picUrl = book.picUrl ? book.picUrl : "";
+                        var coverHtml = "";
+                        if (picUrl && picUrl.indexOf("default.gif") < 0) {
+                            coverHtml = "<img src=\"" + picUrl + "\" alt=\"" + book.bookName + "\"/>";
+                        } else {
+                            coverHtml = "<span class=\"gc-cover-fallback\">" + book.bookName + "</span>";
+                        }
+                        bookListHtml += "<div class=\"gc-card\">" +
+                            "<a class=\"gc-cover\" href=\"/book/" + book.id + ".html\">" + coverHtml + "</a>" +
+                            "<a class=\"gc-title\" href=\"/book/" + book.id + ".html\">" + book.bookName + "</a>" +
+                            "<p class=\"gc-desc\">" + (book.bookDesc || "") + "</p>" +
+                            "<p class=\"gc-word\">連載速報：" + wordCount + "万文字</p>" +
+                            "<p class=\"gc-author\">作者：" + book.authorName + "</p>" +
+                            "</div>";
                     }
                     $("#bookList").html(bookListHtml);
 
