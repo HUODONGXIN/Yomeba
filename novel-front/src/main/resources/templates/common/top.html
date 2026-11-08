@@ -24,6 +24,9 @@
             <ul class="nav" id="navModule">
                 <li th:class="${navType}==0?'on':''"><a href="/">ホーム</a></li>
                 <li th:class="${navType}==2?'on':''"><a href="/book/book_ranking.html">ランキング</a></li>
+                <li><a href="/book/book_ranking.html?type=2">新着</a></li>
+                <li><a href="/book/bookclass.html?c=1">男性向け</a></li>
+                <li><a href="/book/bookclass.html?c=7">女性向け</a></li>
                 <li th:class="${navType}==1?'on':''"><a href="/book/bookclass.html">ジャンル</a></li>
             </ul>
         </div>

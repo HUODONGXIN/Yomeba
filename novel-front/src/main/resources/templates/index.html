@@ -9,21 +9,83 @@
           th:content="${application.website.description}"/>
     <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
     <link href="/favicon.ico" type="image/x-icon" rel="Bookmark"/>
-    <link rel="stylesheet" href="/css/main.css?v=1"/>
-    <link rel="stylesheet" href="/css/index.css?v=1"/>
+    <link rel="stylesheet" href="/css/main.css?v=10"/>
+    <link rel="stylesheet" href="/css/index.css?v=11"/>
 </head>
 <body>
 
 <div th:replace="common/top :: top('0')">
 </div>
 
-<!-- ============ HERO バナー ============ -->
-<section class="hero">
-    <div class="hero-inner">
-        <div class="hero-badge">Yomeba 10周年</div>
-        <h1 class="hero-title">お祝いイラスト<br/>一挙公開！</h1>
-        <p class="hero-desc">Yomebaを支えていただいた作家の皆様の<br/>描き下ろしイラストをご紹介！</p>
+<!-- ============ HERO カルーセル（大判バナー・自動切替） ============ -->
+<section class="hero-carousel" id="heroCarousel">
+    <div class="hero-viewport">
+        <div class="hero-track">
+
+            <!-- Slide 1：旬のおすすめ -->
+            <div class="hero-slide hero-slide-banner">
+                <div class="hero-scale" style="background-image:url(/images/banner/hero-1.jpg)">
+                    <div class="hero-copy">
+                        <span class="hero-badge">Yomeba 10周年</span>
+                        <h1 class="hero-title">お祝いイラスト<br/>一挙公開！</h1>
+                        <p class="hero-desc">Yomebaを支えていただいた作家の皆様の<br/>描き下ろしイラストをご紹介！</p>
+                    </div>
+                    <div class="hero-covers" data-source="click" data-offset="0"></div>
+                </div>
+            </div>
+
+            <!-- Slide 2：新規登録キャンペーン -->
+            <div class="hero-slide hero-slide-banner">
+                <div class="hero-scale" style="background-image:url(/images/banner/hero-6.jpg)">
+                    <div class="hero-copy">
+                        <span class="hero-badge">新規登録キャンペーン</span>
+                        <h1 class="hero-title">無料会員登録で<br/>全作品が読み放題！</h1>
+                        <p class="hero-desc">今すぐ登録すると人気の異世界・悪役令嬢・<br/>転生ものがすべて無料で楽しめます。</p>
+                    </div>
+                    <div class="hero-covers" data-source="new" data-offset="1"></div>
+                </div>
+            </div>
+
+            <!-- Slide 3：ランキング急上昇 -->
+            <div class="hero-slide hero-slide-banner">
+                <div class="hero-scale" style="background-image:url(/images/banner/hero-3.jpg)">
+                    <div class="hero-copy">
+                        <span class="hero-badge">ランキング急上昇</span>
+                        <h1 class="hero-title">今話題の人気作品を<br/>チェック！</h1>
+                        <p class="hero-desc">読者の反響が大きい注目作品をランキングで<br/>リアルタイムにご紹介しています。</p>
+                    </div>
+                    <div class="hero-covers" data-source="click" data-offset="2"></div>
+                </div>
+            </div>
+
+            <!-- Slide 4：女性向け特集 -->
+            <div class="hero-slide hero-slide-banner">
+                <div class="hero-scale" style="background-image:url(/images/banner/hero-4.jpg)">
+                    <div class="hero-copy">
+                        <span class="hero-badge">女性向け恋愛特集</span>
+                        <h1 class="hero-title">悪役令嬢・溺愛・<br/>オフィスラブ特集！</h1>
+                        <p class="hero-desc">女性人気の高い恋愛ジャンルを厳選して<br/>まとめてご紹介しています。</p>
+                    </div>
+                    <div class="hero-covers" data-source="new" data-offset="0"></div>
+                </div>
+            </div>
+
+            <!-- Slide 5：期間限定フェア -->
+            <div class="hero-slide hero-slide-banner">
+                <div class="hero-scale" style="background-image:url(/images/banner/hero-2.jpg)">
+                    <div class="hero-copy">
+                        <span class="hero-badge">期間限定フェア</span>
+                        <h1 class="hero-title">人気作品が今だけ<br/>無料で読める！</h1>
+                        <p class="hero-desc">期間限定で話題の作品を無料公開中。<br/>この機会をお見逃しなく！</p>
+                    </div>
+                    <div class="hero-covers" data-source="update" data-offset="1"></div>
+                </div>
+            </div>
+
+        </div>
     </div>
+    <button class="hero-arrow prev" type="button" aria-label="前へ">&#10094;</button>
+    <button class="hero-arrow next" type="button" aria-label="次へ">&#10095;</button>
 </section>
 
 <!-- ============ キャンペーン ============ -->
@@ -33,7 +95,7 @@
             <strong>新規登録キャンペーン実施中！</strong>
             <span>今すぐ登録で全作品が読み放題。人気の異世界、悪役令嬢、転生ものを無料で楽しめます。</span>
         </div>
-        <a class="btn-free" href="/user/register.html">無料で始める →</a>
+        <a class="campaign-btn" href="/user/register.html">無料で始める →</a>
     </div>
 </section>
 
@@ -64,7 +126,7 @@
             <a class="sec-more" href="/book/bookclass.html">もっと見る</a>
         </div>
         <ul class="genre-tabs" id="genreTabs">
-            <li class="on"><a href="/book/bookclass.html">総合</a></li>
+            <li class="on"><a href="javascript:void(0)" data-cid="">総合</a></li>
         </ul>
         <div class="book-list" id="rankList"></div>
     </section>
@@ -164,6 +226,40 @@
             '</div></div>';
     }
 
+    /* ===== HERO 右側 2×2 書影（排行APIから動的生成） ===== */
+    var heroData = { click: null, "new": null, update: null };
+
+    function heroCover(book) {
+        var title = escHtml(book.bookName);
+        var inner;
+        if (book.picUrl && book.picUrl.indexOf('default.gif') < 0) {
+            inner = '<img src="' + book.picUrl + '" alt="' + title + '"/>';
+        } else {
+            inner = '<div class="cover cover-fallback" style="background:' + coverBg(book.bookName) + '">' + title + '</div>';
+        }
+        return '<a class="hero-cover" href="/book/' + book.id + '.html" title="' + title + '">' + inner + '</a>';
+    }
+
+    function tryRenderHero() {
+        if (!heroData.click || !heroData["new"] || !heroData.update) return;
+        $("#heroCarousel .hero-slide").each(function () {
+            var $box = $(this).find(".hero-covers");
+            if (!$box.length) return;
+            var src = $box.data("source") || "click";
+            var list = heroData[src] || heroData.click || [];
+            var offset = parseInt($box.data("offset") || 0, 10);
+            var html = "", shown = 0;
+            for (var i = 0; i < 4 && i < list.length; i++) {
+                html += heroCover(list[(i + offset) % list.length]);
+                shown++;
+            }
+            if (shown > 0 && shown < 4) {
+                html += '<span class="hero-cover hero-cover-deco"><b>Yomeba</b><small>10th ANNIVERSARY</small></span>';
+            }
+            $box.html(html);
+        });
+    }
+
     function loadRail(id, data, max) {
         var html = '';
         for (var i = 0; i < data.length && i < (max || data.length); i++) {
@@ -181,12 +277,85 @@
     }
 
     $(function () {
+        // ===== HERO レール（中央1枚＋左右が半分ずつ見える・5枚ループ） =====
+        var $hero = $("#heroCarousel");
+        var $track = $hero.find(".hero-track");
+        var $real = $track.children(".hero-slide");
+        var total = $real.length;
+        // 左右に半枚ずつ見えるため、前後に2枚ずつ複製して端の空白を防ぐ
+        $track.prepend($real.eq(total - 1).clone(true));
+        $track.prepend($real.eq(total - 2).clone(true));
+        $track.append($real.eq(0).clone(true));
+        $track.append($real.eq(1).clone(true));
+        var base = 2;                 // 実体1枚目のインデックス
+        var heroIdx = base;
+        var heroTimer = null;
+        var heroLock = false;
+
+        function heroLayout() {
+            var vw = document.documentElement.clientWidth;
+            var w = Math.min(1020, Math.max(300, Math.floor(vw / 2)));
+            $hero[0].style.setProperty("--cw", w + "px");
+            $hero[0].style.setProperty("--s", w / 1020);
+            $hero[0].style.setProperty("--half", (vw / 2) + "px");
+            $hero[0].style.setProperty("--idx", heroIdx);
+        }
+        function heroSet(i, animate) {
+            if (!animate) {
+                $track.css("transition", "none");
+                heroIdx = i;
+                $hero[0].style.setProperty("--idx", i);
+                void $track[0].offsetWidth;
+                $track.css("transition", "");
+                return;
+            }
+            heroIdx = i;
+            $hero[0].style.setProperty("--idx", i);
+        }
+        // 複製位置にいる場合は、見た目を変えずに実体位置へ瞬間移動
+        function heroNormalize() {
+            if (heroIdx === base - 1) heroSet(base + total - 1, false);
+            else if (heroIdx === base + total) heroSet(base, false);
+            else if (heroIdx === 0) heroSet(base + total - 2, false);
+            else if (heroIdx === base + total + 1) heroSet(base + 1, false);
+        }
+        $track.on("transitionend", function (e) {
+            if (e.originalEvent && e.originalEvent.propertyName !== "transform") return;
+            heroNormalize();
+            heroLock = false;
+        });
+        function heroNext() {
+            if (heroLock) return;
+            heroLock = true;
+            heroNormalize();
+            heroSet(heroIdx + 1, true);
+            setTimeout(function () { heroLock = false; }, 620);
+        }
+        function heroPrev() {
+            if (heroLock) return;
+            heroLock = true;
+            heroNormalize();
+            heroSet(heroIdx - 1, true);
+            setTimeout(function () { heroLock = false; }, 620);
+        }
+        function heroAuto() {
+            if (heroTimer) clearInterval(heroTimer);
+            heroTimer = setInterval(heroNext, 4500);
+        }
+        $hero.find(".hero-arrow.next").on("click", function () { heroNext(); heroAuto(); });
+        $hero.find(".hero-arrow.prev").on("click", function () { heroPrev(); heroAuto(); });
+        $(window).on("resize", heroLayout);
+        heroLayout();
+        heroAuto();
+
         // 旬の作品（クリックランキング）
         $.ajax({
             type: "get", url: "/book/listClickRank", data: {}, dataType: "json",
             success: function (data) {
                 if (data.code == 200) {
+                    heroData.click = data.data || [];
                     loadRail("#hotRail", data.data, 6);
+                    tryRenderHero();
                 }
             }
         });
@@ -195,18 +364,47 @@
             type: "get", url: "/book/listNewRank", data: {}, dataType: "json",
             success: function (data) {
                 if (data.code == 200) {
+                    heroData["new"] = data.data || [];
                     loadRail("#newRail", data.data, 6);
+                    tryRenderHero();
                 }
             }
         });
         // おすすめ双列リスト（更新ランキング）
-        $.ajax({
-            type: "get", url: "/book/listUpdateRank", data: {}, dataType: "json",
-            success: function (data) {
-                if (data.code == 200) {
-                    loadList("#rankList", data.data, 10);
-                }
+        function loadRecommend(cid) {
+            if (!cid) {
+                $.ajax({
+                    type: "get", url: "/book/listUpdateRank", data: {}, dataType: "json",
+                    success: function (data) {
+                        if (data.code == 200) {
+                            heroData.update = data.data || [];
+                            loadList("#rankList", data.data, 10);
+                            tryRenderHero();
+                        }
+                    }
+                });
+            } else {
+                $.ajax({
+                    type: "get", url: "/book/searchByPage",
+                    data: {catId: cid, pageNum: 1, pageSize: 10}, dataType: "json",
+                    success: function (data) {
+                        if (data.code == 200 && data.data && data.data.list) {
+                            loadList("#rankList", data.data.list, 10);
+                        } else {
+                            $("#rankList").html('<p style="padding:30px 0;color:#999;text-align:center">このジャンルの作品はまだありません</p>');
+                        }
+                    }
+                });
             }
+        }
+        loadRecommend("");
+        // ジャンルタブ切替（ページ内AJAX、遷移なし）
+        $("#genreTabs").on("click", "a", function (e) {
+            e.preventDefault();
+            var cid = $(this).attr("data-cid") || "";
+            $("#genreTabs li").removeClass("on");
+            $(this).parent().addClass("on");
+            loadRecommend(cid);
         });
         // ジャンル一覧（男性向け/女性向け）
         $.ajax({
@@ -217,15 +415,15 @@
                     var maleCount = 0, femaleCount = 0;
                     for (var i = 0; i < data.data.length; i++) {
                         var c = data.data[i];
-                        var tag = '<a href="/book/bookclass.html?c=' + c.id + '">' + escHtml(c.name) + '</a>';
+                        var tag = '<a href="javascript:void(0)" data-cid="' + c.id + '">' + escHtml(c.name) + '</a>';
                         if (c.workDirection == 1) {
                             female += tag;
-                            femaleTabs += '<li><a href="/book/bookclass.html?c=' + c.id + '">' + escHtml(c.name) + '</a></li>';
+                            femaleTabs += '<li><a href="javascript:void(0)" data-cid="' + c.id + '">' + escHtml(c.name) + '</a></li>';
                             femaleCount++;
                         } else {
                             male += tag;
                             if (maleCount < 6) {
-                                maleTabs += '<li><a href="/book/bookclass.html?c=' + c.id + '">' + escHtml(c.name) + '</a></li>';
+                                maleTabs += '<li><a href="javascript:void(0)" data-cid="' + c.id + '">' + escHtml(c.name) + '</a></li>';
                             }
                             maleCount++;
                         }

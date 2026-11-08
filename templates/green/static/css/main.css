@@ -56,7 +56,7 @@
 }
 
 .scSmallImg li.on {
-    border: 2px solid #3CB4FA
+    border: 2px solid #3FBDFD
 }
 
 .scSmallImg img {
@@ -112,7 +112,7 @@
 }
 
 .hot_articles dt a {
-    color: #3CB4FA
+    color: #3FBDFD
 }
 
 .hot_articles dd {
@@ -138,7 +138,7 @@
 }
 
 .hot_articles span.tit {
-    color: #3CB4FA;
+    color: #3FBDFD;
     margin-right: 6px
 }
 
@@ -169,7 +169,7 @@
     font-weight: 600; /*border-bottom: 4px solid transparent*/
 }
 
-/*.rightBox .title h3.on { border-color: #3CB4FA }*/
+/*.rightBox .title h3.on { border-color: #3FBDFD }*/
 .rightList ul {
     padding: 0
 }
@@ -290,7 +290,7 @@
 
 /*.rightList li.on i { position: absolute; top: 12px; left: 0; margin: 0; display:none }*/
 .rightList li.num1 i, .rankTable .rank .num1 {
-    background-color: #3CB4FA
+    background-color: #3FBDFD
 }
 
 .rightList li.num2 i, .rankTable .rank .num2 {
@@ -562,7 +562,7 @@
 }
 
 .rightList2 li a.on, .rightList2 li a:hover {
-    color: #3CB4FA
+    color: #3FBDFD
 }
 
 .so_tag { /*padding: 4px 14px 0;*/
@@ -589,7 +589,7 @@
 }
 
 .so_tag li a.on, .so_tag li a:hover {
-    color: #3CB4FA
+    color: #3FBDFD
 }
 
 .so_tag li .so_girl {
@@ -655,7 +655,7 @@
 }
 
 .pay_way li.on {
-    border-color: #3CB4FA
+    border-color: #3FBDFD
 }
 
 .pay_way li .pay_pic {
@@ -1185,7 +1185,7 @@
 }
 
 .items_txt .intro a:hover, .rightList .more a:hover, .updateTable .style a:hover, .rightList .on .book_intro .txt:hover {
-    color: #3CB4FA
+    color: #3FBDFD
 }
 
 .icon_show:hover, .icon_hide:hover {

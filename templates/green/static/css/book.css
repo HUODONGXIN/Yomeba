@@ -356,8 +356,8 @@
     width: 132px;
     height: 52px;
     line-height: 52px;
-    color: #3CB4FA;
-    border: 2px solid #3CB4FA;
+    color: #3FBDFD;
+    border: 2px solid #3FBDFD;
     background: #fff
 }
 
@@ -722,7 +722,7 @@
 .icon_qyzz {
     padding: 5px;
     line-height: 1;
-    background: #3CB4FA;
+    background: #3FBDFD;
     color: #fff;
     border-radius: 3px;
     display: inline-block
@@ -838,11 +838,11 @@
     transition: color .15s, border-color .15s;
 }
 .rank-tabs a:hover {
-    color: #3CB4FA;
+    color: #3FBDFD;
 }
 .rank-tabs a.on {
-    color: #3CB4FA;
-    border-bottom-color: #3CB4FA;
+    color: #3FBDFD;
+    border-bottom-color: #3FBDFD;
 }
 .rank-item {
     display: flex;
@@ -901,7 +901,7 @@
     text-decoration: none;
 }
 .rk-title a:hover {
-    color: #3CB4FA;
+    color: #3FBDFD;
 }
 .rk-desc {
     margin: 0 0 8px;

@@ -5,301 +5,242 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-
     <title th:text="${application.website.name}"></title>
 
     <meta name="keywords" th:content="${application.website.keyword}"/>
-    <meta name="description"
-          th:content="${application.website.description}"/>
-
+    <meta name="description" th:content="${application.website.description}"/>
 
     <div th:include="mobile/common/css :: css"></div>
 
     <style>
+        * { box-sizing: border-box; }
+        html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+        body { margin: 0; background: #fff; color: #222; font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif; }
 
-        .line-limit-length {
+        /* ---- header ---- */
+        .m-header { width: 100%; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; padding: 10px 12px 8px; gap: 8px; }
+        .m-logo { flex: none; font-size: 20px; font-weight: 800; color: #3FBDFD; text-decoration: none; line-height: 1.1; }
+        .m-logo small { display: block; font-size: 8px; color: #9aa0a6; font-weight: 400; margin-top: 2px; letter-spacing: .5px; }
+        .m-actions { display: flex; align-items: center; margin-left: auto; }
+        .m-login { font-size: 12px; color: #333; margin-right: 9px; white-space: nowrap; text-decoration: none; }
+        .m-register { background: #111; color: #fff; font-size: 11px; padding: 8px 10px; white-space: nowrap; border-radius: 3px; text-decoration: none; }
 
-            overflow: hidden;
+        /* ---- search ---- */
+        .m-search { position: relative; margin: 4px 14px 10px; }
+        .m-search input { width: 100%; height: 42px; background: #f1f1f1; border: none; border-radius: 6px; padding: 0 44px 0 40px; font-size: 14px; outline: none; }
+        .m-search .ic { position: absolute; left: 13px; top: 13px; width: 16px; height: 16px; border: 2px solid #999; border-radius: 50%; }
+        .m-search .ic::after { content: ""; position: absolute; right: -5px; bottom: -3px; width: 7px; height: 2px; background: #999; transform: rotate(45deg); }
+        .m-search .go { position: absolute; right: 10px; top: 10px; font-size: 13px; color: #3FBDFD; background: none; border: none; }
 
-            text-overflow: ellipsis;
+        /* ---- nav ---- */
+        .m-nav { width: 100%; display: flex; overflow-x: auto; white-space: nowrap; border-bottom: 1px solid #eee; padding: 0 6px; scrollbar-width: none; }
+        .m-nav::-webkit-scrollbar { display: none; }
+        .m-nav a { flex: none; padding: 11px 8px 10px; font-size: 12.5px; color: #666; text-decoration: none; position: relative; }
+        .m-nav a.on { color: #111; font-weight: 700; }
+        .m-nav a.on::after { content: ""; position: absolute; left: 10px; right: 10px; bottom: 0; height: 3px; background: #3FBDFD; }
 
-            white-space: nowrap;
+        /* ---- hero ---- */
+        .m-rail { width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; background: #6d6d6d; scrollbar-width: none; }
+        .m-rail::-webkit-scrollbar { display: none; }
+        .m-track { display: flex; gap: 12px; padding: 10px 11vw; }
+        .m-slide { flex: 0 0 78vw; width: 78vw; height: calc(78vw * 0.441); scroll-snap-align: center; border-radius: 4px; overflow: hidden; text-decoration: none; display: flex; flex-direction: column; justify-content: center; padding: 0 20px; box-sizing: border-box; color: #fff; }
+        .m-slide { padding: 0; background-position: center; background-size: cover; background-repeat: no-repeat; }
+        .m-slide-1 { background-image: url(/images/banner/hero-1.jpg); }
+        .m-slide-2 { background-image: url(/images/banner/hero-6.jpg); }
+        .m-slide-3 { background-image: url(/images/banner/hero-3.jpg); }
+        .m-slide-4 { background-image: url(/images/banner/hero-4.jpg); }
+        .m-slide-5 { background-image: url(/images/banner/hero-2.jpg); }
+        .m-slide strong { font-size: 17px; line-height: 1.35; font-weight: 700; }
+        .m-slide span { font-size: 11px; line-height: 1.6; margin-top: 7px; opacity: .92; }
 
-        }
+        /* ---- campaign ---- */
+        .m-campaign { margin: 16px 14px 6px; background: #e9e9e9; border-radius: 4px; padding: 16px; }
+        .m-campaign strong { display: block; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+        .m-campaign span { font-size: 12px; color: #555; line-height: 1.6; }
+        .m-campaign-btn { display: block; margin-top: 14px; background: #3FBDFD; color: #fff; text-align: center; height: 44px; line-height: 44px; border-radius: 4px; font-size: 14px; font-weight: 700; text-decoration: none; }
 
-        .layui-nav .layui-nav-item {
-            position: relative;
-            display: inline-block;
-            vertical-align: middle;
-            line-height: 50px;
-        }
+        /* ---- sections ---- */
+        .m-sec { padding: 20px 14px 6px; }
+        .m-sec h2 { font-size: 20px; font-weight: 800; margin: 0 0 14px; padding-left: 11px; position: relative; letter-spacing: .5px; }
+        .m-sec h2::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 4px; background: #111; }
+        .m-sec .more { float: right; font-size: 11px; color: #888; font-weight: 400; text-decoration: none; margin-top: 8px; }
 
-        body ul.layui-nav li.layui-nav-item a {
-            display: block;
-            transition: all .3s;
-            -webkit-transition: all .3s;
-        }
+        .m-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 10px; }
+        .m-card { display: block; text-decoration: none; color: #222; }
+        .m-cover { width: 100%; aspect-ratio: 3 / 4; border-radius: 4px; overflow: hidden; background: #eee; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 700; line-height: 1.35; text-align: center; padding: 8px; }
+        .m-cover img { width: 100%; height: 100%; object-fit: cover; }
+        .m-card .t { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-size: 12px; margin-top: 6px; line-height: 1.45; }
 
-        .user_link {
-            vertical-align: middle;
-            line-height: 40px;
-            float: right;
-            color: #3eaf7c;
-            padding: 11px 12px 0;
-        }
-
-        .user_link a {
-
-            color: #3eaf7c;
-        }
-
-        .container {
-            display: flex;
-            overflow-x: auto; /* コンテンツの水平スクロールを許可 */
-            white-space: nowrap; /* 改行を禁止 */
-            scroll-snap-type: x mandatory; /* スクロール時にsnap-pointsへ強制整列 */
-            -ms-overflow-style: none; /* Internet Explorer 10+ */
-            scrollbar-width: none; /* Firefox */
-        }
-
-        .container::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-        }
-
-        .container::-webkit-scrollbar-track,
-        .container::-webkit-scrollbar-thumb {
-            display: none;
-        }
-
-
-        .item {
-            flex: 0 0 calc(100% / 10); /* 各要素の幅はコンテナの10分の1 */
-            scroll-snap-align: start;
-            box-sizing: border-box;
-            text-align: center;
-            border-radius: 5px;
-            margin-right: 5px;
-        }
-
-        .book_desc {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            white-space: pre-wrap;
-        }
-
+        .m-list .row { display: flex; gap: 10px; padding: 10px 0; border-bottom: 1px solid #f1f1f1; text-decoration: none; color: #222; }
+        .m-list .num { flex: none; width: 20px; font-size: 13px; font-weight: 700; color: #3FBDFD; }
+        .m-list .txt { min-width: 0; }
+        .m-list .name { font-size: 13px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .m-list .meta { font-size: 11px; color: #999; margin-top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     </style>
-
 
 </head>
 <body>
 
-
-<!-- あなたのHTMLコード -->
-<a name="top"></a>
-<div style="height: 40px;">
-    <div style="line-height: 50px;width: 120px;float:left;padding-left: 10px"><img style="width: 150px;"
-                                                                                   th:src="${application.website.logo}">
+<header class="m-header">
+    <a href="/" class="m-logo">
+        Yomeba
+        <small>小説はYomebaで読む</small>
+    </a>
+    <div class="m-actions">
+        <a href="/user/login.html" class="m-login">ログイン</a>
+        <a href="/user/register.html" class="m-register">無料登録</a>
     </div>
-    <div class="user_link">
-        <a style="padding-right: 3px" href="/user/favorites.html">
-            <svg t="1693622464904" class="icon" viewBox="0 0 1097 1024" version="1.1"
-                 xmlns="http://www.w3.org/2000/svg" p-id="3653" width="23px" height="23px">
-                <path d="M998.58390632 852.14701166H126.84569332A41.51236 41.51236 0 0 0 85.33333332 893.65937166v62.26854a41.51236 41.51236 0 0 0 41.51236 41.51236h871.738213a41.51236 41.51236 0 0 0 41.51236-41.51236v-62.26854a41.51236 41.51236 0 0 0-41.51236-41.51236z m-29.293426 83.014048h-813.172704a8.537246 8.537246 0 0 1-8.537246-8.537246v-3.681687a8.537246 8.537246 0 0 1 8.537246-8.537247h813.172704a8.537246 8.537246 0 0 1 8.537246 8.537247v3.681687a8.537246 8.537246 0 0 1-8.537246 8.537246zM126.84569332 810.63465166h124.537079a41.51236 41.51236 0 0 0 41.51236-41.51236V229.47228566a41.51236 41.51236 0 0 0-41.51236-41.51236H126.84569332A41.51236 41.51236 0 0 0 85.33333332 229.47228566v539.650006a41.51236 41.51236 0 0 0 41.51236 41.51236zM156.72605532 246.49342066h64.883071a12.805869 12.805869 0 0 1 12.805869 12.805869v479.995998a12.805869 12.805869 0 0 1-12.805869 12.80587H156.72605532a12.805869 12.805869 0 0 1-12.80587-12.80587V259.29928966a12.805869 12.805869 0 0 1 12.80587-12.805869z m239.939305 564.141231h124.53708a41.51236 41.51236 0 0 0 41.51236-41.51236V278.62548066l291.653674 510.335237 0.266789 0.480221a41.619075 41.619075 0 0 0 56.826045 15.527116l107.932136-62.962191A42.600859 42.600859 0 0 0 1034.18422332 684.02729066L727.73976932 147.49337866l-0.266789-0.48022a41.619075 41.619075 0 0 0-56.826045-15.527116l-107.932135 62.962191V84.17902666A41.51236 41.51236 0 0 0 521.20244032 42.66666666h-124.53708a41.51236 41.51236 0 0 0-41.51236 41.51236v684.943265a41.51236 41.51236 0 0 0 41.51236 41.51236z m296.295802-597.938055a3.735045 3.735045 0 0 1 5.122348 1.376631l259.841761 454.608363a12.805869 12.805869 0 0 1-4.663471 17.415982l-56.271124 32.825712a12.805869 12.805869 0 0 1-17.544041-4.663471L624.11894332 267.59109066a12.805869 12.805869 0 0 1 4.663471-17.415983zM426.49236432 101.20016166h64.883072a12.805869 12.805869 0 0 1 12.805869 12.805869v625.289257a12.805869 12.805869 0 0 1-12.805869 12.80587h-64.883072a12.805869 12.805869 0 0 1-12.805869-12.80587V114.00603066a12.805869 12.805869 0 0 1 12.805869-12.805869z m0 0"
-                      p-id="3654" fill="#3eaf7c"></path>
-            </svg>
-        </a>
-        <a href="/user/userinfo.html">
-            <svg t="1698639187751" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-                 p-id="4190" width="23" height="23">
-                <path d="M704 329.152C704 209.365333 622.848 128 512 128s-192 81.365333-192 201.152C320 454.762667 407.146667 554.666667 512 554.666667s192-99.904 192-225.514667z m42.666667 0C746.666667 476.714667 642.176 597.333333 512 597.333333s-234.666667-120.618667-234.666667-268.181333C277.333333 181.546667 381.824 85.333333 512 85.333333s234.666667 96.213333 234.666667 243.818667zM512.106667 640c408.96 0 404.864 256.512 404.864 256.512 3.093333 23.274667-13.482667 42.154667-37.098667 42.154667H144.32c-23.573333 0-41.088-19.136-37.077333-42.154667 0 0-4.096-256.512 404.864-256.512zM149.909333 896l0.064 3.861333-0.704 3.968c0.682667-3.882667-2.837333-7.829333-4.949333-7.829333H879.872c-2.154667 0-5.504 3.818667-5.205333 6.144l-0.426667-3.157333 0.064-3.157334c0-0.853333-0.128-3.349333-0.533333-7.125333a161.813333 161.813333 0 0 0-4.266667-23.082667 192.96 192.96 0 0 0-35.242667-71.104C780.330667 725.461333 678.634667 682.666667 512.106667 682.666667c-166.549333 0-268.224 42.794667-322.176 111.850666a192.96 192.96 0 0 0-35.242667 71.104c-2.176 8.426667-3.541333 16.192-4.266667 23.082667a81.045333 81.045333 0 0 0-0.512 7.296z"
-                      fill="#3eaf7c" p-id="4191"></path>
-            </svg>
-        </a>
+</header>
 
-    </div>
+<div class="m-search">
+    <span class="ic"></span>
+    <input id="title" type="text" placeholder="作品名、作家名、キーワードで探す" autocomplete="off"/>
+    <button class="go" type="button" onclick="searchBooks()">検索</button>
 </div>
 
+<nav class="m-nav">
+    <a class="on" href="/">ホーム</a>
+    <a href="/book/book_ranking.html">ランキング</a>
+    <a href="/book/book_ranking.html?type=2">新着</a>
+    <a href="/book/bookclass.html?c=1">男性向け</a>
+    <a href="/book/bookclass.html?c=7">女性向け</a>
+    <a href="/book/bookclass.html">ジャンル</a>
+</nav>
 
-<div class="layui-container" style="padding-left: 2%">
-    <div class="layui-row">
-
-        <div class="layui-col-xs10 layui-col-sm10 layui-col-md11 layui-col-lg11">
-            <input id="title" type="text" name="title" required lay-verify="required" placeholder="書名・著者を入力してください"
-                   autocomplete="off"
-                   class="layui-input">
-        </div>
-        <div class="layui-col-xs1" style="padding: 0 1% 1%">
-            <button onclick="searchBooks()" class="layui-btn" lay-submit lay-filter="formDemo">検索</button>
-        </div>
-    </div>
-
-</div>
-<div style="height: 1px" class="layui-col-lg1"></div>
-<div class="layui-collapse layui-col-lg10">
-    <div class="layui-colla-item">
-        <blockquote class="layui-elem-quote" style="text-align: left;font-size: 16px">
-            今週のおすすめ
-        </blockquote>
-
-        <div class="container" style="padding-bottom: 10px">
-
-            <div class="item" style="position: relative;padding:1%;" th:if="${bookMap['4']}" th:each="book,iterStat:${bookMap['4']}">
-                <a th:href="'/book/'+${book.bookId}+'.html'">
-
-                    <img style=" width:100px; height:125px; max-width:100%; max-height:100%;"
-                         th:src="${book.picUrl}">
-                    <br>
-                    <span style="width: 100px" class="book_name" th:text="${book.bookName}"></span>
-
-                </a>
-
-            </div>
-        </div>
-    </div>
-
-
-</div>
-<div style="clear: both"></div>
-<div class="layui-colla-item">
-    <blockquote class="layui-elem-quote" style="text-align: left;font-size: 16px">
-        人気のおすすめ
-    </blockquote>
-
-    <div class="layui-container">
-        <div class="layui-row" id="hotRecBooks" th:if="${bookMap['3']}">
-            <div th:each="book,iterStat : ${bookMap['3']}" th:if="${iterStat.index<6}" style="margin-bottom: 5px"
-                 class="layui-col-xs12 layui-col-sm6 layui-col-md4 layui-col-lg4">
-                <a th:href="'/book/'+${book.bookId}+'.html'">
-                    <div class="layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4">
-                        <img style=" width:100px; height:125px;" th:src="${book.picUrl}">
-
-                    </div>
-                    <div class="layui-col-xs8 layui-col-sm8 layui-col-md8 layui-col-lg8">
-                        <ul>
-                            <li style="padding-bottom: 5px" class="line-limit-length"
-                                th:text="${book.bookName}"></li>
-                            <li style="padding-bottom: 5px;color: #a6a6a6" th:text="'著者：'+${book.authorName}"></li>
-                            <li class='book_desc' style="color: #a6a6a6;padding-right:10px;"
-                                th:utext="${book.bookDesc}"></li>
-                        </ul>
-                    </div>
-                    <div style="font-style: italic;color: red"
-                         class="layui-col-xs2 layui-col-sm2 layui-col-md2 layui-col-lg2"></div>
-                </a>
-            </div>
-
-
-        </div>
-
-    </div>
-
-</div>
-<div style="clear: both"></div>
-<div style="height: 1px" class="layui-col-lg1"></div>
-<div class="layui-colla-item layui-col-lg10"
-     style="border-width: 1px;border-style: solid;border-radius: 2px;border-top-width: 0px"><a
-        href="javascript:moreNewBooks()">
-    <blockquote class="layui-elem-quote" style="text-align: left;color: #000;font-size: 16px">最新更新
-        <div style="float: right; margin-right: 20px"><i style="font-size: 14px;color:#666"
-                                                         class="layui-icon">すべて見る&#xe65b;</i>
-        </div>
-    </blockquote>
-</a>
-    <div class="layui-colla-content layui-show">
-
-        <div class="layui-container" style="padding-left: 2px;padding-right: 5px">
-            <div class="layui-row" id="updateRankBooks">
-
-
-            </div>
-        </div>
-
+<div class="m-rail" id="mRail">
+    <div class="m-track">
+        <a class="m-slide m-slide-1" href="/user/register.html" aria-label="キャンペーン"></a>
+        <a class="m-slide m-slide-2" href="/user/register.html" aria-label="無料会員登録"></a>
+        <a class="m-slide m-slide-3" href="/book/book_ranking.html" aria-label="ランキング"></a>
+        <a class="m-slide m-slide-4" href="/book/bookclass.html?c=7" aria-label="女性向け"></a>
+        <a class="m-slide m-slide-5" href="/book/bookclass.html?c=1" aria-label="男性向け"></a>
     </div>
 </div>
 
-<div style="clear: both"></div>
-<div th:replace="mobile/common/footer :: footer">
-</div>
-<div th:replace="mobile/common/js :: js">
-</div>
+<section class="m-campaign">
+    <div>
+        <strong>新規登録キャンペーン実施中！</strong>
+        <span>今すぐ登録で全作品が読み放題。人気の異世界、悪役令嬢、転生ものを無料で楽しめます。</span>
+    </div>
+    <a class="m-campaign-btn" href="/user/register.html">無料で始める →</a>
+</section>
+
+<section class="m-sec">
+    <h2>いま読むべき旬の作品！<a class="more" href="/book/book_ranking.html">もっと見る</a></h2>
+    <div class="m-grid" id="mWeek"></div>
+</section>
+
+<section class="m-sec">
+    <h2>新作小説<a class="more" href="/book/book_ranking.html?type=1">もっと見る</a></h2>
+    <div class="m-grid" id="mNew"></div>
+</section>
+
+<section class="m-sec">
+    <h2>最新更新<a class="more" href="/book/book_ranking.html?sortBy=last_index_update_time">すべて見る</a></h2>
+    <div class="m-list" id="mUpdate"></div>
+</section>
+
+<div th:replace="mobile/common/footer :: footer"></div>
+<div th:replace="mobile/common/js :: js"></div>
 
 <script src="/mobile/js/wap_collect.js"></script>
 
-
 <script>
+    var COVER_COLORS = [
+        ['#7C4DFF', '#5E35B1'], ['#43A047', '#2E7D32'], ['#29B6F6', '#0288D1'],
+        ['#EF5350', '#C62828'], ['#FFA726', '#EF6C00'], ['#EC407A', '#AD1457']
+    ];
 
-
-    //更新ランキングのデータ取得
-    $.ajax({
-        type: "get",
-        url: "/book/listUpdateRank",
-        data: {},
-        dataType: "json",
-        success: function (data) {
-            if (data.code == 200) {
-                var updateRankBooks = data.data;
-                var updateRankBookHtml = "";
-                for (var i = 0; i < updateRankBooks.length; i++) {
-
-                    var updateRankBook = updateRankBooks[i];
-                    if (updateRankBook.bookDesc) {
-                        updateRankBook.bookDesc = updateRankBook.bookDesc.replace(/<[^>]+>/g, "").replace(/\s+/g, "");
-                    }
-
-                    updateRankBookHtml += ("<div style=\"padding-bottom: 30px\"\n" +
-                        "                     class=\"layui-col-xs12 layui-col-sm6 layui-col-md6 layui-col-lg6\">\n" +
-                        "\n" +
-                        "                    <a href=\"/book/" + updateRankBook.id + ".html\">\n" +
-                        "                        <div class=\"line-limit-length layui-col-xs8 layui-col-sm6 layui-col-md6 layui-col-lg6\"><span '>" + (i + 1) + "." + updateRankBook.bookName + "</span> - <span class=\"layui-elip\" style='color: #a6a6a6;'>" + updateRankBook.authorName + "</span>\n" +
-                        "                        </div>\n" +
-                        "                        <div class=\"layui-col-sm3 layui-col-md3 layui-col-lg3\"\n" +
-                        "                             style=\"color: #FF5722;float: right;margin-right:5px\"><i>" + updateRankBook.lastIndexUpdateTime + "</i></div>\n" +
-                        "\n" +
-                        "                        <div style=\"clear: both\"></div>\n" +
-                        "                        <div style=\"color: #a6a6a6;padding-left: 5px;padding-top: 5px\"\n" +
-                        "                             class=\"layui-elip layui-col-md11 layui-col-sm11 layui-col-lg11\">あらすじ：" + updateRankBook.bookDesc + "" +
-                        "                    </div></a>\n" +
-                        "                </div>");
-
-
-                }
-                $("#updateRankBooks").html(updateRankBookHtml);
-            } else {
-                layer.alert(data.msg);
-            }
-
+    function coverHtml(book, i) {
+        var name = book.bookName || '';
+        var pic = book.picUrl || '';
+        if (pic && pic.indexOf('default.gif') === -1) {
+            return '<div class="m-cover"><img src="' + pic + '" alt=""/></div>';
         }
-        ,
-        error: function () {
-            layer.alert('ネットワークエラー');
-        }
-    })
-
-
-    function moreNewBooks(event) {
-        window.location.href = "/book/book_ranking.html?sortBy=last_index_update_time";
+        var c = COVER_COLORS[i % COVER_COLORS.length];
+        return '<div class="m-cover" style="background:linear-gradient(135deg,' + c[0] + ',' + c[1] + ')">' + name + '</div>';
     }
 
+    function cardHtml(book, i) {
+        return '<a class="m-card" href="/book/' + book.id + '.html">' +
+            coverHtml(book, i) +
+            '<span class="t">' + (book.bookName || '') + '</span>' +
+            '</a>';
+    }
+
+    function loadGrid(url, target) {
+        $.ajax({
+            type: 'get', url: url, data: {}, dataType: 'json',
+            success: function (data) {
+                if (data.code == 200 && data.data && data.data.length) {
+                    var html = '';
+                    for (var i = 0; i < data.data.length && i < 6; i++) {
+                        html += cardHtml(data.data[i], i);
+                    }
+                    $(target).html(html);
+                }
+            }
+        });
+    }
+
+    $(function () {
+        loadGrid('/book/listClickRank', '#mWeek');
+        loadGrid('/book/listNewRank', '#mNew');
+
+        $.ajax({
+            type: 'get', url: '/book/listUpdateRank', data: {}, dataType: 'json',
+            success: function (data) {
+                if (data.code == 200 && data.data && data.data.length) {
+                    var html = '';
+                    for (var i = 0; i < data.data.length; i++) {
+                        var b = data.data[i];
+                        html += '<a class="row" href="/book/' + b.id + '.html">' +
+                            '<span class="num">' + (i + 1) + '</span>' +
+                            '<span class="txt"><span class="name">' + (b.bookName || '') + '</span>' +
+                            '<span class="meta">' + (b.authorName || '') + '</span></span>' +
+                            '</a>';
+                    }
+                    $('#mUpdate').html(html);
+                }
+            }
+        });
+    });
+
     function searchBooks() {
-        var keywords = $("#title").val();
-        window.location.href = "/book/book_ranking.html?keyword=" + encodeURI(keywords);
+        var keywords = $('#title').val();
+        window.location.href = '/book/book_ranking.html?keyword=' + encodeURI(keywords);
+    }
+
+    function moreNewBooks() {
+        window.location.href = '/book/book_ranking.html?sortBy=last_index_update_time';
     }
 
     function toMyCollect() {
-        var token = localStorage.getItem("token");
+        var token = localStorage.getItem('token');
         if (token) {
-            window.location.href = "/book/book_ranking.html?token=" + token;
+            window.location.href = '/book/book_ranking.html?token=' + token;
         } else {
-            window.location.href = "/user/login.html";
+            window.location.href = '/user/login.html';
         }
     }
 
+    // ヒーローレールを5枚で無限ループ（前後に複製を置いて端の空白を防ぐ）
+    (function () {
+        var rail = document.getElementById('mRail');
+        if (!rail) return;
+        var track = rail.querySelector('.m-track');
+        var kids = track.children;
+        if (kids.length < 2) return;
+        track.insertBefore(kids[kids.length - 1].cloneNode(true), kids[0]);
+        track.appendChild(track.children[1].cloneNode(true));
+        function center() {
+            var card = track.children[1];
+            rail.scrollLeft = card.offsetLeft - (rail.clientWidth - card.offsetWidth) / 2;
+        }
+        window.addEventListener('load', center);
+        center();
+    })();
 </script>
-
 
 </body>
 </html>

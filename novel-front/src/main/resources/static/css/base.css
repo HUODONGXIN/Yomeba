@@ -45,7 +45,7 @@ a {
 }
 
 a:hover, .topBar a:hover, .red, .record_list li:hover .read_link a {
-    color: #3CB4FA
+    color: #3FBDFD
 }
 
 .red1 {
@@ -325,15 +325,43 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 }
 
 .topMain {
-    height: 92px;
+    height: 96px;
     background: #fff;
     overflow: hidden
 }
 
+/* ヘッダー内部は flex 配置（設計図準拠） */
+.topMain .box_center {
+    width: 1150px;
+    height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between
+}
+
+.topMain .logo {
+    float: none;
+    flex: none;
+    padding: 0
+}
+
+.topMain .searchBar {
+    float: none;
+    flex: none;
+    margin-top: 0
+}
+
+.topMain .bookShelf {
+    float: none;
+    flex: none;
+    margin-top: 0;
+    padding-left: 0
+}
+
 .logo {
-    width: 220px;
+    width: 208px;
     float: left;
-    padding: 20px 80px 0 0;
+    padding: 22px 40px 0 0;
     display: block;
     text-decoration: none
 }
@@ -345,64 +373,70 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 
 .logo-text {
     display: block;
-    font-size: 26px;
+    font-size: 34px;
     font-weight: 700;
-    color: #2E9BE0;
-    line-height: 1.15
+    color: #3FBDFD;
+    line-height: 1.1
 }
 
 .logo-sub {
     display: block;
     font-size: 12px;
-    color: #868e96;
-    margin-top: 2px;
+    color: #9aa0a6;
+    margin-top: 3px;
     letter-spacing: .5px
 }
 
 .searchBar {
-    width: 342px;
-    margin-top: 27px;
+    width: 560px;
+    margin-top: 22px;
     overflow: hidden
 }
 
-.searchBar .search /*, .searchBar .hotword*/
-{
-    width: 342px;
+.searchBar .search {
+    position: relative;
+    width: 560px;
+    height: 52px;
+    background: #f1f1f1;
+    border-radius: 6px;
     overflow: hidden
 }
 
 .searchBar .s_int {
-    width: 250px;
-    padding: 0 14px 0 18px;
-    height: 36px;
-    line-height: 36px \9;
+    width: 100%;
+    padding: 0 18px 0 54px;
+    height: 52px;
+    box-sizing: border-box;
+    line-height: 52px \9;
     vertical-align: middle;
-    border: 1px solid #d5d9e0;
-    border-right: none;
+    border: none;
     color: #333;
-    float: left;
-    border-radius: 20px 0 0 20px;
-    font-size: 14px; /*background: #fff;*/
+    float: none;
+    border-radius: 6px;
+    font-size: 17px;
     background: 0 0
 }
 
 /*.searchBar .s_btn { width: 78px; height: 38px; line-height: 38px; background: #f65167; color: #fff; font-size: 16px; text-align: center; float: left; cursor: pointer; padding: 0 }
 .searchBar .s_btn:hover { background:#E23249 }*/
 .searchBar .search_btn {
-    float: left;
-    width: 58px;
-    height: 38px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 54px;
+    height: 52px;
     text-align: center;
-    border-radius: 0 20px 20px 0;
-    background-color: #3CB4FA;
+    border-radius: 6px 0 0 6px;
+    background-color: transparent;
     cursor: pointer;
+    z-index: 2
 }
 
 .searchBar .search_btn .icon {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     display: block;
-    margin: 9px auto 0;
+    margin: 16px auto 0;
     background: url(../images/search.png) no-repeat;
     background-size: cover;
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/images/search.png', sizingMethod='scale');
@@ -428,50 +462,50 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 }
 
 .bookShelf .user_link {
-    height: 38px;
-    line-height: 38px;
+    height: 48px;
+    line-height: 48px;
     padding-left: 20px;
     float: right;
     display: flex;
     align-items: center;
-    gap: 10px
+    gap: 0
 }
 
 .bookShelf .btn-login {
     display: inline-block;
-    height: 36px;
-    line-height: 36px;
-    padding: 0 24px;
-    border-radius: 18px;
-    border: 1px solid #c8cdd5;
-    background: #fff;
+    height: 48px;
+    line-height: 48px;
+    padding: 0;
+    margin-right: 36px;
+    border-radius: 0;
+    border: none;
+    background: none;
     color: #333;
-    font-size: 14px;
+    font-size: 18px;
     text-decoration: none;
-    transition: border-color .15s, color .15s
+    transition: color .15s
 }
 
 .bookShelf .btn-login:hover {
-    border-color: #3CB4FA;
-    color: #3CB4FA
+    color: #3FBDFD
 }
 
 .bookShelf .btn-free {
     display: inline-block;
-    height: 36px;
-    line-height: 36px;
-    padding: 0 24px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, #3CB4FA, #2E9BE0);
+    height: 46px;
+    line-height: 46px;
+    padding: 0 26px;
+    border-radius: 3px;
+    background: #111;
     color: #fff;
-    font-size: 14px;
+    font-size: 16px;
     text-decoration: none;
-    box-shadow: 0 2px 8px rgba(60, 180, 250, .3);
-    transition: box-shadow .15s
+    box-shadow: none;
+    transition: background .15s
 }
 
 .bookShelf .btn-free:hover {
-    box-shadow: 0 4px 12px rgba(60, 180, 250, .4);
+    background: #000;
     color: #fff
 }
 
@@ -496,10 +530,10 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 /*.bookShelf img { position: absolute; top: 17px; left: 17px; z-index: 10 }*/
 .mainNav {
     width: 100%;
-    height: 48px;
+    height: 64px;
     background: #fff;
-    border-bottom: 1px solid #e9ecef;
-    margin-bottom: 20px
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 0
 }
 
 .mainNav .nav li {
@@ -508,18 +542,35 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 
 .mainNav .nav li a {
     float: left;
-    height: 44px;
-    line-height: 48px;
-    color: #333;
-    font-size: 16px;
-    margin: 0 34px;
-    border-bottom: 2px solid transparent;
-    transition: color .3s, background-color .3s, border .3s
+    height: 64px;
+    line-height: 64px;
+    color: #666;
+    font-size: 18px;
+    margin: 0 32px;
+    border-bottom: none;
+    position: relative;
+    transition: color .3s
 }
 
-.mainNav .nav li.on a, .mainNav .nav li a:hover {
-    border-bottom: 2px solid #3CB4FA;
-    color: #3CB4FA
+.mainNav .nav li.on a {
+    color: #111;
+    font-weight: 700;
+    border-bottom: none
+}
+
+.mainNav .nav li.on a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 4px;
+    background: #3FBDFD
+}
+
+.mainNav .nav li a:hover {
+    color: #3FBDFD;
+    border-bottom: none
 }
 
 .footer {
@@ -574,8 +625,8 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 }
 
 .btn_red, .btn_ora {
-    border: 1px solid #3CB4FA;
-    background: #3CB4FA;
+    border: 1px solid #3FBDFD;
+    background: #3FBDFD;
     color: #fff
 }
 
@@ -586,8 +637,8 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 }
 
 .btn_ora_white {
-    border: 1px solid #3CB4FA;
-    color: #3CB4FA
+    border: 1px solid #3FBDFD;
+    color: #3FBDFD
 }
 
 .btn_ora_white:hover {
@@ -596,7 +647,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 
 .btn_link {
     padding: 2px 6px;
-    background: #3CB4FA;
+    background: #3FBDFD;
     color: #fff;
     border-radius: 2px
 }
@@ -607,7 +658,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
 }
 
 .btn_ora:hover, .btn_red:hover, .btn_link:hover {
-    background: #3CB4FA;
+    background: #3FBDFD;
     color: #fff
 }
 
@@ -644,7 +695,7 @@ i.vip_b {
     line-height: 22px;
     font-size: 15px;
     color: #fff;
-    background: #3CB4FA;
+    background: #3FBDFD;
     border-radius: 4px;
     margin-left: 5px;
     display: inline-block;
@@ -667,7 +718,7 @@ i.vip_b {
 }
 
 .pageBox .current, .pageBox a:hover {
-    background: #3CB4FA;
+    background: #3FBDFD;
     color: #fff
 }
 
@@ -853,7 +904,7 @@ i.vip_b {
 }
 
 .copyright .menu a:hover, .bookShelf .sj_link:hover {
-    color: #3CB4FA
+    color: #3FBDFD
 }
 
 .rightList .more, .more_bar {
@@ -988,7 +1039,7 @@ i.vip_b {
 }
 
 .layui-laypage-curr {
-    background: #3CB4FA;
+    background: #3FBDFD;
 }
 
 .layui-laypage-curr em {
