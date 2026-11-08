@@ -75,6 +75,10 @@
         .m-list .num { flex: none; width: 20px; font-size: 13px; font-weight: 700; color: #3FBDFD; }
         .m-list .txt { min-width: 0; }
         .m-list .name { font-size: 13px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .m-news { list-style: none; padding: 0; margin: 0; }
+        .m-news li { padding: 9px 0; border-bottom: 1px solid #f1f1f1; font-size: 12.5px; display: flex; gap: 8px; }
+        .m-news li a { color: #222; text-decoration: none; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .m-news li span { color: #999; font-size: 11px; flex: none; }
         .m-list .meta { font-size: 11px; color: #999; margin-top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     </style>
 
@@ -101,9 +105,6 @@
 <nav class="m-nav">
     <a class="on" href="/">ホーム</a>
     <a href="/book/book_ranking.html">ランキング</a>
-    <a href="/book/book_ranking.html?type=2">新着</a>
-    <a href="/book/bookclass.html?c=1">男性向け</a>
-    <a href="/book/bookclass.html?c=7">女性向け</a>
     <a href="/book/bookclass.html">ジャンル</a>
 </nav>
 
@@ -136,8 +137,48 @@
 </section>
 
 <section class="m-sec">
-    <h2>最新更新<a class="more" href="/book/book_ranking.html?sortBy=last_index_update_time">すべて見る</a></h2>
-    <div class="m-list" id="mUpdate"></div>
+    <h2>人気急上昇！<a class="more" href="/book/book_ranking.html">もっと見る</a></h2>
+    <div class="m-grid" id="mRising"></div>
+</section>
+
+<section class="m-sec">
+    <h2>おすすめ！<a class="more" href="/book/bookclass.html">もっと見る</a></h2>
+    <div class="m-grid" id="mRecommend"></div>
+</section>
+
+<section class="m-sec">
+    <h2>今月のおすすめ＆新刊！<a class="more" href="/book/book_ranking.html?type=1">もっと見る</a></h2>
+    <div class="m-grid" id="mMonthly"></div>
+</section>
+
+<section class="m-sec">
+    <h2>【短編】人気＆おすすめ<a class="more" href="/book/bookclass.html">もっと見る</a></h2>
+    <div class="m-grid" id="mShort"></div>
+</section>
+
+<section class="m-sec">
+    <h2>今話題の準新作！<a class="more" href="/book/book_ranking.html">もっと見る</a></h2>
+    <div class="m-grid" id="mSemi"></div>
+</section>
+
+<section class="m-sec">
+    <h2>男性向け<a class="more" href="/book/bookclass.html?c=1">もっと見る</a></h2>
+    <div class="m-grid" id="mMale"></div>
+</section>
+
+<section class="m-sec">
+    <h2>女性向け<a class="more" href="/book/bookclass.html?c=7">もっと見る</a></h2>
+    <div class="m-grid" id="mFemale"></div>
+</section>
+
+<section class="m-sec">
+    <h2>お知らせ</h2>
+    <ul class="m-news" id="mNews">
+        <li th:each="news : ${newsList}">
+            <a th:href="'/about/newsInfo-'+${news.id}+'.html'" th:utext="${news.title}"></a>
+            <span th:if="${news.createTime != null}" th:text="${#dates.format(news.createTime,'yyyy-MM-dd')}"></span>
+        </li>
+    </ul>
 </section>
 
 <div th:replace="mobile/common/footer :: footer"></div>
@@ -183,25 +224,68 @@
         });
     }
 
+    function renderGrid(list, target, max) {
+        var html = '';
+        for (var i = 0; i < list.length && i < (max || 6); i++) {
+            html += cardHtml(list[i], i);
+        }
+        $(target).html(html || '<p style="color:#999;font-size:12px;padding:8px 0">該当作品はまだありません</p>');
+    }
+
+    function loadGrid(url, target) {
+        $.ajax({
+            type: 'get', url: url, data: {}, dataType: 'json',
+            success: function (data) {
+                if (data.code == 200 && data.data) renderGrid(data.data, target, 6);
+            }
+        });
+    }
+
     $(function () {
         loadGrid('/book/listClickRank', '#mWeek');
         loadGrid('/book/listNewRank', '#mNew');
+        loadGrid('/book/listUpdateRank', '#mRising');
+        loadGrid('/book/listUpdateRank', '#mRecommend');
+        loadGrid('/book/listNewRank', '#mMonthly');
+        loadGrid('/book/listUpdateRank', '#mSemi');
 
+        // 短編
         $.ajax({
-            type: 'get', url: '/book/listUpdateRank', data: {}, dataType: 'json',
+            type: 'get', url: '/book/listClickRank', data: {}, dataType: 'json',
             success: function (data) {
-                if (data.code == 200 && data.data && data.data.length) {
-                    var html = '';
-                    for (var i = 0; i < data.data.length; i++) {
-                        var b = data.data[i];
-                        html += '<a class="row" href="/book/' + b.id + '.html">' +
-                            '<span class="num">' + (i + 1) + '</span>' +
-                            '<span class="txt"><span class="name">' + (b.bookName || '') + '</span>' +
-                            '<span class="meta">' + (b.authorName || '') + '</span></span>' +
-                            '</a>';
-                    }
-                    $('#mUpdate').html(html);
+                if (data.code != 200) return;
+                var all = data.data || [];
+                var shorts = all.filter(function (b) { return b.wordCount && b.wordCount < 20000; });
+                renderGrid(shorts.length ? shorts : all, '#mShort', 6);
+            }
+        });
+
+        // 男性向け / 女性向け
+        var catDir = {}, allBooks = [];
+        function fillGender() {
+            if (!allBooks.length) return;
+            ['male', 'female'].forEach(function (k) {
+                var ids = {};
+                Object.keys(catDir).forEach(function (id) { if (catDir[id] === k) ids[id] = 1; });
+                var list = allBooks.filter(function (b) {
+                    return String(b.catId || '').split(',').some(function (x) { return ids[x]; });
+                });
+                renderGrid(list, '#m' + k.charAt(0).toUpperCase() + k.slice(1), 6);
+            });
+        }
+        $.ajax({
+            type: 'get', url: '/book/listBookCategory', data: {}, dataType: 'json',
+            success: function (d) {
+                if (d.code == 200) {
+                    (d.data || []).forEach(function (c) { catDir[String(c.id)] = (c.workDirection == 1 ? 'female' : 'male'); });
+                    fillGender();
                 }
+            }
+        });
+        $.ajax({
+            type: 'get', url: '/book/searchByPage', data: {pageNum: 1, pageSize: 50}, dataType: 'json',
+            success: function (d) {
+                if (d.code == 200 && d.data && d.data.list) { allBooks = d.data.list; fillGender(); }
             }
         });
     });

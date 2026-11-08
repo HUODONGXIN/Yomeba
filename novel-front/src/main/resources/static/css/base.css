@@ -536,12 +536,17 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
     margin-bottom: 0
 }
 
+.mainNav .nav {
+    display: flex;
+    justify-content: center
+}
+
 .mainNav .nav li {
-    float: left
+    float: none
 }
 
 .mainNav .nav li a {
-    float: left;
+    float: none;
     height: 64px;
     line-height: 64px;
     color: #666;
